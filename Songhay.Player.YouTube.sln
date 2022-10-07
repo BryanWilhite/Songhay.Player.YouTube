@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Songhay.Player.YouTube", "S
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Songhay.Player.YouTube.Tests", "Songhay.Player.YouTube.Tests\Songhay.Player.YouTube.Tests.fsproj", "{5D06D0B8-E571-4B20-A4EF-9BE1528604AF}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Songhay.StudioFloor.Client", "Songhay.StudioFloor.Client\Songhay.StudioFloor.Client.fsproj", "{26FA52E1-1937-46AA-B7F5-597BA9519811}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{5D06D0B8-E571-4B20-A4EF-9BE1528604AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D06D0B8-E571-4B20-A4EF-9BE1528604AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D06D0B8-E571-4B20-A4EF-9BE1528604AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26FA52E1-1937-46AA-B7F5-597BA9519811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26FA52E1-1937-46AA-B7F5-597BA9519811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26FA52E1-1937-46AA-B7F5-597BA9519811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26FA52E1-1937-46AA-B7F5-597BA9519811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
