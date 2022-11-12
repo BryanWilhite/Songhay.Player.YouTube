@@ -22,7 +22,7 @@ let update message model =
     | Ping -> model
 
 let view model dispatch =
-    p { "Hello, world!" }
+    p { "Hello, world!!" }
 
 type StudioFloorProgramComponent() =
     inherit ProgramComponent<Model, Message>()

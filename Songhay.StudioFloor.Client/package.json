@@ -1,0 +1,19 @@
+{
+  "name": "songhay-studio-floor-client",
+  "version": "1.0.0",
+  "description": "the conventional Studio floor for demonstrating interactive components",
+  "main": "index.js",
+  "scripts": {
+    "index:sass": "npx sass ./src/scss/index.scss ./wwwroot/css/index.min.css --load-path=./node_modules --no-source-map --style=compressed",
+    "publish": "dotnet publish -c Release",
+    "start": "http-server ./bin/Release/net6.0/publish/wwwroot -o -c-1"
+  },
+  "author": "Bryan D. Wilhite",
+  "license": "ISC",
+  "dependencies": {
+    "bulma": "^0.9.4"
+  },
+  "devDependencies": {
+    "sass": "^1.56.1"
+  }
+}
