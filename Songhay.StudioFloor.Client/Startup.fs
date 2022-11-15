@@ -5,6 +5,8 @@ open Microsoft.Extensions.DependencyInjection
 open System
 open System.Net.Http
 
+open Songhay.Player.YouTube.Models.YouTubeScalars
+
 module Program =
 
     [<EntryPoint>]
@@ -12,6 +14,6 @@ module Program =
         let builder = WebAssemblyHostBuilder.CreateDefault(args)
         builder.RootComponents.Add<ElmishProgram.StudioFloorProgramComponent>("#studio-floor")
         builder.Services.AddScoped<HttpClient>(fun _ ->
-            new HttpClient(BaseAddress = Uri builder.HostEnvironment.BaseAddress)) |> ignore
+            new HttpClient(BaseAddress = Uri YouTubeApiRootUri)) |> ignore
         builder.Build().RunAsync() |> ignore
         0
