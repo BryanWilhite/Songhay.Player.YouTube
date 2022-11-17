@@ -17,7 +17,7 @@ open Songhay.Player.YouTube
 open Songhay.Player.YouTube.YtUriUtility
 
     module Remote =
-        let tryDownloadToStringAsync (client: HttpClient) (uri: Uri) =
+        let tryDownloadToStringAsync (client: HttpClient, uri: Uri) =
             async {
                 let! responseResult = client |> trySendAsync (get uri) |> Async.AwaitTask
                 let! output =
@@ -25,19 +25,6 @@ open Songhay.Player.YouTube.YtUriUtility
                     |> Async.AwaitTask
 
                 return output
-            }
-
-        let getYtItems (client: HttpClient, uri: Uri) =
-            async {
-                 return! (client, uri) ||> tryDownloadToStringAsync
-            }
-        let getYtSetIndex (client: HttpClient, uri: Uri) =
-            async {
-                 return! (client, uri) ||> tryDownloadToStringAsync
-            }
-        let getYtSet (client: HttpClient, uri: Uri) =
-            async {
-                 return! (client, uri) ||> tryDownloadToStringAsync
             }
 
 type Page =
@@ -61,6 +48,7 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) message model =
     | Message.SetPage page ->
         let m = { model with page = page }
         match page with
+        | YtThumbsPage -> m, Cmd.ofMsg (Message.YouTubeMessage YouTubeMessage.CallYtItems)
         | _ -> m, Cmd.none
     | Message.YouTubeMessage ytMsg ->
         let ytModel = {
@@ -88,7 +76,7 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) message model =
                 let ytItemsSuccessMsg = YouTubeMessage.CalledYtItems items
                 Message.YouTubeMessage ytItemsSuccessMsg
             let uri = YtIndexSonghayTopTen |> Identifier.Alphanumeric |> getPlaylistUri
-            let cmd = Cmd.OfAsync.either Remote.getYtItems (client, uri)  success failure
+            let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uri)  success failure
             ytModel, cmd
 
         | YouTubeMessage.CallYtIndexAndSet ->
@@ -99,13 +87,13 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) message model =
                 Message.YouTubeMessage ytItemsSuccessMsg
             let uriIdx = YtIndexSonghay |> Identifier.Alphanumeric |> getPlaylistIndexUri
             let cmdBatch = Cmd.batch [
-                Cmd.OfAsync.either Remote.getYtSetIndex (client, uriIdx) success failure
-                Cmd.OfAsync.either Remote.getYtSet (client, uriYtSet) successYtItems failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriIdx) success failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriYtSet) successYtItems failure
             ]
             ytModel, cmdBatch
 
         | YouTubeMessage.CallYtSet _ ->
-            let cmd = Cmd.OfAsync.either Remote.getYtSet (client, uriYtSet) successYtItems failure
+            let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriYtSet) successYtItems failure
             ytModel, cmd
 
         | YouTubeMessage.OpenYtSetOverlay ->
