@@ -14,6 +14,6 @@ module Program =
         let builder = WebAssemblyHostBuilder.CreateDefault(args)
         builder.RootComponents.Add<ElmishProgram.StudioFloorProgramComponent>("#studio-floor")
         builder.Services.AddScoped<HttpClient>(fun _ ->
-            new HttpClient(BaseAddress = Uri YouTubeApiRootUri)) |> ignore
+            new HttpClient(BaseAddress = Uri builder.HostEnvironment.BaseAddress)) |> ignore
         builder.Build().RunAsync() |> ignore
         0

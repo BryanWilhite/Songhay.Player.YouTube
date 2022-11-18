@@ -9,6 +9,7 @@ open Bolero.Html
 open Microsoft.AspNetCore.Components
 open Microsoft.JSInterop
 
+open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
@@ -105,7 +106,21 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) message model =
         | _ -> ytModel, Cmd.none
 
 let view model dispatch =
-    p { "Hello, world!!" }
+    div {
+        [
+            "tabs";
+            "has-background-grey-light";
+            "is-toggle";
+            "is-fullwidth";
+            "is-large"
+        ] |> CssClasses.toHtmlClassFromList
+
+        ul {
+            li { a { text "one" } }
+            li { a { text "two" } }
+            li { a { text "three" } }
+        }
+    }
 
 type StudioFloorProgramComponent() =
     inherit ProgramComponent<Model, Message>()
