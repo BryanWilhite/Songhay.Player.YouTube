@@ -116,10 +116,25 @@ let view model dispatch =
         ] |> CssClasses.toHtmlClassFromList
 
         ul {
-            li { a { text "one" } }
-            li { a { text "two" } }
-            li { a { text "three" } }
+            forEach [
+                ("README", ReadMePage)
+                ("YouTube Thumbs", YtThumbsPage)
+                ("YouTube Presentation", YtPresentationPage)
+            ] <| fun (label, pg) ->
+            li {
+                a {
+                    attr.href "#"
+                    DomElementEvent.Click.PreventDefault
+                    on.click (fun _ -> SetPage pg |> dispatch)
+                    text label
+                }
+            }
         }
+
+        match model.page with
+        | ReadMePage -> "read me"
+        | YtPresentationPage -> "presentation"
+        | YtThumbsPage -> "thumbs"
     }
 
 type StudioFloorProgramComponent() =
