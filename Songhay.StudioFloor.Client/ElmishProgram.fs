@@ -14,6 +14,7 @@ open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.Bolero.RemoteHandlerUtility
+open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 open Songhay.Player.YouTube
 open Songhay.Player.YouTube.YtUriUtility
 
@@ -106,35 +107,40 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) message model =
         | _ -> ytModel, Cmd.none
 
 let view model dispatch =
-    div {
-        [
-            "tabs";
-            "has-background-grey-light";
-            "is-toggle";
-            "is-fullwidth";
-            "is-large"
-        ] |> CssClasses.toHtmlClassFromList
+    concat {
+        div {
+            [
+                "tabs";
+                "has-background-grey-light";
+                "is-toggle";
+                "is-fullwidth";
+                "is-large"
+            ] |> CssClasses.toHtmlClassFromList
 
-        ul {
-            forEach [
-                ("README", ReadMePage)
-                ("YouTube Thumbs", YtThumbsPage)
-                ("YouTube Presentation", YtPresentationPage)
-            ] <| fun (label, pg) ->
-            li {
-                a {
-                    attr.href "#"
-                    DomElementEvent.Click.PreventDefault
-                    on.click (fun _ -> SetPage pg |> dispatch)
-                    text label
+            ul {
+                forEach [
+                    ("README", ReadMePage)
+                    ("YouTube Thumbs", YtThumbsPage)
+                    ("YouTube Presentation", YtPresentationPage)
+                ] <| fun (label, pg) ->
+                li {
+                    a {
+                        attr.href "#"
+                        DomElementEvent.Click.PreventDefault
+                        on.click (fun _ -> SetPage pg |> dispatch)
+                        text label
+                    }
                 }
             }
         }
 
-        match model.page with
-        | ReadMePage -> "read me"
-        | YtPresentationPage -> "presentation"
-        | YtThumbsPage -> "thumbs"
+        bulmaContainer
+            ContainerWidthFluid
+            NoCssClasses
+            (match model.page with
+            | ReadMePage -> text "read me"
+            | YtPresentationPage -> text "presentation"
+            | YtThumbsPage -> text "thumbs")
     }
 
 type StudioFloorProgramComponent() =
