@@ -16,6 +16,7 @@ open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.Bolero.RemoteHandlerUtility
 open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 open Songhay.Player.YouTube
+open Songhay.Player.YouTube.Components
 open Songhay.Player.YouTube.YtUriUtility
 
     module Remote =
@@ -140,7 +141,11 @@ let view model dispatch =
             (match model.page with
             | ReadMePage -> text "read me"
             | YtPresentationPage -> text "presentation"
-            | YtThumbsPage -> text "thumbs")
+            | YtThumbsPage ->
+                (concat {
+                    YtThumbsComponent.EComp (Some "songhay tube") model.ytModel (Message.YouTubeMessage >> dispatch)
+                    YtThumbsSetComponent.EComp model.ytModel (Message.YouTubeMessage >> dispatch)
+                }))
     }
 
 type StudioFloorProgramComponent() =
