@@ -126,6 +126,18 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "dotnet publish [Songhay.StudioFloor.Client, Release]",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "publish",
+                "${workspaceFolder}/Songhay.StudioFloor.Client/Songhay.StudioFloor.Client.fsproj",
+                "--configuration",
+                "Release"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "dotnet Statiq [Release]",
             "command": "dotnet",
             "type": "shell",
@@ -161,6 +173,17 @@
                 "cwd": "${workspaceRoot}/Statiq.Docs.Shell/bin/Release/net6.0/"
             },
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "pandoc [publish README to Studio Floor]",
+            "command": "pandoc",
+            "type": "shell",
+            "args": [
+                "${workspaceRoot}/README.md",
+                "-o",
+                "${workspaceRoot}/Songhay.StudioFloor.Client/wwwroot/README.html"
+            ],
+            "problemMatcher": []
         },
         {
             "label": "Statiq: add .nojekyll file for GitHub",

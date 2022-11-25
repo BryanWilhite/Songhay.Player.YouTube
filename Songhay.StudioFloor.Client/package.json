@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "index:sass": "npx sass ./src/scss/index.scss ./wwwroot/css/index.min.css --load-path=./node_modules --no-source-map --style=compressed",
-    "publish": "dotnet publish -c Release",
     "start": "http-server ./bin/Release/net6.0/publish/wwwroot -o -c-1"
   },
   "author": "Bryan D. Wilhite",
