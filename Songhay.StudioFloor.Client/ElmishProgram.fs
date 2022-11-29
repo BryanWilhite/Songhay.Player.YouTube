@@ -9,10 +9,10 @@ open Bolero.Html
 open Microsoft.AspNetCore.Components
 open Microsoft.JSInterop
 
-open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
+open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Bolero.RemoteHandlerUtility
 open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 open Songhay.Player.YouTube

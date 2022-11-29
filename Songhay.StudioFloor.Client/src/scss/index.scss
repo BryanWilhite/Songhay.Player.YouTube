@@ -36,8 +36,8 @@
 
 // TODO: the Bulma docs have not caught up to `helpers`:
 @import "bulma/sass/helpers/color";
-@import "bulma/sass/helpers/flexbox";
-@import "bulma/sass/helpers/float";
+// @import "bulma/sass/helpers/flexbox";
+// @import "bulma/sass/helpers/float";
 @import "bulma/sass/helpers/other";
 @import "bulma/sass/helpers/overflow";
 @import "bulma/sass/helpers/position";
@@ -63,24 +63,24 @@
 // @import "bulma/sass/form/tools";
 
 // #8
-@import "bulma/sass/components/media";
+// @import "bulma/sass/components/media";
 // @import "bulma/sass/components/pagination";
 // @import "bulma/sass/components/message";
 // @import "bulma/sass/components/modal";
 
 // @import "bulma/sass/components/breadcrumb";
 // @import "bulma/sass/components/card";
-// @import "bulma/sass/components/dropdown";
-// @import "bulma/sass/components/level";
-// @import "bulma/sass/components/menu";
+@import "bulma/sass/components/dropdown";
+@import "bulma/sass/components/level";
+@import "bulma/sass/components/menu";
 @import "bulma/sass/components/navbar";
 // @import "bulma/sass/components/panel";
 @import "bulma/sass/components/tabs";
 
 // #9
 // @import "bulma/sass/layout/hero";
-@import "bulma/sass/layout/section";
-@import "bulma/sass/layout/footer";
+// @import "bulma/sass/layout/section";
+// @import "bulma/sass/layout/footer";
 
 // TODO: the Bulma docs have not caught up to `grid`:
 @import "bulma/sass/grid/_all";
