@@ -127,6 +127,7 @@ type YtThumbsSetComponent() =
 
     override this.ShouldRender(oldModel, newModel) =
         (oldModel.YtSetIndex <> newModel.YtSetIndex)
+        || (oldModel.YtSet <> newModel.YtSet)
         || (oldModel.YtSetIndexSelectedDocument <> newModel.YtSetIndexSelectedDocument)
         || (oldModel.YtSetOverlayIsVisible <> newModel.YtSetOverlayIsVisible)
         || (oldModel.YtSetRequestSelection <> newModel.YtSetRequestSelection)
