@@ -138,14 +138,17 @@ let view model dispatch =
         bulmaContainer
             ContainerWidthFluid
             NoCssClasses
-            (match model.page with
-            | ReadMePage -> text "read me"
-            | YtPresentationPage -> text "presentation"
-            | YtThumbsPage ->
-                (concat {
+            (concat {
+                match model.page with
+                | ReadMePage ->
+                    text "read me"
+                | YtPresentationPage ->
+                    text "presentation"
+                | YtThumbsPage ->
                     YtThumbsComponent.EComp (Some "songhay tube") model.ytModel (Message.YouTubeMessage >> dispatch)
-                    YtThumbsSetComponent.EComp model.ytModel (Message.YouTubeMessage >> dispatch)
-                }))
+            })
+
+        YtThumbsSetComponent.EComp model.ytModel (Message.YouTubeMessage >> dispatch)
     }
 
 type StudioFloorProgramComponent() =

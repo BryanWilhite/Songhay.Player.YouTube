@@ -125,5 +125,11 @@ type YtThumbsSetComponent() =
     [<Inject>]
     member val JSRuntime = Unchecked.defaultof<IJSRuntime> with get, set
 
+    override this.ShouldRender(oldModel, newModel) =
+        (oldModel.YtSetIndex <> newModel.YtSetIndex)
+        || (oldModel.YtSetIndexSelectedDocument <> newModel.YtSetIndexSelectedDocument)
+        || (oldModel.YtSetOverlayIsVisible <> newModel.YtSetOverlayIsVisible)
+        || (oldModel.YtSetRequestSelection <> newModel.YtSetRequestSelection)
+
     override this.View model dispatch =
         model |> ytThumbsSetNode dispatch this.JSRuntime
