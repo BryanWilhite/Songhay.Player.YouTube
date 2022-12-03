@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ElmishTypes.fs" />
+    <Compile Include="ClientUtility.fs" />
     <Compile Include="ElmishProgram.fs" />
     <Compile Include="Startup.fs" />
   </ItemGroup>
