@@ -3,17 +3,19 @@ namespace Songhay.StudioFloor.Client.ElmishTypes
 open Bolero
 open Songhay.Player.YouTube
 
-type Page =
-    | [<EndPoint "/">] ReadMePage
-    | [<EndPoint "/thumbs">] YtThumbsPage
-    | [<EndPoint "/presentation">] YtPresentationPage
+type Tab =
+    | ReadMeTab
+    | YtPresentationTab
+    | YtThumbsTab
 
 type Model = {
-    page: Page
     readMeData: string option
+    tab: Tab
     ytModel: YouTubeModel
 }
 
 type Message =
-    | SetPage of Page
+    | Error of exn
+    | GetReadMe | GotReadMe of string
+    | SetTab of Tab
     | YouTubeMessage of YouTubeMessage

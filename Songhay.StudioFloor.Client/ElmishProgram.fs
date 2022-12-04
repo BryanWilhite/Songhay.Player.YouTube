@@ -1,13 +1,17 @@
 module Songhay.StudioFloor.Client.ElmishProgram
 
+open System
+open System.Net
 open System.Net.Http
+open FsToolkit.ErrorHandling
+open Microsoft.AspNetCore.Components
+open Microsoft.JSInterop
 open Elmish
 open Bolero
 open Bolero.Html
-open Microsoft.AspNetCore.Components
-open Microsoft.JSInterop
 
 open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Bolero.Visuals.Bulma.Element
 open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 open Songhay.Player.YouTube
 open Songhay.Player.YouTube.Components
@@ -15,18 +19,30 @@ open Songhay.StudioFloor.Client.ElmishTypes
 
 let update (jsRuntime: IJSRuntime) (client: HttpClient) message model =
     match message with
-    | Message.SetPage page ->
-        let m = { model with page = page }
-        match page with
-        | YtThumbsPage -> m, Cmd.ofMsg (Message.YouTubeMessage YouTubeMessage.CallYtItems)
+    | Error _ -> model, Cmd.none
+    | GetReadMe ->
+        let success (result: Result<string, HttpStatusCode>) =
+            let data = result |> Result.valueOr (fun code -> $"The expected README data is not here. [error code: {code}]")
+            Message.GotReadMe data
+        let failure ex = ((jsRuntime |> Some), ex) ||> ClientUtility.passFailureToConsole |> Message.Error
+        let uri = ("./README.html", UriKind.Relative) |> Uri
+        let cmd = Cmd.OfAsync.either ClientUtility.Remote.tryDownloadToStringAsync (client, uri)  success failure
+        model, cmd
+    | GotReadMe data ->
+        let m = { model with readMeData = (data |> Some) }
+        m, Cmd.none
+    | Message.SetTab tab ->
+        let m = { model with tab = tab }
+        match tab with
+        | YtThumbsTab -> m, Cmd.ofMsg (Message.YouTubeMessage YouTubeMessage.CallYtItems)
         | _ -> m, Cmd.none
     | Message.YouTubeMessage ytMsg -> ClientUtility.update jsRuntime client ytMsg model
 
 let view model dispatch =
     let tabs = [
-        ("README", ReadMePage)
-        ("YouTube Thumbs", YtThumbsPage)
-        ("YouTube Presentation", YtPresentationPage)
+        ("README", ReadMeTab)
+        ("YouTube Thumbs", YtThumbsTab)
+        ("YouTube Presentation", YtPresentationTab)
     ]
 
     concat {
@@ -45,7 +61,7 @@ let view model dispatch =
                     a {
                         attr.href "#"
                         DomElementEvent.Click.PreventDefault
-                        on.click (fun _ -> SetPage pg |> dispatch)
+                        on.click (fun _ -> SetTab pg |> dispatch)
                         text label
                     }
                 }
@@ -55,12 +71,17 @@ let view model dispatch =
         bulmaContainer
             ContainerWidthFluid
             NoCssClasses
-            (cond model.page <| function
-            | ReadMePage ->
-                text "read me"
-            | YtPresentationPage ->
+            (cond model.tab <| function
+            | ReadMeTab ->
+                if model.readMeData.IsNone then
+                    text "loading…"
+                else
+                    bulmaNotification
+                        (HasClasses (CssClasses [ "is-primary" ] ))
+                        (rawHtml model.readMeData.Value)
+            | YtPresentationTab ->
                 text "presentation"
-            | YtThumbsPage ->
+            | YtThumbsTab ->
                 YtThumbsComponent.EComp (Some "songhay tube") model.ytModel (Message.YouTubeMessage >> dispatch)
             )
 
@@ -78,10 +99,10 @@ type StudioFloorProgramComponent() =
 
     override this.Program =
         let initModel = {
-            page = ReadMePage
+            tab = ReadMeTab
             readMeData = None
             ytModel = YouTubeModel.initialize
         }
-        let init = (fun _ -> initModel, Cmd.none)
+        let init = (fun _ -> initModel, Cmd.ofMsg Message.GetReadMe)
         let update = update this.JSRuntime this.HttpClient
         Program.mkProgram init update view

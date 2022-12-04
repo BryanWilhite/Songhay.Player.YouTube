@@ -7,6 +7,7 @@ open Elmish
 open Bolero.Remoting.Client
 open Microsoft.JSInterop
 
+open Songhay.Modules.Bolero
 open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
@@ -25,6 +26,13 @@ open Songhay.StudioFloor.Client.ElmishTypes
 
                 return output
             }
+
+let passFailureToConsole (jsRuntime: IJSRuntime option) ex =
+    if jsRuntime.IsSome then
+        jsRuntime.Value |> JsRuntimeUtility.consoleErrorAsync [|
+            "failure:", ex
+        |] |> ignore
+    ex
 
 let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
     let ytModel = {
