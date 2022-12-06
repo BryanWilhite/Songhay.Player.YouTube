@@ -68,22 +68,21 @@ let view model dispatch =
             }
         }
 
-        bulmaContainer
-            ContainerWidthFluid
-            NoCssClasses
-            (cond model.tab <| function
-            | ReadMeTab ->
-                if model.readMeData.IsNone then
-                    text "loading…"
-                else
-                    bulmaNotification
-                        (HasClasses (CssClasses [ "is-primary" ] ))
-                        (rawHtml model.readMeData.Value)
-            | YtPresentationTab ->
-                text "presentation"
-            | YtThumbsTab ->
-                YtThumbsComponent.EComp (Some "songhay tube") model.ytModel (Message.YouTubeMessage >> dispatch)
-            )
+        cond model.tab <| function
+        | ReadMeTab ->
+            if model.readMeData.IsNone then
+                text "loading…"
+            else
+                bulmaContainer
+                    ContainerWidthFluid
+                    NoCssClasses
+                    (bulmaNotification
+                        (HasClasses (CssClasses [ "is-info" ] ))
+                        (rawHtml model.readMeData.Value))
+        | YtPresentationTab ->
+            text "presentation"
+        | YtThumbsTab ->
+            YtThumbsComponent.EComp (Some "songhay tube") model.ytModel (Message.YouTubeMessage >> dispatch)
 
         YtThumbsSetComponent.EComp model.ytModel (Message.YouTubeMessage >> dispatch)
     }

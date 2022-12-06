@@ -87,10 +87,26 @@
 
 @import "../../../Songhay.Player.YouTube/src/scss/you-tube-css-variables.scss";
 @import "../../../Songhay.Player.YouTube/src/scss/you-tube-presentation.scss";
-@import "../../../Songhay.Player.YouTube/src/scss/you-tube-thumbs-navigation.scss";
+// @import "../../../Songhay.Player.YouTube/src/scss/you-tube-thumbs-navigation.scss";
 @import "../../../Songhay.Player.YouTube/src/scss/you-tube-thumbs-set.scss";
 @import "../../../Songhay.Player.YouTube/src/scss/you-tube-thumbs.scss";
 
 html, body {
     height: 100%;
+    .notification {
+        h1, h2, li, p {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        h2 {
+            font-size: 2.5rem;
+        }
+        li {
+            list-style-type: square;
+            margin-left: 1.5rem;
+        }
+    }
 }
