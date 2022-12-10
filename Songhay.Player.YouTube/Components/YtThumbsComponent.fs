@@ -112,7 +112,7 @@ type YtThumbsComponent() =
                             }
                     }
                 span { [ "published-at"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item.getPublishedAt.Humanize() |> text }
-                span { [ "caption"; elementFontWeight Semibold; fontSize Size5 ] |> CssClasses.toHtmlClassFromList; item |> getYtThumbsAnchor }
+                span { [ "caption"; elementFontWeight Semibold; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item |> getYtThumbsAnchor }
                 span { [ "duration"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList ; span { duration } }
             }
 

@@ -82,28 +82,15 @@ $key: 8-thumbs;
 
         &.header {
             margin: 0 auto;
-            margin-top: 3rem;
 
-            & > a {
-                display: inline-block;
-
+            & > .level-left > .level-item > a {
                 &:link,
                 &:visited {
                     color: $var-thumbs-header-link-color;
                     text-decoration: $var-thumbs-header-link-text-decoration;
                 }
-                & > span {
-                    display: inline-block;
-                }
-            }
-
-            & > span {
-                & > a {
-                    &:link,
-                    &:visited {
-                        color: $var-thumbs-header-link-color;
-                        text-decoration: none;
-                    }
+                &:hover {
+                    color: $var-thumbs-header-link-hover-color;
                 }
             }
         }
@@ -137,6 +124,7 @@ $key: 8-thumbs;
                         opacity: 1;
                         overflow: hidden;
                         padding-left: 0.5rem;
+                        text-overflow: ellipsis;
                         white-space: normal;
 
                         & a {
