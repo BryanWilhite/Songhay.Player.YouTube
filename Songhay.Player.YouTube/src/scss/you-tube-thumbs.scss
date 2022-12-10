@@ -75,7 +75,12 @@ $key: 8-thumbs;
             position: relative;
             z-index: 2;
 
+            &:link,
+            &:visited {
+                color: $var-thumbs-command-color;
+            }
             &:hover {
+                color: $var-thumbs-command-hover-color;
                 opacity: 0.9;
             }
         }
