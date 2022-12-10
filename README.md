@@ -1,6 +1,6 @@
 # Songhay.Player.YouTube
 
-## Bolero Components, Elmish types and JSON handlers for  b-roll player for YouTube 🎥 content
+## Bolero Components, Elmish types and JSON handlers for the b-roll player for YouTube 🎥 content
 
 **NuGet package 📦:** [`Songhay.Player.YouTube`](https://www.nuget.org/packages/Songhay.Player.YouTube)
 
