@@ -130,11 +130,11 @@ $key: 8-thumbs;
                         & a {
                             &:link,
                             &:visited {
-                                color: #fff;
+                                color: $var-thumbs-link-color;
                                 text-decoration: none;
                             }
                             &:hover {
-                                color: #ff0;
+                                color: $var-thumbs-link-hover-color;
                                 background-color: transparent;
                             }
                         }
