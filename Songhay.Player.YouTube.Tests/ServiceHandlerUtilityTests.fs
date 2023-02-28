@@ -49,11 +49,11 @@ module ServiceHandlerUtilityTests =
             let id = Identifier.fromString(idString)
             let uri = id |> getPlaylistIndexUri
             let! responseResult = client |> trySendAsync (get uri)
-            responseResult |> should be (ofCase<@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult |> should be (ofCase<@ Result<string,HttpStatusCode>.Ok @>)
+            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
 
             let json =
                 jsonResult
@@ -76,11 +76,11 @@ module ServiceHandlerUtilityTests =
             let clientId = ClientId.fromString(clientIdString)
             let uri = (indexId, clientId) ||> getPlaylistSetUri
             let! responseResult = client |> trySendAsync (get uri)
-            responseResult |> should be (ofCase<@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult |> should be (ofCase<@ Result<string,HttpStatusCode>.Ok @>)
+            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
 
             let json =
                 jsonResult
@@ -102,11 +102,11 @@ module ServiceHandlerUtilityTests =
             let id = Identifier.fromString(idString)
             let uri = id |> getPlaylistUri
             let! responseResult = client |> trySendAsync (get uri)
-            responseResult |> should be (ofCase<@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult |> should be (ofCase<@ Result<string,HttpStatusCode>.Ok @>)
+            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
             let json =
                 jsonResult
                 |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
@@ -139,4 +139,4 @@ module ServiceHandlerUtilityTests =
         let mockLogger = Substitute.For<ILogger>() |> Some
 
         let actual = (mockLogger, jsonResult) ||> tryGetJsonElement |> toYtItems
-        actual |> should be (ofCase<@ Option<YouTubeItem[]>.Some @>)
+        actual |> should be (ofCase <@ Option<YouTubeItem[]>.Some @>)

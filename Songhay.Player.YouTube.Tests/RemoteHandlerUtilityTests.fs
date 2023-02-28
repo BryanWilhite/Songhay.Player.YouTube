@@ -44,15 +44,15 @@ module RemoteHandlerUtilityTests =
             let uri = indexName |> Identifier.Alphanumeric |> getPlaylistIndexUri
             let mockLogger = Substitute.For<ILogger>() |> Some
             let dataGetter (result: Result<JsonElement, JsonException>) =
-                result |> should be (ofCase<@ Result<JsonElement, JsonException>.Ok @>)
+                result |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
                 result |> Option.ofResult
 
             let! responseResult = client |> trySendAsync (get uri) |> Async.AwaitTask
 
-            responseResult |> should be (ofCase<@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
 
             let! handlerResult = responseResult |> toHandlerOutputAsync mockLogger dataGetter |> Async.AwaitTask
-            handlerResult |> should be (ofCase<@ Option<JsonElement>.Some @>)
+            handlerResult |> should be (ofCase <@ Option<JsonElement>.Some @>)
 
             (jsonFileName, handlerResult.Value.ToString()) ||> writeJsonAsync |> Async.AwaitTask |> ignore
         }
