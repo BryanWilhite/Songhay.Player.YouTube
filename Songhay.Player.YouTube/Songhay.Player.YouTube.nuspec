@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Songhay.Player.YouTube</id>
-    <version>6.1.1</version>
+    <version>6.1.2</version>
     <description>Bolero Components, Elmish types and JSON handlers for the b-roll player for YouTube 🎥 content</description>
     <authors>Bryan D. Wilhite</authors>
     <title>Songhay Modules, Publications</title>
@@ -14,15 +14,15 @@
     <summary>Bolero Components, Elmish types and JSON handlers for the b-roll player for YouTube 🎥 content</summary>
     <readme>README.md</readme>
     <releaseNotes>update of dependencies 📦🔝</releaseNotes>
-    <copyright>(c) 2022 Bryan D. Wilhite</copyright>
+    <copyright>(c) 2023 Bryan D. Wilhite</copyright>
     <tags>FSharp;Songhay;Modules;Blazor;WebAssembly;YouTube</tags>
     <repository type="git" url="https://github.com/BryanWilhite/Songhay.Player.YouTube"></repository>
     <dependencies>
       <group targetFramework=".NET6.0">
         <dependency id="Bolero" version="0.21.25" />
         <dependency id="Humanizer.Core" version="2.14.1" />
-        <dependency id="Songhay.Modules.Bolero" version="6.1.1" />
-        <dependency id="Songhay.Modules.Publications" version="6.0.1" />
+        <dependency id="Songhay.Modules.Bolero" version="6.1.2" />
+        <dependency id="Songhay.Modules.Publications" version="6.1.0" />
       </group>
     </dependencies>
   </metadata>

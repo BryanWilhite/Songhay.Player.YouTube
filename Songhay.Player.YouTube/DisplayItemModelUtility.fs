@@ -16,7 +16,7 @@ module DisplayItemModelUtility =
     module Index =
 
         let tryGetDisplayTupleFromDocument (element: JsonElement) =
-            let idResult = ((nameof ClientId), element) ||> Id.fromInputElementName
+            let idResult = ((nameof ClientId), element) ||> Identifier.fromInputElementName
             let titleResult = (false, element) ||> defaultDocumentDisplayTextGetter
             let fragmentClientIdsResult =
                 element
@@ -40,7 +40,7 @@ module DisplayItemModelUtility =
                     fun _ ->
                         Ok (
                             {
-                                id = idResult |> Result.map(fun i -> i.Value) |> Result.valueOr raise
+                                id = idResult |> Result.map id |> Result.valueOr raise
                                 itemName = None
                                 displayText = titleResult |> Result.map id |> Result.valueOr raise
                                 resourceIndicator = None
