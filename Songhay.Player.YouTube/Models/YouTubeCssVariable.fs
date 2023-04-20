@@ -14,15 +14,7 @@ type YouTubeCssVariable =
     | ThumbsSetPaddingTop of string
 
     member this.Name =
-        let name =
-            match this with
-            | ThumbsHeaderLinkColor _ -> nameof ThumbsHeaderLinkColor |> toKabobCase
-            | ThumbsHeaderLinkTextDecoration _ -> nameof ThumbsHeaderLinkTextDecoration |> toKabobCase
-            | ThumbsSetHeaderColor _ -> nameof ThumbsSetHeaderColor |> toKabobCase
-            | ThumbsSetBackgroundColor _ -> nameof ThumbsSetBackgroundColor |> toKabobCase
-            | ThumbsSetHeaderPosition _ -> nameof ThumbsSetHeaderPosition |> toKabobCase
-            | ThumbsSetPaddingTop _ -> nameof ThumbsSetPaddingTop |> toKabobCase
-        $"--{name}"
+        $"--{this.ToString() |> toKabobCase}"
 
     member this.Value =
         match this with

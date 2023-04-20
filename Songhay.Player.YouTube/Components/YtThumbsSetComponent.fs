@@ -14,7 +14,8 @@ open Songhay.Modules.Bolero.Visuals.Bulma.Element
 open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 open Songhay.Modules.Bolero.Visuals.BodyElement
 open Songhay.Modules.Models
-open Songhay.Player.YouTube
+
+open Songhay.Player.YouTube.Models
 
 type YtThumbsSetComponent() =
     inherit ElmishComponent<YouTubeModel, YouTubeMessage>()

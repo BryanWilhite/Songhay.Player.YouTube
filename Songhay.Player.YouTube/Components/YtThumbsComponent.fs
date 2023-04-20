@@ -12,6 +12,7 @@ open Bolero
 open Bolero.Html
 open Elmish
 
+open Songhay.Modules.Models
 open Songhay.Modules.StringUtility
 open Songhay.Modules.Bolero.JsRuntimeUtility
 open Songhay.Modules.Bolero.Models
@@ -20,7 +21,6 @@ open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 open Songhay.Modules.Bolero.Visuals.Bulma.CssClass
 open Songhay.Modules.Bolero.Visuals.BodyElement
 
-open Songhay.Player.YouTube
 open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.YtItemUtility
 

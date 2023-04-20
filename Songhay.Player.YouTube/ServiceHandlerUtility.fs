@@ -4,6 +4,7 @@ open System
 open System.Text.Json
 
 open FsToolkit.ErrorHandling
+open FsToolkit.ErrorHandling.Operator.Result
 
 open Songhay.Modules.StringUtility
 open Songhay.Player.YouTube
@@ -17,17 +18,17 @@ module ServiceHandlerUtility =
 
     let toPublicationIndexData (jsonElementResult: Result<JsonElement, JsonException>) =
         jsonElementResult
-        |> Result.bind (fun el -> el |> Index.fromInput)
+        >>= fun el -> el |> Index.fromInput
         |> Option.ofResult
 
     let toYtItems (jsonElementResult: Result<JsonElement, JsonException>) =
         jsonElementResult
-        |> Result.bind (fun el -> el |> YtItemUtility.fromInput)
+        >>= fun el -> el |> YtItemUtility.fromInput
         |> Result.map (fun input -> input |> List.toArray)
         |> Option.ofResult
 
     let toYtSet (jsonElementResult: Result<JsonElement, JsonException>) =
         jsonElementResult
-        |> Result.bind (fun el -> el |> ThumbsSet.fromInput)
+        >>= fun el -> el |> ThumbsSet.fromInput
         |> Result.map (fun input -> input |> List.toArray)
         |> Option.ofResult

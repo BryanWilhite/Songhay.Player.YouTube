@@ -20,7 +20,6 @@ open Songhay.Modules.HttpResponseMessageUtility
 open Songhay.Modules.ProgramFileUtility
 open Songhay.Modules.Bolero.JsonDocumentUtility
 
-open Songhay.Player.YouTube
 open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.ServiceHandlerUtility
 open Songhay.Player.YouTube.YtUriUtility

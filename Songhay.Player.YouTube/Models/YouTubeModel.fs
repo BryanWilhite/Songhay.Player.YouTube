@@ -1,46 +1,10 @@
-namespace Songhay.Player.YouTube
+namespace Songhay.Player.YouTube.Models
 
 open System
-open Microsoft.JSInterop
 
-open Songhay.Modules.Bolero
 open Songhay.Modules.Models
 open Songhay.Modules.Publications.Models
 open Songhay.Player.YouTube.Models
-
-type YouTubeMessage =
-    | Error of exn
-    | CallYtItems | CalledYtItems of YouTubeItem[] option
-    | CallYtIndexAndSet
-    | CallYtSet of DisplayText * ClientId
-    | CalledYtSet of (DisplayText * YouTubeItem []) [] option
-    | CalledYtSetIndex of (ClientId * Name * (DisplayItemModel * ClientId []) []) option
-    | CloseYtSetOverlay
-    | OpenYtSetOverlay
-    | SelectYtSet
-
-    member this.displayText =
-        match this with
-        | Error _ -> $"{nameof YouTubeMessage}.{nameof Error}"
-        | CallYtItems -> $"{nameof YouTubeMessage}.{nameof CallYtItems}"
-        | CalledYtItems _ -> $"{nameof YouTubeMessage}.{nameof CalledYtItems}"
-        | CallYtIndexAndSet -> $"{nameof YouTubeMessage}.{nameof CallYtIndexAndSet}"
-        | CallYtSet _ -> $"{nameof YouTubeMessage}.{nameof CallYtSet}"
-        | CalledYtSet _ -> $"{nameof YouTubeMessage}.{nameof CalledYtSet}"
-        | CalledYtSetIndex _ -> $"{nameof YouTubeMessage}.{nameof CalledYtSetIndex}"
-        | CloseYtSetOverlay -> $"{nameof YouTubeMessage}.{nameof CloseYtSetOverlay}"
-        | OpenYtSetOverlay -> $"{nameof YouTubeMessage}.{nameof OpenYtSetOverlay}"
-        | SelectYtSet -> $"{nameof YouTubeMessage}.{nameof SelectYtSet}"
-
-    member this.failureMessage (jsRuntime: IJSRuntime option) ex =
-        let ytFailureMsg = YouTubeMessage.Error ex
-
-        if jsRuntime.IsSome then
-            jsRuntime.Value |> JsRuntimeUtility.consoleErrorAsync [|
-                $"{this.displayText} failure:", ex
-            |] |> ignore
-
-        ytFailureMsg
 
 type YouTubeModel =
     {
