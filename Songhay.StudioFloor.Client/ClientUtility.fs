@@ -12,9 +12,10 @@ open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Player.YouTube
+open Songhay.Player.YouTube.Models
 open Songhay.Modules.Bolero.RemoteHandlerUtility
 open Songhay.Player.YouTube.YtUriUtility
-open Songhay.StudioFloor.Client.ElmishTypes
+open Songhay.StudioFloor.Client.Models
 
     module Remote =
         let tryDownloadToStringAsync (client: HttpClient, uri: Uri) =
@@ -48,9 +49,9 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
             let dataGetter = ServiceHandlerUtility.toYtSet
             let set = (dataGetter, result) ||> toHandlerOutput None
             let ytItemsSuccessMsg = YouTubeMessage.CalledYtSet set
-            Message.YouTubeMessage ytItemsSuccessMsg
+            StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
 
-    let failure ex = ((jsRuntime |> Some), ex) ||> ytMsg.failureMessage |> Message.YouTubeMessage
+    let failure ex = ((jsRuntime |> Some), ex) ||> ytMsg.failureMessage |> StudioFloorMessage.YouTubeMessage
 
     match ytMsg with
     | YouTubeMessage.CallYtItems ->
@@ -58,7 +59,7 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
             let dataGetter = ServiceHandlerUtility.toYtItems
             let items = (dataGetter, result) ||> toHandlerOutput None
             let ytItemsSuccessMsg = YouTubeMessage.CalledYtItems items
-            Message.YouTubeMessage ytItemsSuccessMsg
+            StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
         let uri = YtIndexSonghayTopTen |> Identifier.Alphanumeric |> getPlaylistUri
         let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uri)  success failure
         ytModel, cmd
@@ -68,7 +69,7 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
             let dataGetter = ServiceHandlerUtility.toPublicationIndexData
             let index = (dataGetter, result) ||> toHandlerOutput None
             let ytItemsSuccessMsg = YouTubeMessage.CalledYtSetIndex index
-            Message.YouTubeMessage ytItemsSuccessMsg
+            StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
         let uriIdx = YtIndexSonghay |> Identifier.Alphanumeric |> getPlaylistIndexUri
         let cmdBatch = Cmd.batch [
             Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriIdx) success failure
@@ -82,7 +83,7 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
 
     | YouTubeMessage.OpenYtSetOverlay ->
         if ytModel.ytModel.YtSetIndex.IsNone && ytModel.ytModel.YtSet.IsNone then
-            ytModel, Cmd.ofMsg (Message.YouTubeMessage CallYtIndexAndSet)
+            ytModel, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage CallYtIndexAndSet)
         else
             ytModel, Cmd.none
 
