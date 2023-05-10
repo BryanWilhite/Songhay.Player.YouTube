@@ -1,6 +1,10 @@
 {
-    "FSharp.inlayHints.typeAnnotations": false,
+    "FSharp.codeLenses.references.enabled": true,
+    "FSharp.codeLenses.signature.enabled": true,
+    "FSharp.inlayHints.disableLongTooltip": false,
     "FSharp.inlayHints.enabled": false,
-    "FSharp.inlayHints.disableLongTooltip": true,
+    "FSharp.inlayHints.parameterNames": false,
+    "FSharp.inlayHints.typeAnnotations": false,
+    "FSharp.inlineValues.enabled": false,
     "FSharp.showExplorerOnStartup": false
 }
