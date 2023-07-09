@@ -27,11 +27,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Songhay.Player.YouTube\Songhay.Player.YouTube.fsproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Remove="package.json" />
-    <Content Remove="package-lock.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\js\" />
-  </ItemGroup>
 </Project>
