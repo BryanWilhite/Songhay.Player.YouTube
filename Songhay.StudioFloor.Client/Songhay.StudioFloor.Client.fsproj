@@ -13,6 +13,7 @@
     <Compile Include="Startup.fs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Bolero" Version="0.*" />
     <PackageReference Include="Bolero.Build" Version="0.22.45" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.*" />
     <PackageReference Include="System.Net.Http.Json" Version="6.0.*" />
@@ -29,5 +30,8 @@
   <ItemGroup>
     <Content Remove="package.json" />
     <Content Remove="package-lock.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 </Project>

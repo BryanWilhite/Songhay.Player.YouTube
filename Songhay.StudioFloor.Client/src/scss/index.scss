@@ -1,3 +1,4 @@
+@charset "utf-8";
 /*
 
     According to Bulma docs (and comments in `*.sass` files), the order of `@import` is:
@@ -16,14 +17,9 @@
 
 */
 
-@charset "utf-8";
-
 // #1
 // @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
-
-// #2
-// @import "./colors/bulma.scss";
 
 // #4
 @import "bulma/sass/utilities/initial-variables";
@@ -34,9 +30,12 @@
 @import "bulma/sass/utilities/extends";
 // @import "bulma/sass/utilities/animations"; “The animations.sass file has MOVED.”
 
+// #2
+@import "./colors/bulma.scss";
+
 // TODO: the Bulma docs have not caught up to `helpers`:
 @import "bulma/sass/helpers/color";
-// @import "bulma/sass/helpers/flexbox";
+@import "bulma/sass/helpers/flexbox";
 // @import "bulma/sass/helpers/float";
 @import "bulma/sass/helpers/other";
 @import "bulma/sass/helpers/overflow";
@@ -65,8 +64,8 @@
 // #8
 // @import "bulma/sass/components/media";
 // @import "bulma/sass/components/pagination";
-// @import "bulma/sass/components/message";
-// @import "bulma/sass/components/modal";
+@import "bulma/sass/components/message";
+@import "bulma/sass/components/modal";
 
 // @import "bulma/sass/components/breadcrumb";
 // @import "bulma/sass/components/card";
@@ -85,10 +84,10 @@
 // TODO: the Bulma docs have not caught up to `grid`:
 @import "bulma/sass/grid/_all";
 
-@import "../../../Songhay.Player.YouTube/src/scss/you-tube-css-variables.scss";
-@import "../../../Songhay.Player.YouTube/src/scss/you-tube-presentation.scss";
-@import "../../../Songhay.Player.YouTube/src/scss/you-tube-thumbs-set.scss";
-@import "../../../Songhay.Player.YouTube/src/scss/you-tube-thumbs.scss";
+@import "./you-tube-css-variables";
+@import "./you-tube-presentation";
+@import "./you-tube-thumbs-set";
+@import "./you-tube-thumbs";
 
 html, body {
     background-color: #4a4a4a;
