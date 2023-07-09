@@ -13,10 +13,10 @@
     <Compile Include="Startup.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Bolero" Version="0.*" />
-    <PackageReference Include="Bolero.Build" Version="0.21.25" />
+    <PackageReference Include="Bolero.Build" Version="0.22.45" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.*" />
     <PackageReference Include="System.Net.Http.Json" Version="6.0.*" />
+    <PackageReference Remove="FSharp.Core" />
   </ItemGroup>
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\css\index.min.css" />

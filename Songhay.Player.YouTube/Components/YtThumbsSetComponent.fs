@@ -7,13 +7,13 @@ open Bolero
 open Bolero.Html
 open Elmish
 
+open Songhay.Modules.Models
 open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Bolero.Visuals.SvgElement
 open Songhay.Modules.Bolero.Visuals.Bulma.CssClass
 open Songhay.Modules.Bolero.Visuals.Bulma.Component
 open Songhay.Modules.Bolero.Visuals.Bulma.Element
 open Songhay.Modules.Bolero.Visuals.Bulma.Layout
-open Songhay.Modules.Bolero.Visuals.BodyElement
-open Songhay.Modules.Models
 
 open Songhay.Player.YouTube.Models
 
