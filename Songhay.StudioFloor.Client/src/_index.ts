@@ -1,3 +1,7 @@
-/* utilities */
+import {DomUtility} from "songhay";
+
+DomUtility.runWhenWindowContentLoaded(() => {
+    console.info('the `DotNet` “namespace” should not be undefined:', {DotNet})
+});
+
 export { BoleroUtility } from './bolero-utility';
-export { StudioFloorUtility } from './studio-floor-utility';

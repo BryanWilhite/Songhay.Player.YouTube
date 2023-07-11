@@ -11,8 +11,11 @@ These are the main concerns of this work:
 - JSON parser utilities to obtain Models of the YouTube API
 - Bolero Components for the b-roll player YouTube experience
 
-## SCSS file drama
+## the ‘studio floor’ for this Solution
 
-The `*.scss` files in the `Songhay.Player.YouTube/src/scss` [directory](./Songhay.Player.YouTube/src/scss) must be included with the `Songhay.Player.YouTube` NuGet [package](https://www.nuget.org/packages/Songhay.Player.YouTube). I will eventually discover the cool-kids’ way of packaging these files such that the package consumer will have them where _they_ want them.
+The `Songhay.StudioFloor.Client` project [[GitHub](https://github.com/BryanWilhite/Songhay.Player.YouTube/tree/main/Songhay.StudioFloor.Client)] has at least two purposes:
+
+1. demonstrate how the Elmish components of this solution look and operate
+2. provide a “reference” <acronym title="Sassy CSS">SCSS</acronym> and Typescript `npm` pipeline
 
 @[BryanWilhite](https://twitter.com/BryanWilhite)
