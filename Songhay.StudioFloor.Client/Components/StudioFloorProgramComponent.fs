@@ -50,7 +50,7 @@ type StudioFloorProgramComponent() =
         let initModel = {
             tab = ReadMeTab
             readMeData = None
-            ytModel = YouTubeModel.initialize
+            ytModel = YouTubeModel.initialize this.HttpClient this.JSRuntime this.NavigationManager
         }
         let init = (fun _ -> initModel, Cmd.ofMsg StudioFloorMessage.GetReadMe)
         let update = update this.JSRuntime this.HttpClient

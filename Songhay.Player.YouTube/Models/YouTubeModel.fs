@@ -1,6 +1,10 @@
 namespace Songhay.Player.YouTube.Models
 
 open System
+open System.Net.Http
+
+open Microsoft.AspNetCore.Components
+open Microsoft.JSInterop
 
 open Songhay.Modules.Models
 open Songhay.Modules.Publications.Models
@@ -8,6 +12,7 @@ open Songhay.Player.YouTube.Models
 
 type YouTubeModel =
     {
+        blazorServices: {| httpClient: HttpClient; jsRuntime: IJSRuntime; navigationManager: NavigationManager |}
         Error: string option
         YtItems: YouTubeItem[] option
         YtSet: (DisplayText * YouTubeItem []) [] option
@@ -18,8 +23,9 @@ type YouTubeModel =
         YtSetRequestSelection: bool
     }
 
-    static member initialize =
+    static member initialize (httpClient: HttpClient) (jsRuntime: IJSRuntime) (navigationManager: NavigationManager) =
         {
+            blazorServices = {| httpClient = httpClient; jsRuntime = jsRuntime; navigationManager = navigationManager |}
             Error = None
             YtItems = None
             YtSet = None
