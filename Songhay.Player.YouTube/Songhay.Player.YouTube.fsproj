@@ -17,6 +17,7 @@
         <Compile Include="Models\YouTubeSnippet.fs" />
         <Compile Include="Models\YouTubeContentDetails.fs" />
         <Compile Include="Models\YouTubeItem.fs" />
+        <Compile Include="Models\YouTubeVisualState.fs" />
         <Compile Include="Models\YouTubeMessage.fs" />
         <Compile Include="Models\YouTubeModel.fs" />
         <Compile Include="YtItemUtility.fs" />

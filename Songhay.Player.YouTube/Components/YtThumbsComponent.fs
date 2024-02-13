@@ -56,7 +56,7 @@ type YtThumbsComponent() =
     static let getYtThumbsTitle (dispatch: Dispatch<YouTubeMessage>) (_: IJSRuntime)
         (itemsTitle: string option) (model: YouTubeModel) =
 
-        let items = model.YtItems
+        let items = model.ytItems
 
         cond items.IsNone <| function
         | true -> rawHtml "&#160;"
@@ -129,7 +129,7 @@ type YtThumbsComponent() =
         (initCache: Dictionary<DomElementEvent, bool>) (thumbsContainerRef: HtmlRef) (blockWrapperRef: HtmlRef)
         (itemsTitle: string option) (model: YouTubeModel) =
 
-        let items = model.YtItems
+        let items = model.ytItems
         let slideAsync (direction: SlideDirection) (_: MouseEventArgs) =
             async {
                 if items.IsNone then ()
@@ -231,7 +231,7 @@ type YtThumbsComponent() =
     [<Inject>]
     member val JSRuntime = Unchecked.defaultof<IJSRuntime> with get, set
 
-    override this.ShouldRender(oldModel, newModel) = oldModel.YtItems <> newModel.YtItems
+    override this.ShouldRender(oldModel, newModel) = oldModel.ytItems <> newModel.ytItems
 
     override this.View model dispatch =
         if not(initCache.ContainsKey(Load)) then initCache.Add(Load, false)

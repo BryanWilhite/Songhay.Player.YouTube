@@ -42,7 +42,7 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
     let uriYtSet =
         (
             YtIndexSonghay |> Identifier.Alphanumeric,
-            snd ytModel.ytModel.YtSetIndexSelectedDocument
+            snd ytModel.ytModel.ytSetIndexSelectedDocument
         )
         ||> getPlaylistSetUri
     let successYtItems (result: Result<string, HttpStatusCode>) =
@@ -82,7 +82,7 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
         ytModel, cmd
 
     | YouTubeMessage.OpenYtSetOverlay ->
-        if ytModel.ytModel.YtSetIndex.IsNone && ytModel.ytModel.YtSet.IsNone then
+        if ytModel.ytModel.ytSetIndex.IsNone && ytModel.ytModel.ytSet.IsNone then
             ytModel, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage CallYtIndexAndSet)
         else
             ytModel, Cmd.none

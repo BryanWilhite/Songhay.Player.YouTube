@@ -13,27 +13,30 @@ open Songhay.Player.YouTube.Models
 type YouTubeModel =
     {
         blazorServices: {| httpClient: HttpClient; jsRuntime: IJSRuntime; navigationManager: NavigationManager |}
-        Error: string option
-        YtItems: YouTubeItem[] option
-        YtSet: (DisplayText * YouTubeItem []) [] option
-        YtSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
-        YtSetIndexSelectedDocument: DisplayText * ClientId
-        YtSetOverlayIsVisible: bool option
-        YtSetIsRequested: bool
-        YtSetRequestSelection: bool
+        error: string option
+        ytItems: YouTubeItem[] option
+        ytSet: (DisplayText * YouTubeItem []) [] option
+        ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
+        ytSetIndexSelectedDocument: DisplayText * ClientId
+        ytSetOverlayIsVisible: bool option
+        ytSetIsRequested: bool
+        ytSetRequestSelection: bool
+        ytVisualStates: AppStateSet<YouTubeVisualState>
     }
 
     static member initialize (httpClient: HttpClient) (jsRuntime: IJSRuntime) (navigationManager: NavigationManager) =
         {
             blazorServices = {| httpClient = httpClient; jsRuntime = jsRuntime; navigationManager = navigationManager |}
-            Error = None
-            YtItems = None
-            YtSet = None
-            YtSetIndex = None
-            YtSetIndexSelectedDocument = (DisplayText "News", "news" |> ClientId.fromString)
-            YtSetOverlayIsVisible = None
-            YtSetIsRequested = false
-            YtSetRequestSelection = false
+            error = None
+            ytItems = None
+            ytSet = None
+            ytSetIndex = None
+            ytSetIndexSelectedDocument = (DisplayText "News", "news" |> ClientId.fromString)
+            ytSetOverlayIsVisible = None
+            ytSetIsRequested = false
+            ytSetRequestSelection = false
+            ytVisualStates = AppStateSet.initialize
+                .addState (YtSetIndexSelectedDocument (DisplayText "News", "news" |> ClientId.fromString))
         }
 
     static member updateModel (message: YouTubeMessage) (model: YouTubeModel) =
@@ -43,13 +46,16 @@ type YouTubeModel =
                 displayText.Value.ToLowerInvariant().Replace("the", String.Empty).Trim())
 
         match message with
-        | Error exn -> { model with Error = Some exn.Message }
-        | CalledYtItems items -> { model with YtItems = items }
-        | CalledYtSet set -> { model with YtSet = set |> Option.map sort; YtSetIsRequested = false }
-        | CalledYtSetIndex index -> { model with YtSetIndex = index; YtSetIsRequested = false }
-        | CallYtIndexAndSet -> { model with YtSet = None; YtSetIndex = None; YtSetOverlayIsVisible = Some true; YtSetIsRequested = true }
-        | CallYtItems -> { model with YtItems = None }
-        | CallYtSet (displayText, id) -> { model with YtSet = None; YtSetIndexSelectedDocument = (displayText, id); YtSetRequestSelection = false }
-        | CloseYtSetOverlay -> { model with YtSetOverlayIsVisible = Some false }
-        | OpenYtSetOverlay -> { model with YtSetOverlayIsVisible = Some true }
-        | SelectYtSet -> { model with YtSetRequestSelection = true }
+        | Error exn -> { model with error = Some exn.Message }
+        | CalledYtItems items -> { model with ytItems = items }
+        | CalledYtSet set -> { model with ytSet = set |> Option.map sort; ytSetIsRequested = false }
+        | CalledYtSetIndex index -> { model with ytSetIndex = index; ytSetIsRequested = false }
+        | CallYtIndexAndSet -> { model with ytSet = None; ytSetIndex = None; ytSetOverlayIsVisible = Some true; ytSetIsRequested = true }
+        | CallYtItems -> { model with ytItems = None }
+        | CallYtSet (displayText, id) -> { model with ytSet = None; ytSetIndexSelectedDocument = (displayText, id); ytSetRequestSelection = false }
+        | ChangeVisualState state ->
+            match state with
+            | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
+        | CloseYtSetOverlay -> { model with ytSetOverlayIsVisible = Some false }
+        | OpenYtSetOverlay -> { model with ytSetOverlayIsVisible = Some true }
+        | SelectYtSet -> { model with ytSetRequestSelection = true }

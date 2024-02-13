@@ -23,17 +23,17 @@ type YtThumbsSetComponent() =
     static let click = DomElementEvent.Click
 
     static let bulmaDropdown (dispatch: Dispatch<YouTubeMessage>) (_: IJSRuntime) (model: YouTubeModel) =
-        if model.YtSetIndex.IsNone then empty()
+        if model.ytSetIndex.IsNone then empty()
         else
-            let _, segmentName, documents = model.YtSetIndex.Value
+            let _, segmentName, documents = model.ytSetIndex.Value
             let displayText = segmentName.Value |> Option.defaultWith (fun _ -> "[missing]")
-            let isActive = model.YtSetRequestSelection
+            let isActive = model.ytSetRequestSelection
             let callback = (fun _ -> SelectYtSet |> dispatch)
             let dropDownContent =
                 forEach documents <| fun (display, _) ->
                     if display.displayText.IsSome then
                         let clientId = ClientId.fromIdentifier display.id
-                        let itemIsActive = (clientId = snd model.YtSetIndexSelectedDocument)
+                        let itemIsActive = (clientId = snd model.ytSetIndexSelectedDocument)
                         let itemCallback = (fun _ -> CallYtSet (display.displayText.Value, clientId) |> dispatch)
                         let itemDisplayText =
                             (display.displayText |> Option.defaultWith (fun _ -> DisplayText "[missing]")).Value
@@ -61,7 +61,7 @@ type YtThumbsSetComponent() =
                 "rx"
                 "b-roll"
                 "overlay"
-                match model.YtSetOverlayIsVisible with
+                match model.ytSetOverlayIsVisible with
                 | None -> ()
                 | Some b ->
                     "animate"
@@ -80,7 +80,7 @@ type YtThumbsSetComponent() =
 
         div {
             overlayClasses.ToHtmlClassAttribute
-            cond model.YtSetIndex.IsSome <| function
+            cond model.ytSetIndex.IsSome <| function
             | true ->
                 nav {
                     [ levelContainer; m (All, L2)] |> CssClasses.toHtmlClassFromList
@@ -91,7 +91,7 @@ type YtThumbsSetComponent() =
                         div { levelItem |> CssClasses.toHtmlClass ; (dispatch, jsRuntime, model) |||> bulmaDropdown }
                         div {
                             [ levelItem; fontSize Size2 ] |> CssClasses.toHtmlClassFromList
-                            text (fst model.YtSetIndexSelectedDocument).Value
+                            text (fst model.ytSetIndexSelectedDocument).Value
                         }
                     }
                     levelRight
@@ -102,13 +102,13 @@ type YtThumbsSetComponent() =
 
                     levelRight
                 }
-            cond model.YtSet.IsSome <| function
+            cond model.ytSet.IsSome <| function
             | true ->
                 div {
                     "set" |> CssClasses.toHtmlClass
 
-                    forEach model.YtSet.Value <| fun (_, items) ->
-                        YtThumbsComponent.EComp None { model with YtItems = Some items } dispatch
+                    forEach model.ytSet.Value <| fun (_, items) ->
+                        YtThumbsComponent.EComp None { model with ytItems = Some items } dispatch
                 }
             | false ->
                 bulmaContainer
@@ -127,11 +127,11 @@ type YtThumbsSetComponent() =
     member val JSRuntime = Unchecked.defaultof<IJSRuntime> with get, set
 
     override this.ShouldRender(oldModel, newModel) =
-        (oldModel.YtSetIndex <> newModel.YtSetIndex)
-        || (oldModel.YtSet <> newModel.YtSet)
-        || (oldModel.YtSetIndexSelectedDocument <> newModel.YtSetIndexSelectedDocument)
-        || (oldModel.YtSetOverlayIsVisible <> newModel.YtSetOverlayIsVisible)
-        || (oldModel.YtSetRequestSelection <> newModel.YtSetRequestSelection)
+        (oldModel.ytSetIndex <> newModel.ytSetIndex)
+        || (oldModel.ytSet <> newModel.ytSet)
+        || (oldModel.ytSetIndexSelectedDocument <> newModel.ytSetIndexSelectedDocument)
+        || (oldModel.ytSetOverlayIsVisible <> newModel.ytSetOverlayIsVisible)
+        || (oldModel.ytSetRequestSelection <> newModel.ytSetRequestSelection)
 
     override this.View model dispatch =
         model |> ytThumbsSetNode dispatch this.JSRuntime

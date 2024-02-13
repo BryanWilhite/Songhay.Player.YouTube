@@ -14,6 +14,7 @@ type YouTubeMessage =
     | CallYtSet of DisplayText * ClientId
     | CalledYtSet of (DisplayText * YouTubeItem []) [] option
     | CalledYtSetIndex of (ClientId * Name * (DisplayItemModel * ClientId []) []) option
+    | ChangeVisualState of YouTubeVisualState
     | CloseYtSetOverlay
     | OpenYtSetOverlay
     | SelectYtSet
@@ -27,6 +28,7 @@ type YouTubeMessage =
         | CallYtSet _ -> $"{nameof YouTubeMessage}.{nameof CallYtSet}"
         | CalledYtSet _ -> $"{nameof YouTubeMessage}.{nameof CalledYtSet}"
         | CalledYtSetIndex _ -> $"{nameof YouTubeMessage}.{nameof CalledYtSetIndex}"
+        | ChangeVisualState _ -> $"{nameof YouTubeMessage}.{nameof ChangeVisualState}"
         | CloseYtSetOverlay -> $"{nameof YouTubeMessage}.{nameof CloseYtSetOverlay}"
         | OpenYtSetOverlay -> $"{nameof YouTubeMessage}.{nameof OpenYtSetOverlay}"
         | SelectYtSet -> $"{nameof YouTubeMessage}.{nameof SelectYtSet}"
