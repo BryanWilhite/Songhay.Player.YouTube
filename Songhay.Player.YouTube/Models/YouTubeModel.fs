@@ -19,7 +19,6 @@ type YouTubeModel =
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
         ytSetIndexSelectedDocument: DisplayText * ClientId
         ytSetOverlayIsVisible: bool option
-        ytSetIsRequested: bool
         ytSetRequestSelection: bool
         ytVisualStates: AppStateSet<YouTubeVisualState>
     }
@@ -33,7 +32,6 @@ type YouTubeModel =
             ytSetIndex = None
             ytSetIndexSelectedDocument = (DisplayText "News", "news" |> ClientId.fromString)
             ytSetOverlayIsVisible = None
-            ytSetIsRequested = false
             ytSetRequestSelection = false
             ytVisualStates = AppStateSet.initialize
                 .addState (YtSetIndexSelectedDocument (DisplayText "News", "news" |> ClientId.fromString))
@@ -48,13 +46,28 @@ type YouTubeModel =
         match message with
         | Error exn -> { model with error = Some exn.Message }
         | CalledYtItems items -> { model with ytItems = items }
-        | CalledYtSet set -> { model with ytSet = set |> Option.map sort; ytSetIsRequested = false }
-        | CalledYtSetIndex index -> { model with ytSetIndex = index; ytSetIsRequested = false }
-        | CallYtIndexAndSet -> { model with ytSet = None; ytSetIndex = None; ytSetOverlayIsVisible = Some true; ytSetIsRequested = true }
+        | CalledYtSet set ->
+            { model with
+                ytSet = set |> Option.map sort
+                ytVisualStates = model.ytVisualStates.removeState YtSetIsRequested
+            }
+        | CalledYtSetIndex index ->
+            { model with
+                ytSetIndex = index
+                ytVisualStates = model.ytVisualStates.removeState YtSetIsRequested
+            }
+        | CallYtIndexAndSet ->
+            { model with
+                ytSet = None
+                ytSetIndex = None
+                ytSetOverlayIsVisible = Some true
+                ytVisualStates = model.ytVisualStates.addState YtSetIsRequested
+            }
         | CallYtItems -> { model with ytItems = None }
         | CallYtSet (displayText, id) -> { model with ytSet = None; ytSetIndexSelectedDocument = (displayText, id); ytSetRequestSelection = false }
         | ChangeVisualState state ->
             match state with
+            | YtSetIsRequested -> { model with ytVisualStates = model.ytVisualStates.addState YtSetIsRequested }
             | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
         | CloseYtSetOverlay -> { model with ytSetOverlayIsVisible = Some false }
         | OpenYtSetOverlay -> { model with ytSetOverlayIsVisible = Some true }
