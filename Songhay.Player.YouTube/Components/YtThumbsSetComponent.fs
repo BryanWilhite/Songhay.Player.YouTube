@@ -33,7 +33,7 @@ type YtThumbsSetComponent() =
                 forEach documents <| fun (display, _) ->
                     if display.displayText.IsSome then
                         let clientId = ClientId.fromIdentifier display.id
-                        let itemIsActive = (clientId = snd model.ytSetIndexSelectedDocument)
+                        let itemIsActive = model.selectedDocumentEquals clientId
                         let itemCallback = (fun _ -> CallYtSet (display.displayText.Value, clientId) |> dispatch)
                         let itemDisplayText =
                             (display.displayText |> Option.defaultWith (fun _ -> DisplayText "[missing]")).Value
@@ -90,7 +90,7 @@ type YtThumbsSetComponent() =
                         div { levelItem |> CssClasses.toHtmlClass ; (dispatch, jsRuntime, model) |||> bulmaDropdown }
                         div {
                             [ levelItem; fontSize Size2 ] |> CssClasses.toHtmlClassFromList
-                            text (fst model.ytSetIndexSelectedDocument).Value
+                            text (model.getSelectedDocumentDisplayText()).Value
                         }
                     }
                     levelRight
@@ -129,7 +129,6 @@ type YtThumbsSetComponent() =
         oldModel.ytVisualStates <> newModel.ytVisualStates
         || (oldModel.ytSetIndex <> newModel.ytSetIndex)
         || (oldModel.ytSet <> newModel.ytSet)
-        || (oldModel.ytSetIndexSelectedDocument <> newModel.ytSetIndexSelectedDocument)
         || (oldModel.ytSetRequestSelection <> newModel.ytSetRequestSelection)
 
     override this.View model dispatch =

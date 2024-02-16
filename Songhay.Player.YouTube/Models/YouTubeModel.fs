@@ -17,7 +17,6 @@ type YouTubeModel =
         ytItems: YouTubeItem[] option
         ytSet: (DisplayText * YouTubeItem []) [] option
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
-        ytSetIndexSelectedDocument: DisplayText * ClientId
         ytSetRequestSelection: bool
         ytVisualStates: AppStateSet<YouTubeVisualState>
     }
@@ -29,7 +28,6 @@ type YouTubeModel =
             ytItems = None
             ytSet = None
             ytSetIndex = None
-            ytSetIndexSelectedDocument = (DisplayText "News", "news" |> ClientId.fromString)
             ytSetRequestSelection = false
             ytVisualStates = AppStateSet.initialize
                 .addState (YtSetIndexSelectedDocument (DisplayText "News", "news" |> ClientId.fromString))
@@ -61,7 +59,12 @@ type YouTubeModel =
                 ytVisualStates = model.ytVisualStates.addStates(YtSetIsRequested, YtSetOverlayIsVisible)
             }
         | CallYtItems -> { model with ytItems = None }
-        | CallYtSet (displayText, id) -> { model with ytSet = None; ytSetIndexSelectedDocument = (displayText, id); ytSetRequestSelection = false }
+        | CallYtSet (displayText, id) ->
+            { model with
+                ytSet = None
+                ytVisualStates = model.setSelectedDocument (displayText, id)
+                ytSetRequestSelection = false
+            }
         | ChangeVisualState state ->
             match state with
             | YtSetIsRequested -> { model with ytVisualStates = model.ytVisualStates.addState YtSetIsRequested }
@@ -69,3 +72,27 @@ type YouTubeModel =
         | CloseYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.removeState(YtSetOverlayIsVisible) }
         | OpenYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.addState(YtSetOverlayIsVisible) }
         | SelectYtSet -> { model with ytSetRequestSelection = true }
+
+    member private this.getVisualState (getter: YouTubeVisualState -> 'o option) =
+        this.ytVisualStates.states
+        |> List.ofSeq
+        |> List.choose getter
+        |> List.head
+
+    member this.getSelectedDocument() =
+        this.getVisualState(function YtSetIndexSelectedDocument (dt, id) -> Some (dt, id) | _ -> None)
+
+    member this.getSelectedDocumentClientId() =
+        snd (this.getSelectedDocument())
+
+    member this.getSelectedDocumentDisplayText() =
+        fst (this.getSelectedDocument())
+
+    member this.selectedDocumentEquals (clientId: ClientId) =
+        clientId = this.getSelectedDocumentClientId()
+
+    member this.setSelectedDocument (dt, id) =
+        let current = this.getSelectedDocument()
+        this.ytVisualStates
+            .removeState(YtSetIndexSelectedDocument current)
+            .addState(YtSetIndexSelectedDocument (dt, id))

@@ -42,7 +42,7 @@ let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
     let uriYtSet =
         (
             YtIndexSonghay |> Identifier.Alphanumeric,
-            snd ytModel.ytModel.ytSetIndexSelectedDocument
+            ytModel.ytModel.getSelectedDocumentClientId()
         )
         ||> getPlaylistSetUri
     let successYtItems (result: Result<string, HttpStatusCode>) =
