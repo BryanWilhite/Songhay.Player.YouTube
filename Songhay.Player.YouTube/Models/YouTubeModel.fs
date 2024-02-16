@@ -18,7 +18,6 @@ type YouTubeModel =
         ytSet: (DisplayText * YouTubeItem []) [] option
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
         ytSetIndexSelectedDocument: DisplayText * ClientId
-        ytSetOverlayIsVisible: bool option
         ytSetRequestSelection: bool
         ytVisualStates: AppStateSet<YouTubeVisualState>
     }
@@ -31,7 +30,6 @@ type YouTubeModel =
             ytSet = None
             ytSetIndex = None
             ytSetIndexSelectedDocument = (DisplayText "News", "news" |> ClientId.fromString)
-            ytSetOverlayIsVisible = None
             ytSetRequestSelection = false
             ytVisualStates = AppStateSet.initialize
                 .addState (YtSetIndexSelectedDocument (DisplayText "News", "news" |> ClientId.fromString))
@@ -60,8 +58,7 @@ type YouTubeModel =
             { model with
                 ytSet = None
                 ytSetIndex = None
-                ytSetOverlayIsVisible = Some true
-                ytVisualStates = model.ytVisualStates.addState YtSetIsRequested
+                ytVisualStates = model.ytVisualStates.addStates(YtSetIsRequested, YtSetOverlayIsVisible)
             }
         | CallYtItems -> { model with ytItems = None }
         | CallYtSet (displayText, id) -> { model with ytSet = None; ytSetIndexSelectedDocument = (displayText, id); ytSetRequestSelection = false }
@@ -69,6 +66,6 @@ type YouTubeModel =
             match state with
             | YtSetIsRequested -> { model with ytVisualStates = model.ytVisualStates.addState YtSetIsRequested }
             | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
-        | CloseYtSetOverlay -> { model with ytSetOverlayIsVisible = Some false }
-        | OpenYtSetOverlay -> { model with ytSetOverlayIsVisible = Some true }
+        | CloseYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.removeState(YtSetOverlayIsVisible) }
+        | OpenYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.addState(YtSetOverlayIsVisible) }
         | SelectYtSet -> { model with ytSetRequestSelection = true }

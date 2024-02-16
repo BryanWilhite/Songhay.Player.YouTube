@@ -61,14 +61,13 @@ type YtThumbsSetComponent() =
                 "rx"
                 "b-roll"
                 "overlay"
-                match model.ytSetOverlayIsVisible with
-                | None -> ()
-                | Some b ->
+                match model.ytVisualStates.hasState(YtSetOverlayIsVisible) with
+                | true ->
                     "animate"
-                    if b then
-                        "fade-in"
-                    else
-                        "fade-out"
+                    "fade-in"
+                | false ->
+                    "animate"
+                    "fade-out"
             ]
 
         let levelRight =
@@ -127,10 +126,10 @@ type YtThumbsSetComponent() =
     member val JSRuntime = Unchecked.defaultof<IJSRuntime> with get, set
 
     override this.ShouldRender(oldModel, newModel) =
-        (oldModel.ytSetIndex <> newModel.ytSetIndex)
+        oldModel.ytVisualStates <> newModel.ytVisualStates
+        || (oldModel.ytSetIndex <> newModel.ytSetIndex)
         || (oldModel.ytSet <> newModel.ytSet)
         || (oldModel.ytSetIndexSelectedDocument <> newModel.ytSetIndexSelectedDocument)
-        || (oldModel.ytSetOverlayIsVisible <> newModel.ytSetOverlayIsVisible)
         || (oldModel.ytSetRequestSelection <> newModel.ytSetRequestSelection)
 
     override this.View model dispatch =
