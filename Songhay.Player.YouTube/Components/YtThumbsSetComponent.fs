@@ -27,7 +27,7 @@ type YtThumbsSetComponent() =
         else
             let _, segmentName, documents = model.ytSetIndex.Value
             let displayText = segmentName.Value |> Option.defaultWith (fun _ -> "[missing]")
-            let isActive = model.ytSetRequestSelection
+            let isActive = model.ytVisualStates.hasState YtSetRequestSelection
             let callback = (fun _ -> SelectYtSet |> dispatch)
             let dropDownContent =
                 forEach documents <| fun (display, _) ->
@@ -129,7 +129,6 @@ type YtThumbsSetComponent() =
         oldModel.ytVisualStates <> newModel.ytVisualStates
         || (oldModel.ytSetIndex <> newModel.ytSetIndex)
         || (oldModel.ytSet <> newModel.ytSet)
-        || (oldModel.ytSetRequestSelection <> newModel.ytSetRequestSelection)
 
     override this.View model dispatch =
         model |> ytThumbsSetNode dispatch this.JSRuntime

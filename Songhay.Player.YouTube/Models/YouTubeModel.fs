@@ -17,7 +17,6 @@ type YouTubeModel =
         ytItems: YouTubeItem[] option
         ytSet: (DisplayText * YouTubeItem []) [] option
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
-        ytSetRequestSelection: bool
         ytVisualStates: AppStateSet<YouTubeVisualState>
     }
 
@@ -28,7 +27,6 @@ type YouTubeModel =
             ytItems = None
             ytSet = None
             ytSetIndex = None
-            ytSetRequestSelection = false
             ytVisualStates = AppStateSet.initialize
                 .addState (YtSetIndexSelectedDocument (DisplayText "News", "news" |> ClientId.fromString))
         }
@@ -62,8 +60,9 @@ type YouTubeModel =
         | CallYtSet (displayText, id) ->
             { model with
                 ytSet = None
-                ytVisualStates = model.setSelectedDocument (displayText, id)
-                ytSetRequestSelection = false
+                ytVisualStates = model
+                                     .setSelectedDocument(displayText, id)
+                                     .removeState(YtSetRequestSelection)
             }
         | ChangeVisualState state ->
             match state with
@@ -71,7 +70,7 @@ type YouTubeModel =
             | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
         | CloseYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.removeState(YtSetOverlayIsVisible) }
         | OpenYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.addState(YtSetOverlayIsVisible) }
-        | SelectYtSet -> { model with ytSetRequestSelection = true }
+        | SelectYtSet -> { model with ytVisualStates = model.ytVisualStates.addState YtSetRequestSelection }
 
     member private this.getVisualState (getter: YouTubeVisualState -> 'o option) =
         this.ytVisualStates.states
@@ -82,16 +81,14 @@ type YouTubeModel =
     member this.getSelectedDocument() =
         this.getVisualState(function YtSetIndexSelectedDocument (dt, id) -> Some (dt, id) | _ -> None)
 
-    member this.getSelectedDocumentClientId() =
-        snd (this.getSelectedDocument())
+    member this.getSelectedDocumentClientId() = snd (this.getSelectedDocument())
 
-    member this.getSelectedDocumentDisplayText() =
-        fst (this.getSelectedDocument())
+    member this.getSelectedDocumentDisplayText() = fst (this.getSelectedDocument())
 
     member this.selectedDocumentEquals (clientId: ClientId) =
         clientId = this.getSelectedDocumentClientId()
 
-    member this.setSelectedDocument (dt, id) =
+    member this.setSelectedDocument (dt, id) : AppStateSet<YouTubeVisualState> =
         let current = this.getSelectedDocument()
         this.ytVisualStates
             .removeState(YtSetIndexSelectedDocument current)
