@@ -13,5 +13,4 @@ type StudioFloorMessage =
     | Error of exn
     | GetReadMe | GotReadMe of string
     | NavigateTo of StudioFloorPage
-    | SetTab of StudioFloorTab
     | YouTubeMessage of YouTubeMessage

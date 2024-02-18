@@ -12,7 +12,6 @@ type StudioFloorModel =
         blazorServices: {| httpClient: HttpClient; jsRuntime: IJSRuntime; navigationManager: NavigationManager |}
         readMeData: string option
         page: StudioFloorPage
-        tab: StudioFloorTab
         ytModel: YouTubeModel
     }
 
@@ -21,6 +20,5 @@ type StudioFloorModel =
             blazorServices = {| httpClient = httpClient; jsRuntime = jsRuntime; navigationManager = navigationManager |}
             page = ReadMePage
             readMeData = None
-            tab = ReadMeTab
             ytModel = YouTubeModel.initialize httpClient jsRuntime navigationManager
         }

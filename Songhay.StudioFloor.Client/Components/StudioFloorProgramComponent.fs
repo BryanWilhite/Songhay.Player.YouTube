@@ -26,13 +26,10 @@ type StudioFloorProgramComponent() =
             m, Cmd.none
         | NavigateTo page ->
             let m = { model with page = page }
-            m, Cmd.none
-        | StudioFloorMessage.SetTab tab ->
-            let m = { model with tab = tab }
-            match tab with
-            | YtThumbsTab -> m, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage YouTubeMessage.CallYtItems)
+            match page with
+            | YtThumbsPage -> m, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage YouTubeMessage.CallYtItems)
             | _ -> m, Cmd.none
-        | StudioFloorMessage.YouTubeMessage ytMsg -> pcu.update ytMsg model
+        | YouTubeMessage ytMsg -> pcu.update ytMsg model
 
     let view model dispatch =
         TabsElmishComponent.EComp model dispatch
@@ -48,3 +45,4 @@ type StudioFloorProgramComponent() =
         let init = (fun _ -> initModel, Cmd.ofMsg StudioFloorMessage.GetReadMe)
         let update = update
         Program.mkProgram init update view
+        |> Program.withRouter ElmishRoutes.router

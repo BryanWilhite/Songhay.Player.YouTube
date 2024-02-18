@@ -4,7 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Models\StudioFloorTab.fs" />
     <Compile Include="Models\StudioFloorPrimitives.fs" />
     <Compile Include="Models\StudioFloorModel.fs" />
     <Compile Include="ElmishRoutes.fs" />

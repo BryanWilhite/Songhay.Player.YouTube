@@ -4,10 +4,12 @@ open Bolero
 open Bolero.Html
 
 open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Bolero.Visuals.BodyElement
 open Songhay.Modules.Bolero.Visuals.Bulma.Element
 open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 
 open Songhay.Player.YouTube.Components
+open Songhay.StudioFloor.Client
 open Songhay.StudioFloor.Client.Models
 
 type TabsElmishComponent() =
@@ -17,17 +19,16 @@ type TabsElmishComponent() =
         ecomp<TabsElmishComponent, _, _> model dispatch { attr.empty() }
 
     override this.ShouldRender(oldModel, newModel) =
-        oldModel.tab <> newModel.tab
+        oldModel.page <> newModel.page
         || oldModel.readMeData <> newModel.readMeData
         || oldModel.ytModel <> newModel.ytModel
 
     override this.View model dispatch =
         let tabs = [
-            ("README", ReadMeTab)
-            ("YouTube Thumbs", YtThumbsTab)
-            ("YouTube Presentation", YtPresentationTab)
+            ("README", ReadMePage)
+            ("YouTube Thumbs", YtThumbsPage)
+            ("YouTube Presentation", YtPresentationPage)
         ]
-
 
         concat {
             div {
@@ -42,18 +43,16 @@ type TabsElmishComponent() =
                 ul {
                     forEach tabs <| fun (label, pg) ->
                     li {
-                        a {
-                            attr.href "#"
-                            DomElementEvent.Click.PreventDefault
-                            on.click (fun _ -> SetTab pg |> dispatch)
-                            text label
-                        }
+                        anchorElement
+                            NoCssClasses
+                            (HasAttr <| ElmishRoutes.router.HRef pg)
+                            (text label)
                     }
                 }
             }
 
-            cond model.tab <| function
-            | ReadMeTab ->
+            cond model.page <| function
+            | ReadMePage ->
                 if model.readMeData.IsNone then
                     text "loading…"
                 else
@@ -63,9 +62,9 @@ type TabsElmishComponent() =
                         (bulmaNotification
                             (HasClasses (CssClasses [ "is-info" ] ))
                             (rawHtml model.readMeData.Value))
-            | YtPresentationTab ->
+            | YtPresentationPage ->
                 text "presentation"
-            | YtThumbsTab ->
+            | YtThumbsPage ->
                 YtThumbsComponent.EComp (Some "songhay tube") model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
 
             YtThumbsSetComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
