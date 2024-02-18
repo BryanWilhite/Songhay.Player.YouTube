@@ -1,20 +1,23 @@
-module Songhay.StudioFloor.Client.ClientUtility
+module Songhay.StudioFloor.Client.ProgramComponentUtility
 
 open System
 open System.Net
 open System.Net.Http
-open Elmish
-open Bolero.Remoting.Client
 open Microsoft.JSInterop
 
-open Songhay.Modules.Bolero
+open Elmish
+open FsToolkit.ErrorHandling
+
 open Songhay.Modules.Models
+open Songhay.Modules.Bolero
+open Songhay.Modules.Bolero.RemoteHandlerUtility
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
+
 open Songhay.Player.YouTube
 open Songhay.Player.YouTube.Models
-open Songhay.Modules.Bolero.RemoteHandlerUtility
 open Songhay.Player.YouTube.YtUriUtility
+
 open Songhay.StudioFloor.Client.Models
 
     module Remote =
@@ -35,7 +38,19 @@ let passFailureToConsole (jsRuntime: IJSRuntime option) ex =
         |] |> ignore
     ex
 
-let update (jsRuntime: IJSRuntime) (client: HttpClient) ytMsg model =
+let getCommandForGetReadMe (model: StudioFloorModel) =
+    let success (result: Result<string, HttpStatusCode>) =
+        let data = result |> Result.valueOr (fun code -> $"The expected README data is not here. [error code: {code}]")
+        StudioFloorMessage.GotReadMe data
+    let failure ex = ((model.blazorServices.jsRuntime |> Some), ex) ||> passFailureToConsole |> StudioFloorMessage.Error
+    let uri = ("./README.html", UriKind.Relative) |> Uri
+    let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (model.blazorServices.httpClient, uri)  success failure
+
+    cmd
+
+let update ytMsg model =
+    let client = model.blazorServices.httpClient
+    let jsRuntime = model.blazorServices.jsRuntime
     let ytModel = {
         model with ytModel = YouTubeModel.updateModel ytMsg model.ytModel
     }

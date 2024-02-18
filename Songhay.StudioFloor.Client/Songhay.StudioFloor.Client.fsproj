@@ -8,7 +8,7 @@
     <Compile Include="Models\StudioFloorPrimitives.fs" />
     <Compile Include="Models\StudioFloorModel.fs" />
     <Compile Include="ElmishRoutes.fs" />
-    <Compile Include="ClientUtility.fs" />
+    <Compile Include="ProgramComponentUtility.fs" />
     <Compile Include="Components\TabsElmishComponent.fs" />
     <Compile Include="Components\StudioFloorProgramComponent.fs" />
     <Compile Include="Startup.fs" />
