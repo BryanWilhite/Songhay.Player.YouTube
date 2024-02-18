@@ -5,8 +5,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\StudioFloorTab.fs" />
-    <Compile Include="Models\StudioFloorMessage.fs" />
+    <Compile Include="Models\StudioFloorPrimitives.fs" />
     <Compile Include="Models\StudioFloorModel.fs" />
+    <Compile Include="ElmishRoutes.fs" />
     <Compile Include="ClientUtility.fs" />
     <Compile Include="Components\TabsElmishComponent.fs" />
     <Compile Include="Components\StudioFloorProgramComponent.fs" />

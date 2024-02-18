@@ -30,6 +30,9 @@ type StudioFloorProgramComponent() =
         | GotReadMe data ->
             let m = { model with readMeData = (data |> Some) }
             m, Cmd.none
+        | NavigateTo page ->
+            let m = { model with page = page }
+            m, Cmd.none
         | StudioFloorMessage.SetTab tab ->
             let m = { model with tab = tab }
             match tab with
@@ -49,6 +52,7 @@ type StudioFloorProgramComponent() =
     override this.Program =
         let initModel = {
             tab = ReadMeTab
+            page = ReadMePage
             readMeData = None
             ytModel = YouTubeModel.initialize this.HttpClient this.JSRuntime this.NavigationManager
         }
