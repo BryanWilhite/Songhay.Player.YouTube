@@ -51,7 +51,7 @@ type TabsElmishComponent() =
             | YtPresentationPage ->
                 text "presentation"
             | YtThumbsPage ->
-                YtThumbsComponent.EComp (Some "songhay tube") model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
+                YtThumbsContainerElmishComponent.EComp (Some "songhay tube") model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
 
-            YtThumbsSetComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
+            YtThumbsSetElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
         }

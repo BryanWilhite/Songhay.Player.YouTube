@@ -17,7 +17,7 @@ open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 
 open Songhay.Player.YouTube.Models
 
-type YtThumbsSetComponent() =
+type YtThumbsSetElmishComponent() =
     inherit ElmishComponent<YouTubeModel, YouTubeMessage>()
 
     static let click = DomElementEvent.Click
@@ -107,7 +107,7 @@ type YtThumbsSetComponent() =
                     "set" |> CssClasses.toHtmlClass
 
                     forEach model.ytSet.Value <| fun (_, items) ->
-                        YtThumbsComponent.EComp None { model with ytItems = Some items } dispatch
+                        YtThumbsContainerElmishComponent.EComp None { model with ytItems = Some items } dispatch
                 }
             | false ->
                 bulmaContainer
@@ -120,7 +120,7 @@ type YtThumbsSetComponent() =
     static member val Id = "yt-thumbs-set-block" with get
 
     static member EComp (model: YouTubeModel) dispatch =
-        ecomp<YtThumbsSetComponent, _, _> model dispatch { attr.empty() }
+        ecomp<YtThumbsSetElmishComponent, _, _> model dispatch { attr.empty() }
 
     [<Inject>]
     member val JSRuntime = Unchecked.defaultof<IJSRuntime> with get, set

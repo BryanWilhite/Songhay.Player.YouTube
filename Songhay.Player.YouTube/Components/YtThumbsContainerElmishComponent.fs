@@ -16,6 +16,7 @@ open Songhay.Modules.Models
 open Songhay.Modules.StringUtility
 open Songhay.Modules.Bolero.JsRuntimeUtility
 open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Bolero.Visuals.BodyElement
 open Songhay.Modules.Bolero.Visuals.SvgElement
 open Songhay.Modules.Bolero.Visuals.Bulma.Element
 open Songhay.Modules.Bolero.Visuals.Bulma.Layout
@@ -26,7 +27,7 @@ open Songhay.Player.YouTube.YtItemUtility
 
 type SlideDirection = | Left | Right
 
-type YtThumbsComponent() =
+type YtThumbsContainerElmishComponent() =
     inherit ElmishComponent<YouTubeModel, YouTubeMessage>()
 
     [<Literal>] // see `$var-thumbs-container-wrapper-left` in `Songhay.Player.YouTube/src/scss/you-tube-css-variables.scss`
@@ -125,10 +126,12 @@ type YtThumbsComponent() =
                         (bulmaLoader
                             (HasClasses (CssClasses (imageContainer (Square Square128) @ [p (All, L3)]))))
 
-    static let ytThumbsNode (dispatch: Dispatch<YouTubeMessage>) (jsRuntime: IJSRuntime)
-        (initCache: Dictionary<DomElementEvent, bool>) (thumbsContainerRef: HtmlRef) (blockWrapperRef: HtmlRef)
+    static let ytThumbsNode (dispatch: Dispatch<YouTubeMessage>)
+        (initCache: Dictionary<DomElementEvent, bool>)
+        (thumbsContainerRef: HtmlRef) (blockWrapperRef: HtmlRef)
         (itemsTitle: string option) (model: YouTubeModel) =
 
+        let jsRuntime = model.blazorServices.jsRuntime
         let items = model.ytItems
         let slideAsync (direction: SlideDirection) (_: MouseEventArgs) =
             async {
@@ -198,18 +201,14 @@ type YtThumbsComponent() =
 
                 items |> ytThumbnailsNode jsRuntime blockWrapperRef
 
-                a {
-                    attr.href "#"; [ "command"; "left" ] @ imageContainer (Square Square48) |> CssClasses.toHtmlClassFromList
-                    click.PreventDefault
-                    on.async.click (slideAsync SlideDirection.Right)
-                    svgElement (bulmaIconSvgViewBox Square24) (SonghaySvgData.Get(SonghaySvgKeys.MDI_ARROW_LEFT_DROP_CIRCLE_24PX.ToAlphanumeric))
-                }
-                a {
-                    attr.href "#"; [ "command"; "right"; ] @ imageContainer (Square Square48) |> CssClasses.toHtmlClassFromList
-                    click.PreventDefault
-                    on.async.click (slideAsync SlideDirection.Left)
-                    svgElement (bulmaIconSvgViewBox Square24) (SonghaySvgData.Get(SonghaySvgKeys.MDI_ARROW_RIGHT_DROP_CIRCLE_24PX.ToAlphanumeric))
-                }
+                anchorButtonElement
+                    (HasClasses <| CssClasses ([ "command"; "left" ] @ imageContainer (Square Square48)))
+                    (HasAttr <| on.async.click (slideAsync SlideDirection.Right))
+                    (svgElement (bulmaIconSvgViewBox Square24) (SonghaySvgData.Get(SonghaySvgKeys.MDI_ARROW_LEFT_DROP_CIRCLE_24PX.ToAlphanumeric)))
+                anchorButtonElement
+                    (HasClasses <| CssClasses ([ "command"; "right" ] @ imageContainer (Square Square48)))
+                    (HasAttr <| on.async.click (slideAsync SlideDirection.Left))
+                    (svgElement (bulmaIconSvgViewBox Square24) (SonghaySvgData.Get(SonghaySvgKeys.MDI_ARROW_RIGHT_DROP_CIRCLE_24PX.ToAlphanumeric)))
             }
         }
 
@@ -218,7 +217,7 @@ type YtThumbsComponent() =
     let thumbsContainerRef = HtmlRef()
 
     static member EComp (title: string option) (model: YouTubeModel) dispatch =
-        ecomp<YtThumbsComponent, _, _> model dispatch {
+        ecomp<YtThumbsContainerElmishComponent, _, _> model dispatch {
             if title.IsSome then
                 "YtThumbsTitle" => title.Value
             else
@@ -228,13 +227,10 @@ type YtThumbsComponent() =
     [<Parameter>]
     member val YtThumbsTitle = Unchecked.defaultof<string> with get, set
 
-    [<Inject>]
-    member val JSRuntime = Unchecked.defaultof<IJSRuntime> with get, set
-
     override this.ShouldRender(oldModel, newModel) = oldModel.ytItems <> newModel.ytItems
 
     override this.View model dispatch =
         if not(initCache.ContainsKey(Load)) then initCache.Add(Load, false)
         let title = (this.YtThumbsTitle |> Option.ofObj)
         (title, model)
-        ||> ytThumbsNode dispatch this.JSRuntime initCache thumbsContainerRef blockWrapperRef
+        ||> ytThumbsNode dispatch initCache thumbsContainerRef blockWrapperRef
