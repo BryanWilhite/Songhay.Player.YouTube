@@ -7,8 +7,6 @@ open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Bolero.Visuals.BodyElement
 open Songhay.Modules.Bolero.Visuals.Bulma
 open Songhay.Modules.Bolero.Visuals.Bulma.Component
-open Songhay.Modules.Bolero.Visuals.Bulma.Element
-open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 open Songhay.Player.YouTube.Components
 open Songhay.StudioFloor.Client
 open Songhay.StudioFloor.Client.Models
@@ -49,16 +47,7 @@ type TabsElmishComponent() =
                 tabPairs
 
             cond model.page <| function
-            | ReadMePage ->
-                if model.readMeData.IsNone then
-                    text "loading…"
-                else
-                    bulmaContainer
-                        ContainerWidthFluid
-                        NoCssClasses
-                        (bulmaNotification
-                            (HasClasses (CssClasses [ "is-info" ] ))
-                            (rawHtml model.readMeData.Value))
+            | ReadMePage -> ReadMeElmishComponent.EComp model dispatch
             | YtPresentationPage ->
                 text "presentation"
             | YtThumbsPage ->
