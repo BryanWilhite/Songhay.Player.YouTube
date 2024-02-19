@@ -1,4 +1,4 @@
-namespace Songhay.Player.YouTube.Models
+namespace Songhay.Player.YouTube
 
 module YouTubeScalars =
 

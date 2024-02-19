@@ -9,7 +9,7 @@ open Microsoft.FSharp.Core
 open Songhay.Modules.JsonDocumentUtility
 
 open Songhay.Player.YouTube.Models
-open Songhay.Player.YouTube.Models.YouTubeScalars
+open Songhay.Player.YouTube.YouTubeScalars
 
 module YtItemUtility =
 

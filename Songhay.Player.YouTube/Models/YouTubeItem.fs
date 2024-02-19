@@ -3,6 +3,8 @@ namespace Songhay.Player.YouTube.Models
 open System
 open Songhay.Modules.ProgramTypeUtility
 
+open Songhay.Player.YouTube
+
 /// <summary>
 /// defines YouTube API item
 /// of the specified kind

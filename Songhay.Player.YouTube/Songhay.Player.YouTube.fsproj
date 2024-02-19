@@ -10,7 +10,7 @@
         <PackageReference Remove="FSharp.Core" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Models\YouTubeScalars.fs" />
+        <Compile Include="YouTubeScalars.fs" />
         <Compile Include="Models\YouTubeCssVariable.fs" />
         <Compile Include="Models\YouTubeResourceId.fs" />
         <Compile Include="Models\YouTubeThumbnails.fs" />

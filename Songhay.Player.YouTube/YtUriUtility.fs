@@ -3,7 +3,7 @@ namespace Songhay.Player.YouTube
 open System
 open Songhay.Modules.Models
 
-open Songhay.Player.YouTube.Models.YouTubeScalars
+open Songhay.Player.YouTube.YouTubeScalars
 
 module YtUriUtility =
 
