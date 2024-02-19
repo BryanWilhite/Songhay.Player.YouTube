@@ -5,9 +5,10 @@ open Bolero.Html
 
 open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Bolero.Visuals.BodyElement
+open Songhay.Modules.Bolero.Visuals.Bulma
+open Songhay.Modules.Bolero.Visuals.Bulma.Component
 open Songhay.Modules.Bolero.Visuals.Bulma.Element
 open Songhay.Modules.Bolero.Visuals.Bulma.Layout
-
 open Songhay.Player.YouTube.Components
 open Songhay.StudioFloor.Client
 open Songhay.StudioFloor.Client.Models
@@ -24,32 +25,28 @@ type TabsElmishComponent() =
         || oldModel.ytModel <> newModel.ytModel
 
     override this.View model dispatch =
-        let tabs = [
-            ("README", ReadMePage)
-            ("YouTube Thumbs", YtThumbsPage)
-            ("YouTube Presentation", YtPresentationPage)
-        ]
+
+        let tabPairs =
+            [
+                ( text "README", ReadMePage )
+                ( text "YouTube Thumbs", YtThumbsPage )
+                ( text "YouTube Presentation", YtPresentationPage )
+            ]
+            |> List.map (fun (n, page) ->
+                    anchorElement NoCssClasses (HasAttr <| ElmishRoutes.router.HRef page) n, page
+            )
 
         concat {
-            div {
-                [
-                    "tabs";
-                    "has-background-grey-light";
-                    "is-toggle";
-                    "is-fullwidth";
-                    "is-large"
-                ] |> CssClasses.toHtmlClassFromList
 
-                ul {
-                    forEach tabs <| fun (label, pg) ->
-                    li {
-                        anchorElement
-                            NoCssClasses
-                            (HasAttr <| ElmishRoutes.router.HRef pg)
-                            (text label)
-                    }
-                }
-            }
+            bulmaTabs
+                (HasClasses <| CssClasses [
+                    ColorEmpty.BackgroundCssClassLight
+                    CssClass.tabsElementIsToggle
+                    CssClass.elementIsFullWidth
+                    SizeLarge.CssClass
+                ])
+                (fun page -> model.page = page)
+                tabPairs
 
             cond model.page <| function
             | ReadMePage ->
