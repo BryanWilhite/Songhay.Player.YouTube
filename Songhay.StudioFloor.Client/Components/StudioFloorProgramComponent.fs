@@ -31,8 +31,7 @@ type StudioFloorProgramComponent() =
             | _ -> m, Cmd.none
         | YouTubeMessage ytMsg -> pcu.update ytMsg model
 
-    let view model dispatch =
-        TabsElmishComponent.EComp model dispatch
+    let view model dispatch = TabsElmishComponent.EComp model dispatch
 
     [<Inject>]
     member val HttpClient = Unchecked.defaultof<HttpClient> with get, set
