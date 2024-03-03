@@ -5,5 +5,6 @@ open Songhay.Modules.Models
 type YouTubeVisualState =
     | YtSetIndexSelectedDocument of DisplayText * ClientId
     | YtSetOverlayIsVisible
+    | YtSetOverlayIsUntouched
     | YtSetIsRequested
     | YtSetRequestSelection

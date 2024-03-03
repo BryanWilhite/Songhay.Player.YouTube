@@ -28,7 +28,8 @@ type YouTubeModel =
             ytSet = None
             ytSetIndex = None
             ytVisualStates = AppStateSet.initialize
-                .addState (YtSetIndexSelectedDocument (DisplayText "News", "news" |> ClientId.fromString))
+                .addState(YtSetOverlayIsUntouched)
+                .addState(YtSetIndexSelectedDocument (DisplayText "News", "news" |> ClientId.fromString))
         }
 
     static member updateModel (message: YouTubeMessage) (model: YouTubeModel) =
@@ -69,7 +70,12 @@ type YouTubeModel =
             | YtSetIsRequested -> { model with ytVisualStates = model.ytVisualStates.addState YtSetIsRequested }
             | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
         | CloseYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.removeState(YtSetOverlayIsVisible) }
-        | OpenYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.addState(YtSetOverlayIsVisible) }
+        | OpenYtSetOverlay ->
+            {
+                model with ytVisualStates = model.ytVisualStates
+                                                .removeState(YtSetOverlayIsUntouched)
+                                                .addState(YtSetOverlayIsVisible)
+            }
         | SelectYtSet -> { model with ytVisualStates = model.ytVisualStates.addState YtSetRequestSelection }
 
     member private this.getVisualState (getter: YouTubeVisualState -> 'o option) =

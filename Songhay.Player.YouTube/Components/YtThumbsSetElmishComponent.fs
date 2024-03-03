@@ -66,8 +66,9 @@ type YtThumbsSetElmishComponent() =
                     "animate"
                     "fade-in"
                 | false ->
-                    "animate"
-                    "fade-out"
+                    if not <| model.ytVisualStates.hasState(YtSetOverlayIsUntouched) then
+                        "animate"
+                        "fade-out"
             ]
 
         let levelRight =
@@ -127,8 +128,8 @@ type YtThumbsSetElmishComponent() =
 
     override this.ShouldRender(oldModel, newModel) =
         oldModel.ytVisualStates <> newModel.ytVisualStates
-        || (oldModel.ytSetIndex <> newModel.ytSetIndex)
-        || (oldModel.ytSet <> newModel.ytSet)
+        || oldModel.ytSetIndex <> newModel.ytSetIndex
+        || oldModel.ytSet <> newModel.ytSet
 
     override this.View model dispatch =
         model |> ytThumbsSetNode dispatch this.JSRuntime

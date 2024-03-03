@@ -17,10 +17,18 @@
 
             &.fade-in {
                 animation-name: b-roll-overlay-fade-in;
+
+                & > .level > .level-right > .level-item > a {
+                    visibility: visible;
+                }
             }
 
             &.fade-out {
                 animation-name: b-roll-overlay-fade-out;
+
+                & > .level > .level-right > .level-item > a {
+                    visibility: hidden;
+                }
             }
         }
 

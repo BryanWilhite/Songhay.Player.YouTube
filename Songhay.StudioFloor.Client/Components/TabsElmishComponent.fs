@@ -30,9 +30,7 @@ type TabsElmishComponent() =
                 ( text "YouTube Thumbs", YtThumbsPage )
                 ( text "YouTube Presentation", YtPresentationPage )
             ]
-            |> List.map (fun (n, page) ->
-                    anchorElement NoCssClasses (HasAttr <| ElmishRoutes.router.HRef page) n, page
-            )
+            |> List.map (fun (n, page) -> anchorElement NoCssClasses (HasAttr <| ElmishRoutes.router.HRef page) n, page)
 
         concat {
 
@@ -51,7 +49,10 @@ type TabsElmishComponent() =
             | YtPresentationPage ->
                 text "presentation"
             | YtThumbsPage ->
-                YtThumbsContainerElmishComponent.EComp (Some "songhay tube") model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
+                YtThumbsContainerElmishComponent.EComp
+                    (Some "songhay tube")
+                    model.ytModel
+                    (StudioFloorMessage.YouTubeMessage >> dispatch)
 
             YtThumbsSetElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
         }
