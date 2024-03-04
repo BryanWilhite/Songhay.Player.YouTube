@@ -159,7 +159,7 @@ module YtItemUtilityTests =
     [<InlineData("youtube-index-songhay-top-ten.json")>]
     let ``fromInput test`` (fileName: string) =
 
-        let videoJsonDocument = fileName |> getJsonDocument
+        use videoJsonDocument = fileName |> getJsonDocument
         let actualResult =
             videoJsonDocument.RootElement
             |> fromInput

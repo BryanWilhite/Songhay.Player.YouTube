@@ -46,7 +46,7 @@ module DisplayItemModelUtilityTests =
     [<InlineData("songhay-news-playlist.json")>]
     let ``ThumbsSet.fromInput test`` (fileName: string) =
 
-        let videoJsonDocument = fileName |> getJsonDocument
+        use videoJsonDocument = fileName |> getJsonDocument
         let actualResult =
             videoJsonDocument.RootElement
             |> ThumbsSet.fromInput
