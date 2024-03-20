@@ -39,7 +39,7 @@ module RemoteHandlerUtilityTests =
 
     [<Theory>]
     [<InlineData(YtIndexSonghay, "songhay-index.json")>]
-    let ``request test (async)`` (indexName: string, jsonFileName: string) =
+    let ``getPlaylistIndexUri request test (async)`` (indexName: string, jsonFileName: string) =
         async {
             let uri = indexName |> Identifier.Alphanumeric |> getPlaylistIndexUri
             let mockLogger = Substitute.For<ILogger>() |> Some
