@@ -9,6 +9,7 @@ open Songhay.Player.YouTube.Models
 
 type YouTubeMessage =
     | Error of exn
+    | GetPlayerManifest of string | GotPlayerManifest of (Identifier * Presentation option)
     | CallYtItems | CalledYtItems of YouTubeItem[] option
     | CallYtIndexAndSet
     | CallYtSet of DisplayText * ClientId
@@ -30,6 +31,8 @@ type YouTubeMessage =
         | CalledYtSetIndex _ -> $"{nameof YouTubeMessage}.{nameof CalledYtSetIndex}"
         | ChangeVisualState _ -> $"{nameof YouTubeMessage}.{nameof ChangeVisualState}"
         | CloseYtSetOverlay -> $"{nameof YouTubeMessage}.{nameof CloseYtSetOverlay}"
+        | GetPlayerManifest _ -> $"{nameof YouTubeMessage}.{nameof GetPlayerManifest}"
+        | GotPlayerManifest _ -> $"{nameof YouTubeMessage}.{nameof GotPlayerManifest}"
         | OpenYtSetOverlay -> $"{nameof YouTubeMessage}.{nameof OpenYtSetOverlay}"
         | SelectYtSet -> $"{nameof YouTubeMessage}.{nameof SelectYtSet}"
 

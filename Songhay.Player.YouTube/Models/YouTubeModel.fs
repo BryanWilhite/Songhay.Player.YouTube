@@ -6,6 +6,8 @@ open System.Net.Http
 open Microsoft.AspNetCore.Components
 open Microsoft.JSInterop
 
+open FsToolkit.ErrorHandling
+
 open Songhay.Modules.Models
 open Songhay.Modules.Publications.Models
 open Songhay.Player.YouTube.Models
@@ -14,6 +16,8 @@ type YouTubeModel =
     {
         blazorServices: {| httpClient: HttpClient; jsRuntime: IJSRuntime; navigationManager: NavigationManager |}
         error: string option
+        presentation: Presentation option
+        presentationKey: Identifier option
         ytItems: YouTubeItem[] option
         ytSet: (DisplayText * YouTubeItem []) [] option
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
@@ -24,6 +28,8 @@ type YouTubeModel =
         {
             blazorServices = {| httpClient = httpClient; jsRuntime = jsRuntime; navigationManager = navigationManager |}
             error = None
+            presentation = None
+            presentationKey = None
             ytItems = None
             ytSet = None
             ytSetIndex = None
@@ -70,6 +76,21 @@ type YouTubeModel =
             | YtSetIsRequested -> { model with ytVisualStates = model.ytVisualStates.addState YtSetIsRequested }
             | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
         | CloseYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.removeState(YtSetOverlayIsVisible) }
+        | GetPlayerManifest _ -> { model with presentation = None }
+        | GotPlayerManifest data ->
+            let toPresentationOption (data: Identifier * Presentation option) =
+                option {
+                    let! presentation = data |> snd
+
+                    return { presentation with parts = presentation.parts }
+                }
+
+            {
+                model with
+                    presentation = data |> toPresentationOption
+                    presentationKey = data |> fst |> Some 
+            }
+
         | OpenYtSetOverlay ->
             {
                 model with ytVisualStates = model.ytVisualStates
