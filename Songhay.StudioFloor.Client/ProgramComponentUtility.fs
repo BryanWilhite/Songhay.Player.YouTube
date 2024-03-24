@@ -3,17 +3,19 @@ module Songhay.StudioFloor.Client.ProgramComponentUtility
 open System
 open System.Net
 open System.Net.Http
+open System.Text.Json
 open Microsoft.JSInterop
 
 open Elmish
 open FsToolkit.ErrorHandling
 
 open Songhay.Modules.Models
-open Songhay.Modules.Bolero
+open Songhay.Modules.Bolero.JsRuntimeUtility
 open Songhay.Modules.Bolero.RemoteHandlerUtility
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
 
+open Songhay.Modules.Publications.Models
 open Songhay.Player.YouTube
 open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.YtUriUtility
@@ -33,7 +35,7 @@ open Songhay.StudioFloor.Client.Models
 
 let passFailureToConsole (jsRuntime: IJSRuntime option) ex =
     if jsRuntime.IsSome then
-        jsRuntime.Value |> JsRuntimeUtility.consoleErrorAsync [|
+        jsRuntime.Value |> consoleErrorAsync [|
             "failure:", ex
         |] |> ignore
     ex
@@ -94,6 +96,33 @@ let update ytMsg model =
 
     | YouTubeMessage.CallYtSet _ ->
         let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriYtSet) successYtItems failure
+        ytModel, cmd
+
+    | YouTubeMessage.GetPlayerManifest key ->
+        let uri = key |> ServiceHandlerUtility.getPresentationManifestUri
+        let success (result: Result<string, HttpStatusCode>) =
+            result
+            |> Result.either
+                Presentation.fromInput
+                (
+                    fun statusCode ->
+                        let ex = JsonException($"{nameof HttpStatusCode}: {statusCode}")
+                        Result.Error ex
+                )
+            |> Result.either
+                (
+                    fun presentation ->
+                        let id = Identifier.fromString key
+                        let ytMessage = YouTubeMessage.GotPlayerManifest <| (id, Some presentation)
+                        StudioFloorMessage.YouTubeMessage ytMessage
+                )
+                (
+                    fun ex ->
+                        let label = $"{nameof Presentation}.{nameof Presentation.fromInput}:" |> Some
+                        model.blazorServices.jsRuntime |> passErrorToConsole label ex |> StudioFloorMessage.Error
+                )
+
+        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (model.blazorServices.httpClient, uri) success failure
         ytModel, cmd
 
     | YouTubeMessage.OpenYtSetOverlay ->

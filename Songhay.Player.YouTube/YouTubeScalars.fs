@@ -8,7 +8,7 @@ module YouTubeScalars =
 
     /// <summary> conventional scalar </summary>
     [<Literal>]
-    let rxProgressiveVideoRoot = "https://songhaystorage.blob.core.windows.net/player-video/"
+    let rxPlayerVideoRoot = "https://songhaystorage.blob.core.windows.net/player-video/"
 
     /// <summary>
     /// base URI representing the b-roll endpoint
