@@ -47,7 +47,7 @@ type TabsElmishComponent() =
             cond model.page <| function
             | ReadMePage -> ReadMeElmishComponent.EComp model dispatch
             | YtPresentationPage ->
-                text "presentation"
+                YtPresentationElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
             | YtThumbsPage ->
                 YtThumbsContainerElmishComponent.EComp
                     (Some "songhay tube")

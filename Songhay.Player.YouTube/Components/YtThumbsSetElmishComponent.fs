@@ -1,8 +1,5 @@
 namespace Songhay.Player.YouTube.Components
 
-open Microsoft.AspNetCore.Components
-open Microsoft.JSInterop
-
 open Bolero
 open Bolero.Html
 open Elmish
@@ -22,7 +19,7 @@ type YtThumbsSetElmishComponent() =
 
     static let click = DomElementEvent.Click
 
-    static let bulmaDropdown (dispatch: Dispatch<YouTubeMessage>) (_: IJSRuntime) (model: YouTubeModel) =
+    static let bulmaDropdown (dispatch: Dispatch<YouTubeMessage>) (model: YouTubeModel) =
         if model.ytSetIndex.IsNone then empty()
         else
             let _, segmentName, documents = model.ytSetIndex.Value
@@ -55,7 +52,7 @@ type YtThumbsSetElmishComponent() =
             svgElement (bulmaIconSvgViewBox Square24) (SonghaySvgData.Get(SonghaySvgKeys.MDI_CLOSE_BOX_24PX.ToAlphanumeric))
         }
 
-    static let ytThumbsSetNode (dispatch: Dispatch<YouTubeMessage>) (jsRuntime: IJSRuntime) (model: YouTubeModel) =
+    static let ytThumbsSetNode (dispatch: Dispatch<YouTubeMessage>) (model: YouTubeModel) =
         let overlayClasses =
             CssClasses [
                 "rx"
@@ -88,7 +85,7 @@ type YtThumbsSetElmishComponent() =
                     div {
                         level AlignLeft |> CssClasses.toHtmlClass
 
-                        div { levelItem |> CssClasses.toHtmlClass ; (dispatch, jsRuntime, model) |||> bulmaDropdown }
+                        div { levelItem |> CssClasses.toHtmlClass ; (dispatch, model) ||> bulmaDropdown }
                         div {
                             [ levelItem; fontSize Size2 ] |> CssClasses.toHtmlClassFromList
                             text (model.getSelectedDocumentDisplayText()).Value
@@ -123,13 +120,10 @@ type YtThumbsSetElmishComponent() =
     static member EComp (model: YouTubeModel) dispatch =
         ecomp<YtThumbsSetElmishComponent, _, _> model dispatch { attr.empty() }
 
-    [<Inject>]
-    member val JSRuntime = Unchecked.defaultof<IJSRuntime> with get, set
-
     override this.ShouldRender(oldModel, newModel) =
         oldModel.ytVisualStates <> newModel.ytVisualStates
         || oldModel.ytSetIndex <> newModel.ytSetIndex
         || oldModel.ytSet <> newModel.ytSet
 
     override this.View model dispatch =
-        model |> ytThumbsSetNode dispatch this.JSRuntime
+        model |> ytThumbsSetNode dispatch

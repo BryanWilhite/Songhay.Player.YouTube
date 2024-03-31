@@ -25,6 +25,7 @@
         <Compile Include="DisplayItemModelUtility.fs" />
         <Compile Include="ServiceHandlerUtility.fs" />
         <Compile Include="Components\YtThumbsContainerElmishComponent.fs" />
+        <Compile Include="Components\YtPresentationElmishComponent.fs" />
         <Compile Include="Components\YtThumbsSetElmishComponent.fs" />
     </ItemGroup>
 </Project>
