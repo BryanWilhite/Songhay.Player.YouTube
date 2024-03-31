@@ -76,8 +76,8 @@ type YouTubeModel =
             | YtSetIsRequested -> { model with ytVisualStates = model.ytVisualStates.addState YtSetIsRequested }
             | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
         | CloseYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.removeState(YtSetOverlayIsVisible) }
-        | GetPlayerManifest _ -> { model with presentation = None }
-        | GotPlayerManifest data ->
+        | GetYtManifestAndPlaylist _ -> { model with presentation = None }
+        | GotYtManifest data ->
             let toPresentationOption (data: Identifier * Presentation option) =
                 option {
                     let! presentation = data |> snd

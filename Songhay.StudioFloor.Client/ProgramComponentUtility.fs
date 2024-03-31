@@ -52,33 +52,38 @@ let getCommandForGetReadMe (model: StudioFloorModel) =
 
 let update ytMsg model =
     let client = model.blazorServices.httpClient
+
     let jsRuntime = model.blazorServices.jsRuntime
+
     let ytModel = {
         model with ytModel = YouTubeModel.updateModel ytMsg model.ytModel
     }
+
     let uriYtSet =
         (
             YtIndexSonghay |> Identifier.Alphanumeric,
             ytModel.ytModel.getSelectedDocumentClientId()
         )
         ||> getPlaylistSetUri
+
     let successYtItems (result: Result<string, HttpStatusCode>) =
-            let dataGetter = ServiceHandlerUtility.toYtSet
-            let set = (dataGetter, result) ||> toHandlerOutput None
-            let ytItemsSuccessMsg = YouTubeMessage.CalledYtSet set
-            StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
+        let dataGetter = ServiceHandlerUtility.toYtItems
+        let items = (dataGetter, result) ||> toHandlerOutput None
+        let ytItemsSuccessMsg = YouTubeMessage.CalledYtItems items
+        StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
+
+    let successYtSet (result: Result<string, HttpStatusCode>) =
+        let dataGetter = ServiceHandlerUtility.toYtSet
+        let set = (dataGetter, result) ||> toHandlerOutput None
+        let message = YouTubeMessage.CalledYtSet set
+        StudioFloorMessage.YouTubeMessage message
 
     let failure ex = ((jsRuntime |> Some), ex) ||> ytMsg.failureMessage |> StudioFloorMessage.YouTubeMessage
 
     match ytMsg with
     | YouTubeMessage.CallYtItems ->
-        let success (result: Result<string, HttpStatusCode>) =
-            let dataGetter = ServiceHandlerUtility.toYtItems
-            let items = (dataGetter, result) ||> toHandlerOutput None
-            let ytItemsSuccessMsg = YouTubeMessage.CalledYtItems items
-            StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
         let uri = YtIndexSonghayTopTen |> Identifier.Alphanumeric |> getPlaylistUri
-        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uri)  success failure
+        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uri)  successYtItems failure
         ytModel, cmd
 
     | YouTubeMessage.CallYtIndexAndSet ->
@@ -90,17 +95,19 @@ let update ytMsg model =
         let uriIdx = YtIndexSonghay |> Identifier.Alphanumeric |> getPlaylistIndexUri
         let cmdBatch = Cmd.batch [
             Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriIdx) success failure
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriYtSet) successYtItems failure
+            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriYtSet) successYtSet failure
         ]
         ytModel, cmdBatch
 
     | YouTubeMessage.CallYtSet _ ->
-        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriYtSet) successYtItems failure
+        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uriYtSet) successYtSet failure
         ytModel, cmd
 
-    | YouTubeMessage.GetPlayerManifest key ->
-        let uri = key |> ServiceHandlerUtility.getPresentationManifestUri
-        let success (result: Result<string, HttpStatusCode>) =
+    | YouTubeMessage.GetYtManifestAndPlaylist key ->
+        let manifestUri = key |> ServiceHandlerUtility.getPresentationManifestUri
+        let playlistUri = key |> ServiceHandlerUtility.getPresentationYtItemsUri
+
+        let successManifest (result: Result<string, HttpStatusCode>) =
             result
             |> Result.either
                 Presentation.fromInput
@@ -113,7 +120,7 @@ let update ytMsg model =
                 (
                     fun presentation ->
                         let id = Identifier.fromString key
-                        let ytMessage = YouTubeMessage.GotPlayerManifest <| (id, Some presentation)
+                        let ytMessage = YouTubeMessage.GotYtManifest <| (id, Some presentation)
                         StudioFloorMessage.YouTubeMessage ytMessage
                 )
                 (
@@ -122,8 +129,11 @@ let update ytMsg model =
                         model.blazorServices.jsRuntime |> passErrorToConsole label ex |> StudioFloorMessage.Error
                 )
 
-        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (model.blazorServices.httpClient, uri) success failure
-        ytModel, cmd
+        let cmdBatch = Cmd.batch [
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (model.blazorServices.httpClient, manifestUri) successManifest failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (model.blazorServices.httpClient, playlistUri) successYtItems failure
+            ]
+        ytModel, cmdBatch
 
     | YouTubeMessage.OpenYtSetOverlay ->
         if ytModel.ytModel.ytSetIndex.IsNone && ytModel.ytModel.ytSet.IsNone then

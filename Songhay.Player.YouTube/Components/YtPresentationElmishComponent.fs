@@ -3,7 +3,10 @@ namespace Songhay.Player.YouTube.Components
 open Bolero
 open Bolero.Html
 
+open Songhay.Modules.Models
 open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Bolero.Visuals.Bulma.CssClass
+open Songhay.Modules.Bolero.Visuals.Bulma.Layout
 
 open Songhay.Player.YouTube.Models
 
@@ -24,9 +27,20 @@ type YtPresentationElmishComponent() =
         div {
             [ "rx"; "b-roll"; "video"; "presentation"; "yt" ] |> CssClasses.toHtmlClassFromList
 
-            cond model.ytItems.IsSome <| function
+            cond model.presentation.IsSome <| function
             | true ->
-                YtThumbsContainerElmishComponent.EComp None { model with ytItems = model.ytItems } dispatch
+                concat {
+                    YtThumbsContainerElmishComponent.EComp None { model with ytItems = model.ytItems } dispatch
+
+                    div {
+                        ["description" ] |> CssClasses.toHtmlClassFromList
+                        rawHtml model.presentation.Value.description.Value
+                    }
+                }
             | false ->
-                empty()
+                bulmaContainer
+                    ContainerWidthFluid
+                    (HasClasses (CssClasses [m (All, L6); elementTextAlign AlignCentered]))
+                        (bulmaLoader
+                            (HasClasses (CssClasses (imageContainer (Square Square128) @ [p (All, L6)]))))
         }
