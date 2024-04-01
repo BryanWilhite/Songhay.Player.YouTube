@@ -27,13 +27,13 @@ type YtPresentationElmishComponent() =
         div {
             [ "rx"; "b-roll"; "video"; "presentation"; "yt" ] |> CssClasses.toHtmlClassFromList
 
-            cond model.presentation.IsSome <| function
+            cond (model.presentation.IsSome && model.ytItems.IsSome) <| function
             | true ->
                 concat {
                     YtThumbsContainerElmishComponent.EComp None { model with ytItems = model.ytItems } dispatch
 
                     div {
-                        ["description" ] |> CssClasses.toHtmlClassFromList
+                        ["description"] |> CssClasses.toHtmlClassFromList
                         rawHtml model.presentation.Value.description.Value
                     }
                 }

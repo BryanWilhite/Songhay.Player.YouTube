@@ -131,9 +131,9 @@ let update ytMsg model =
                 )
 
         let cmdBatch = Cmd.batch [
-                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, manifestUri) successManifest failure
-                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, playlistUri) successYtItems failure
-            ]
+            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, manifestUri) successManifest failure
+            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, playlistUri) successYtItems failure
+        ]
         ytModel, cmdBatch
 
     | YouTubeMessage.OpenYtSetOverlay ->
