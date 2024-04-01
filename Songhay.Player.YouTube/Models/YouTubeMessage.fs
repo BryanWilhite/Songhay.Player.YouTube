@@ -11,7 +11,7 @@ type YouTubeMessage =
     | Error of exn
     | GetYtManifestAndPlaylist of string
     | GotYtManifest of (Identifier * Presentation option)
-    | CallYtItems | CalledYtItems of YouTubeItem[] option
+    | CallYtItems of string | CalledYtItems of YouTubeItem[] option
     | CallYtIndexAndSet
     | CallYtSet of DisplayText * ClientId
     | CalledYtSet of (DisplayText * YouTubeItem []) [] option
@@ -24,7 +24,7 @@ type YouTubeMessage =
     member this.displayText =
         match this with
         | Error _ -> $"{nameof YouTubeMessage}.{nameof Error}"
-        | CallYtItems -> $"{nameof YouTubeMessage}.{nameof CallYtItems}"
+        | CallYtItems _ -> $"{nameof YouTubeMessage}.{nameof CallYtItems}"
         | CalledYtItems _ -> $"{nameof YouTubeMessage}.{nameof CalledYtItems}"
         | CallYtIndexAndSet -> $"{nameof YouTubeMessage}.{nameof CallYtIndexAndSet}"
         | CallYtSet _ -> $"{nameof YouTubeMessage}.{nameof CallYtSet}"

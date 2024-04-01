@@ -7,7 +7,10 @@ open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Bolero.Visuals.BodyElement
 open Songhay.Modules.Bolero.Visuals.Bulma
 open Songhay.Modules.Bolero.Visuals.Bulma.Component
+
 open Songhay.Player.YouTube.Components
+open Songhay.Player.YouTube.YtUriUtility
+
 open Songhay.StudioFloor.Client
 open Songhay.StudioFloor.Client.Models
 
@@ -27,8 +30,8 @@ type TabsElmishComponent() =
         let tabPairs =
             [
                 ( text "README", ReadMePage )
-                ( text "YouTube Thumbs", YtThumbsPage )
-                ( text "YouTube Presentation", YtPresentationPage )
+                ( text "YouTube Thumbs", YtThumbsPage YtIndexSonghayTopTen )
+                ( text "YouTube Presentation", YtPresentationPage "default" )
             ]
             |> List.map (fun (n, page) -> anchorElement NoCssClasses (HasAttr <| ElmishRoutes.router.HRef page) n, page)
 
@@ -46,11 +49,18 @@ type TabsElmishComponent() =
 
             cond model.page <| function
             | ReadMePage -> ReadMeElmishComponent.EComp model dispatch
-            | YtPresentationPage ->
-                YtPresentationElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
-            | YtThumbsPage ->
+            | YtPresentationPage _ ->
+                YtPresentationElmishComponent.EComp
+                    model.ytModel
+                    (StudioFloorMessage.YouTubeMessage >> dispatch)
+            | YtThumbsPage key ->
+                let title =
+                    match key with
+                    | YtIndexSonghayTopTen -> (Some "songhay tube")
+                    | _ -> None
+
                 YtThumbsContainerElmishComponent.EComp
-                    (Some "songhay tube")
+                    title
                     model.ytModel
                     (StudioFloorMessage.YouTubeMessage >> dispatch)
 

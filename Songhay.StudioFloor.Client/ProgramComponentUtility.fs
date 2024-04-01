@@ -69,8 +69,8 @@ let update ytMsg model =
     let successYtItems (result: Result<string, HttpStatusCode>) =
         let dataGetter = ServiceHandlerUtility.toYtItems
         let items = (dataGetter, result) ||> toHandlerOutput None
-        let ytItemsSuccessMsg = YouTubeMessage.CalledYtItems items
-        StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
+        let message = YouTubeMessage.CalledYtItems items
+        StudioFloorMessage.YouTubeMessage message
 
     let successYtSet (result: Result<string, HttpStatusCode>) =
         let dataGetter = ServiceHandlerUtility.toYtSet
@@ -81,8 +81,8 @@ let update ytMsg model =
     let failure ex = ((jsRuntime |> Some), ex) ||> ytMsg.failureMessage |> StudioFloorMessage.YouTubeMessage
 
     match ytMsg with
-    | YouTubeMessage.CallYtItems ->
-        let uri = YtIndexSonghayTopTen |> Identifier.Alphanumeric |> getPlaylistUri
+    | YouTubeMessage.CallYtItems key ->
+        let uri = key |> Identifier.Alphanumeric |> getPlaylistUri
         let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (client, uri)  successYtItems failure
         ytModel, cmd
 
@@ -104,8 +104,9 @@ let update ytMsg model =
         ytModel, cmd
 
     | YouTubeMessage.GetYtManifestAndPlaylist key ->
-        let manifestUri = key |> ServiceHandlerUtility.getPresentationManifestUri
-        let playlistUri = key |> ServiceHandlerUtility.getPresentationYtItemsUri
+        let httpClient = model.blazorServices.httpClient
+        let manifestUri = key |> getPresentationManifestUri
+        let playlistUri = key |> getPresentationYtItemsUri
 
         let successManifest (result: Result<string, HttpStatusCode>) =
             result
@@ -130,8 +131,8 @@ let update ytMsg model =
                 )
 
         let cmdBatch = Cmd.batch [
-                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (model.blazorServices.httpClient, manifestUri) successManifest failure
-                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (model.blazorServices.httpClient, playlistUri) successYtItems failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, manifestUri) successManifest failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, playlistUri) successYtItems failure
             ]
         ytModel, cmdBatch
 

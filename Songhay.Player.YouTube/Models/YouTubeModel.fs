@@ -63,7 +63,7 @@ type YouTubeModel =
                 ytSetIndex = None
                 ytVisualStates = model.ytVisualStates.addStates(YtSetIsRequested, YtSetOverlayIsVisible)
             }
-        | CallYtItems -> { model with ytItems = None }
+        | CallYtItems _ -> { model with ytItems = None }
         | CallYtSet (displayText, id) ->
             { model with
                 ytSet = None
@@ -76,7 +76,7 @@ type YouTubeModel =
             | YtSetIsRequested -> { model with ytVisualStates = model.ytVisualStates.addState YtSetIsRequested }
             | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
         | CloseYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.removeState(YtSetOverlayIsVisible) }
-        | GetYtManifestAndPlaylist _ -> { model with presentation = None }
+        | GetYtManifestAndPlaylist _ -> { model with presentation = None; ytItems = None }
         | GotYtManifest data ->
             let toPresentationOption (data: Identifier * Presentation option) =
                 option {

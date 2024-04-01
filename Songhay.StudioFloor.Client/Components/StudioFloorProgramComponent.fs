@@ -27,8 +27,8 @@ type StudioFloorProgramComponent() =
         | NavigateTo page ->
             let m = { model with page = page }
             match page with
-            | YtThumbsPage -> m, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage YouTubeMessage.CallYtItems)
-            | YtPresentationPage -> m, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.GetYtManifestAndPlaylist "default")
+            | YtThumbsPage key -> m, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.CallYtItems key)
+            | YtPresentationPage key -> m, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.GetYtManifestAndPlaylist key)
             | _ -> m, Cmd.none
         | YouTubeMessage ytMsg -> pcu.update ytMsg model
 

@@ -6,8 +6,8 @@ open Songhay.Player.YouTube.Models
 
 type StudioFloorPage =
     | [<EndPoint "/">] ReadMePage
-    | [<EndPoint "/yt-presentation/">] YtPresentationPage
-    | [<EndPoint "/yt-thumbs/">] YtThumbsPage
+    | [<EndPoint "/yt-presentation/{key}">] YtPresentationPage of key: string
+    | [<EndPoint "/yt-thumbs/{key}">] YtThumbsPage of key: string
 
 type StudioFloorMessage =
     | Error of exn
