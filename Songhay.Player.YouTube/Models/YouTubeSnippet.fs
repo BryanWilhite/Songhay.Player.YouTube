@@ -18,7 +18,7 @@ type YouTubeSnippet = {
     /// </summary>
     localized: {| description: string; title: string |}
 
-    playlistId: string
+    playlistId: string option
 
     position: int option
 

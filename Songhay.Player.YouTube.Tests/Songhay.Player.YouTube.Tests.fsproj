@@ -8,6 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Content Include="json\video-yt-playlist-uploads-songhay-top-ten.json" />
+        <Content Include="json\youtube-index-songhay-top-ten.json" />
+        <Content Include="json\60-minutes.json" />
+        <Content Include="json\songhay-news-playlist.json" />
+        <Content Include="json\video-yt-bowie0-videos.json" />
+        <Content Include="json\songhay-index.json" />
         <Compile Include="DisplayItemModelUtilityTests.fs" />
         <Compile Include="RemoteHandlerUtilityTests.fs" />
         <Compile Include="ServiceHandlerUtilityTests.fs" />

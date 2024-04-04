@@ -133,6 +133,7 @@ module ServiceHandlerUtilityTests =
 
     [<Theory>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
+    [<InlineData("video-yt-bowie0-videos.json")>]
     let ``toYtItems test`` (fileName: string) =
         let jsonResult = fileName |> getJson |> Ok
         let mockLogger = Substitute.For<ILogger>() |> Some
