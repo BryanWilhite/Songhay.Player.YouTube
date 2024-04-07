@@ -66,7 +66,7 @@ let update ytMsg model =
         )
         ||> getPlaylistSetUri
 
-    let successYtItems (result: Result<string, HttpStatusCode>) =
+    let rec successYtItems (result: Result<string, HttpStatusCode>) =
         let dataGetter = ServiceHandlerUtility.toYtItems
         let items = (dataGetter, result) ||> toHandlerOutput None
         let message = YouTubeMessage.CalledYtItems items
