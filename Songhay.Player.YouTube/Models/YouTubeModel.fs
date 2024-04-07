@@ -7,14 +7,24 @@ open Microsoft.AspNetCore.Components
 open Microsoft.JSInterop
 
 open FsToolkit.ErrorHandling
+open Bolero
 
 open Songhay.Modules.Models
 open Songhay.Modules.Publications.Models
+
+open Songhay.Modules.Bolero.JsRuntimeUtility
+
 open Songhay.Player.YouTube.Models
+open Songhay.Player.YouTube.PresentationUtility
 
 type YouTubeModel =
     {
-        blazorServices: {| httpClient: HttpClient; jsRuntime: IJSRuntime; navigationManager: NavigationManager |}
+        blazorServices: {|
+                          httpClient: HttpClient
+                          jsRuntime: IJSRuntime
+                          presentationContainerElementRef: HtmlRef option
+                          navigationManager: NavigationManager
+                        |}
         error: string option
         presentation: Presentation option
         presentationKey: Identifier option
@@ -26,7 +36,12 @@ type YouTubeModel =
 
     static member initialize (httpClient: HttpClient) (jsRuntime: IJSRuntime) (navigationManager: NavigationManager) =
         {
-            blazorServices = {| httpClient = httpClient; jsRuntime = jsRuntime; navigationManager = navigationManager |}
+            blazorServices = {|
+                               httpClient = httpClient
+                               jsRuntime = jsRuntime
+                               presentationContainerElementRef = None
+                               navigationManager = navigationManager
+                            |}
             error = None
             presentation = None
             presentationKey = None
@@ -77,14 +92,18 @@ type YouTubeModel =
             | _ -> { model with ytVisualStates = model.ytVisualStates.toggleState state }
         | CloseYtSetOverlay -> { model with ytVisualStates = model.ytVisualStates.removeState(YtSetOverlayIsVisible) }
         | GetYtManifestAndPlaylist _ -> { model with presentation = None; ytItems = None }
+        | GotPresentationSection elementRef ->
+            {
+                model with
+                    blazorServices = {|
+                                       httpClient = model.blazorServices.httpClient
+                                       jsRuntime = model.blazorServices.jsRuntime
+                                       presentationContainerElementRef = elementRef |> Some
+                                       navigationManager = model.blazorServices.navigationManager
+                                    |}
+            }
         | GotYtManifest data ->
-            let toPresentationOption (data: Identifier * Presentation option) =
-                option {
-                    let! presentation = data |> snd
-
-                    return { presentation with parts = presentation.parts }
-                }
-
+            model.setComputedStyles()
             {
                 model with
                     presentation = data |> toPresentationOption
@@ -97,6 +116,8 @@ type YouTubeModel =
                                                 .removeState(YtSetOverlayIsUntouched)
                                                 .addState(YtSetOverlayIsVisible)
             }
+        | PresentationCreditsClick ->
+            { model with ytVisualStates =  model.ytVisualStates.toggleState PresentationCreditsModalVisible }
         | SelectYtSet -> { model with ytVisualStates = model.ytVisualStates.addState YtSetRequestSelection }
 
     member private this.getVisualState (getter: YouTubeVisualState -> 'o option) =
@@ -114,6 +135,38 @@ type YouTubeModel =
 
     member this.selectedDocumentEquals (clientId: ClientId) =
         clientId = this.getSelectedDocumentClientId()
+
+    member this.setComputedStyles() =
+        option {
+            let! elementRef = this.blazorServices.presentationContainerElementRef
+            let cssCustomProperties =
+                if (this.presentation.Value.cssVariables |> List.length) > 0 then
+                    getConventionalCssProperties() @ this.presentation.Value.cssVariables
+                else
+                    getConventionalCssProperties()
+
+            cssCustomProperties
+            |> List.iter
+                    (
+                        fun vv ->
+                            let n, v = vv.Pair
+
+                            this.blazorServices.jsRuntime
+                                |> setComputedStylePropertyValueAsync elementRef n.Value v.Value
+                                |> ignore
+                    )
+        }
+        |> Option.either
+            (fun _ -> ())
+            (
+                fun _ ->
+                    this.blazorServices.jsRuntime
+                    |> consoleWarnAsync [|
+                        $"{nameof this.setComputedStyles} failed!"
+                        if this.blazorServices.presentationContainerElementRef.IsNone then
+                            "The reference to the Presentation container is not here."
+                    |] |> ignore
+            )
 
     member this.setSelectedDocument (dt, id) : AppStateSet<YouTubeVisualState> =
         let current = this.getSelectedDocument()

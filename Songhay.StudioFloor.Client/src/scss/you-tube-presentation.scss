@@ -1,12 +1,8 @@
-.video.presentation .row.form-inline {
-    margin-bottom: 2em;
-}
-
 .video.presentation .row.thumbs > .title {
     color: #fff;
 }
 
-.video.presentation .row .description {
+.video.presentation .description {
     background-color: #000;
     color: #fff;
     font-size: 1.8em;
@@ -14,13 +10,13 @@
     padding: 1em;
 }
 
-    .video.presentation .row .description a,
-    .video.presentation .row .description a:visited {
+    .video.presentation .description a,
+    .video.presentation .description a:visited {
         border-bottom: dashed 1px #fff;
         color: #fff;
     }
 
-        .video.presentation .row .description a:hover {
+        .video.presentation .description a:hover {
             background-color: #fff;
             border-bottom: dashed 1px #000;
             color: #000;
@@ -42,7 +38,7 @@
         width: 1296px;
     }
 
-    .video.presentation .row .description {
+    .video.presentation .description {
         width: 1296px;
         padding: 1em 2em;
     }
@@ -53,7 +49,7 @@
         width: 1296px;
     }
 
-    .video.presentation .row .description {
+    .video.presentation .description {
         width: 1296px;
         padding: 1em 2em;
     }
@@ -64,7 +60,7 @@
         width: 972px;
     }
 
-    .video.presentation .row .description {
+    .video.presentation .description {
         width: 972px;
         padding: 1em 2em;
     }
@@ -75,7 +71,7 @@
         width: 648px;
     }
 
-    .video.presentation .row .description {
+    .video.presentation .description {
         width: 648px;
     }
 }
@@ -85,7 +81,7 @@
 }
 
     .video.presentation .credits > button > span {
-        background: url(https://songhay.blob.core.windows.net/shared-styles-svg/akyinkyin.svg) no-repeat top left;
+        background: var(--rx-player-credits-button-background-image) no-repeat top left;
         background-size: contain;
         cursor: pointer;
         display: inline-block;
@@ -103,7 +99,3 @@
         .video.presentation .credits > button:hover {
             opacity: 1.0;
         }
-
-.video.presentation #ImageCreditsModal .credits-flow {
-    text-align: center;
-}

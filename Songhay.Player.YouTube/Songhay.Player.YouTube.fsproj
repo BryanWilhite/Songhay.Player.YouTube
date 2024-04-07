@@ -11,6 +11,8 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="YouTubeScalars.fs" />
+        <Compile Include="YtUriUtility.fs" />
+        <Compile Include="PresentationUtility.fs" />
         <Compile Include="Models\YouTubeCssVariable.fs" />
         <Compile Include="Models\YouTubeResourceId.fs" />
         <Compile Include="Models\YouTubeThumbnails.fs" />
@@ -21,9 +23,9 @@
         <Compile Include="Models\YouTubeMessage.fs" />
         <Compile Include="Models\YouTubeModel.fs" />
         <Compile Include="YtItemUtility.fs" />
-        <Compile Include="YtUriUtility.fs" />
         <Compile Include="DisplayItemModelUtility.fs" />
         <Compile Include="ServiceHandlerUtility.fs" />
+        <Compile Include="Components\PresentationCreditsElmishComponent.fs" />
         <Compile Include="Components\YtThumbsContainerElmishComponent.fs" />
         <Compile Include="Components\YtPresentationElmishComponent.fs" />
         <Compile Include="Components\YtThumbsSetElmishComponent.fs" />

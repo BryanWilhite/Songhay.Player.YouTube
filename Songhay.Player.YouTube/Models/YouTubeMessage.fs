@@ -1,5 +1,6 @@
 namespace Songhay.Player.YouTube.Models
 
+open Bolero
 open Microsoft.JSInterop
 
 open Songhay.Modules.Bolero
@@ -18,7 +19,9 @@ type YouTubeMessage =
     | CalledYtSetIndex of (ClientId * Name * (DisplayItemModel * ClientId []) []) option
     | ChangeVisualState of YouTubeVisualState
     | CloseYtSetOverlay
+    | GotPresentationSection of HtmlRef
     | OpenYtSetOverlay
+    | PresentationCreditsClick
     | SelectYtSet
 
     member this.displayText =
@@ -33,8 +36,10 @@ type YouTubeMessage =
         | ChangeVisualState _ -> $"{nameof YouTubeMessage}.{nameof ChangeVisualState}"
         | CloseYtSetOverlay -> $"{nameof YouTubeMessage}.{nameof CloseYtSetOverlay}"
         | GetYtManifestAndPlaylist _ -> $"{nameof YouTubeMessage}.{nameof GetYtManifestAndPlaylist}"
+        | GotPresentationSection _ -> $"{nameof YouTubeMessage}.{nameof GotPresentationSection}"
         | GotYtManifest _ -> $"{nameof YouTubeMessage}.{nameof GotYtManifest}"
         | OpenYtSetOverlay -> $"{nameof YouTubeMessage}.{nameof OpenYtSetOverlay}"
+        | PresentationCreditsClick -> $"{nameof YouTubeMessage}.{nameof PresentationCreditsClick}"
         | SelectYtSet -> $"{nameof YouTubeMessage}.{nameof SelectYtSet}"
 
     member this.failureMessage (jsRuntime: IJSRuntime option) ex =

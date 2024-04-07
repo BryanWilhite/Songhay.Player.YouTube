@@ -13,6 +13,35 @@ open Songhay.Player.YouTube.Models
 type YtPresentationElmishComponent() =
     inherit ElmishComponent<YouTubeModel, YouTubeMessage>()
 
+    /// <summary><see cref="HtmlRef"/> for the <c>section</c> element in the <see cref="sectionNode"/></summary>
+    let sectionElementRef = HtmlRef()
+
+    let sectionNode model dispatch =
+        section {
+            [ "rx"; "b-roll"; "video"; "presentation"; "yt" ] |> CssClasses.toHtmlClassFromList
+
+            attr.ref sectionElementRef
+
+            cond (model.presentation.IsSome && model.ytItems.IsSome) <| function
+            | true ->
+                concat {
+                    YtThumbsContainerElmishComponent.EComp None { model with ytItems = model.ytItems } dispatch
+
+                    div {
+                        [ "description"; p(All, L4); Size4.Value ] |> CssClasses.toHtmlClassFromList
+                        rawHtml model.presentation.Value.description.Value
+                    }
+
+                    (model, dispatch) ||> PresentationCreditsElmishComponent.EComp
+                }
+            | false ->
+                bulmaContainer
+                    ContainerWidthFluid
+                    (HasClasses (CssClasses [m(All, L6); elementTextAlign AlignCentered]))
+                        (bulmaLoader
+                            (HasClasses (CssClasses (imageContainer (Square Square128) @ [p (All, L6)]))))
+        }
+
     static member EComp (model: YouTubeModel) dispatch =
         ecomp<YtPresentationElmishComponent, _, _> model dispatch { attr.empty() }
 
@@ -24,23 +53,9 @@ type YtPresentationElmishComponent() =
         oldModel.ytItems <> newModel.ytItems
 
     override this.View model dispatch =
-        div {
-            [ "rx"; "b-roll"; "video"; "presentation"; "yt" ] |> CssClasses.toHtmlClassFromList
+        if model.blazorServices.presentationContainerElementRef.IsNone then
+            dispatch <| GotPresentationSection sectionElementRef
+        else
+            ()
 
-            cond (model.presentation.IsSome && model.ytItems.IsSome) <| function
-            | true ->
-                concat {
-                    YtThumbsContainerElmishComponent.EComp None { model with ytItems = model.ytItems } dispatch
-
-                    div {
-                        ["description"] |> CssClasses.toHtmlClassFromList
-                        rawHtml model.presentation.Value.description.Value
-                    }
-                }
-            | false ->
-                bulmaContainer
-                    ContainerWidthFluid
-                    (HasClasses (CssClasses [m (All, L6); elementTextAlign AlignCentered]))
-                        (bulmaLoader
-                            (HasClasses (CssClasses (imageContainer (Square Square128) @ [p (All, L6)]))))
-        }
+        (model, dispatch) ||> sectionNode
