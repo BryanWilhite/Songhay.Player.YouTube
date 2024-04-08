@@ -56,13 +56,13 @@ module YtItemUtility =
             element
             |> tryGetProperty "regionRestriction"
             |> Result.bind (tryGetProperty "blocked")
-            |> Result.either
+            |> Result.eitherMap
                 (
                     fun el ->
                         let blocked = el.EnumerateArray() |> Array.ofSeq |> Array.map (_.ToString())
-                        Ok {| blocked = blocked |}
+                        {| blocked = blocked |}
                 )
-                Result.Error
+                id
         let projectionResult = element |> tryGetProperty "projection" |> Result.map (_.GetString())
 
         [
@@ -102,16 +102,16 @@ module YtItemUtility =
             heightResult |> Result.map (fun _ -> true)
         ]
         |> List.sequenceResultM
-        |> Result.either
+        |> Result.eitherMap
             (
                 fun _ ->
-                    Ok {
+                    {
                         url = urlResult |> Result.valueOr raise
                         width = widthResult |> Result.valueOr raise
                         height = heightResult |> Result.valueOr raise
                     }
             )
-            Result.Error
+            id
 
     let tryGetYtThumbnails (element: JsonElement) =
         let thumbnailsResult = element |> tryGetProperty YtItemThumbnailsPropertyName |> Result.map id
@@ -126,10 +126,10 @@ module YtItemUtility =
             highResult
         ]
         |> List.sequenceResultM
-        |> Result.either
+        |> Result.eitherMap
             (
                 fun _ ->
-                    Ok {
+                    {
                         ``default`` = defaultResult |> Result.bind tryGetYtThumbnail |> Result.valueOr raise
                         medium = mediumResult |> Result.bind tryGetYtThumbnail |> Result.valueOr raise
                         high = highResult |> Result.bind tryGetYtThumbnail |> Result.valueOr raise
@@ -137,7 +137,7 @@ module YtItemUtility =
                         maxres = None
                     }
             )
-            Result.Error
+            id
 
     let tryGetYtResourceId (element: JsonElement) : Result<YouTubeResourceId, JsonException> =
         element
@@ -185,10 +185,10 @@ module YtItemUtility =
             localizedTitleResult |> Result.map (fun _ -> true)
         ]
         |> List.sequenceResultM
-        |> Result.either
+        |> Result.eitherMap
             (
                 fun _ ->
-                    Ok {
+                    {
                         channelId = channelIdResult |> Result.valueOr raise
                         channelTitle = channelTitleResult |> Result.valueOr raise
                         description = descriptionResult |> Result.valueOr raise
@@ -206,7 +206,7 @@ module YtItemUtility =
                         title = titleResult |> Result.valueOr raise
                     }
             )
-            Result.Error
+            id
 
     let tryGetYtItem (element: JsonElement) : Result<YouTubeItem, JsonException> =
         let etagResult = element |> tryGetProperty "etag" |> Result.map (_.GetString())
@@ -223,10 +223,10 @@ module YtItemUtility =
             contentDetailsResult |> Result.map (fun _ -> true)
         ]
         |> List.sequenceResultM
-        |> Result.either
+        |> Result.eitherMap
             (
                 fun _ ->
-                    Ok {
+                    {
                         etag = etagResult |> Result.valueOr raise
                         id = idResult |> Result.valueOr raise
                         kind = kindResult |> Result.valueOr raise
@@ -234,7 +234,7 @@ module YtItemUtility =
                         contentDetails = contentDetailsResult |> Result.valueOr raise
                     }
             )
-            Result.Error
+            id
 
     let fromInput (element: JsonElement) =
         element

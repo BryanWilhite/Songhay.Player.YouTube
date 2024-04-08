@@ -160,8 +160,7 @@ type YouTubeModel =
                                 |> ignore
                     )
         }
-        |> Option.either
-            (fun _ -> ())
+        |> Option.defaultWith
             (
                 fun _ ->
                     this.blazorServices.jsRuntime
