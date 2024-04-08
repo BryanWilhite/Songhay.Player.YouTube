@@ -7,6 +7,7 @@ open Xunit
 open FsUnit.Xunit
 open FsUnit.CustomMatchers
 open FsToolkit.ErrorHandling
+open FsToolkit.ErrorHandling.Operator.Result
 
 open Songhay.Modules.Models
 open Songhay.Modules.JsonDocumentUtility
@@ -50,7 +51,7 @@ module YtItemUtilityTests =
         let itemElementResult =
             videoJsonDocument.RootElement
             |> tryGetProperty YtItemsPropertyName
-            |> Result.either ( fun el -> Ok (el.EnumerateArray() |> List.ofSeq |> List.head) ) Result.Error
+            |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
         itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
 
@@ -74,12 +75,12 @@ module YtItemUtilityTests =
         let itemElementResult =
             videoJsonDocument.RootElement
             |> tryGetProperty YtItemsPropertyName
-            |> Result.either ( fun el -> Ok (el.EnumerateArray() |> List.ofSeq |> List.head) ) Result.Error
+            |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
         itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
 
         let snippetElementResult =
-            itemElementResult |> Result.bind (tryGetProperty YtItemSnippetPropertyName)
+            itemElementResult >>= (tryGetProperty YtItemSnippetPropertyName)
         snippetElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
 
         let actualResult =
@@ -97,7 +98,7 @@ module YtItemUtilityTests =
         let itemElementResult =
             videoJsonDocument.RootElement
             |> tryGetProperty YtItemsPropertyName
-            |> Result.either ( fun el -> Ok (el.EnumerateArray() |> List.ofSeq |> List.head) ) Result.Error
+            |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
         itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
 
@@ -120,12 +121,12 @@ module YtItemUtilityTests =
         let itemElementResult =
             videoJsonDocument.RootElement
             |> tryGetProperty YtItemsPropertyName
-            |> Result.either ( fun el -> Ok (el.EnumerateArray() |> List.ofSeq |> List.head) ) Result.Error
+            |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
         itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
 
         let snippetElementResult =
-            itemElementResult |> Result.bind (tryGetProperty YtItemSnippetPropertyName)
+            itemElementResult >>= (tryGetProperty YtItemSnippetPropertyName)
         snippetElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
 
         let actualResult =
@@ -143,7 +144,7 @@ module YtItemUtilityTests =
         let itemElementResult =
             videoJsonDocument.RootElement
             |> tryGetProperty YtItemsPropertyName
-            |> Result.either ( fun el -> Ok (el.EnumerateArray() |> List.ofSeq |> List.head) ) Result.Error
+            |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
         itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
 

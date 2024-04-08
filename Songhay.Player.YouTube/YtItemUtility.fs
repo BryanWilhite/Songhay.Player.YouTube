@@ -74,10 +74,10 @@ module YtItemUtility =
             projectionResult |> Result.map (fun _ -> true)
         ]
         |> List.sequenceResultM
-        |> Result.either
+        |> Result.eitherMap
             (
                 fun _ ->
-                    Ok {
+                    {
                         videoId = videoIdResult |> Option.ofResult
                         videoPublishedAt = videoPublishedAtResult |> Option.ofResult
                         duration = durationResult |> Result.valueOr raise
@@ -89,7 +89,7 @@ module YtItemUtility =
                         regionRestriction = regionRestrictionResult |> Option.ofResult
                     }
             )
-            Result.Error
+            id
 
     let tryGetYtThumbnail (element: JsonElement) : Result<YouTubeThumbnail, JsonException> =
         let urlResult = element |> tryGetProperty "url" |> Result.map (_.GetString())
