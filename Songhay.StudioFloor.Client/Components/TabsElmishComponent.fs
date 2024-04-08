@@ -58,11 +58,12 @@ type TabsElmishComponent() =
                     match key with
                     | YtIndexSonghayTopTen -> (Some "songhay tube")
                     | _ -> None
+                concat {
+                    YtThumbsContainerElmishComponent.EComp
+                        title
+                        model.ytModel
+                        (StudioFloorMessage.YouTubeMessage >> dispatch)
 
-                YtThumbsContainerElmishComponent.EComp
-                    title
-                    model.ytModel
-                    (StudioFloorMessage.YouTubeMessage >> dispatch)
-
-            YtThumbsSetElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
+                    YtThumbsSetElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
+                }
         }

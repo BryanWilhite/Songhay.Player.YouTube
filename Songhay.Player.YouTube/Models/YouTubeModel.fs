@@ -61,7 +61,9 @@ type YouTubeModel =
 
         match message with
         | Error exn -> { model with error = Some exn.Message }
-        | CalledYtItems items -> { model with ytItems = items }
+        | CalledYtItems items ->
+            model.blazorServices.jsRuntime |> consoleWarnAsync [| $"yup! {nameof CalledYtItems}"; items |] |> ignore
+            { model with ytItems = items }
         | CalledYtSet set ->
             { model with
                 ytSet = set |> Option.map sort
@@ -103,6 +105,8 @@ type YouTubeModel =
                                     |}
             }
         | GotYtManifest data ->
+            let temp = data |> toPresentationOption
+            model.blazorServices.jsRuntime |> consoleWarnAsync [| $"yup! {nameof GotYtManifest}"; temp |] |> ignore
             model.setComputedStyles()
             {
                 model with
