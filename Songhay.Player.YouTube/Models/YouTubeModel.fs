@@ -61,9 +61,7 @@ type YouTubeModel =
 
         match message with
         | Error exn -> { model with error = Some exn.Message }
-        | CalledYtItems items ->
-            model.blazorServices.jsRuntime |> consoleWarnAsync [| $"yup! {nameof CalledYtItems}"; items |] |> ignore
-            { model with ytItems = items }
+        | CalledYtItems items -> { model with ytItems = items }
         | CalledYtSet set ->
             { model with
                 ytSet = set |> Option.map sort
@@ -105,8 +103,6 @@ type YouTubeModel =
                                     |}
             }
         | GotYtManifest data ->
-            let temp = data |> toPresentationOption
-            model.blazorServices.jsRuntime |> consoleWarnAsync [| $"yup! {nameof GotYtManifest}"; temp |] |> ignore
             model.setComputedStyles()
             {
                 model with
@@ -143,18 +139,21 @@ type YouTubeModel =
     member this.setComputedStyles() =
         option {
             let! elementRef = this.blazorServices.presentationContainerElementRef
-            let cssCustomProperties =
-                if (this.presentation.Value.cssVariables |> List.length) > 0 then
-                    getConventionalCssProperties() @ this.presentation.Value.cssVariables
-                else
-                    getConventionalCssProperties()
+            let cssCustomProperties = Array.Empty<CssCustomPropertyAndValue>() |> List.ofSeq
+                // if (this.presentation.Value.cssVariables |> List.length) > 0 then
+                //     getConventionalCssProperties() @ this.presentation.Value.cssVariables
+                // else
+                //     getConventionalCssProperties()
 
+            this.blazorServices.jsRuntime
+            |> consoleWarnAsync [| cssCustomProperties |]
+            |> ignore
             cssCustomProperties
             |> List.iter
                     (
                         fun vv ->
                             let n, v = vv.Pair
-
+            
                             this.blazorServices.jsRuntime
                                 |> setComputedStylePropertyValueAsync elementRef n.Value v.Value
                                 |> ignore

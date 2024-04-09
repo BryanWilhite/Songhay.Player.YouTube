@@ -22,12 +22,6 @@ type YtPresentationElmishComponent() =
 
             attr.ref sectionElementRef
 
-            model.blazorServices.jsRuntime
-            |> Songhay.Modules.Bolero.JsRuntimeUtility.consoleWarnAsync [|
-                $"{nameof YtPresentationElmishComponent} can render section: {(model.presentation.IsSome && model.ytItems.IsSome)}"
-                $"has presentation data: {model.presentation.IsSome}"
-                $"has ytItems data: {model.ytItems.IsSome}"
-            |] |> ignore
             cond (model.presentation.IsSome && model.ytItems.IsSome) <| function
             | true ->
                 concat {
@@ -59,9 +53,9 @@ type YtPresentationElmishComponent() =
         oldModel.ytItems <> newModel.ytItems
 
     override this.View model dispatch =
-        // if model.blazorServices.presentationContainerElementRef.IsNone then
-        //     dispatch <| GotPresentationSection sectionElementRef
-        // else
-        //     ()
+        if model.blazorServices.presentationContainerElementRef.IsNone then
+            dispatch <| GotPresentationSection sectionElementRef
+        else
+            ()
 
         (model, dispatch) ||> sectionNode
