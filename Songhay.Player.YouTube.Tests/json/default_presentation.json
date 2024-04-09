@@ -1,0 +1,124 @@
+{
+  "id": {
+    "Case": "Alphanumeric",
+    "Fields": [
+      "2005-12-10-22-19-14-IDAMAQDBIDANAQDB-1"
+    ]
+  },
+  "title": "Songhay Video Presentation",
+  "cssVariables": [
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-background-color",
+        "#767676"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-border-color",
+        "#006633"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-playlist-background-color",
+        "#ccff00"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-playlist-color",
+        "#000"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-prose-background-color",
+        "#ccff00"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-prose-color",
+        "#000"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-title-background-color",
+        "#767676"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-title-color",
+        "#fff"
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "Case": "PresentationDescription",
+      "Fields": [
+        "\u003Cdiv\u003EThis InfoPath Form data is packaged with the video presentation directory image\u00A0and is transformed \u003Cem\u003Eon the fly\u003C/em\u003E into play-list and prose data.\u003C/div\u003E\u003Cdiv\u003E\u00A0\u003C/div\u003E\u003Cdiv\u003E\u003Cstrong\u003ENote:\u003C/strong\u003E The \u201CWeb Presentation Items\u201D in this form become the play-list data. The description written here\u00A0becomes prose data.\u003C/div\u003E\u003Cdiv\u003E\u00A0\u003C/div\u003E\u003Cdiv\u003E\u003Ca href=\u0022http://kintespace.com/kmail.html\u0022\u003Erasx()\u003C/a\u003E\u003C/div\u003E"
+      ]
+    },
+    {
+      "Case": "Credits",
+      "Fields": [
+        [
+          {
+            "role": "Video\u00A0Segments",
+            "name": "sonicstate"
+          },
+          {
+            "role": "ActionScript and PHP",
+            "name": "Bryan Wilhite"
+          },
+          {
+            "role": "CSS XML and\u00A0XSLT",
+            "name": "Bryan Wilhite"
+          }
+        ]
+      ]
+    },
+    {
+      "Case": "CopyRights",
+      "Fields": [
+        [
+          {
+            "year": 2006,
+            "name": "Songhay System"
+          }
+        ]
+      ]
+    },
+    {
+      "Case": "Playlist",
+      "Fields": [
+        [
+          [
+            "video\u00A0one",
+            "http://www.youtube.com/v/aD0Tr-qvVKo"
+          ],
+          [
+            "video\u00A0two",
+            "http://www.youtube.com/v/-l_ELrxw2cg"
+          ],
+          [
+            "video\u00A0three",
+            "http://www.youtube.com/v/XoF7mjBdIwc"
+          ]
+        ]
+      ]
+    }
+  ]
+}

@@ -14,7 +14,9 @@
         <Content Include="json\songhay-news-playlist.json" />
         <Content Include="json\video-yt-bowie0-videos.json" />
         <Content Include="json\songhay-index.json" />
+        <Content Include="json\default_presentation.json" />
         <Compile Include="DisplayItemModelUtilityTests.fs" />
+        <Compile Include="PresentationUtilityTests.fs" />
         <Compile Include="RemoteHandlerUtilityTests.fs" />
         <Compile Include="ServiceHandlerUtilityTests.fs" />
         <Compile Include="YtItemUtilityTests.fs" />

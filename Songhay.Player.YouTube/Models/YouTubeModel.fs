@@ -139,16 +139,7 @@ type YouTubeModel =
     member this.setComputedStyles() =
         option {
             let! elementRef = this.blazorServices.presentationContainerElementRef
-            let cssCustomProperties = Array.Empty<CssCustomPropertyAndValue>() |> List.ofSeq
-                // if (this.presentation.Value.cssVariables |> List.length) > 0 then
-                //     getConventionalCssProperties() @ this.presentation.Value.cssVariables
-                // else
-                //     getConventionalCssProperties()
-
-            this.blazorServices.jsRuntime
-            |> consoleWarnAsync [| cssCustomProperties |]
-            |> ignore
-            cssCustomProperties
+            getConventionalCssProperties()
             |> List.iter
                     (
                         fun vv ->
