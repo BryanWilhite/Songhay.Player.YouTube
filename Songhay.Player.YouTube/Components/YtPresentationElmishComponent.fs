@@ -31,8 +31,11 @@ type YtPresentationElmishComponent() =
                         [ "description"; p(All, L4); fontSize Size4 ] |> CssClasses.toHtmlClassFromList
                         rawHtml model.presentation.Value.description.Value
                     }
+                    div {
+                        "credits" |> CssClasses.toHtmlClass
 
-                    (model, dispatch) ||> PresentationCreditsElmishComponent.EComp
+                        (model, dispatch) ||> PresentationCreditsElmishComponent.EComp
+                    }
                 }
             | false ->
                 bulmaContainer
@@ -48,6 +51,7 @@ type YtPresentationElmishComponent() =
     static member val Id = "yt-presentation-block" with get
 
     override this.ShouldRender(oldModel, newModel) =
+        oldModel.ytVisualStates <> newModel.ytVisualStates ||
         oldModel.presentation <> newModel.presentation ||
         oldModel.presentationKey <> newModel.presentationKey ||
         oldModel.ytItems <> newModel.ytItems
