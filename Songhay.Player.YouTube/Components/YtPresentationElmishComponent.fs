@@ -28,7 +28,7 @@ type YtPresentationElmishComponent() =
                     YtThumbsContainerElmishComponent.EComp None { model with ytItems = model.ytItems } dispatch
 
                     div {
-                        [ "description"; p(All, L4); Size4.Value ] |> CssClasses.toHtmlClassFromList
+                        [ "description"; p(All, L4); fontSize Size4 ] |> CssClasses.toHtmlClassFromList
                         rawHtml model.presentation.Value.description.Value
                     }
 
