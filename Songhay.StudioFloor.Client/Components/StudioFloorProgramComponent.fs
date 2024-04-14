@@ -25,11 +25,26 @@ type StudioFloorProgramComponent() =
             let m = { model with readMeData = (data |> Some) }
             m, Cmd.none
         | NavigateTo page ->
-            let m = { model with page = page }
+            let m =
+                  {
+                    model with
+                        page = page
+                        ytModel =
+                                    {
+                                        blazorServices = model.ytModel.blazorServices
+                                        error = model.ytModel.error
+                                        presentation = None
+                                        presentationKey = model.ytModel.presentationKey
+                                        ytItems = None
+                                        ytSet = model.ytModel.ytSet
+                                        ytSetIndex = model.ytModel.ytSetIndex
+                                        ytVisualStates = model.ytModel.ytVisualStates
+                                    } 
+                  }
             match page with
             | YtThumbsPage key ->
                 let cmd =
-                    if model.ytModel.ytItems.IsNone then
+                    if m.ytModel.ytItems.IsNone then
                         Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.CallYtItems key)
                     else
                         Cmd.none
@@ -37,7 +52,7 @@ type StudioFloorProgramComponent() =
 
             | YtPresentationPage key ->
                 let cmd =
-                    if model.ytModel.presentation.IsNone then
+                    if m.ytModel.presentation.IsNone then
                         Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.GetYtManifestAndPlaylist key)
                     else
                         Cmd.none
