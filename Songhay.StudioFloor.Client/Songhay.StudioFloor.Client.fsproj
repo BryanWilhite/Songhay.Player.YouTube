@@ -14,11 +14,11 @@
     <Compile Include="Startup.fs" />
     <Content Include="src\scss\colors\bulma.scss" />
     <Content Include="src\scss\you-tube-css-variables.scss" />
-    <Content Include="src\scss\index.scss" />
-    <Content Include="src\scss\you-tube-presentation.scss" />
+    <Content Include="src\scss\you-tube-thumbs-set.scss" />
     <Content Include="src\scss\you-tube-thumbs-navigation.scss" />
     <Content Include="src\scss\you-tube-thumbs.scss" />
-    <Content Include="src\scss\you-tube-thumbs-set.scss" />
+    <Content Include="src\scss\you-tube-presentation.scss" />
+    <Content Include="src\scss\index.scss" />
     <Folder Include="src\js\" />
     <TypeScriptCompile Include="src\bolero-utility.ts" />
     <TypeScriptCompile Include="src\_index.ts" />

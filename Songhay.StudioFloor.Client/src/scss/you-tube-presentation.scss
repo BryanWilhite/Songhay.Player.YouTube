@@ -20,57 +20,27 @@
             color: #000;
         }
 
-/*
-    medium: 320 x 180
-    (4 + 320 ) * 8 = 2592
-    (4 + 320 ) * 7 = 2268
-    (4 + 320 ) * 6 = 1944
-    (4 + 320 ) * 5 = 1620
-    (4 + 320 ) * 4 = 1296 => effective max width: 1296px or 4 thumbs
-    (4 + 320 ) * 3 = 972
-    (4 + 320 ) * 2 = 648
-*/
+@each $key, $value in $thumbs-media-max-width {
+    @media (max-width: map-get($thumbs-media-max-width, $key)) {
+        .video.presentation .credits {
+            width: map-get($thumbs-responsive-widths, $key);
+        }
 
-@media (min-width: 1580px) {
-    .video.presentation .credits {
-        width: 1296px;
-    }
-
-    .video.presentation .description {
-        width: 1296px;
-        padding: 1em 2em;
+        .video.presentation .description {
+            width: map-get($thumbs-responsive-widths, $key);
+        }
     }
 }
 
-@media (max-width: 1580px) {
+// upper bound:
+$key: 8-thumbs;
+@media (min-width: map-get($thumbs-media-max-width, $key)) {
     .video.presentation .credits {
-        width: 1296px;
+        width: map-get($thumbs-responsive-widths, $key);
     }
 
     .video.presentation .description {
-        width: 1296px;
-        padding: 1em 2em;
-    }
-}
-
-@media (max-width: 1256px) {
-    .video.presentation .credits {
-        width: 972px;
-    }
-
-    .video.presentation .description {
-        width: 972px;
-        padding: 1em 2em;
-    }
-}
-
-@media (max-width: 932px) {
-    .video.presentation .credits {
-        width: 648px;
-    }
-
-    .video.presentation .description {
-        width: 648px;
+        width: map-get($thumbs-responsive-widths, $key);
     }
 }
 
