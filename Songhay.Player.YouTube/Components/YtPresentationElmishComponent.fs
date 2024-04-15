@@ -3,6 +3,7 @@ namespace Songhay.Player.YouTube.Components
 open Bolero
 open Bolero.Html
 
+open Microsoft.AspNetCore.Components
 open Songhay.Modules.Models
 open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Bolero.Visuals.Bulma.CssClass
@@ -45,10 +46,16 @@ type YtPresentationElmishComponent() =
                             (HasClasses (CssClasses (imageContainer (Square Square128) @ [p (All, L6)]))))
         }
 
-    static member EComp (model: YouTubeModel) dispatch =
-        ecomp<YtPresentationElmishComponent, _, _> model dispatch { attr.empty() }
+    static member EComp (dispatchPresentationContainerElementRefOnce: bool) (model: YouTubeModel) dispatch =
+        ecomp<YtPresentationElmishComponent, _, _> model dispatch
+            {
+                "DispatchPresentationContainerElementRefOnce" => dispatchPresentationContainerElementRefOnce
+            }
 
     static member val Id = "yt-presentation-block" with get
+
+     [<Parameter>]
+     member val DispatchPresentationContainerElementRefOnce = true with get, set
 
     override this.ShouldRender(oldModel, newModel) =
         oldModel.ytVisualStates <> newModel.ytVisualStates ||
@@ -57,9 +64,13 @@ type YtPresentationElmishComponent() =
         oldModel.ytItems <> newModel.ytItems
 
     override this.View model dispatch =
-        if model.blazorServices.presentationContainerElementRef.IsNone then
+        match this.DispatchPresentationContainerElementRefOnce with
+        | false ->
             dispatch <| GotPresentationSection sectionElementRef
-        else
             ()
+        | true when model.blazorServices.presentationContainerElementRef.IsNone ->
+            dispatch <| GotPresentationSection sectionElementRef
+            ()
+        | true -> ()
 
         (model, dispatch) ||> sectionNode

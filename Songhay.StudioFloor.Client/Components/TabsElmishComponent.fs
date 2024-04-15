@@ -51,6 +51,7 @@ type TabsElmishComponent() =
             | ReadMePage -> ReadMeElmishComponent.EComp model dispatch
             | YtPresentationPage _ ->
                 YtPresentationElmishComponent.EComp
+                    false
                     model.ytModel
                     (StudioFloorMessage.YouTubeMessage >> dispatch)
             | YtThumbsPage key ->
