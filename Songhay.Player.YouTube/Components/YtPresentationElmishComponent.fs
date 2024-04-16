@@ -26,7 +26,10 @@ type YtPresentationElmishComponent() =
             cond (model.presentation.IsSome && model.ytItems.IsSome) <| function
             | true ->
                 concat {
-                    YtThumbsContainerElmishComponent.EComp None { model with ytItems = model.ytItems } dispatch
+                    YtThumbsContainerElmishComponent.EComp
+                        (model.presentation |> Option.map (_.title) |> Option.map (_.Value))
+                        { model with ytItems = model.ytItems }
+                        dispatch
 
                     div {
                         [ "description"; p(All, L4); fontSize Size4 ] |> CssClasses.toHtmlClassFromList
