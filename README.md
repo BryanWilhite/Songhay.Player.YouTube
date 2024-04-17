@@ -18,6 +18,6 @@ The `Songhay.StudioFloor.Client` project [[GitHub](https://github.com/BryanWilhi
 1. demonstrate how the Elmish components of this solution look and operate
 2. provide a “reference” <acronym title="Sassy CSS">SCSS</acronym> and Typescript `npm` pipeline
 
-![the ‘studio floor’ for this Solution](https://raw.githubusercontent.com/BryanWilhite/Songhay.Modules.Bolero/main/.github/bitmaps/Songhay.StudioFloor.Client.gif)
+![the ‘studio floor’ for this Solution](https://raw.githubusercontent.com/BryanWilhite/Songhay.Player.YouTube/main/.github/bitmaps/Songhay.StudioFloor.Client.gif)
 
 @[BryanWilhite](https://twitter.com/BryanWilhite)
