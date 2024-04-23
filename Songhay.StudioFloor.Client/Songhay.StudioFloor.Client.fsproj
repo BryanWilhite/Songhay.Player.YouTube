@@ -23,7 +23,6 @@
     <TypeScriptCompile Include="src\bolero-utility.ts" />
     <TypeScriptCompile Include="src\_index.ts" />
     <Content Include="webpack.config.js" />
-    <Content Include="Songhay.StudioFloor.Client.gif" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Bolero" Version="0.*" />

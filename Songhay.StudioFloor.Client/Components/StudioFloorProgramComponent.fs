@@ -38,7 +38,10 @@ type StudioFloorProgramComponent() =
                                         ytItems = None
                                         ytSet = model.ytModel.ytSet
                                         ytSetIndex = model.ytModel.ytSetIndex
-                                        ytVisualStates = model.ytModel.ytVisualStates
+                                        ytVisualStates =
+                                            model.ytModel.ytVisualStates
+                                                .addState(YtSetOverlayIsUntouched)
+                                                .removeState(YtSetOverlayIsVisible)
                                     } 
                   }
             match page with
