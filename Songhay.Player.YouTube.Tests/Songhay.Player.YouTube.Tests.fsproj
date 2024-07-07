@@ -12,6 +12,7 @@
         <Content Include="json\youtube-index-songhay-top-ten.json" />
         <Content Include="json\60-minutes.json" />
         <Content Include="json\songhay-code-playlist.json" />
+        <Content Include="json\songhay-media-building-playlist.json" />
         <Content Include="json\songhay-news-playlist.json" />
         <Content Include="json\video-yt-bowie0-videos.json" />
         <Content Include="json\songhay-index.json" />

@@ -70,6 +70,7 @@ module ServiceHandlerUtilityTests =
     [<Theory>]
     [<InlineData(YtIndexSonghay, "news")>]
     [<InlineData(YtIndexSonghay, "code")>]
+    [<InlineData(YtIndexSonghay, "media-building")>]
     let ``getPlaylistSetUri test`` (indexIdString: string, clientIdString: string) =
         task {
             let indexId = Identifier.fromString(indexIdString)
