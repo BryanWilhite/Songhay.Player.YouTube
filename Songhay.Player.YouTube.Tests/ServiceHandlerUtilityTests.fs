@@ -9,6 +9,7 @@ open Microsoft.Extensions.Logging
 open NSubstitute
 
 open Xunit
+open Xunit.Abstractions
 open FsUnit.Xunit
 open FsUnit.CustomMatchers
 open FsToolkit.ErrorHandling
@@ -24,7 +25,7 @@ open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.ServiceHandlerUtility
 open Songhay.Player.YouTube.YtUriUtility
 
-module ServiceHandlerUtilityTests =
+type ServiceHandlerUtilityTests(testOutputHelper: ITestOutputHelper) =
 
     let projectDirectoryInfo =
         Assembly.GetExecutingAssembly()
@@ -43,7 +44,7 @@ module ServiceHandlerUtilityTests =
 
     [<Theory>]
     [<InlineData(YtIndexSonghay)>]
-    let ``getPlaylistIndexUri test`` (idString: string) =
+    member this.``getPlaylistIndexUri test`` (idString: string) =
         task {
             let id = Identifier.fromString(idString)
             let uri = id |> getPlaylistIndexUri
@@ -71,11 +72,17 @@ module ServiceHandlerUtilityTests =
     [<InlineData(YtIndexSonghay, "news")>]
     [<InlineData(YtIndexSonghay, "code")>]
     [<InlineData(YtIndexSonghay, "media-building")>]
-    let ``getPlaylistSetUri test`` (indexIdString: string, clientIdString: string) =
+    member this.``getPlaylistSetUri test`` (indexIdString: string, clientIdString: string) =
+        testOutputHelper.WriteLine $"{nameof(indexIdString)}: {indexIdString}"
+        testOutputHelper.WriteLine $"{nameof(clientIdString)}: {clientIdString}"
+
         task {
             let indexId = Identifier.fromString(indexIdString)
             let clientId = ClientId.fromString(clientIdString)
             let uri = (indexId, clientId) ||> getPlaylistSetUri
+
+            testOutputHelper.WriteLine $"{nameof(uri)}: {uri.OriginalString}"
+
             let! responseResult = client |> trySendAsync (get uri)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
@@ -98,7 +105,7 @@ module ServiceHandlerUtilityTests =
 
     [<Theory>]
     [<InlineData(YtIndexSonghayTopTen)>]
-    let ``getPlaylistUri test`` (idString: string) =
+    member this.``getPlaylistUri test`` (idString: string) =
         task {
             let id = Identifier.fromString(idString)
             let uri = id |> getPlaylistUri
@@ -123,7 +130,7 @@ module ServiceHandlerUtilityTests =
 
     [<Theory>]
     [<InlineData("songhay/news", "called-yt-set-news")>]
-    let ``getYtSetKey test`` (pathSegments: string, expected: string) =
+    member this.``getYtSetKey test`` (pathSegments: string, expected: string) =
         let pathSegmentsArray = pathSegments.Split('/')
         pathSegmentsArray.Length |> should equal 2
 
@@ -136,7 +143,7 @@ module ServiceHandlerUtilityTests =
     [<Theory>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
     [<InlineData("video-yt-bowie0-videos.json")>]
-    let ``toYtItems test`` (fileName: string) =
+    member this.``toYtItems test`` (fileName: string) =
         let jsonResult = fileName |> getJson |> Ok
         let mockLogger = Substitute.For<ILogger>() |> Some
 

@@ -16,7 +16,7 @@ open Songhay.Modules.ProgramFileUtility
 open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.YtItemUtility
 
-module YtItemUtilityTests =
+type YtItemUtilityTests() =
 
     let projectDirectoryInfo =
         Assembly.GetExecutingAssembly()
@@ -34,7 +34,7 @@ module YtItemUtilityTests =
     [<Theory>]
     [<InlineData("60-minutes.json")>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
-    let ``should have `items` property`` (fileName: string) =
+    member this.``should have `items` property`` (fileName: string) =
         let videoJsonDocument = fileName |> getJsonDocument
         let actual =
             match videoJsonDocument.RootElement.TryGetProperty YtItemsPropertyName with
@@ -46,7 +46,7 @@ module YtItemUtilityTests =
     [<Theory>]
     [<InlineData("60-minutes.json")>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
-    let ``tryGetYtContentDetails test`` (fileName: string) =
+    member this.``tryGetYtContentDetails test`` (fileName: string) =
         let videoJsonDocument = fileName |> getJsonDocument
         let itemElementResult =
             videoJsonDocument.RootElement
@@ -70,7 +70,7 @@ module YtItemUtilityTests =
     [<Theory>]
     [<InlineData("60-minutes.json")>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
-    let ``tryGetYtResourceId test`` (fileName: string) =
+    member this.``tryGetYtResourceId test`` (fileName: string) =
         let videoJsonDocument = fileName |> getJsonDocument
         let itemElementResult =
             videoJsonDocument.RootElement
@@ -93,7 +93,7 @@ module YtItemUtilityTests =
     [<Theory>]
     [<InlineData("60-minutes.json")>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
-    let ``tryGetYtThumbnails test`` (fileName: string) =
+    member this.``tryGetYtThumbnails test`` (fileName: string) =
         let videoJsonDocument = fileName |> getJsonDocument
         let itemElementResult =
             videoJsonDocument.RootElement
@@ -116,7 +116,7 @@ module YtItemUtilityTests =
     [<Theory>]
     [<InlineData("60-minutes.json")>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
-    let ``tryGetYtSnippet test`` (fileName: string) =
+    member this.``tryGetYtSnippet test`` (fileName: string) =
         let videoJsonDocument = fileName |> getJsonDocument
         let itemElementResult =
             videoJsonDocument.RootElement
@@ -139,7 +139,7 @@ module YtItemUtilityTests =
     [<Theory>]
     [<InlineData("60-minutes.json")>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
-    let ``tryGetYtItem test`` (fileName: string) =
+    member this.``tryGetYtItem test`` (fileName: string) =
         let videoJsonDocument = fileName |> getJsonDocument
         let itemElementResult =
             videoJsonDocument.RootElement
@@ -158,7 +158,7 @@ module YtItemUtilityTests =
     [<Theory>]
     [<InlineData("60-minutes.json")>]
     [<InlineData("youtube-index-songhay-top-ten.json")>]
-    let ``fromInput test`` (fileName: string) =
+    member this.``fromInput test`` (fileName: string) =
 
         use videoJsonDocument = fileName |> getJsonDocument
         let actualResult =
