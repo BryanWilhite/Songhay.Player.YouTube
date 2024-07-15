@@ -149,3 +149,13 @@ type ServiceHandlerUtilityTests(testOutputHelper: ITestOutputHelper) =
 
         let actual = (mockLogger, jsonResult) ||> tryGetJsonElement |> toYtItems
         actual |> should be (ofCase <@ Option<YouTubeItem[]>.Some @>)
+
+    [<Theory>]
+    [<InlineData("songhay-code-playlist.json")>]
+    [<InlineData("songhay-news-playlist.json")>]
+    member this.``toYtSet test`` (fileName: string) =
+        let jsonResult = fileName |> getJson |> Ok
+        let mockLogger = Substitute.For<ILogger>() |> Some
+
+        let actual = (mockLogger, jsonResult) ||> tryGetJsonElement |> toYtSet
+        actual |> should be (ofCase <@ Option<(DisplayText * YouTubeItem array)[]>.Some @>)
