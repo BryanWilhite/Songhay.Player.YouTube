@@ -67,7 +67,6 @@ module YtItemUtility =
         let projectionResult = element |> tryGetProperty "projection" |> Result.map (_.GetString())
 
         [
-            durationResult |> Result.map (fun _ -> true)
             dimensionResult |> Result.map (fun _ -> true)
             definitionResult |> Result.map (fun _ -> true)
             captionResult |> Result.map (fun _ -> true)
