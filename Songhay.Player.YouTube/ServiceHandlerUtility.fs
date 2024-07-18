@@ -24,5 +24,7 @@ module ServiceHandlerUtility =
     let toYtSet (jsonElementResult: Result<JsonElement, JsonException>) =
         jsonElementResult
         >>= fun el -> el |> ThumbsSet.fromInput
-        |> Result.map (fun input -> input |> List.toArray)
+        |> Result.eitherMap
+               (fun input -> input |> List.toArray)
+                (fun ex -> ex)
         |> Option.ofResult

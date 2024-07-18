@@ -2,10 +2,11 @@ namespace Songhay.Player.YouTube
 
 open System
 open System.Text.Json
+open Microsoft.FSharp.Core
 
 open FsToolkit.ErrorHandling
+open FsToolkit.ErrorHandling.Operator.Result
 
-open Microsoft.FSharp.Core
 open Songhay.Modules.JsonDocumentUtility
 
 open Songhay.Player.YouTube.Models
@@ -55,7 +56,7 @@ module YtItemUtility =
         let regionRestrictionResult =
             element
             |> tryGetProperty "regionRestriction"
-            |> Result.bind (tryGetProperty "blocked")
+            >>= (tryGetProperty "blocked")
             |> Result.eitherMap
                 (
                     fun el ->
@@ -80,7 +81,7 @@ module YtItemUtility =
                     {
                         videoId = videoIdResult |> Option.ofResult
                         videoPublishedAt = videoPublishedAtResult |> Option.ofResult
-                        duration = durationResult |> Result.valueOr raise
+                        duration = durationResult |> Option.ofResult
                         dimension = dimensionResult |> Result.valueOr raise
                         definition = definitionResult |> Result.valueOr raise
                         caption = captionResult |> Result.valueOr raise
@@ -116,9 +117,9 @@ module YtItemUtility =
     let tryGetYtThumbnails (element: JsonElement) =
         let thumbnailsResult = element |> tryGetProperty YtItemThumbnailsPropertyName |> Result.map id
 
-        let defaultResult = thumbnailsResult |> Result.bind (tryGetProperty "default") |> Result.map id
-        let mediumResult = thumbnailsResult |> Result.bind (tryGetProperty "medium") |> Result.map id
-        let highResult = thumbnailsResult |> Result.bind (tryGetProperty "high") |> Result.map id
+        let defaultResult = thumbnailsResult >>= (tryGetProperty "default") |> Result.map id
+        let mediumResult = thumbnailsResult >>= (tryGetProperty "medium") |> Result.map id
+        let highResult = thumbnailsResult >>= (tryGetProperty "high") |> Result.map id
 
         [
             defaultResult
@@ -130,9 +131,9 @@ module YtItemUtility =
             (
                 fun _ ->
                     {
-                        ``default`` = defaultResult |> Result.bind tryGetYtThumbnail |> Result.valueOr raise
-                        medium = mediumResult |> Result.bind tryGetYtThumbnail |> Result.valueOr raise
-                        high = highResult |> Result.bind tryGetYtThumbnail |> Result.valueOr raise
+                        ``default`` = defaultResult >>= tryGetYtThumbnail |> Result.valueOr raise
+                        medium = mediumResult >>= tryGetYtThumbnail |> Result.valueOr raise
+                        high = highResult >>= tryGetYtThumbnail |> Result.valueOr raise
                         standard = None
                         maxres = None
                     }
@@ -142,7 +143,7 @@ module YtItemUtility =
     let tryGetYtResourceId (element: JsonElement) : Result<YouTubeResourceId, JsonException> =
         element
         |> tryGetProperty "resourceId"
-        |> Result.bind (tryGetProperty "videoId")
+        >>= (tryGetProperty "videoId")
         |> Result.map (fun el -> { videoId = el.GetString() })
 
     let tryGetYtSnippet (element: JsonElement)  : Result<YouTubeSnippet, JsonException> =
@@ -167,11 +168,11 @@ module YtItemUtility =
         let localizedResult = element |> tryGetProperty "localized" |> Result.map id
         let localizedDescResult =
             localizedResult
-            |> Result.bind (tryGetProperty "description")
+            >>= (tryGetProperty "description")
             |> Result.map (_.GetString())
         let localizedTitleResult =
             localizedResult
-            |> Result.bind (tryGetProperty "title")
+            >>= (tryGetProperty "title")
             |> Result.map (_.GetString())
 
         [
@@ -212,8 +213,8 @@ module YtItemUtility =
         let etagResult = element |> tryGetProperty "etag" |> Result.map (_.GetString())
         let idResult = element |> tryGetProperty "id" |> Result.map (_.GetString())
         let kindResult = element |> tryGetProperty "kind" |> Result.map (_.GetString())
-        let snippetResult = element |> tryGetProperty YtItemSnippetPropertyName |> Result.bind tryGetYtSnippet
-        let contentDetailsResult = element |> tryGetProperty YtItemContentDetailsPropertyName |> Result.bind tryGetYtContentDetails
+        let snippetResult = element |> tryGetProperty YtItemSnippetPropertyName >>= tryGetYtSnippet
+        let contentDetailsResult = element |> tryGetProperty YtItemContentDetailsPropertyName >>= tryGetYtContentDetails
 
         [
             etagResult |> Result.map (fun _ -> true)
@@ -239,7 +240,7 @@ module YtItemUtility =
     let fromInput (element: JsonElement) =
         element
         |> tryGetProperty YtItemsPropertyName
-        |> Result.bind
+        >>=
             (
                 fun el ->
                     el.EnumerateArray()

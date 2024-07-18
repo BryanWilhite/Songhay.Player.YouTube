@@ -30,6 +30,8 @@ type SlideDirection = | Left | Right
 type YtThumbsContainerElmishComponent() =
     inherit ElmishComponent<YouTubeModel, YouTubeMessage>()
 
+    static let jsRuntime = Songhay.Modules.Bolero.ServiceProviderUtility.getIJSRuntime()
+
     [<Literal>] // see `$var-thumbs-container-wrapper-left` in `Songhay.Player.YouTube/src/scss/you-tube-css-variables.scss`
     static let CssVarThumbsContainerWrapperLeft = "--thumbs-container-wrapper-left"
 
@@ -131,7 +133,6 @@ type YtThumbsContainerElmishComponent() =
         (thumbsContainerRef: HtmlRef) (blockWrapperRef: HtmlRef)
         (itemsTitle: string option) (model: YouTubeModel) =
 
-        let jsRuntime = model.blazorServices.jsRuntime
         let items = model.ytItems
         let slideAsync (direction: SlideDirection) (_: MouseEventArgs) =
             async {

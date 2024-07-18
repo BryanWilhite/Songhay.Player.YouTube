@@ -1,6 +1,8 @@
 namespace Songhay.Player.YouTube.Models
 
 open System
+open FsToolkit.ErrorHandling
+
 open Songhay.Modules.ProgramTypeUtility
 
 open Songhay.Player.YouTube
@@ -49,7 +51,7 @@ type YouTubeItem =
     member this.getPublishedAt = this.snippet.publishedAt
 
     member this.tryGetDuration =
-        this.contentDetails.duration |> tryParseIso8601Duration
+        this.contentDetails.duration |> Option.either id (fun _ -> "") |> tryParseIso8601Duration
 
     member this.tryGetUri : Result<Uri, exn> =
         let videoIdResult =

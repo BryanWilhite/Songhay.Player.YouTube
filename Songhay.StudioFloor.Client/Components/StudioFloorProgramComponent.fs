@@ -1,8 +1,8 @@
 namespace Songhay.StudioFloor.Client.Components
 
-open System.Net.Http
+open System
 open Microsoft.AspNetCore.Components
-open Microsoft.JSInterop
+
 open Elmish
 open Bolero
 
@@ -66,13 +66,10 @@ type StudioFloorProgramComponent() =
     let view model dispatch = TabsElmishComponent.EComp model dispatch
 
     [<Inject>]
-    member val HttpClient = Unchecked.defaultof<HttpClient> with get, set
-
-    [<Inject>]
-    member val JSRuntime = Unchecked.defaultof<IJSRuntime> with get, set
+    member val ServiceProvider = Unchecked.defaultof<IServiceProvider> with get, set
 
     override this.Program =
-        let initModel = StudioFloorModel.initialize this.HttpClient this.JSRuntime this.NavigationManager
+        let initModel = StudioFloorModel.initialize this.ServiceProvider
         let init = (fun _ -> initModel, Cmd.ofMsg StudioFloorMessage.GetReadMe)
         let update = update
         Program.mkProgram init update view

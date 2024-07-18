@@ -5,7 +5,7 @@ open System
 type YouTubeContentDetails = {
     videoId: string option
     videoPublishedAt: DateTime option
-    duration: string
+    duration: string option
     dimension: string
     definition: string
     caption: bool

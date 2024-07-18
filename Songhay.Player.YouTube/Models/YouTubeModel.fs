@@ -1,10 +1,6 @@
 namespace Songhay.Player.YouTube.Models
 
 open System
-open System.Net.Http
-
-open Microsoft.AspNetCore.Components
-open Microsoft.JSInterop
 
 open FsToolkit.ErrorHandling
 open Bolero
@@ -19,12 +15,7 @@ open Songhay.Player.YouTube.PresentationUtility
 
 type YouTubeModel =
     {
-        blazorServices: {|
-                          httpClient: HttpClient
-                          jsRuntime: IJSRuntime
-                          presentationContainerElementRef: HtmlRef option
-                          navigationManager: NavigationManager
-                        |}
+        blazorServices: {| presentationContainerElementRef: HtmlRef option |}
         error: string option
         presentation: Presentation option
         presentationKey: Identifier option
@@ -34,14 +25,10 @@ type YouTubeModel =
         ytVisualStates: AppStateSet<YouTubeVisualState>
     }
 
-    static member initialize (httpClient: HttpClient) (jsRuntime: IJSRuntime) (navigationManager: NavigationManager) =
+    static member initialize (serviceProvider: IServiceProvider) =
+        Songhay.Modules.Bolero.ServiceProviderUtility.setBlazorServiceProvider serviceProvider
         {
-            blazorServices = {|
-                               httpClient = httpClient
-                               jsRuntime = jsRuntime
-                               presentationContainerElementRef = None
-                               navigationManager = navigationManager
-                            |}
+            blazorServices = {| presentationContainerElementRef = None |}
             error = None
             presentation = None
             presentationKey = None
@@ -94,13 +81,7 @@ type YouTubeModel =
         | GetYtManifestAndPlaylist _ -> { model with presentation = None; ytItems = None }
         | GotPresentationSection elementRef ->
             {
-                model with
-                    blazorServices = {|
-                                       httpClient = model.blazorServices.httpClient
-                                       jsRuntime = model.blazorServices.jsRuntime
-                                       presentationContainerElementRef = elementRef |> Some
-                                       navigationManager = model.blazorServices.navigationManager
-                                    |}
+                model with blazorServices = {| presentationContainerElementRef = elementRef |> Some |}
             }
         | GotYtManifest data ->
             model.setComputedStyles()
@@ -137,6 +118,8 @@ type YouTubeModel =
         clientId = this.getSelectedDocumentClientId()
 
     member this.setComputedStyles() =
+        let jsRuntime = Songhay.Modules.Bolero.ServiceProviderUtility.getIJSRuntime()
+
         option {
             let! elementRef = this.blazorServices.presentationContainerElementRef
             getConventionalCssProperties()
@@ -145,7 +128,7 @@ type YouTubeModel =
                         fun vv ->
                             let n, v = vv.Pair
             
-                            this.blazorServices.jsRuntime
+                            jsRuntime
                                 |> setComputedStylePropertyValueAsync elementRef n.Value v.Value
                                 |> ignore
                     )
@@ -153,7 +136,7 @@ type YouTubeModel =
         |> Option.defaultWith
             (
                 fun _ ->
-                    this.blazorServices.jsRuntime
+                    jsRuntime
                     |> consoleWarnAsync [|
                         $"{nameof this.setComputedStyles} failed!"
                         if this.blazorServices.presentationContainerElementRef.IsNone then
