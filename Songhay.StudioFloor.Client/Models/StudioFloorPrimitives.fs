@@ -8,7 +8,7 @@ type StudioFloorPage =
     | [<EndPoint "/">] ReadMePage
     | [<EndPoint "/yt-presentation/{key}">] YtPresentationPage of key: string
     | [<EndPoint "/yt-thumbs/{key}">] YtThumbsPage of key: string
-    | [<EndPoint "/yt-thumbs-set/{key}">] YtThumbsSetPage
+    | [<EndPoint "/yt-thumbs-set">] YtThumbsSetPage
 
 type StudioFloorMessage =
     | Error of exn

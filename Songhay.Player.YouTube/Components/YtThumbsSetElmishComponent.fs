@@ -57,9 +57,9 @@ type YtThumbsSetElmishComponent() =
             CssClasses [
                 "rx"
                 "b-roll"
-                "overlay"
                 match model.ytVisualStates.hasState(YtSetOverlayIsVisible) with
                 | true ->
+                    "overlay"
                     "animate"
                     "fade-in"
                 | false ->
