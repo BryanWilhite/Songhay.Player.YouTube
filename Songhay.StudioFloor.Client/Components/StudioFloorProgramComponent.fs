@@ -59,7 +59,7 @@ type StudioFloorProgramComponent() =
             | YtThumbsSetPage ->
                 let cmd =
                     if m.ytModel.ytItems.IsNone then
-                        Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.CallYtIndexAndSet)
+                        Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.CallYtIndexAndSetForThumbsSet)
                     else
                         Cmd.none
                 m, cmd

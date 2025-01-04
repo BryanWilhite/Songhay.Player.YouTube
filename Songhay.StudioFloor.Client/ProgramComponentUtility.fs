@@ -85,7 +85,8 @@ let update ytMsg model =
         let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri)  successYtItems failure
         ytModel, cmd
 
-    | YouTubeMessage.CallYtIndexAndSet ->
+    | YouTubeMessage.CallYtIndexAndSetForThumbsSet
+    | YouTubeMessage.CallYtIndexAndSetForThumbsSetOverlay ->
         let success (result: Result<string, HttpStatusCode>) =
             let dataGetter = ServiceHandlerUtility.toPublicationIndexData
             let index = (dataGetter, result) ||> toHandlerOutput None
@@ -136,7 +137,7 @@ let update ytMsg model =
 
     | YouTubeMessage.OpenYtSetOverlay ->
         if ytModel.ytModel.ytSetIndex.IsNone && ytModel.ytModel.ytSet.IsNone then
-            ytModel, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage CallYtIndexAndSet)
+            ytModel, Cmd.ofMsg (StudioFloorMessage.YouTubeMessage CallYtIndexAndSetForThumbsSetOverlay)
         else
             ytModel, Cmd.none
 

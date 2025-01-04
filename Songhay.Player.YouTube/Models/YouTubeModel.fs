@@ -59,7 +59,13 @@ type YouTubeModel =
                 ytSetIndex = index
                 ytVisualStates = model.ytVisualStates.removeState YtSetIsRequested
             }
-        | CallYtIndexAndSet ->
+        | CallYtIndexAndSetForThumbsSet ->
+            { model with
+                ytSet = None
+                ytSetIndex = None
+                ytVisualStates = model.ytVisualStates.addStates(YtSetIsRequested)
+            }
+        | CallYtIndexAndSetForThumbsSetOverlay ->
             { model with
                 ytSet = None
                 ytSetIndex = None

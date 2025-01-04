@@ -13,7 +13,8 @@ type YouTubeMessage =
     | GetYtManifestAndPlaylist of string
     | GotYtManifest of (Identifier * Presentation option)
     | CallYtItems of string | CalledYtItems of YouTubeItem[] option
-    | CallYtIndexAndSet
+    | CallYtIndexAndSetForThumbsSet
+    | CallYtIndexAndSetForThumbsSetOverlay
     | CallYtSet of DisplayText * ClientId
     | CalledYtSet of (DisplayText * YouTubeItem []) [] option
     | CalledYtSetIndex of (ClientId * Name * (DisplayItemModel * ClientId []) []) option
@@ -29,7 +30,8 @@ type YouTubeMessage =
         | Error _ -> $"{nameof YouTubeMessage}.{nameof Error}"
         | CallYtItems _ -> $"{nameof YouTubeMessage}.{nameof CallYtItems}"
         | CalledYtItems _ -> $"{nameof YouTubeMessage}.{nameof CalledYtItems}"
-        | CallYtIndexAndSet -> $"{nameof YouTubeMessage}.{nameof CallYtIndexAndSet}"
+        | CallYtIndexAndSetForThumbsSet -> $"{nameof YouTubeMessage}.{nameof CallYtIndexAndSetForThumbsSet}"
+        | CallYtIndexAndSetForThumbsSetOverlay -> $"{nameof YouTubeMessage}.{nameof CallYtIndexAndSetForThumbsSetOverlay}"
         | CallYtSet _ -> $"{nameof YouTubeMessage}.{nameof CallYtSet}"
         | CalledYtSet _ -> $"{nameof YouTubeMessage}.{nameof CalledYtSet}"
         | CalledYtSetIndex _ -> $"{nameof YouTubeMessage}.{nameof CalledYtSetIndex}"
