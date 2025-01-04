@@ -32,6 +32,7 @@ type TabsElmishComponent() =
                 ( text "README", ReadMePage )
                 ( text "YouTube Thumbs", YtThumbsPage YtIndexSonghayTopTen )
                 ( text "YouTube Presentation", YtPresentationPage "default" )
+                ( text "YouTube Thumbs Set", YtThumbsSetPage)
             ]
             |> List.map (fun (n, page) -> anchorElement NoCssClasses (HasAttr <| ElmishRoutes.router.HRef page) n, page)
 
@@ -67,4 +68,6 @@ type TabsElmishComponent() =
 
                     YtThumbsSetElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
                 }
+            | YtThumbsSetPage ->
+                YtThumbsSetElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
         }

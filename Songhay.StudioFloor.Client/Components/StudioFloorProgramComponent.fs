@@ -1,8 +1,5 @@
 namespace Songhay.StudioFloor.Client.Components
 
-open System
-open Microsoft.AspNetCore.Components
-
 open Elmish
 open Bolero
 
@@ -45,6 +42,13 @@ type StudioFloorProgramComponent() =
                                     } 
                   }
             match page with
+            | YtPresentationPage key ->
+                let cmd =
+                    if m.ytModel.presentation.IsNone then
+                        Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.GetYtManifestAndPlaylist key)
+                    else
+                        Cmd.none
+                m, cmd
             | YtThumbsPage key ->
                 let cmd =
                     if m.ytModel.ytItems.IsNone then
@@ -52,11 +56,10 @@ type StudioFloorProgramComponent() =
                     else
                         Cmd.none
                 m, cmd
-
-            | YtPresentationPage key ->
+            | YtThumbsSetPage ->
                 let cmd =
-                    if m.ytModel.presentation.IsNone then
-                        Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.GetYtManifestAndPlaylist key)
+                    if m.ytModel.ytItems.IsNone then
+                        Cmd.ofMsg (StudioFloorMessage.YouTubeMessage <| YouTubeMessage.CallYtIndexAndSet)
                     else
                         Cmd.none
                 m, cmd
