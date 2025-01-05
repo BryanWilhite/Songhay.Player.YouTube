@@ -66,8 +66,8 @@ type TabsElmishComponent() =
                         model.ytModel
                         (StudioFloorMessage.YouTubeMessage >> dispatch)
 
-                    YtThumbsSetElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
+                    YtThumbsSetElmishComponent.EComp true model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
                 }
             | YtThumbsSetPage ->
-                YtThumbsSetElmishComponent.EComp model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
+                YtThumbsSetElmishComponent.EComp false model.ytModel (StudioFloorMessage.YouTubeMessage >> dispatch)
         }

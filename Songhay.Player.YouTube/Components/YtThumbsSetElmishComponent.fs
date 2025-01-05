@@ -4,6 +4,7 @@ open Bolero
 open Bolero.Html
 open Elmish
 
+open Microsoft.AspNetCore.Components
 open Songhay.Modules.Models
 open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Bolero.Visuals.SvgElement
@@ -52,20 +53,21 @@ type YtThumbsSetElmishComponent() =
             svgElement (bulmaIconSvgViewBox Square24) (SonghaySvgData.Get(SonghaySvgKeys.MDI_CLOSE_BOX_24PX.ToAlphanumeric))
         }
 
-    static let ytThumbsSetNode (dispatch: Dispatch<YouTubeMessage>) (model: YouTubeModel) =
+    static let ytThumbsSetNode (dispatch: Dispatch<YouTubeMessage>) (model: YouTubeModel) isOverlayMode=
         let overlayClasses =
             CssClasses [
                 "rx"
                 "b-roll"
-                match model.ytVisualStates.hasState(YtSetOverlayIsVisible) with
-                | true ->
+                if isOverlayMode then
                     "overlay"
-                    "animate"
-                    "fade-in"
-                | false ->
-                    if not <| model.ytVisualStates.hasState(YtSetOverlayIsUntouched) then
+                    match model.ytVisualStates.hasState(YtSetOverlayIsVisible) with
+                    | true ->
                         "animate"
-                        "fade-out"
+                        "fade-in"
+                    | false ->
+                        if not <| model.ytVisualStates.hasState(YtSetOverlayIsUntouched) then
+                            "animate"
+                            "fade-out"
             ]
 
         let levelRight =
@@ -91,13 +93,17 @@ type YtThumbsSetElmishComponent() =
                             text (model.getSelectedDocumentDisplayText()).Value
                         }
                     }
-                    levelRight
+                    cond isOverlayMode <| function
+                    | true -> levelRight
+                    | false -> empty()
                 }
             | false ->
                 nav {
                     [ levelContainer; m (All, L2)] |> CssClasses.toHtmlClassFromList
 
-                    levelRight
+                    cond isOverlayMode <| function
+                    | true -> levelRight
+                    | false -> empty()
                 }
             cond model.ytSet.IsSome <| function
             | true ->
@@ -117,8 +123,11 @@ type YtThumbsSetElmishComponent() =
 
     static member val Id = "yt-thumbs-set-block" with get
 
-    static member EComp (model: YouTubeModel) dispatch =
-        ecomp<YtThumbsSetElmishComponent, _, _> model dispatch { attr.empty() }
+    static member EComp (isOverlayMode: bool) (model: YouTubeModel) dispatch =
+        ecomp<YtThumbsSetElmishComponent, _, _> model dispatch { "YtSetOverlayModeIsEnabled" => isOverlayMode }
+
+    [<Parameter>]
+    member val YtSetOverlayModeIsEnabled = Unchecked.defaultof<bool> with get, set
 
     override this.ShouldRender(oldModel, newModel) =
         oldModel.ytVisualStates <> newModel.ytVisualStates
@@ -126,4 +135,4 @@ type YtThumbsSetElmishComponent() =
         || oldModel.ytSet <> newModel.ytSet
 
     override this.View model dispatch =
-        model |> ytThumbsSetNode dispatch
+        (model, this.YtSetOverlayModeIsEnabled) ||> ytThumbsSetNode dispatch
