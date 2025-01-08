@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Songhay.Player.YouTube</id>
-    <version>8.0.0</version>
+    <version>8.0.1</version>
     <description>Bolero Components, Elmish types and JSON handlers for the b-roll player for YouTube 🎥 content</description>
     <authors>Bryan D. Wilhite</authors>
     <title>Songhay Modules, Publications</title>
@@ -13,7 +13,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>Bolero Components, Elmish types and JSON handlers for the b-roll player for YouTube 🎥 content</summary>
     <readme>README.md</readme>
-    <releaseNotes>upgrade to .NET 8.0📦🔝</releaseNotes>
+    <releaseNotes>see https://github.com/BryanWilhite/Songhay.Player.YouTube/issues/16 📖</releaseNotes>
     <copyright>(c) 2024 Bryan D. Wilhite</copyright>
     <tags>FSharp;Songhay;Modules;Blazor;WebAssembly;YouTube</tags>
     <repository type="git" url="https://github.com/BryanWilhite/Songhay.Player.YouTube"></repository>
