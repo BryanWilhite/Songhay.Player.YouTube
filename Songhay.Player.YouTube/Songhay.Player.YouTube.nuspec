@@ -14,7 +14,7 @@
     <summary>Bolero Components, Elmish types and JSON handlers for the b-roll player for YouTube 🎥 content</summary>
     <readme>README.md</readme>
     <releaseNotes>see https://github.com/BryanWilhite/Songhay.Player.YouTube/issues/16 📖</releaseNotes>
-    <copyright>(c) 2024 Bryan D. Wilhite</copyright>
+    <copyright>(c) 2025 Bryan D. Wilhite</copyright>
     <tags>FSharp;Songhay;Modules;Blazor;WebAssembly;YouTube</tags>
     <repository type="git" url="https://github.com/BryanWilhite/Songhay.Player.YouTube"></repository>
     <dependencies>
