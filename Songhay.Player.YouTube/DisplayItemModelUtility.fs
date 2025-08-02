@@ -19,8 +19,8 @@ module DisplayItemModelUtility =
         let tryGetDisplayTupleFromDocument (element: JsonElement) =
             result {
                 let! id = ((nameof ClientId), element) ||> Identifier.fromInputElementName
-                and! title = (false, element) ||> defaultDocumentDisplayTextGetter
-                and! fragmentClientIds =
+                let! title = (false, element) ||> defaultDocumentDisplayTextGetter
+                let! fragmentClientIds =
                     element
                     |> tryGetProperty $"{nameof Fragment}s"
                     >>= fun el ->
@@ -44,8 +44,8 @@ module DisplayItemModelUtility =
         let fromInput (element: JsonElement) =
             result {
                 let! segmentClientId = (false, element) ||> ClientId.fromInput
-                and! segmentName = element |> Name.fromInput PublicationItem.Segment false
-                and! displayItemModels =
+                let! segmentName = element |> Name.fromInput PublicationItem.Segment false
+                let! displayItemModels =
                     element |> tryGetProperty $"{nameof Document}s"
                     >>= fun el ->
                         el.EnumerateArray()
