@@ -6,9 +6,9 @@ open FsToolkit.ErrorHandling
 open Bolero
 
 open Songhay.Modules.Models
-open Songhay.Modules.Publications.Models
-
 open Songhay.Modules.Bolero.JsRuntimeUtility
+open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Publications.Models
 
 open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.PresentationUtility
@@ -19,6 +19,7 @@ type YouTubeModel =
         error: string option
         presentation: Presentation option
         presentationKey: Identifier option
+        reastApiMetadata: RestApiMetadata
         ytItems: YouTubeItem[] option
         ytSet: (DisplayText * YouTubeItem []) [] option
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
@@ -32,6 +33,7 @@ type YouTubeModel =
             error = None
             presentation = None
             presentationKey = None
+            reastApiMetadata = "PlayerApi" |> RestApiMetadata.fromConfiguration (Songhay.Modules.Bolero.ServiceProviderUtility.getIConfiguration())
             ytItems = None
             ytSet = None
             ytSetIndex = None
