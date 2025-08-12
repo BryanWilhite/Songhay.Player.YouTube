@@ -4,6 +4,7 @@ open System.Net
 open System.IO
 open System.Net.Http
 open System.Reflection
+open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Logging
 
 open NSubstitute
@@ -42,13 +43,16 @@ type ServiceHandlerUtilityTests(testOutputHelper: ITestOutputHelper) =
 
     let client = new HttpClient()
 
+    let provider = ServiceCollection().BuildServiceProvider()
+
     [<Theory>]
     [<InlineData(YtIndexSonghay)>]
     member this.``getPlaylistIndexUri test`` (idString: string) =
         task {
+            let model = YouTubeModel.initialize(provider)
             let id = Identifier.fromString(idString)
-            let uri = id |> getPlaylistIndexUri
-            let! responseResult = client |> trySendAsync (get uri)
+            let uri = id |> model.getPlaylistIndexUri
+            let! responseResult = client |> trySendAsync (get uri.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 

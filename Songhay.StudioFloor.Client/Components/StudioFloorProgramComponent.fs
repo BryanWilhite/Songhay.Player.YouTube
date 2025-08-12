@@ -3,6 +3,7 @@ namespace Songhay.StudioFloor.Client.Components
 open Elmish
 open Bolero
 
+open Songhay.Modules.Bolero.Models
 open Songhay.Player.YouTube.Models
 open Songhay.StudioFloor.Client
 open Songhay.StudioFloor.Client.Models
@@ -32,6 +33,7 @@ type StudioFloorProgramComponent() =
                                         error = model.ytModel.error
                                         presentation = None
                                         presentationKey = model.ytModel.presentationKey
+                                        restApiMetadata = "PlayerApi" |> RestApiMetadata.fromConfiguration (Songhay.Modules.Bolero.ServiceProviderUtility.getIConfiguration())
                                         ytItems = None
                                         ytSet = model.ytModel.ytSet
                                         ytSetIndex = model.ytModel.ytSetIndex

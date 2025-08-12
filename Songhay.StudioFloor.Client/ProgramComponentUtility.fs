@@ -43,13 +43,13 @@ let passFailureToConsole (jsRuntime: IJSRuntime option) ex =
         |] |> ignore
     ex
 
-let getCommandForGetReadMe (model: StudioFloorModel) =
+let getCommandForGetReadMe (_: StudioFloorModel) =
     let success (result: Result<string, HttpStatusCode>) =
         let data = result |> Result.valueOr (fun code -> $"The expected README data is not here. [error code: {code}]")
         StudioFloorMessage.GotReadMe data
     let failure ex = ((jsRuntime |> Some), ex) ||> passFailureToConsole |> StudioFloorMessage.Error
     let uri = ("./README.html", UriKind.Relative) |> Uri
-    let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri)  success failure
+    let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri) success failure
 
     cmd
 
@@ -83,6 +83,7 @@ let update ytMsg model =
     | YouTubeMessage.CallYtItems key ->
         let uri = key |> Identifier.Alphanumeric |> getPlaylistUri
         let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri)  successYtItems failure
+
         ytModel, cmd
 
     | YouTubeMessage.CallYtIndexAndSetForThumbsSet
@@ -92,15 +93,20 @@ let update ytMsg model =
             let index = (dataGetter, result) ||> toHandlerOutput None
             let ytItemsSuccessMsg = YouTubeMessage.CalledYtSetIndex index
             StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
-        let uriIdx = YtIndexSonghay |> Identifier.Alphanumeric |> getPlaylistIndexUri
-        let cmdBatch = Cmd.batch [
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriIdx) success failure
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriYtSet) successYtSet failure
-        ]
-        ytModel, cmdBatch
+
+        match YtIndexSonghay |> Identifier.Alphanumeric |> model.ytModel.getPlaylistIndexUri with
+        | None -> ytModel, Cmd.none
+        | Some uriIdx ->
+            let cmdBatch = Cmd.batch [
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriIdx) success failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriYtSet) successYtSet failure
+            ]
+
+            ytModel, cmdBatch
 
     | YouTubeMessage.CallYtSet _ ->
         let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriYtSet) successYtSet failure
+
         ytModel, cmd
 
     | YouTubeMessage.GetYtManifestAndPlaylist key ->

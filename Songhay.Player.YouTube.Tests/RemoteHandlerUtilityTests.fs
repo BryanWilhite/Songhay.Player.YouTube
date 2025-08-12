@@ -4,7 +4,9 @@ open System.IO
 open System.Net.Http
 open System.Reflection
 open System.Text.Json
+open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Logging
+open Songhay.Player.YouTube.Models
 open Xunit
 
 open FsUnit.Xunit
@@ -37,17 +39,20 @@ module RemoteHandlerUtilityTests =
             |> Result.valueOr raiseProgramFileError
         File.WriteAllTextAsync(path, json)
 
+    let provider = ServiceCollection().BuildServiceProvider()
+
     [<Theory>]
     [<InlineData(YtIndexSonghay, "songhay-index.json")>]
     let ``getPlaylistIndexUri request test (async)`` (indexName: string, jsonFileName: string) =
         async {
-            let uri = indexName |> Identifier.Alphanumeric |> getPlaylistIndexUri
+            let model = YouTubeModel.initialize(provider)
+            let uri = indexName |> Identifier.Alphanumeric |> model.getPlaylistIndexUri
             let mockLogger = Substitute.For<ILogger>() |> Some
             let dataGetter (result: Result<JsonElement, JsonException>) =
                 result |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
                 result |> Option.ofResult
 
-            let! responseResult = client |> trySendAsync (get uri) |> Async.AwaitTask
+            let! responseResult = client |> trySendAsync (get uri.Value) |> Async.AwaitTask
 
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
 

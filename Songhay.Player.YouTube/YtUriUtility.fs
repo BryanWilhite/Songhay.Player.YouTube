@@ -14,9 +14,6 @@ module YtUriUtility =
     [<Literal>]
     let YtIndexSonghayTopTen = "youtube-index-songhay-top-ten"
 
-    let getPlaylistIndexUri (id: Identifier) =
-        Uri($"{YouTubeApiRootUri}{YouTubeApiPlaylistsIndexPath}{id.StringValue}", UriKind.Absolute)
-
     let getPlaylistSetUri (indexId: Identifier) (clientId: ClientId) =
         let suffix = clientId.toIdentifier.StringValue
         Uri($"{YouTubeApiRootUri}{YouTubeApiPlaylistsPath}{indexId.StringValue}/{suffix}", UriKind.Absolute)

@@ -19,7 +19,7 @@ type YouTubeModel =
         error: string option
         presentation: Presentation option
         presentationKey: Identifier option
-        reastApiMetadata: RestApiMetadata
+        restApiMetadata: RestApiMetadata
         ytItems: YouTubeItem[] option
         ytSet: (DisplayText * YouTubeItem []) [] option
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
@@ -33,7 +33,7 @@ type YouTubeModel =
             error = None
             presentation = None
             presentationKey = None
-            reastApiMetadata = "PlayerApi" |> RestApiMetadata.fromConfiguration (Songhay.Modules.Bolero.ServiceProviderUtility.getIConfiguration())
+            restApiMetadata = "PlayerApi" |> RestApiMetadata.fromConfiguration (Songhay.Modules.Bolero.ServiceProviderUtility.getIConfiguration())
             ytItems = None
             ytSet = None
             ytSetIndex = None
@@ -114,6 +114,9 @@ type YouTubeModel =
         |> List.ofSeq
         |> List.choose getter
         |> List.head
+
+    member this.getPlaylistIndexUri (id: Identifier) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-index", id.StringValue)
 
     member this.getSelectedDocument() =
         this.getVisualState(function YtSetIndexSelectedDocument (dt, id) -> Some (dt, id) | _ -> None)
