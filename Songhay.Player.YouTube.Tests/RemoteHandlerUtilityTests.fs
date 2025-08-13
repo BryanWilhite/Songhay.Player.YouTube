@@ -1,12 +1,8 @@
 namespace Songhay.Player.YouTube.Tests
 
-open System.IO
 open System.Net.Http
-open System.Reflection
 open System.Text.Json
-open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Logging
-open Songhay.Player.YouTube.Models
 open Xunit
 
 open FsUnit.Xunit
@@ -18,35 +14,19 @@ open NSubstitute
 open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
-open Songhay.Modules.ProgramFileUtility
 open Songhay.Modules.Bolero.RemoteHandlerUtility
 open Songhay.Player.YouTube.YtUriUtility
+open Xunit.Abstractions
 
-module RemoteHandlerUtilityTests =
-
-    let projectDirectoryInfo =
-        Assembly.GetExecutingAssembly()
-        |> ProgramAssemblyInfo.getPathFromAssembly "../../../"
-        |> Result.valueOr raiseProgramFileError
-        |> DirectoryInfo
-
-    let client = new HttpClient()
-
-    let writeJsonAsync (fileName: string) (json:string) =
-        let path =
-            $"./json/{fileName}"
-            |> tryGetCombinedPath projectDirectoryInfo.FullName
-            |> Result.valueOr raiseProgramFileError
-        File.WriteAllTextAsync(path, json)
-
-    let provider = ServiceCollection().BuildServiceProvider()
+type RemoteHandlerUtilityTests(outputHelper: ITestOutputHelper) =
 
     [<Theory>]
     [<InlineData(YtIndexSonghay, "songhay-index.json")>]
-    let ``getPlaylistIndexUri request test (async)`` (indexName: string, jsonFileName: string) =
+    member this.``getPlaylistIndexUri request test (async)`` (indexName: string, jsonFileName: string) =
         async {
-            let model = YouTubeModel.initialize(provider)
             let uri = indexName |> Identifier.Alphanumeric |> model.getPlaylistIndexUri
+            outputHelper.WriteLine uri.Value.OriginalString
+
             let mockLogger = Substitute.For<ILogger>() |> Some
             let dataGetter (result: Result<JsonElement, JsonException>) =
                 result |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)

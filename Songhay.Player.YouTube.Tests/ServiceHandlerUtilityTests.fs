@@ -3,8 +3,6 @@ namespace Songhay.Player.YouTube.Tests
 open System.Net
 open System.IO
 open System.Net.Http
-open System.Reflection
-open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Logging
 
 open NSubstitute
@@ -27,23 +25,6 @@ open Songhay.Player.YouTube.ServiceHandlerUtility
 open Songhay.Player.YouTube.YtUriUtility
 
 type ServiceHandlerUtilityTests(testOutputHelper: ITestOutputHelper) =
-
-    let projectDirectoryInfo =
-        Assembly.GetExecutingAssembly()
-        |> ProgramAssemblyInfo.getPathFromAssembly "../../../"
-        |> Result.valueOr raiseProgramFileError
-        |> DirectoryInfo
-
-    let getJson (fileName: string) =
-        let path =
-            $"./json/{fileName}"
-            |> tryGetCombinedPath projectDirectoryInfo.FullName
-            |> Result.valueOr raiseProgramFileError
-        File.ReadAllText(path)
-
-    let client = new HttpClient()
-
-    let provider = ServiceCollection().BuildServiceProvider()
 
     [<Theory>]
     [<InlineData(YtIndexSonghay)>]

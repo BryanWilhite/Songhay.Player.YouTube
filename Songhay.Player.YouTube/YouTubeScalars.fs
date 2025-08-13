@@ -33,13 +33,6 @@ module YouTubeScalars =
     let YouTubeApiPlaylistsPath = "playlists/"
 
     /// <summary>
-    /// URI path representing indices of curated as `playlists`
-    /// in @type {GenericWebIndex} format
-    /// </summary>
-    [<Literal>]
-    let YouTubeApiPlaylistsIndexPath = "playlist/index/"
-
-    /// <summary>
     /// URI path representing curated `videos`
     /// or YouTube `items` for a gen-web
     /// </summary>
