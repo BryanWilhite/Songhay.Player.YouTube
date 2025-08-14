@@ -16,7 +16,6 @@ open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.HttpResponseMessageUtility
 open Songhay.Modules.ProgramFileUtility
 
-open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.YouTubeScalars
 open Songhay.Player.YouTube.Tests.TestUtility
 
@@ -26,7 +25,6 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
     [<InlineData(YtIndexSonghay)>]
     member this.``getPlaylistIndexUri test`` (idString: string) =
         task {
-            let model = YouTubeModel.initialize(provider)
             let id = Identifier.fromString(idString)
             let uriOption = id |> model.getPlaylistIndexUri
             uriOption |> should be (ofCase <@ Option.Some @>)

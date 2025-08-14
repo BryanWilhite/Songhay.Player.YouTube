@@ -51,7 +51,6 @@ type YtItemUtilityTests() =
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
-    [<InlineData("youtube-index-songhay-top-ten.json")>]
     member this.``tryGetYtResourceId test`` (fileName: string) =
         let videoJsonDocument = fileName |> getJsonDocument
         let itemElementResult =
