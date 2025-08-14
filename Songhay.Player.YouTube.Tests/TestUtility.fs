@@ -5,6 +5,7 @@ open System
 open System.IO
 open System.Net.Http
 open System.Reflection
+open System.Text.Json
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 
@@ -41,6 +42,9 @@ let getJson (fileName: string) =
         |> tryGetCombinedPath projectDirectoryInfo.FullName
         |> Result.valueOr raiseProgramFileError
     File.ReadAllText(path)
+
+let getJsonDocument (fileName: string) =
+    JsonDocument.Parse(getJson(fileName))
 
 let writeJsonAsync (fileName: string) (json:string) =
     let path =
