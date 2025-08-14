@@ -91,13 +91,17 @@ type ServiceHandlerUtilityTests(testOutputHelper: ITestOutputHelper) =
             File.WriteAllText(path, json)
         }
 
-    [<Theory>]
+    [<SkippableTheory>]
     [<InlineData(YtIndexSonghayTopTen)>]
     member this.``getPlaylistUri test`` (idString: string) =
+        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+
         task {
             let id = Identifier.fromString(idString)
-            let uri = id |> getPlaylistUri
-            let! responseResult = client |> trySendAsync (get uri)
+            let uri = id |> model.getPlaylistUri
+            uri |> should be (ofCase <@ Option.Some @>)
+
+            let! responseResult = client |> trySendAsync (get uri.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 

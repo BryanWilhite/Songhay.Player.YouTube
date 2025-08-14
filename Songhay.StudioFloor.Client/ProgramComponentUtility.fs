@@ -81,8 +81,11 @@ let update ytMsg model =
 
     match ytMsg with
     | YouTubeMessage.CallYtItems key ->
-        let uri = key |> Identifier.Alphanumeric |> getPlaylistUri
-        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri)  successYtItems failure
+        let uriOption = key |> Identifier.Alphanumeric |> model.ytModel.getPlaylistUri
+        match uriOption with
+        | None -> ytModel, Cmd.none
+        | Some uri ->
+        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri) successYtItems failure
 
         ytModel, cmd
 

@@ -2,78 +2,54 @@
   "items": [
     {
       "kind": "youtube#video",
-      "etag": "KeGJ8U4Zs4jS05XKHvPXDNZYFdw",
-      "id": "jYlNEZPntqM",
+      "etag": "-B107Phpf5eXvCWg64ffLhc5EGM",
+      "id": "OBszPKl75IU",
       "snippet": {
-        "publishedAt": "2024-02-17T19:04:36Z",
-        "channelId": "UCXuqSBlHAE6Xw-yeJA0Tunw",
-        "title": "The $10,000 Mac Pro Killer",
-        "description": "Outsmart algorithms and optimize the way you read the news. Go to https://ground.news/linus to get 40% off the Ground News Vantage plan or subscribe to their Pro Plan for just $1/month.\n\nBuy a MSI Aegis RS Gaming Desktop PC at https://lmg.gg/msiaegisrs\n\nWe’ve done it again, we built the PC Pro 2 electric boogaloo, this time with a much lower budget. Would you prefer to have the PC Pro 2 or the Mac Pro? let us know in the comments below!\n\nDiscuss on the forum: https://linustechtips.com/topic/1558537-the-10000-mac-pro-killer/\n\nBuy a AMD Ryzen Threadripper 7970X CPU: https://geni.us/G9Kw\nBuy a GIGABYTE TRX50 AERO D Motherboard: https://geni.us/pfZCb28\nBuy Micron 5600 MTs CL46 96GM RDIMM 2Rx4 DDR5 RAM: https://lmg.gg/htSjN\nBuy a Sabrent Rocket 4 Plus 8TB NVMe M.2 SSD: https://geni.us/jIHSx2Q\nBuy a Fractal Define 7 XL E-ATX Case: https://geni.us/weY0f7\nBuy a NZXT Kraken 360 AIO Liquid Cooler: https://geni.us/WwhM2N\nBuy a MSI Suprim Liquid X GeForce RTX 4090 Graphics Card: https://geni.us/AASxzUa\nBuy a SilverStone HELA 2050R Platinum PSU: https://geni.us/hvRr\nBuy a Apple Mac Studio M2 Ultra: https://geni.us/vcJJ\nBuy an Apple Mac Pro M2 Ultra: https://geni.us/QoGk\n\nPurchases made through some store links may provide some compensation to Linus Media Group.\n\n► GET MERCH: https://lttstore.com\n► GET EXCLUSIVE CONTENT ON FLOATPLANE: https://lmg.gg/lttfloatplane\n► SPONSORS, AFFILIATES, AND PARTNERS: https://lmg.gg/partners\n► EQUIPMENT WE USE TO FILM LTT: https://lmg.gg/LTTEquipment\n► OUR WAN PODCAST GEAR: https://lmg.gg/wanset\n\nFOLLOW US \n---------------------------------------------------  \nTwitter: https://twitter.com/linustech\nFacebook: http://www.facebook.com/LinusTech\nInstagram: https://www.instagram.com/linustech\nTikTok: https://www.tiktok.com/@linustech\nTwitch: https://www.twitch.tv/linustech\n\nMUSIC CREDIT\n---------------------------------------------------\nIntro: Laszlo - Supernova\nVideo Link: https://www.youtube.com/watch?v=PKfxmFU3lWY\niTunes Download Link: https://itunes.apple.com/us/album/supernova/id936805712\nArtist Link: https://soundcloud.com/laszlomusic\n\nOutro: Approaching Nirvana - Sugar High\nVideo Link: https://www.youtube.com/watch?v=ngsGBSCDwcI\nListen on Spotify: http://spoti.fi/UxWkUw\nArtist Link: http://www.youtube.com/approachingnirvana\n\nIntro animation by MBarek Abdelwassaa https://www.instagram.com/mbarek_abdel/\nMonitor And Keyboard by vadimmihalkevich / CC BY 4.0  https://geni.us/PgGWp\nMechanical RGB Keyboard by BigBrotherECE / CC BY 4.0 https://geni.us/mj6pHk4\nMouse Gamer free Model By Oscar Creativo / CC BY 4.0 https://geni.us/Ps3XfE\n\nCHAPTERS\n---------------------------------------------------\n0:00 Intro\n1:09 Laying out the process(or)\n2:29 Motherboard and PCIe Lanes\n3:42 Memory, let's talk about it\n5:29 Storage\n6:26 Cheese Grater is Greater\n6:56 Cool, cool cool cool\n7:41 GPU 2: Electric Boogaloo\n8:53 A Hela Powerful PSU\n9:16 Benchmarking and Tom Selleck (Classroom Edition)\n11:10 Cinebench\n15:21 Gaming\n18:35 \"Apple is expensive and bad\" - Linus\n19:27 Conclusion",
+        "publishedAt": "2025-08-09T14:01:55Z",
+        "channelId": "UCCd3-JX7e8uGZx00i5646jg",
+        "title": "What Is a Game Engine? - DTNS WEEKEND | Daily Tech News Show",
+        "description": "IT Manager Matthew Stevens (aka GadgetVirtuoso) talks to us about how game engines work. What is a game engine and why is it needed?\n\nGuest: Matthew Stevens (aka GadgetVirtuoso) IT Manager at a mobile game studio for a decade\nHosted on Acast. See acast.com/privacy (https://acast.com/privacy) for more information.\n\nEpisode link: https://play.headliner.app/episode/28482769?utm_source=youtube",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/jYlNEZPntqM/default.jpg",
+            "url": "https://i.ytimg.com/vi/OBszPKl75IU/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/jYlNEZPntqM/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/OBszPKl75IU/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/jYlNEZPntqM/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/OBszPKl75IU/hqdefault.jpg",
             "width": 480,
             "height": 360
           },
           "standard": {
-            "url": "https://i.ytimg.com/vi/jYlNEZPntqM/sddefault.jpg",
+            "url": "https://i.ytimg.com/vi/OBszPKl75IU/sddefault.jpg",
             "width": 640,
             "height": 480
           },
           "maxres": {
-            "url": "https://i.ytimg.com/vi/jYlNEZPntqM/maxresdefault.jpg",
+            "url": "https://i.ytimg.com/vi/OBszPKl75IU/maxresdefault.jpg",
             "width": 1280,
             "height": 720
           }
         },
-        "channelTitle": "Linus Tech Tips",
-        "playlistId": "UUXuqSBlHAE6Xw-yeJA0Tunw",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "jYlNEZPntqM"
-        },
-        "videoOwnerChannelTitle": "Linus Tech Tips",
-        "videoOwnerChannelId": "UCXuqSBlHAE6Xw-yeJA0Tunw",
+        "channelTitle": "Daily Tech News Show",
         "tags": [
-          "apple",
-          "mac",
-          "mac pro",
-          "apple silicon",
-          "mac vs pc",
-          "gaming pc",
-          "apple gaming",
-          "mac gaming",
-          "custom pc",
-          "threadripper",
-          "amd",
-          "nvidia",
-          "watercooling",
-          "pc build"
+          "News",
+          "Technology"
         ],
         "categoryId": "28",
         "liveBroadcastContent": "none",
-        "defaultLanguage": "en",
         "localized": {
-          "title": "The $10,000 Mac Pro Killer",
-          "description": "Outsmart algorithms and optimize the way you read the news. Go to https://ground.news/linus to get 40% off the Ground News Vantage plan or subscribe to their Pro Plan for just $1/month.\n\nBuy a MSI Aegis RS Gaming Desktop PC at https://lmg.gg/msiaegisrs\n\nWe’ve done it again, we built the PC Pro 2 electric boogaloo, this time with a much lower budget. Would you prefer to have the PC Pro 2 or the Mac Pro? let us know in the comments below!\n\nDiscuss on the forum: https://linustechtips.com/topic/1558537-the-10000-mac-pro-killer/\n\nBuy a AMD Ryzen Threadripper 7970X CPU: https://geni.us/G9Kw\nBuy a GIGABYTE TRX50 AERO D Motherboard: https://geni.us/pfZCb28\nBuy Micron 5600 MTs CL46 96GM RDIMM 2Rx4 DDR5 RAM: https://lmg.gg/htSjN\nBuy a Sabrent Rocket 4 Plus 8TB NVMe M.2 SSD: https://geni.us/jIHSx2Q\nBuy a Fractal Define 7 XL E-ATX Case: https://geni.us/weY0f7\nBuy a NZXT Kraken 360 AIO Liquid Cooler: https://geni.us/WwhM2N\nBuy a MSI Suprim Liquid X GeForce RTX 4090 Graphics Card: https://geni.us/AASxzUa\nBuy a SilverStone HELA 2050R Platinum PSU: https://geni.us/hvRr\nBuy a Apple Mac Studio M2 Ultra: https://geni.us/vcJJ\nBuy an Apple Mac Pro M2 Ultra: https://geni.us/QoGk\n\nPurchases made through some store links may provide some compensation to Linus Media Group.\n\n► GET MERCH: https://lttstore.com\n► GET EXCLUSIVE CONTENT ON FLOATPLANE: https://lmg.gg/lttfloatplane\n► SPONSORS, AFFILIATES, AND PARTNERS: https://lmg.gg/partners\n► EQUIPMENT WE USE TO FILM LTT: https://lmg.gg/LTTEquipment\n► OUR WAN PODCAST GEAR: https://lmg.gg/wanset\n\nFOLLOW US \n---------------------------------------------------  \nTwitter: https://twitter.com/linustech\nFacebook: http://www.facebook.com/LinusTech\nInstagram: https://www.instagram.com/linustech\nTikTok: https://www.tiktok.com/@linustech\nTwitch: https://www.twitch.tv/linustech\n\nMUSIC CREDIT\n---------------------------------------------------\nIntro: Laszlo - Supernova\nVideo Link: https://www.youtube.com/watch?v=PKfxmFU3lWY\niTunes Download Link: https://itunes.apple.com/us/album/supernova/id936805712\nArtist Link: https://soundcloud.com/laszlomusic\n\nOutro: Approaching Nirvana - Sugar High\nVideo Link: https://www.youtube.com/watch?v=ngsGBSCDwcI\nListen on Spotify: http://spoti.fi/UxWkUw\nArtist Link: http://www.youtube.com/approachingnirvana\n\nIntro animation by MBarek Abdelwassaa https://www.instagram.com/mbarek_abdel/\nMonitor And Keyboard by vadimmihalkevich / CC BY 4.0  https://geni.us/PgGWp\nMechanical RGB Keyboard by BigBrotherECE / CC BY 4.0 https://geni.us/mj6pHk4\nMouse Gamer free Model By Oscar Creativo / CC BY 4.0 https://geni.us/Ps3XfE\n\nCHAPTERS\n---------------------------------------------------\n0:00 Intro\n1:09 Laying out the process(or)\n2:29 Motherboard and PCIe Lanes\n3:42 Memory, let's talk about it\n5:29 Storage\n6:26 Cheese Grater is Greater\n6:56 Cool, cool cool cool\n7:41 GPU 2: Electric Boogaloo\n8:53 A Hela Powerful PSU\n9:16 Benchmarking and Tom Selleck (Classroom Edition)\n11:10 Cinebench\n15:21 Gaming\n18:35 \"Apple is expensive and bad\" - Linus\n19:27 Conclusion"
-        },
-        "defaultAudioLanguage": "en-US"
+          "title": "What Is a Game Engine? - DTNS WEEKEND | Daily Tech News Show",
+          "description": "IT Manager Matthew Stevens (aka GadgetVirtuoso) talks to us about how game engines work. What is a game engine and why is it needed?\n\nGuest: Matthew Stevens (aka GadgetVirtuoso) IT Manager at a mobile game studio for a decade\nHosted on Acast. See acast.com/privacy (https://acast.com/privacy) for more information.\n\nEpisode link: https://play.headliner.app/episode/28482769?utm_source=youtube"
+        }
       },
       "contentDetails": {
-        "videoId": "jYlNEZPntqM",
-        "videoPublishedAt": "2024-02-17T19:04:36Z",
-        "duration": "PT21M19S",
+        "duration": "PT25M35S",
         "dimension": "2d",
         "definition": "hd",
         "caption": "false",
@@ -92,49 +68,374 @@
     },
     {
       "kind": "youtube#video",
-      "etag": "7mnFRg0SW-PXOQkllrWRhHwPLeg",
-      "id": "bi6HD-4VIzI",
+      "etag": "S-PKSkWCqyHxqwJ1g2-AuOwARDY",
+      "id": "3dqMq1IzcAI",
       "snippet": {
-        "publishedAt": "2024-02-17T18:00:16Z",
-        "channelId": "UCs_tLP3AiwYKwdUHpltJPuA",
-        "title": "Building Images For The Secure Supply Chain in 1 Minute • Adrian Mouat • GOTO 2023",
-        "description": "This presentation was recorded at GOTO Amsterdam 2023. #GOTOcon #GOTOams\nhttps://gotoams.nl\n\nAdrian Mouat - Author of 'Using Docker' & Dev Rel at Chainguard @AdrianMouat \n\nCheck out the full talk:\nhttps://youtu.be/bZTlLAg9UZ4\n\nRESOURCES\nhttps://github.com/wolfi-dev/advisories\nhttps://github.com/chainguard-images/images\n\nAdrian\nhttps://twitter.com/adrianmouat\nhttps://github.com/amouat\nhttps://linkedin.com/in/adrianmouat\nhttp://www.adrianmouat.com\n\nABSTRACT\nSecurity scans getting you down? Is the security team complaining about the CVE count in your images? Want to improve your SLSA level but don't know where to start?\nYou're not alone - all organisations face these issues. This talk will walk through techniques and tooling that you can use today to address these concerns.\n\nIn particular it will cover:\n• how to reduce the CVE count in your images by minimising dependencies\n• the importance of updating images and dependencies\n• using apko to build container images with SBOMs and complete reproducibility [...]\n\nDownload slides and read the full abstract here:\nhttps://gotoams.nl/2023/sessions/2472\n\nRECOMMENDED BOOKS\nAdrian Mouat • Using Docker • https://amzn.to/3PEYIJL\nLiz Rice • Container Security • https://amzn.to/3oU4iJe\nLiz Rice • Kubernetes Security • https://www.oreilly.com/library/view/kubernetes-security/9781492039075\nAaron Parecki • OAuth 2.0 Simplified • https://amzn.to/2A3IMOf\nAaron Parecki • OAuth 2.0 Servers • https://amzn.to/3ecHEsz\nAaron Parecki • The Little Book of OAuth 2.0 RFCs • https://amzn.to/3i7qnlC\nErdal Ozkaya • Cybersecurity: The Beginner's Guide • https://amzn.to/2T6OIj3\nRicher & Sanso • OAuth 2 in Action • https://amzn.to/3hXiAH6\n\nhttps://twitter.com/GOTOcon\nhttps://www.linkedin.com/company/goto-\nhttps://www.facebook.com/GOTOConferences\n#Kubernetes #k8s #CloudNative #SLSALevel #CVE #Dependencies #SupplyChain #Security #AdrianMouat #Chainguard #apko #Containers #SBOM #Vulnerabilities #snyk #AquaTrivy #Grype #Wolfi #LinuxDistribution #YAML #Cybersecurity #GOTOByteSized #ByteSized\n\nLooking for a unique learning experience?\nAttend the next GOTO conference near you! Get your ticket at https://gotopia.tech\nSign up for updates and specials at https://gotopia.tech/newsletter\n\nSUBSCRIBE TO OUR CHANNEL - new videos posted almost daily.\nhttps://www.youtube.com/user/GotoConferences/?sub_confirmation=1",
+        "publishedAt": "2025-08-09T04:29:11Z",
+        "channelId": "UCXuqSBlHAE6Xw-yeJA0Tunw",
+        "title": "\u0022Intel\u0027s CEO Needs to GO....\u0022 and I Agree... - WAN Show August 8, 2025",
+        "description": "Get a free 15-day trial of Odoo\u2019s all-in-one business solution and see how it can make your life easier! Check it out at https://www.odoo.com/wan\n\nCheck out Proton Mail for free at https://proton.me/wan or get up to 38% off their plans!\n\nStep confidently into daily life with the ultra-light Vessi Sneakers. Vessi claims they are fully waterproof, and they come with a 1-year warranty with 30-days of worry-free returns. Get 15% off your first pair at https://vessi.com/wanshow at checkout!\n\nBuy something from dbrand so they have an excuse to keep messing with Linus. Visit http://dbrand.com/WAN\n\nCheck out Dell\u2019s powerful business laptops at: https://lmg.gg/dellprowan\n\nPick up a Secretlab Titan Evo Ergonomic Gaming Chair today at: https://lmg.gg/secretlabwan\n\nGet a special deal on Private Internet Access VPN today at https://www.piavpn.com/LinusWan\n\nPurchases made through some store links may provide some compensation to Linus Media Group.\n\nPodcast Download: TBD\nTimestamps (courtesy of NoKi1119): TBD",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/bi6HD-4VIzI/default.jpg",
+            "url": "https://i.ytimg.com/vi/3dqMq1IzcAI/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/bi6HD-4VIzI/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/3dqMq1IzcAI/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/bi6HD-4VIzI/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/3dqMq1IzcAI/hqdefault.jpg",
             "width": 480,
             "height": 360
           },
           "standard": {
-            "url": "https://i.ytimg.com/vi/bi6HD-4VIzI/sddefault.jpg",
+            "url": "https://i.ytimg.com/vi/3dqMq1IzcAI/sddefault.jpg",
             "width": 640,
             "height": 480
           },
           "maxres": {
-            "url": "https://i.ytimg.com/vi/bi6HD-4VIzI/maxresdefault.jpg",
+            "url": "https://i.ytimg.com/vi/3dqMq1IzcAI/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Linus Tech Tips",
+        "tags": [
+          "pcmr",
+          "building",
+          "competition",
+          "gamers",
+          "how to",
+          "review",
+          "intel",
+          "amd",
+          "cpu",
+          "gpu",
+          "gaming",
+          "unity",
+          "game development",
+          "unity game engine"
+        ],
+        "categoryId": "28",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "en",
+        "localized": {
+          "title": "\u0022Intel\u0027s CEO Needs to GO....\u0022 and I Agree... - WAN Show August 8, 2025",
+          "description": "Get a free 15-day trial of Odoo\u2019s all-in-one business solution and see how it can make your life easier! Check it out at https://www.odoo.com/wan\n\nCheck out Proton Mail for free at https://proton.me/wan or get up to 38% off their plans!\n\nStep confidently into daily life with the ultra-light Vessi Sneakers. Vessi claims they are fully waterproof, and they come with a 1-year warranty with 30-days of worry-free returns. Get 15% off your first pair at https://vessi.com/wanshow at checkout!\n\nBuy something from dbrand so they have an excuse to keep messing with Linus. Visit http://dbrand.com/WAN\n\nCheck out Dell\u2019s powerful business laptops at: https://lmg.gg/dellprowan\n\nPick up a Secretlab Titan Evo Ergonomic Gaming Chair today at: https://lmg.gg/secretlabwan\n\nGet a special deal on Private Internet Access VPN today at https://www.piavpn.com/LinusWan\n\nPurchases made through some store links may provide some compensation to Linus Media Group.\n\nPodcast Download: TBD\nTimestamps (courtesy of NoKi1119): TBD"
+        },
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT3H57M22S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "TcXGY7si3kkwOI4VzXYOe_NCRBw",
+      "id": "fWhY0efYBc4",
+      "snippet": {
+        "publishedAt": "2025-08-04T05:49:11Z",
+        "channelId": "UCagoIYmo_gO1iVaCeeSikEg",
+        "title": "It All Starts With Baby Shark - Tesla\u0027s $240 Million Bill for FSD Crash",
+        "description": "\u2022 A jury orders Tesla to pay more than $240 million in Autopilot crash\n\u2022 Apple reports biggest revenue growth since December 2021\n\u2022 Apple\u2019s New \u2018Answers\u2019 Team Eyes ChatGPT-Like Product in AI Push\n\u2022 Apple says DOJ\u0027s antitrust lawsuit would \u0027reduce consumer choice\u0027\n\u2022 Alphabet beats earnings expectations, raises spending forecast\n\u2022 Australia widens teen social media ban to YouTube, scraps exemption\n\u2022 YouTube rolls out age-estimation tech to identify US teens and apply additional protections\n\u2022 Amazon to Pay New York Times $20 Million a Year in AI Deal\n\u2022 A.I. Researchers Are Negotiating $250 Million Pay Packages. Just Like N.B.A. Stars.\n\u2022 Anthropic studied what gives an AI system its \u2018personality\u2019 \u2014 and what makes it \u2018evil\u2019\n\u2022 AI Capex is Eating the Economy\n\u2022 Will data centers crash the economy?\n\u2022 What content strategy looks like in the age of AI\n\u2022 Inside the LG G5\u2019s shocking last-place finish at the 2025 TV Shootout\n\u2022 Senate confirms Sean Cairncross to be national cyber director under Trump\n\u2022 How Podcast-Obsessed Tech Investors Made a New Media Industry\n\u2022 Y2K38 bug? Debian switching to 64-bit time for everything\n\u2022 Lina Kahn Takes a Victory Lap for Figma IPO\n\nHost: Leo Laporte\nGuests: Richard Campbell, Brian McCullough, and Mike Elgan\nThis Week in Tech episode 1043\nMore Info: https://twit.tv/shows/this-week-in-tech/episodes/1043\n\nSponsors:\n\u2022 canary.tools/twit - use code: TWIT\n\u2022 ZipRecruiter.com/Twit\n\u2022 zscaler.com/security\n\u2022 miro.com\n\u2022 uscloud.com\n\nDownload or subscribe to This Week in Tech at https://twit.tv/shows/this-week-in-tech\n\nJoin Club TWiT for Ad-Free Podcasts!\nSupport what you love and get ad-free shows, a members-only Discord, and behind-the-scenes access. Join today: https://twit.tv/clubtwit\n\nProducts we recommend: https://www.amazon.com/shop/twitnetcastnetwork\nTWiT may earn commissions on certain products.\n\nFollow us:\nWebsite: https://twit.tv/\nBluesky: https://bsky.app/profile/twit.tv\nMastodon: https://mastodon.social/@TWiT\nFacebook: https://www.facebook.com/TWiTNetwork\nInstagram: https://www.instagram.com/twit.tv/\nX (Twitter): https://x.com/TWiT\nTikTok: https://www.tiktok.com/@twittok\nLinkedIn: https://www.linkedin.com/company/twit-llc\n#tesla #apple #ai \nAbout us:\nTWiT.tv is a technology podcasting network located in the San Francisco Bay Area with the #1 ranked technology podcast This Week in Tech hosted by Leo Laporte. Every week we produce dozens of hours of content on a variety of programs including Tech News Weekly, MacBreak Weekly, Windows Weekly, Security Now, Intelligent Machines, and more.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/fWhY0efYBc4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/fWhY0efYBc4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/fWhY0efYBc4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/fWhY0efYBc4/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/fWhY0efYBc4/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "This Week in Tech",
+        "tags": [
+          "TWiT",
+          "Technology",
+          "TechTV",
+          "Leo Laporte",
+          "This Week in Tech",
+          "tech news",
+          "talk",
+          "panel",
+          "discussion",
+          "tesla",
+          "fsd",
+          "Apple",
+          "chatgpt",
+          "openAI",
+          "DOJ",
+          "alphabet",
+          "Google",
+          "YouTube",
+          "Australia",
+          "Anthropic",
+          "LG",
+          "sean cairncross",
+          "y2k38",
+          "Linux",
+          "debian",
+          "Lina Kahn",
+          "adobe",
+          "Figma",
+          "ftc"
+        ],
+        "categoryId": "28",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "en",
+        "localized": {
+          "title": "It All Starts With Baby Shark - Tesla\u0027s $240 Million Bill for FSD Crash",
+          "description": "\u2022 A jury orders Tesla to pay more than $240 million in Autopilot crash\n\u2022 Apple reports biggest revenue growth since December 2021\n\u2022 Apple\u2019s New \u2018Answers\u2019 Team Eyes ChatGPT-Like Product in AI Push\n\u2022 Apple says DOJ\u0027s antitrust lawsuit would \u0027reduce consumer choice\u0027\n\u2022 Alphabet beats earnings expectations, raises spending forecast\n\u2022 Australia widens teen social media ban to YouTube, scraps exemption\n\u2022 YouTube rolls out age-estimation tech to identify US teens and apply additional protections\n\u2022 Amazon to Pay New York Times $20 Million a Year in AI Deal\n\u2022 A.I. Researchers Are Negotiating $250 Million Pay Packages. Just Like N.B.A. Stars.\n\u2022 Anthropic studied what gives an AI system its \u2018personality\u2019 \u2014 and what makes it \u2018evil\u2019\n\u2022 AI Capex is Eating the Economy\n\u2022 Will data centers crash the economy?\n\u2022 What content strategy looks like in the age of AI\n\u2022 Inside the LG G5\u2019s shocking last-place finish at the 2025 TV Shootout\n\u2022 Senate confirms Sean Cairncross to be national cyber director under Trump\n\u2022 How Podcast-Obsessed Tech Investors Made a New Media Industry\n\u2022 Y2K38 bug? Debian switching to 64-bit time for everything\n\u2022 Lina Kahn Takes a Victory Lap for Figma IPO\n\nHost: Leo Laporte\nGuests: Richard Campbell, Brian McCullough, and Mike Elgan\nThis Week in Tech episode 1043\nMore Info: https://twit.tv/shows/this-week-in-tech/episodes/1043\n\nSponsors:\n\u2022 canary.tools/twit - use code: TWIT\n\u2022 ZipRecruiter.com/Twit\n\u2022 zscaler.com/security\n\u2022 miro.com\n\u2022 uscloud.com\n\nDownload or subscribe to This Week in Tech at https://twit.tv/shows/this-week-in-tech\n\nJoin Club TWiT for Ad-Free Podcasts!\nSupport what you love and get ad-free shows, a members-only Discord, and behind-the-scenes access. Join today: https://twit.tv/clubtwit\n\nProducts we recommend: https://www.amazon.com/shop/twitnetcastnetwork\nTWiT may earn commissions on certain products.\n\nFollow us:\nWebsite: https://twit.tv/\nBluesky: https://bsky.app/profile/twit.tv\nMastodon: https://mastodon.social/@TWiT\nFacebook: https://www.facebook.com/TWiTNetwork\nInstagram: https://www.instagram.com/twit.tv/\nX (Twitter): https://x.com/TWiT\nTikTok: https://www.tiktok.com/@twittok\nLinkedIn: https://www.linkedin.com/company/twit-llc\n#tesla #apple #ai \nAbout us:\nTWiT.tv is a technology podcasting network located in the San Francisco Bay Area with the #1 ranked technology podcast This Week in Tech hosted by Leo Laporte. Every week we produce dozens of hours of content on a variety of programs including Tech News Weekly, MacBreak Weekly, Windows Weekly, Security Now, Intelligent Machines, and more."
+        },
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT2H54M5S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "30_gP0M9O5q2PX_4HDj5ux4MHF0",
+      "id": "KcvuD36zQbo",
+      "snippet": {
+        "publishedAt": "2025-08-07T02:12:02Z",
+        "channelId": "UC1WHdBv9P5tYEGfy-btvYfA",
+        "title": "Shakin\u0027 the Treats - Microsoft becomes a $4 trillion company",
+        "description": "Microsoft becomes a $4 trillion company\n\nGet full show notes at https://twit.tv/shows/windows-weekly/episodes/944\n\nHosts: Leo Laporte, Paul Thurrott, and Richard Campbell\nWindows Weekly episode 944\nMore Info: https://twit.tv/shows/windows-weekly/episodes/944\n\nSponsors:\n\u2022 1password.com/windowsweekly\n\u2022 uscloud.com\n\nDownload or subscribe to Windows Weekly at https://twit.tv/shows/windows-weekly\n\nCheck out Paul\u0027s blog at thurrott.com\n\nThe Windows Weekly theme music is courtesy of Carl Franklin.\n\nJoin Club TWiT for Ad-Free Podcasts!\nSupport what you love and get ad-free shows, a members-only Discord, and behind-the-scenes access. Join today: https://twit.tv/clubtwit\n\nProducts we recommend: https://www.amazon.com/shop/twitnetcastnetwork\nTWiT may earn commissions on certain products.\n\nFollow us:\nWebsite: https://twit.tv/\nBluesky: https://bsky.app/profile/twit.tv\nMastodon: https://mastodon.social/@TWiT\nFacebook: https://www.facebook.com/TWiTNetwork\nInstagram: https://www.instagram.com/twit.tv/\nX (Twitter): https://x.com/TWiT\nTikTok: https://www.tiktok.com/@twittok\nLinkedIn: https://www.linkedin.com/company/twit-llc\n#microsoft #azure #windows \nAbout us:\nTWiT.tv is a technology podcasting network located in the San Francisco Bay Area with the #1 ranked technology podcast This Week in Tech hosted by Leo Laporte. Every week we produce dozens of hours of content on a variety of programs including Tech News Weekly, MacBreak Weekly, Windows Weekly, Security Now, Intelligent Machines, and more.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/KcvuD36zQbo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/KcvuD36zQbo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/KcvuD36zQbo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/KcvuD36zQbo/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/KcvuD36zQbo/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Windows Weekly",
+        "tags": [
+          "TWiT",
+          "Technology",
+          "Leo Laporte",
+          "Paul Thurrott",
+          "Windows",
+          "Microsoft",
+          "xbox",
+          "Microsoft earnings",
+          "microsoft revenue",
+          "ai",
+          "David Weston",
+          "github copilot",
+          "windows 11 se",
+          "Windows Insider program",
+          "amd",
+          "Apple",
+          "qualcomm",
+          "amazon",
+          "openAI",
+          "chatgpt",
+          "alexa\u002B ads",
+          "windows app sdk",
+          ".NETpad",
+          "Game Pass",
+          "gaming copilot",
+          "assassin\u0027s creed mirage",
+          "nintendo switch tariffs",
+          "WinSAT",
+          "proton authenticator",
+          "copilot"
+        ],
+        "categoryId": "28",
+        "liveBroadcastContent": "none",
+        "defaultLanguage": "en",
+        "localized": {
+          "title": "Shakin\u0027 the Treats - Microsoft becomes a $4 trillion company",
+          "description": "Microsoft becomes a $4 trillion company\n\nGet full show notes at https://twit.tv/shows/windows-weekly/episodes/944\n\nHosts: Leo Laporte, Paul Thurrott, and Richard Campbell\nWindows Weekly episode 944\nMore Info: https://twit.tv/shows/windows-weekly/episodes/944\n\nSponsors:\n\u2022 1password.com/windowsweekly\n\u2022 uscloud.com\n\nDownload or subscribe to Windows Weekly at https://twit.tv/shows/windows-weekly\n\nCheck out Paul\u0027s blog at thurrott.com\n\nThe Windows Weekly theme music is courtesy of Carl Franklin.\n\nJoin Club TWiT for Ad-Free Podcasts!\nSupport what you love and get ad-free shows, a members-only Discord, and behind-the-scenes access. Join today: https://twit.tv/clubtwit\n\nProducts we recommend: https://www.amazon.com/shop/twitnetcastnetwork\nTWiT may earn commissions on certain products.\n\nFollow us:\nWebsite: https://twit.tv/\nBluesky: https://bsky.app/profile/twit.tv\nMastodon: https://mastodon.social/@TWiT\nFacebook: https://www.facebook.com/TWiTNetwork\nInstagram: https://www.instagram.com/twit.tv/\nX (Twitter): https://x.com/TWiT\nTikTok: https://www.tiktok.com/@twittok\nLinkedIn: https://www.linkedin.com/company/twit-llc\n#microsoft #azure #windows \nAbout us:\nTWiT.tv is a technology podcasting network located in the San Francisco Bay Area with the #1 ranked technology podcast This Week in Tech hosted by Leo Laporte. Every week we produce dozens of hours of content on a variety of programs including Tech News Weekly, MacBreak Weekly, Windows Weekly, Security Now, Intelligent Machines, and more."
+        },
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT2H33M56S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "false",
+        "licensedContent": true,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "_78nE5_toASjO8AsL0vgq5Lx5-E",
+      "id": "ihv2QL55IVI",
+      "snippet": {
+        "publishedAt": "2025-08-08T15:57:22Z",
+        "channelId": "UCsMica-v34Irf9KVTh6xx-g",
+        "title": "What\u0027s the number one piece of advice you can give developers about security?",
+        "description": "What\u2019s the #1 piece of advice Michael Howard gives developers about security?\nIn this #OneDevQuestion, he explains why every input should be questioned. \n\nLearn more: https://msft.it/6058sOulu\n\n#AppSec #SecureCoding",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ihv2QL55IVI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ihv2QL55IVI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ihv2QL55IVI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/ihv2QL55IVI/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/ihv2QL55IVI/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Microsoft Developer",
+        "categoryId": "28",
+        "liveBroadcastContent": "none",
+        "localized": {
+          "title": "What\u0027s the number one piece of advice you can give developers about security?",
+          "description": "What\u2019s the #1 piece of advice Michael Howard gives developers about security?\nIn this #OneDevQuestion, he explains why every input should be questioned. \n\nLearn more: https://msft.it/6058sOulu\n\n#AppSec #SecureCoding"
+        }
+      },
+      "contentDetails": {
+        "duration": "PT43S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "true",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "W6Ihet8fGTfnFX8F_UhR54T_7L8",
+      "id": "gy1BfYCOb10",
+      "snippet": {
+        "publishedAt": "2025-08-08T12:27:28Z",
+        "channelId": "UCs_tLP3AiwYKwdUHpltJPuA",
+        "title": "Optimizing Cloud Native Java \u2022 Ben Evans \u0026 Holly Cummins",
+        "description": "This interview was recorded for the GOTO Book Club.\nhttp://gotopia.tech/bookclub\n\nRead the full transcription of the interview here\n (https://gotopia.tech/episodes/363) \nBen Evans - Senior Principal Software Engineer at Red Hat \u0026 Co-Author of \u0022Optimizing Cloud Native Java\u0022 and many more Books\nHolly Cummins - Senior Principal Software Engineer on the Red Hat Quarkus Team\n\nRESOURCES\nBen\nhttps://mastodon.social/@kittylyst\nhttps://www.linkedin.com/in/kittylyst\nhttps://www.kittylyst.com\n\nHolly\nhttps://hollycummins.com\n (https://hollycummins.com/type/blog) https://bsky.app/profile/hollycummins.com\nhttps://hachyderm.io/@holly_cummins\n (https://twitter.com/holly_cummins) https://linkedin.com/in/holly-k-cummins\n\nDESCRIPTION\nHolly Cummins talks with Ben Evans about his latest book \u0022Optimizing Cloud Native Java\u0022, which updates his previous work \u0022Optimizing Java\u0022 to reflect the realities of cloud native environments.\n\nBen explains that performance engineering is not just technical but also psychological, emphasizing the importance of user expectations and defining clear performance goals. They discuss how modern Java performance must account for cloud native architectures, with applications running across distributed microservices and containerized, single-core environments.\n\nThe book focuses on the importance of measuring relevant data, warns against relying on misleading micro-benchmarks, and highlights how system-level benchmarks offer a clearer picture. Ben also delves into the JVM\u0027s hidden complexities, such as changes in Java 17 and the impact of virtual threads. Practical, real-world examples in the book, like the \u0022fighting animals\u0022 microservices application, help developers learn how to optimize Java performance in real network environments.\n\nFinally, Ben touches on the future of Java concurrency, with virtual threads and structured concurrency offering new ways to handle performance challenges in cloud native systems.\n\nRECOMMENDED BOOKS\nBen Evans \u0026 Jim Gough \u2022 Optimizing Cloud Native Java\n (https://amzn.to/41nivD9) Ben Evans, Jason Clark \u0026 David Flanagan \u2022 Java in a Nutshell\n (https://amzn.to/43FDoMA) Ben Evans, Martijn Verburg \u0026 Jason Clark \u2022 The Well-Grounded Java Developer\n (https://amzn.to/41JMG7N) Ben Evans, Jim Gough \u0026 Chris Newland \u2022 Optimizing Java\n (https://amzn.to/4bNOfGh) Ben Evans \u0026 Martijn Verburg \u2022 The Well-Grounded Java Developer (https://amzn.to/4hs9MWk) \n\n\nBluesky (https://bsky.app/profile/gotocon.com) \nTwitter (https://twitter.com/GOTOcon) \nInstagram (https://www.instagram.com/goto_con) \nLinkedIn (https://www.linkedin.com/company/goto-) \nFacebook (https://www.facebook.com/GOTOConferences) \n\nCHANNEL MEMBERSHIP BONUS\nJoin this channel to get early access to videos \u0026 other perks:\nhttps://www.youtube.com/channel/UCs_tLP3AiwYKwdUHpltJPuA/join\n\nLooking for a unique learning experience?\nAttend the next GOTO conference near you! Get your ticket: gotopia.tech (https://gotopia.tech) \n\nSUBSCRIBE TO OUR YOUTUBE CHANNEL (https://www.youtube.com/user/GotoConferences/?sub_confirmation=1)  - new videos posted daily!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/gy1BfYCOb10/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/gy1BfYCOb10/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/gy1BfYCOb10/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/gy1BfYCOb10/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/gy1BfYCOb10/maxresdefault.jpg",
             "width": 1280,
             "height": 720
           }
         },
         "channelTitle": "GOTO Conferences",
-        "playlistId": "UUs_tLP3AiwYKwdUHpltJPuA",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "bi6HD-4VIzI"
-        },
-        "videoOwnerChannelTitle": "GOTO Conferences",
-        "videoOwnerChannelId": "UCs_tLP3AiwYKwdUHpltJPuA",
         "tags": [
           "GOTO",
           "GOTOcon",
@@ -149,32 +450,19 @@
           "Software Development",
           "Tech Channel",
           "Tech Conference",
-          "GOTObytesized",
-          "GOTO Byte-Sized",
-          "Adrian Mouat",
-          "Secure Supply Chain",
-          "Chainguard",
-          "Kubernetes",
-          "k8s",
-          "Cloud Native",
-          "SLSA Level",
-          "apko",
-          "Containers",
-          "Wolfi"
+          "Today in Tech"
         ],
         "categoryId": "28",
         "liveBroadcastContent": "none",
         "defaultLanguage": "en",
         "localized": {
-          "title": "Building Images For The Secure Supply Chain in 1 Minute • Adrian Mouat • GOTO 2023",
-          "description": "This presentation was recorded at GOTO Amsterdam 2023. #GOTOcon #GOTOams\nhttps://gotoams.nl\n\nAdrian Mouat - Author of 'Using Docker' & Dev Rel at Chainguard @AdrianMouat \n\nCheck out the full talk:\nhttps://youtu.be/bZTlLAg9UZ4\n\nRESOURCES\nhttps://github.com/wolfi-dev/advisories\nhttps://github.com/chainguard-images/images\n\nAdrian\nhttps://twitter.com/adrianmouat\nhttps://github.com/amouat\nhttps://linkedin.com/in/adrianmouat\nhttp://www.adrianmouat.com\n\nABSTRACT\nSecurity scans getting you down? Is the security team complaining about the CVE count in your images? Want to improve your SLSA level but don't know where to start?\nYou're not alone - all organisations face these issues. This talk will walk through techniques and tooling that you can use today to address these concerns.\n\nIn particular it will cover:\n• how to reduce the CVE count in your images by minimising dependencies\n• the importance of updating images and dependencies\n• using apko to build container images with SBOMs and complete reproducibility [...]\n\nDownload slides and read the full abstract here:\nhttps://gotoams.nl/2023/sessions/2472\n\nRECOMMENDED BOOKS\nAdrian Mouat • Using Docker • https://amzn.to/3PEYIJL\nLiz Rice • Container Security • https://amzn.to/3oU4iJe\nLiz Rice • Kubernetes Security • https://www.oreilly.com/library/view/kubernetes-security/9781492039075\nAaron Parecki • OAuth 2.0 Simplified • https://amzn.to/2A3IMOf\nAaron Parecki • OAuth 2.0 Servers • https://amzn.to/3ecHEsz\nAaron Parecki • The Little Book of OAuth 2.0 RFCs • https://amzn.to/3i7qnlC\nErdal Ozkaya • Cybersecurity: The Beginner's Guide • https://amzn.to/2T6OIj3\nRicher & Sanso • OAuth 2 in Action • https://amzn.to/3hXiAH6\n\nhttps://twitter.com/GOTOcon\nhttps://www.linkedin.com/company/goto-\nhttps://www.facebook.com/GOTOConferences\n#Kubernetes #k8s #CloudNative #SLSALevel #CVE #Dependencies #SupplyChain #Security #AdrianMouat #Chainguard #apko #Containers #SBOM #Vulnerabilities #snyk #AquaTrivy #Grype #Wolfi #LinuxDistribution #YAML #Cybersecurity #GOTOByteSized #ByteSized\n\nLooking for a unique learning experience?\nAttend the next GOTO conference near you! Get your ticket at https://gotopia.tech\nSign up for updates and specials at https://gotopia.tech/newsletter\n\nSUBSCRIBE TO OUR CHANNEL - new videos posted almost daily.\nhttps://www.youtube.com/user/GotoConferences/?sub_confirmation=1"
+          "title": "Optimizing Cloud Native Java \u2022 Ben Evans \u0026 Holly Cummins",
+          "description": "This interview was recorded for the GOTO Book Club.\nhttp://gotopia.tech/bookclub\n\nRead the full transcription of the interview here\n (https://gotopia.tech/episodes/363) \nBen Evans - Senior Principal Software Engineer at Red Hat \u0026 Co-Author of \u0022Optimizing Cloud Native Java\u0022 and many more Books\nHolly Cummins - Senior Principal Software Engineer on the Red Hat Quarkus Team\n\nRESOURCES\nBen\nhttps://mastodon.social/@kittylyst\nhttps://www.linkedin.com/in/kittylyst\nhttps://www.kittylyst.com\n\nHolly\nhttps://hollycummins.com\n (https://hollycummins.com/type/blog) https://bsky.app/profile/hollycummins.com\nhttps://hachyderm.io/@holly_cummins\n (https://twitter.com/holly_cummins) https://linkedin.com/in/holly-k-cummins\n\nDESCRIPTION\nHolly Cummins talks with Ben Evans about his latest book \u0022Optimizing Cloud Native Java\u0022, which updates his previous work \u0022Optimizing Java\u0022 to reflect the realities of cloud native environments.\n\nBen explains that performance engineering is not just technical but also psychological, emphasizing the importance of user expectations and defining clear performance goals. They discuss how modern Java performance must account for cloud native architectures, with applications running across distributed microservices and containerized, single-core environments.\n\nThe book focuses on the importance of measuring relevant data, warns against relying on misleading micro-benchmarks, and highlights how system-level benchmarks offer a clearer picture. Ben also delves into the JVM\u0027s hidden complexities, such as changes in Java 17 and the impact of virtual threads. Practical, real-world examples in the book, like the \u0022fighting animals\u0022 microservices application, help developers learn how to optimize Java performance in real network environments.\n\nFinally, Ben touches on the future of Java concurrency, with virtual threads and structured concurrency offering new ways to handle performance challenges in cloud native systems.\n\nRECOMMENDED BOOKS\nBen Evans \u0026 Jim Gough \u2022 Optimizing Cloud Native Java\n (https://amzn.to/41nivD9) Ben Evans, Jason Clark \u0026 David Flanagan \u2022 Java in a Nutshell\n (https://amzn.to/43FDoMA) Ben Evans, Martijn Verburg \u0026 Jason Clark \u2022 The Well-Grounded Java Developer\n (https://amzn.to/41JMG7N) Ben Evans, Jim Gough \u0026 Chris Newland \u2022 Optimizing Java\n (https://amzn.to/4bNOfGh) Ben Evans \u0026 Martijn Verburg \u2022 The Well-Grounded Java Developer (https://amzn.to/4hs9MWk) \n\n\nBluesky (https://bsky.app/profile/gotocon.com) \nTwitter (https://twitter.com/GOTOcon) \nInstagram (https://www.instagram.com/goto_con) \nLinkedIn (https://www.linkedin.com/company/goto-) \nFacebook (https://www.facebook.com/GOTOConferences) \n\nCHANNEL MEMBERSHIP BONUS\nJoin this channel to get early access to videos \u0026 other perks:\nhttps://www.youtube.com/channel/UCs_tLP3AiwYKwdUHpltJPuA/join\n\nLooking for a unique learning experience?\nAttend the next GOTO conference near you! Get your ticket: gotopia.tech (https://gotopia.tech) \n\nSUBSCRIBE TO OUR YOUTUBE CHANNEL (https://www.youtube.com/user/GotoConferences/?sub_confirmation=1)  - new videos posted daily!"
         },
         "defaultAudioLanguage": "en"
       },
       "contentDetails": {
-        "videoId": "bi6HD-4VIzI",
-        "videoPublishedAt": "2024-02-17T18:00:16Z",
-        "duration": "PT1M9S",
+        "duration": "PT39M19S",
         "dimension": "2d",
         "definition": "hd",
         "caption": "false",
@@ -193,61 +481,67 @@
     },
     {
       "kind": "youtube#video",
-      "etag": "XAJ6AMGkwcM_LNDP-1APKCnJbsw",
-      "id": "gcu5BHEQH4M",
+      "etag": "AsrmVaCTBCakzdUkt_8_4y0U4QE",
+      "id": "CMw0KEvAZ00",
       "snippet": {
-        "publishedAt": "2024-02-17T04:00:25Z",
-        "channelId": "UCCd3-JX7e8uGZx00i5646jg",
-        "title": "Passkeys Instead Of Passwords",
-        "description": "",
+        "publishedAt": "2025-07-31T21:24:29Z",
+        "channelId": "UC-oYkx9wyeGc6Sh8tkVlaTw",
+        "title": "Ooops! I should have picked a different groom for this demo \uD83D\uDE02",
+        "description": "Getting realistic shadows and lighting in a composite used to take forever. Not anymore. In this video, I demo the brand-new Harmonize feature in the Photoshop Public Beta \u2014 a one-click solution to make your composites look like a single photo. Whether you\u2019re adding people to scenes or blending elements from different images, Harmonize intelligently adjusts lighting and shadows for a seamless result. Available now in the Photoshop Public Beta via the Creative Cloud app!\n\n\uD83D\uDC49 Try it yourself and let me know which variation you like best in the comments.\n\uD83D\uDCE5 Download the Photoshop beta from your Creative Cloud app.\n\n\n\uD83D\uDD14 Subscribe for more tips!\n\uD83D\uDC4D Like if you found this helpful \u0026 Comment with your questions!\n\nFollow me on social media: https://terryleewhite.social",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/gcu5BHEQH4M/default.jpg",
+            "url": "https://i.ytimg.com/vi/CMw0KEvAZ00/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/gcu5BHEQH4M/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/CMw0KEvAZ00/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/gcu5BHEQH4M/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/CMw0KEvAZ00/hqdefault.jpg",
             "width": 480,
             "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/gcu5BHEQH4M/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/gcu5BHEQH4M/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
           }
         },
-        "channelTitle": "Daily Tech News Show",
-        "playlistId": "UUCd3-JX7e8uGZx00i5646jg",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "gcu5BHEQH4M"
-        },
-        "videoOwnerChannelTitle": "Daily Tech News Show",
-        "videoOwnerChannelId": "UCCd3-JX7e8uGZx00i5646jg",
+        "channelTitle": "Terry Lee White",
+        "tags": [
+          "Terry White",
+          "Photoshop",
+          "Photoshop beta",
+          "Photoshop harmonize",
+          "harmonize feature",
+          "Photoshop composite",
+          "Adobe Photoshop",
+          "Adobe Stock",
+          "AI in Photoshop",
+          "realistic shadows",
+          "lighting correction",
+          "photo compositing",
+          "Photoshop tutorial",
+          "Photoshop new feature",
+          "Adobe Creative Cloud",
+          "Photoshop demo",
+          "one-click harmonize",
+          "Photoshop AI",
+          "Photoshop 2025",
+          "Adobe evangelist",
+          "Photoshop MAX sneak",
+          "How-To",
+          "Tutorial"
+        ],
         "categoryId": "28",
         "liveBroadcastContent": "none",
+        "defaultLanguage": "en",
         "localized": {
-          "title": "Passkeys Instead Of Passwords",
-          "description": ""
+          "title": "Ooops! I should have picked a different groom for this demo \uD83D\uDE02",
+          "description": "Getting realistic shadows and lighting in a composite used to take forever. Not anymore. In this video, I demo the brand-new Harmonize feature in the Photoshop Public Beta \u2014 a one-click solution to make your composites look like a single photo. Whether you\u2019re adding people to scenes or blending elements from different images, Harmonize intelligently adjusts lighting and shadows for a seamless result. Available now in the Photoshop Public Beta via the Creative Cloud app!\n\n\uD83D\uDC49 Try it yourself and let me know which variation you like best in the comments.\n\uD83D\uDCE5 Download the Photoshop beta from your Creative Cloud app.\n\n\n\uD83D\uDD14 Subscribe for more tips!\n\uD83D\uDC4D Like if you found this helpful \u0026 Comment with your questions!\n\nFollow me on social media: https://terryleewhite.social"
         },
         "defaultAudioLanguage": "en"
       },
       "contentDetails": {
-        "videoId": "gcu5BHEQH4M",
-        "videoPublishedAt": "2024-02-17T04:00:25Z",
-        "duration": "PT59S",
+        "duration": "PT3M24S",
         "dimension": "2d",
         "definition": "hd",
         "caption": "false",
@@ -258,93 +552,6 @@
       "status": {
         "uploadStatus": "processed",
         "privacyStatus": "public",
-        "license": "creativeCommon",
-        "embeddable": true,
-        "publicStatsViewable": true,
-        "madeForKids": false
-      }
-    },
-    {
-      "kind": "youtube#video",
-      "etag": "NUAKRQpJHUAbunvPAw5_Jid7z1A",
-      "id": "em0PKDGzzlQ",
-      "snippet": {
-        "publishedAt": "2024-02-16T17:26:56Z",
-        "channelId": "UCsMica-v34Irf9KVTh6xx-g",
-        "title": "Demo of Azure AI & pgvector with Azure Database for PostgreSQL",
-        "description": "Demo of Azure AI being used with Azure Database for PostgreSQL and pgvector. Based on a demo given by Claire Giordano on the keynote stage at PASS Data Community Summit, this video showcases how you can improve the relevance of search results on a recipe website by using Azure OpenAI. Specifically the demo shows how you can use the new azure_ai (Preview) extension along with the open source pgvector extension and the Azure Database for PostgreSQL managed service to deliver semantic search results—as compared to search results you could obtain in the past via pattern matching with the LIKE clause in Postgres, or via Postgres full text search.\n\nThe demo also shows how azure_ai gives you an integration between Azure Database for PostgreSQL and the Azure AI Language service, so you can do things like sentiment analysis, language detection, and PII redaction. \n\nIn combination with the Azure Database for PostgreSQL service and pgvector, the new azure_ai extension to Postgres gives you the capability to build entirely new classes of applications—entirely in Postgres.\n\n► Video bookmarks:\n⏩  00:00 Introduction of demo\n⏩  00:25 How things worked before with LIKE\n⏩  01:09 What about full text search?\n⏩  01:45 New azure_ai extension to Postgres\n⏩  03:52 Sentiment analysis & Azure AI Language service\n⏩  04:28 Language detection\n⏩  04:47 PII redaction\n⏩  05:15 Conclusion: azure_ai & pgvector with PostgreSQL \n\n✅ Blog post: Introducing the azure_ai extension to Azure Database for PostgreSQL: https://aka.ms/blog-azure-ai \n📌 Docs: Azure AI extension for Azure Database for PostgreSQL – Flexible Server: https://aka.ms/docs-azure-ai-postgres \n📌 Docs: Release notes for Azure Database for PostgreSQL – Flexible Server: https://aka.ms/docs-flex-postgres-release-notes\n✅ Follow @AzureDBPostgres on X/Twitter to stay connected: https://twitter.com/AzureDBPostgres \n\n#PostgreSQL #AzureAI #Microsoft",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/em0PKDGzzlQ/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/em0PKDGzzlQ/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/em0PKDGzzlQ/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/em0PKDGzzlQ/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/em0PKDGzzlQ/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "Microsoft Developer",
-        "playlistId": "UUsMica-v34Irf9KVTh6xx-g",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "em0PKDGzzlQ"
-        },
-        "videoOwnerChannelTitle": "Microsoft Developer",
-        "videoOwnerChannelId": "UCsMica-v34Irf9KVTh6xx-g",
-        "tags": [
-          "Azure",
-          "Microsoft",
-          "Tech",
-          "Technology",
-          "Dev",
-          "Development",
-          "Cloud Computing",
-          "Postgre",
-          "Postgressql",
-          "Azure AI",
-          "pg vector",
-          "Postgres"
-        ],
-        "categoryId": "28",
-        "liveBroadcastContent": "none",
-        "localized": {
-          "title": "Demo of Azure AI & pgvector with Azure Database for PostgreSQL",
-          "description": "Demo of Azure AI being used with Azure Database for PostgreSQL and pgvector. Based on a demo given by Claire Giordano on the keynote stage at PASS Data Community Summit, this video showcases how you can improve the relevance of search results on a recipe website by using Azure OpenAI. Specifically the demo shows how you can use the new azure_ai (Preview) extension along with the open source pgvector extension and the Azure Database for PostgreSQL managed service to deliver semantic search results—as compared to search results you could obtain in the past via pattern matching with the LIKE clause in Postgres, or via Postgres full text search.\n\nThe demo also shows how azure_ai gives you an integration between Azure Database for PostgreSQL and the Azure AI Language service, so you can do things like sentiment analysis, language detection, and PII redaction. \n\nIn combination with the Azure Database for PostgreSQL service and pgvector, the new azure_ai extension to Postgres gives you the capability to build entirely new classes of applications—entirely in Postgres.\n\n► Video bookmarks:\n⏩  00:00 Introduction of demo\n⏩  00:25 How things worked before with LIKE\n⏩  01:09 What about full text search?\n⏩  01:45 New azure_ai extension to Postgres\n⏩  03:52 Sentiment analysis & Azure AI Language service\n⏩  04:28 Language detection\n⏩  04:47 PII redaction\n⏩  05:15 Conclusion: azure_ai & pgvector with PostgreSQL \n\n✅ Blog post: Introducing the azure_ai extension to Azure Database for PostgreSQL: https://aka.ms/blog-azure-ai \n📌 Docs: Azure AI extension for Azure Database for PostgreSQL – Flexible Server: https://aka.ms/docs-azure-ai-postgres \n📌 Docs: Release notes for Azure Database for PostgreSQL – Flexible Server: https://aka.ms/docs-flex-postgres-release-notes\n✅ Follow @AzureDBPostgres on X/Twitter to stay connected: https://twitter.com/AzureDBPostgres \n\n#PostgreSQL #AzureAI #Microsoft"
-        },
-        "defaultAudioLanguage": "en"
-      },
-      "contentDetails": {
-        "videoId": "em0PKDGzzlQ",
-        "videoPublishedAt": "2024-02-16T17:26:56Z",
-        "duration": "PT5M38S",
-        "dimension": "2d",
-        "definition": "hd",
-        "caption": "true",
-        "licensedContent": false,
-        "contentRating": {},
-        "projection": "rectangular"
-      },
-      "status": {
-        "uploadStatus": "processed",
-        "privacyStatus": "public",
         "license": "youtube",
         "embeddable": true,
         "publicStatsViewable": true,
@@ -353,379 +560,60 @@
     },
     {
       "kind": "youtube#video",
-      "etag": "ndyyTngSeya6BE8zDueoE7FZi_Y",
-      "id": "NXpdyAWLDas",
+      "etag": "UF0n70-SNYgjL5tXVHtszSJ__DE",
+      "id": "We2ZD0-IXPM",
       "snippet": {
-        "publishedAt": "2024-02-16T00:48:23Z",
+        "publishedAt": "2025-08-08T23:44:20Z",
         "channelId": "UCBJycsmduvYEL83R_U4JriQ",
-        "title": "AI Generated Videos Just Changed Forever",
-        "description": "Reminder: It’s only been 1 YEAR since the Will Smith eating spaghetti video\n\nOpenAI Sora: https://openai.com/sora#research\n\nThumbnail character: BasedAF\n\nMKBHD Merch: http://shop.MKBHD.com\n\nTech I'm using right now: https://www.amazon.com/shop/MKBHD\n\nPlaylist of MKBHD Intro music: https://goo.gl/B3AWV5\n\n~\nhttp://twitter.com/MKBHD\nhttp://instagram.com/MKBHD\nhttp://facebook.com/MKBHD",
+        "title": "Investigating the Tesla Robotaxi!",
+        "description": "I flew to Texas to take a bunch of Tesla Robotaxi and Waymo rides. Here\u0027s what I found\n\nMKBHD Merch: http://shop.MKBHD.com\n\nPlaylist of MKBHD Intro music: https://goo.gl/B3AWV5\n\n~\nhttp://twitter.com/MKBHD\nhttp://instagram.com/MKBHD\nhttp://facebook.com/MKBHD",
         "thumbnails": {
           "default": {
-            "url": "https://i.ytimg.com/vi/NXpdyAWLDas/default.jpg",
+            "url": "https://i.ytimg.com/vi/We2ZD0-IXPM/default.jpg",
             "width": 120,
             "height": 90
           },
           "medium": {
-            "url": "https://i.ytimg.com/vi/NXpdyAWLDas/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/We2ZD0-IXPM/mqdefault.jpg",
             "width": 320,
             "height": 180
           },
           "high": {
-            "url": "https://i.ytimg.com/vi/NXpdyAWLDas/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/We2ZD0-IXPM/hqdefault.jpg",
             "width": 480,
             "height": 360
           },
           "standard": {
-            "url": "https://i.ytimg.com/vi/NXpdyAWLDas/sddefault.jpg",
+            "url": "https://i.ytimg.com/vi/We2ZD0-IXPM/sddefault.jpg",
             "width": 640,
             "height": 480
           },
           "maxres": {
-            "url": "https://i.ytimg.com/vi/NXpdyAWLDas/maxresdefault.jpg",
+            "url": "https://i.ytimg.com/vi/We2ZD0-IXPM/maxresdefault.jpg",
             "width": 1280,
             "height": 720
           }
         },
         "channelTitle": "Marques Brownlee",
-        "playlistId": "UUBJycsmduvYEL83R_U4JriQ",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "NXpdyAWLDas"
-        },
-        "videoOwnerChannelTitle": "Marques Brownlee",
-        "videoOwnerChannelId": "UCBJycsmduvYEL83R_U4JriQ",
         "tags": [
-          "AI generated videos",
-          "AI generated",
-          "AI video",
+          "Tesla Robotaxi",
+          "Waymo",
+          "Robotaxi vs",
+          "Waymo vs",
+          "Robotaxi vs waymo",
           "MKBHD"
         ],
         "categoryId": "28",
         "liveBroadcastContent": "none",
         "defaultLanguage": "en",
         "localized": {
-          "title": "AI Generated Videos Just Changed Forever",
-          "description": "Reminder: It’s only been 1 YEAR since the Will Smith eating spaghetti video\n\nOpenAI Sora: https://openai.com/sora#research\n\nThumbnail character: BasedAF\n\nMKBHD Merch: http://shop.MKBHD.com\n\nTech I'm using right now: https://www.amazon.com/shop/MKBHD\n\nPlaylist of MKBHD Intro music: https://goo.gl/B3AWV5\n\n~\nhttp://twitter.com/MKBHD\nhttp://instagram.com/MKBHD\nhttp://facebook.com/MKBHD"
+          "title": "Investigating the Tesla Robotaxi!",
+          "description": "I flew to Texas to take a bunch of Tesla Robotaxi and Waymo rides. Here\u0027s what I found\n\nMKBHD Merch: http://shop.MKBHD.com\n\nPlaylist of MKBHD Intro music: https://goo.gl/B3AWV5\n\n~\nhttp://twitter.com/MKBHD\nhttp://instagram.com/MKBHD\nhttp://facebook.com/MKBHD"
         },
         "defaultAudioLanguage": "en"
       },
       "contentDetails": {
-        "videoId": "NXpdyAWLDas",
-        "videoPublishedAt": "2024-02-16T00:48:23Z",
-        "duration": "PT12M2S",
-        "dimension": "2d",
-        "definition": "hd",
-        "caption": "true",
-        "licensedContent": true,
-        "contentRating": {},
-        "projection": "rectangular"
-      },
-      "status": {
-        "uploadStatus": "processed",
-        "privacyStatus": "public",
-        "license": "youtube",
-        "embeddable": true,
-        "publicStatsViewable": true,
-        "madeForKids": false
-      }
-    },
-    {
-      "kind": "youtube#video",
-      "etag": "yyXXKNyrwsDsHJFRgtsbi1HA344",
-      "id": "Cp4gplY0wf8",
-      "snippet": {
-        "publishedAt": "2024-02-15T17:00:09Z",
-        "channelId": "UC-oYkx9wyeGc6Sh8tkVlaTw",
-        "title": "My Top 24 Travel Gear Picks For 2024",
-        "description": "Terry White is here to show you what's in his travel bag and his top travel gear picks for 2024. See what Terry carries in his backpack and suitcase.\n\nCHAPTERS\n\n0:00 Introduction\n0:38 My Tumi Backpack - https://amzn.to/4bOs82r\n2:16 MacBook Pro 16\" M1 Max\n2:41 MacBook Air M1\n3:29 iPad Pro 12.9\"  - https://www.bhphotovideo.com/c/product/1731141-REG/apple_mp643ll_a_12_9_ipad_pro_m2.html/BI/2167/KBID/2909\n4:23 AirPods Pro USB-C Case - https://amzn.to/3UFj9KK\n5:17 AirFly Duo - https://amzn.to/49eaZx5\n6:31 Anker Prime 6-in-1 USB-C Charging Station Power Strip - https://amzn.to/42BfmzM\n8:19 Anker MagGo Power Bank Qi2 - https://amzn.to/3OIU1yS\n10:10 Anker MagGo 3-in-1 Charging Station - https://amzn.to/3UJwn9n\n12:34 Anker Nano Pro 40W USB-C Charger - https://amzn.to/3UExPcX\n13:38 Mophie FAST Charge USB-C Cable - https://amzn.to/3SUc1ZC\n15:19 USB-C Multi-Fast Charging Cable - https://amzn.to/4bCbGlG\n16:35 Plugable USB-C 7-in-1 Hub - https://amzn.to/4bzA9rK\n17:45 SanDisk 4TB SSD - https://amzn.to/49cC7wG\n18:26 SanDisk 256GB Flash Drive - https://amzn.to/48lcKqZ\n19:08 3 Legged Thing Toolz\n19:29 GL iNet Slate AX Travel Router - https://amzn.to/3SFhQIU\n24:33 Apple TV 4K - https://amzn.to/3HVkUfh\n26:04 Thin HDMI travel cable - https://amzn.to/3uwIHii\n26:46 Platypod Ultra - https://www.bhphotovideo.com/c/product/1350047-REG/platypod_1014_ultra_plate_camera_support.html/BI/2167/KBID/2909\n27:07 Platypod Grip - https://www.platypod.com/collections/tripods-1/products/platypod-grip\n28:10 Arkon 11\" Tripod - https://amzn.to/4bBFKxF\n28:55 Logitech Spotlight Presentation Remote - https://amzn.to/48fg2vZ\n30:08 iKlear Microfiber Cloth - https://amzn.to/48eQEGD\n30:54 Tumi Accessories Case - https://amzn.to/49xbLVN\n33:24 Apple Vision Pro - https://www.apple.com/apple-vision-pro/",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/Cp4gplY0wf8/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/Cp4gplY0wf8/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/Cp4gplY0wf8/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/Cp4gplY0wf8/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/Cp4gplY0wf8/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "Terry Lee White",
-        "playlistId": "UU-oYkx9wyeGc6Sh8tkVlaTw",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "Cp4gplY0wf8"
-        },
-        "videoOwnerChannelTitle": "Terry Lee White",
-        "videoOwnerChannelId": "UC-oYkx9wyeGc6Sh8tkVlaTw",
-        "tags": [
-          "Travel",
-          "Gear",
-          "Best of 2024",
-          "Review",
-          "Anker",
-          "Apple Vision Pro",
-          "Tumi",
-          "Apple",
-          "MacBook",
-          "MacBook Pro",
-          "MacBook Air",
-          "SanDisk",
-          "AirFly Duo",
-          "AirPods Pro",
-          "Slate AX",
-          "Platypod Grip",
-          "Platypod Ultra",
-          "idler",
-          "Logitech"
-        ],
-        "categoryId": "28",
-        "liveBroadcastContent": "none",
-        "defaultLanguage": "en",
-        "localized": {
-          "title": "My Top 24 Travel Gear Picks For 2024",
-          "description": "Terry White is here to show you what's in his travel bag and his top travel gear picks for 2024. See what Terry carries in his backpack and suitcase.\n\nCHAPTERS\n\n0:00 Introduction\n0:38 My Tumi Backpack - https://amzn.to/4bOs82r\n2:16 MacBook Pro 16\" M1 Max\n2:41 MacBook Air M1\n3:29 iPad Pro 12.9\"  - https://www.bhphotovideo.com/c/product/1731141-REG/apple_mp643ll_a_12_9_ipad_pro_m2.html/BI/2167/KBID/2909\n4:23 AirPods Pro USB-C Case - https://amzn.to/3UFj9KK\n5:17 AirFly Duo - https://amzn.to/49eaZx5\n6:31 Anker Prime 6-in-1 USB-C Charging Station Power Strip - https://amzn.to/42BfmzM\n8:19 Anker MagGo Power Bank Qi2 - https://amzn.to/3OIU1yS\n10:10 Anker MagGo 3-in-1 Charging Station - https://amzn.to/3UJwn9n\n12:34 Anker Nano Pro 40W USB-C Charger - https://amzn.to/3UExPcX\n13:38 Mophie FAST Charge USB-C Cable - https://amzn.to/3SUc1ZC\n15:19 USB-C Multi-Fast Charging Cable - https://amzn.to/4bCbGlG\n16:35 Plugable USB-C 7-in-1 Hub - https://amzn.to/4bzA9rK\n17:45 SanDisk 4TB SSD - https://amzn.to/49cC7wG\n18:26 SanDisk 256GB Flash Drive - https://amzn.to/48lcKqZ\n19:08 3 Legged Thing Toolz\n19:29 GL iNet Slate AX Travel Router - https://amzn.to/3SFhQIU\n24:33 Apple TV 4K - https://amzn.to/3HVkUfh\n26:04 Thin HDMI travel cable - https://amzn.to/3uwIHii\n26:46 Platypod Ultra - https://www.bhphotovideo.com/c/product/1350047-REG/platypod_1014_ultra_plate_camera_support.html/BI/2167/KBID/2909\n27:07 Platypod Grip - https://www.platypod.com/collections/tripods-1/products/platypod-grip\n28:10 Arkon 11\" Tripod - https://amzn.to/4bBFKxF\n28:55 Logitech Spotlight Presentation Remote - https://amzn.to/48fg2vZ\n30:08 iKlear Microfiber Cloth - https://amzn.to/48eQEGD\n30:54 Tumi Accessories Case - https://amzn.to/49xbLVN\n33:24 Apple Vision Pro - https://www.apple.com/apple-vision-pro/"
-        },
-        "defaultAudioLanguage": "en"
-      },
-      "contentDetails": {
-        "videoId": "Cp4gplY0wf8",
-        "videoPublishedAt": "2024-02-15T17:00:09Z",
-        "duration": "PT37M33S",
-        "dimension": "2d",
-        "definition": "hd",
-        "caption": "false",
-        "licensedContent": true,
-        "contentRating": {},
-        "projection": "rectangular"
-      },
-      "status": {
-        "uploadStatus": "processed",
-        "privacyStatus": "public",
-        "license": "youtube",
-        "embeddable": true,
-        "publicStatsViewable": true,
-        "madeForKids": false
-      }
-    },
-    {
-      "kind": "youtube#video",
-      "etag": "E3vgoDvkS5b5S4p5h2Pw8yb1ZzM",
-      "id": "HoVZ3DD7a2k",
-      "snippet": {
-        "publishedAt": "2024-02-15T01:17:17Z",
-        "channelId": "UC1WHdBv9P5tYEGfy-btvYfA",
-        "title": "PaulyBrowserous - Sudo for Windows, new FTC complaint, Mozilla refocuses",
-        "description": "On this spicy episode of Windows Weekly, Paul, Leo, and Richard try to pronounce \"Sudo,\" watch an expensive Copilot ad, marvel at big Arm revenues, discuss the latest in internet browser news, and debate the FTC's motivations as they go after Microsoft once again!\n\nWindows 11\n• Big changes in Insider, with Canary and Dev moving to the same 24H2 builds\n• Windows 11 is going to get its AI moment this year\n• With the announcement of 24H2, does that mean nothing big mid-year as rumors suggested?\n• Patch Tuesday arrives. Copilot moves to the right of the system tray after 10 seconds of testing\n• Brave ships its browser on Arm in stable\n• Windows will likely get an AI game upscaling feature\n\nAI/Antitrust\n• Report: Azure is allegedly 2/3rds the size of AWS by revenue, thanks to AI\n• Microsoft Bing and Edge avoid the EU DMA\n• Google Gemini officially replaces Bard\n• Grammarly lays off 230 to focus on AI\n• Mozilla scales back dramatically, will focus on AI in Firefox\n• Arc Sync comes to Arc on Mac only\n\nCloud/server/dev\n• Google One surpasses 100 million users. New AI tier is coming to take on Copilot Pro\n• Arm revenues are in. Look at those margins!\n• Notion acquires Skiff. Ladies and gentlemen, the Notion Office is coming\n• .NET 9 Preview 1 arrives. Are annual updates too much?\n\nXbox\n• Xbox says it will come clean on its strategy\n• The FTC claims that Xbox layoffs violate the terms of its Activision Blizzard acquisition promises\n• Microsoft tells the court that the FTC is wrong on multiple levels\n• There’s a new Xbox system update\n• Sony doesn’t meet its quarterly PS5 sales target, will miss its annual target, and the PS5 is falling off a cliff\n• Disney invests $1.5 billion in Epic Games. “F U, Apple!”\n• Flight Simulator jumps the Minecraft Shark\n\nTips and Picks\n• Tip of the Week: Microsoft PC Manager - Avoid at all costs\n• App Picks of the Week: DuckDuckGo browser, Apple TV+, Apple Music, Apple Devices for Windows\n• RunAs Radio this week: Maximizing Metadata with Emily Manicini\n• Brown liquor pick of the week: Starward Pedro Ximenez Cask\n\nHosts: Leo Laporte, Paul Thurrott, and Richard Campbell\nWindows Weekly episode 868\nMore Info: https://twit.tv/shows/windows-weekly/episodes/868\n\nSponsor:\n• kolide.com/ww\n\nDownload or subscribe to this show at https://twit.tv/shows/windows-weekly\n\nGet episodes ad-free with Club TWiT at https://twit.tv/clubtwit\n\nCheck out Paul's blog at thurrott.com\n\nThe Windows Weekly theme music is courtesy of Carl Franklin.\n\nProducts we recommend: https://www.amazon.com/shop/twitnetcastnetwork\nTWiT may earn commissions on certain products.\n\nFollow us:\nhttps://twit.tv/\nhttps://twitter.com/TWiT\nhttps://www.facebook.com/TWiTNetwork\nhttps://www.instagram.com/twit.tv/\n#microsoft #windows11 #xbox \nAbout us:\nTWiT.tv is a technology podcasting network located in the San Francisco Bay Area with the #1 ranked technology podcast This Week in Tech hosted by Leo Laporte. Every week we produce dozens of hours of content on a variety of programs including Tech News Weekly, MacBreak Weekly, This Week in Google, Windows Weekly, Security Now, and more.",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/HoVZ3DD7a2k/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/HoVZ3DD7a2k/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/HoVZ3DD7a2k/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/HoVZ3DD7a2k/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/HoVZ3DD7a2k/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "Windows Weekly",
-        "playlistId": "UU1WHdBv9P5tYEGfy-btvYfA",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "HoVZ3DD7a2k"
-        },
-        "videoOwnerChannelTitle": "Windows Weekly",
-        "videoOwnerChannelId": "UC1WHdBv9P5tYEGfy-btvYfA",
-        "tags": [
-          "TWiT",
-          "Technology",
-          "Leo Laporte",
-          "Paul Thurrott",
-          "Windows",
-          "Microsoft",
-          "xbox",
-          "copilot",
-          "Windows Version 24H2",
-          "Sudo for windows",
-          "Linux",
-          "ARM",
-          "ai",
-          "microsoft azure",
-          "AWS",
-          "google gemini",
-          "Bing",
-          "edge browser",
-          "Grammarly",
-          "mozilla firefox",
-          "Arc Sync",
-          "arc browser",
-          "google one AI tier",
-          "notion skiff",
-          ".NET 9",
-          "Xbox Game Pass",
-          "ftc",
-          "federal trade commission",
-          "Sony PS5",
-          "Flight simulator Dune",
-          "Microsoft PC Manager",
-          "duckduckgo",
-          "starward",
-          "activision blizzard"
-        ],
-        "categoryId": "28",
-        "liveBroadcastContent": "none",
-        "defaultLanguage": "en",
-        "localized": {
-          "title": "PaulyBrowserous - Sudo for Windows, new FTC complaint, Mozilla refocuses",
-          "description": "On this spicy episode of Windows Weekly, Paul, Leo, and Richard try to pronounce \"Sudo,\" watch an expensive Copilot ad, marvel at big Arm revenues, discuss the latest in internet browser news, and debate the FTC's motivations as they go after Microsoft once again!\n\nWindows 11\n• Big changes in Insider, with Canary and Dev moving to the same 24H2 builds\n• Windows 11 is going to get its AI moment this year\n• With the announcement of 24H2, does that mean nothing big mid-year as rumors suggested?\n• Patch Tuesday arrives. Copilot moves to the right of the system tray after 10 seconds of testing\n• Brave ships its browser on Arm in stable\n• Windows will likely get an AI game upscaling feature\n\nAI/Antitrust\n• Report: Azure is allegedly 2/3rds the size of AWS by revenue, thanks to AI\n• Microsoft Bing and Edge avoid the EU DMA\n• Google Gemini officially replaces Bard\n• Grammarly lays off 230 to focus on AI\n• Mozilla scales back dramatically, will focus on AI in Firefox\n• Arc Sync comes to Arc on Mac only\n\nCloud/server/dev\n• Google One surpasses 100 million users. New AI tier is coming to take on Copilot Pro\n• Arm revenues are in. Look at those margins!\n• Notion acquires Skiff. Ladies and gentlemen, the Notion Office is coming\n• .NET 9 Preview 1 arrives. Are annual updates too much?\n\nXbox\n• Xbox says it will come clean on its strategy\n• The FTC claims that Xbox layoffs violate the terms of its Activision Blizzard acquisition promises\n• Microsoft tells the court that the FTC is wrong on multiple levels\n• There’s a new Xbox system update\n• Sony doesn’t meet its quarterly PS5 sales target, will miss its annual target, and the PS5 is falling off a cliff\n• Disney invests $1.5 billion in Epic Games. “F U, Apple!”\n• Flight Simulator jumps the Minecraft Shark\n\nTips and Picks\n• Tip of the Week: Microsoft PC Manager - Avoid at all costs\n• App Picks of the Week: DuckDuckGo browser, Apple TV+, Apple Music, Apple Devices for Windows\n• RunAs Radio this week: Maximizing Metadata with Emily Manicini\n• Brown liquor pick of the week: Starward Pedro Ximenez Cask\n\nHosts: Leo Laporte, Paul Thurrott, and Richard Campbell\nWindows Weekly episode 868\nMore Info: https://twit.tv/shows/windows-weekly/episodes/868\n\nSponsor:\n• kolide.com/ww\n\nDownload or subscribe to this show at https://twit.tv/shows/windows-weekly\n\nGet episodes ad-free with Club TWiT at https://twit.tv/clubtwit\n\nCheck out Paul's blog at thurrott.com\n\nThe Windows Weekly theme music is courtesy of Carl Franklin.\n\nProducts we recommend: https://www.amazon.com/shop/twitnetcastnetwork\nTWiT may earn commissions on certain products.\n\nFollow us:\nhttps://twit.tv/\nhttps://twitter.com/TWiT\nhttps://www.facebook.com/TWiTNetwork\nhttps://www.instagram.com/twit.tv/\n#microsoft #windows11 #xbox \nAbout us:\nTWiT.tv is a technology podcasting network located in the San Francisco Bay Area with the #1 ranked technology podcast This Week in Tech hosted by Leo Laporte. Every week we produce dozens of hours of content on a variety of programs including Tech News Weekly, MacBreak Weekly, This Week in Google, Windows Weekly, Security Now, and more."
-        },
-        "defaultAudioLanguage": "en"
-      },
-      "contentDetails": {
-        "videoId": "HoVZ3DD7a2k",
-        "videoPublishedAt": "2024-02-15T01:17:17Z",
-        "duration": "PT2H50M29S",
-        "dimension": "2d",
-        "definition": "hd",
-        "caption": "false",
-        "licensedContent": true,
-        "contentRating": {},
-        "projection": "rectangular"
-      },
-      "status": {
-        "uploadStatus": "processed",
-        "privacyStatus": "public",
-        "license": "youtube",
-        "embeddable": true,
-        "publicStatsViewable": true,
-        "madeForKids": false
-      }
-    },
-    {
-      "kind": "youtube#video",
-      "etag": "-xZIBwhzIASpdq0O_8zVOakf1ak",
-      "id": "ynuz_2JSLNI",
-      "snippet": {
-        "publishedAt": "2024-02-12T02:57:27Z",
-        "channelId": "UCagoIYmo_gO1iVaCeeSikEg",
-        "title": "He's Got a Huge Corpus - Bluesky Goes Public, Zuck's AI plans",
-        "description": "Bluesky Goes Public, Zuck's AI plans\n• The panel discusses the Apple Vision Pro \n• Transcribe Glass \n• X rival Bluesky launches to public with option to pick your algorithm \n• Tech layoff tracker - layoffs.fyi \n• A general discussion on AI \n• Zuckerberg’s Plan for AI Hinges on Your Facebook and Instagram Data \n• The panel looks back at the proto-internet \n• Reddit Doesn't Have to Share IP-Addresses of Piracy Commenters, Court Rules \n• David Kahn, Leading Historian of Codes and Code Breaking, Dies at 93 \n• The passing of John Walker, programmer and co-founder of AutoDesk\n\nHost: Leo Laporte\nGuests: Cathy Gellis, Harry McCracken, and Nicholas De Leon\nThis Week in Tech episode 966\nMore Info: https://twit.tv/shows/this-week-in-tech/episodes/966\n\nSponsors:\n• bitwarden.com/twit\n• Miro.com/podcast\n• kolide.com/twit\n• NetSuite.com/TWIT\n• robinhood.com/boost\n\nDownload or subscribe to this show at https://twit.tv/shows/this-week-in-tech\n\nGet episodes ad-free with Club TWiT at https://twit.tv/clubtwit\n\nProducts we recommend: https://www.amazon.com/shop/twitnetcastnetwork\nTWiT may earn commissions on certain products.\n\nFollow us:\nhttps://twit.tv/\nhttps://twitter.com/TWiT\nhttps://www.facebook.com/TWiTNetwork\nhttps://www.instagram.com/twit.tv/\n#ai #applevisionpro #bluesky \nAbout us:\nTWiT.tv is a technology podcasting network located in the San Francisco Bay Area with the #1 ranked technology podcast This Week in Tech hosted by Leo Laporte. Every week we produce dozens of hours of content on a variety of programs including Tech News Weekly, MacBreak Weekly, This Week in Google, Windows Weekly, Security Now, and more.",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/ynuz_2JSLNI/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/ynuz_2JSLNI/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/ynuz_2JSLNI/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/ynuz_2JSLNI/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/ynuz_2JSLNI/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "This Week in Tech",
-        "playlistId": "UUagoIYmo_gO1iVaCeeSikEg",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "ynuz_2JSLNI"
-        },
-        "videoOwnerChannelTitle": "This Week in Tech",
-        "videoOwnerChannelId": "UCagoIYmo_gO1iVaCeeSikEg",
-        "tags": [
-          "TWiT",
-          "Technology",
-          "TechTV",
-          "Leo Laporte",
-          "This Week in Tech",
-          "tech news",
-          "talk",
-          "panel",
-          "discussion",
-          "Apple",
-          "Vision Pro",
-          "transcribe glass",
-          "bluesky",
-          "threads",
-          "Mastodon",
-          "Social Media",
-          "layoffs",
-          "ai",
-          "zuckerberg",
-          "Facebook",
-          "instagram",
-          "Meta",
-          "compuserve",
-          "prodigy",
-          "AOL",
-          "david kahn",
-          "john walker",
-          "autodesk",
-          "reddit",
-          "piracy"
-        ],
-        "categoryId": "28",
-        "liveBroadcastContent": "none",
-        "defaultLanguage": "en",
-        "localized": {
-          "title": "He's Got a Huge Corpus - Bluesky Goes Public, Zuck's AI plans",
-          "description": "Bluesky Goes Public, Zuck's AI plans\n• The panel discusses the Apple Vision Pro \n• Transcribe Glass \n• X rival Bluesky launches to public with option to pick your algorithm \n• Tech layoff tracker - layoffs.fyi \n• A general discussion on AI \n• Zuckerberg’s Plan for AI Hinges on Your Facebook and Instagram Data \n• The panel looks back at the proto-internet \n• Reddit Doesn't Have to Share IP-Addresses of Piracy Commenters, Court Rules \n• David Kahn, Leading Historian of Codes and Code Breaking, Dies at 93 \n• The passing of John Walker, programmer and co-founder of AutoDesk\n\nHost: Leo Laporte\nGuests: Cathy Gellis, Harry McCracken, and Nicholas De Leon\nThis Week in Tech episode 966\nMore Info: https://twit.tv/shows/this-week-in-tech/episodes/966\n\nSponsors:\n• bitwarden.com/twit\n• Miro.com/podcast\n• kolide.com/twit\n• NetSuite.com/TWIT\n• robinhood.com/boost\n\nDownload or subscribe to this show at https://twit.tv/shows/this-week-in-tech\n\nGet episodes ad-free with Club TWiT at https://twit.tv/clubtwit\n\nProducts we recommend: https://www.amazon.com/shop/twitnetcastnetwork\nTWiT may earn commissions on certain products.\n\nFollow us:\nhttps://twit.tv/\nhttps://twitter.com/TWiT\nhttps://www.facebook.com/TWiTNetwork\nhttps://www.instagram.com/twit.tv/\n#ai #applevisionpro #bluesky \nAbout us:\nTWiT.tv is a technology podcasting network located in the San Francisco Bay Area with the #1 ranked technology podcast This Week in Tech hosted by Leo Laporte. Every week we produce dozens of hours of content on a variety of programs including Tech News Weekly, MacBreak Weekly, This Week in Google, Windows Weekly, Security Now, and more."
-        },
-        "defaultAudioLanguage": "en"
-      },
-      "contentDetails": {
-        "videoId": "ynuz_2JSLNI",
-        "videoPublishedAt": "2024-02-12T02:57:27Z",
-        "duration": "PT2H21M22S",
+        "duration": "PT17M14S",
         "dimension": "2d",
         "definition": "hd",
         "caption": "false",

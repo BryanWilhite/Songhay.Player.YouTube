@@ -18,14 +18,6 @@ module YouTubeScalars =
     let YouTubeApiRootUri = "https://songhay-system-player.azurewebsites.net/api/Player/v1/video/youtube/"
 
     /// <summary>
-    /// URI path representing a YouTube channel
-    /// and/or YouTube `uploads`
-    /// curated as a `playlist`
-    /// </summary>
-    [<Literal>]
-    let YouTubeApiPlaylistPath = "playlist/uploads/"
-
-    /// <summary>
     /// URI path representing curated `videos`
     /// or YouTube `items` for a gen-web
     /// </summary>

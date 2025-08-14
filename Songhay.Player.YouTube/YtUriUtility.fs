@@ -14,9 +14,6 @@ module YtUriUtility =
     [<Literal>]
     let YtIndexSonghayTopTen = "youtube-index-songhay-top-ten"
 
-    let getPlaylistUri (id: Identifier) =
-        Uri($"{YouTubeApiRootUri}{YouTubeApiPlaylistPath}{id.StringValue}", UriKind.Absolute)
-
     let getPresentationManifestUri (presentationKey: string ) =
         ($"{rxPlayerVideoRoot}{presentationKey}/{presentationKey}_presentation.json", UriKind.Absolute) |> Uri
 
