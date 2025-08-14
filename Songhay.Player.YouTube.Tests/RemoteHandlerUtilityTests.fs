@@ -20,10 +20,12 @@ open Xunit.Abstractions
 
 type RemoteHandlerUtilityTests(outputHelper: ITestOutputHelper) =
 
-    [<Theory>]
+    [<SkippableTheory>]
     [<InlineData(YtIndexSonghay, "songhay-index.json")>]
     member this.``getPlaylistIndexUri request test (async)`` (indexName: string, jsonFileName: string) =
         async {
+            Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+
             let uri = indexName |> Identifier.Alphanumeric |> model.getPlaylistIndexUri
             outputHelper.WriteLine uri.Value.OriginalString
 

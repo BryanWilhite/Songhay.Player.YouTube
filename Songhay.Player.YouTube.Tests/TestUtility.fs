@@ -15,10 +15,13 @@ open Songhay.Modules.Models
 open Songhay.Modules.ProgramFileUtility
 open Songhay.Player.YouTube.Models
 
-let environmentVariable = Environment.GetEnvironmentVariable("SONGHAY_APP_SETTINGS_PATH")
+[<Literal>]
+let studioSettingsPathMessage = "The expected Studio settings path is not here."
+
+let studioSettingsPath = Environment.GetEnvironmentVariable("SONGHAY_APP_SETTINGS_PATH") |> Option.ofNull
 
 let client = new HttpClient()
-let configuration = ConfigurationBuilder().AddJsonFile(environmentVariable).Build()
+let configuration = ConfigurationBuilder().AddJsonFile(studioSettingsPath.Value).Build()
 let provider = ServiceCollection().AddSingleton<IConfiguration>(configuration).BuildServiceProvider()
 let model = { YouTubeModel.initialize(provider) with
                                 restApiMetadata =
