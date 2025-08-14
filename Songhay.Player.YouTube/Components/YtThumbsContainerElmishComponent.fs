@@ -40,7 +40,7 @@ type YtThumbsContainerElmishComponent() =
 
     static let click = DomElementEvent.Click
 
-    static let getYtThumbsAnchor (item: YouTubeItem) =
+    static let getYtThumbsAnchor (model: YouTubeModel) (item: YouTubeItem) =
         let limit = 60
         let caption =
             if item.snippet.title.Length > limit then
@@ -49,7 +49,7 @@ type YtThumbsContainerElmishComponent() =
                 item.snippet.title
 
         a {
-            attr.href (item.tryGetUri |> Result.valueOr raise)
+            attr.href (item.tryGetUri model.restApiMetadata |> Result.valueOr raise)
             attr.target "_blank"
             attr.title item.snippet.title
 
@@ -92,7 +92,7 @@ type YtThumbsContainerElmishComponent() =
             initCache[Load] <- true
         }
 
-    static let ytThumbnailsNode (_: IJSRuntime) (blockWrapperRef: HtmlRef) (items: YouTubeItem[] option) =
+    static let ytThumbnailsNode (_: IJSRuntime) (model: YouTubeModel) (blockWrapperRef: HtmlRef) (items: YouTubeItem[] option) =
 
         let toSpan (item: YouTubeItem) =
             let duration =
@@ -103,7 +103,7 @@ type YtThumbsContainerElmishComponent() =
             span {
                 a
                     {
-                        attr.href (item.tryGetUri |> Result.valueOr raise).OriginalString
+                        attr.href (item.tryGetUri model.restApiMetadata |> Result.valueOr raise).OriginalString
                         attr.target "_blank"
                         attr.title item.snippet.title
 
@@ -115,7 +115,7 @@ type YtThumbsContainerElmishComponent() =
                             }
                     }
                 span { [ "published-at"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item.getPublishedAt.Humanize() |> text }
-                span { [ "caption"; elementFontWeight Semibold; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item |> getYtThumbsAnchor }
+                span { [ "caption"; elementFontWeight Semibold; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item |> getYtThumbsAnchor model }
                 span { [ "duration"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList ; span { duration } }
             }
 
@@ -200,7 +200,7 @@ type YtThumbsContainerElmishComponent() =
                 [ "video"; "thumbs"; "thumbs-container" ] |> CssClasses.toHtmlClassFromList
                 attr.ref thumbsContainerRef
 
-                items |> ytThumbnailsNode jsRuntime blockWrapperRef
+                items |> ytThumbnailsNode jsRuntime model blockWrapperRef
 
                 anchorButtonElement
                     (HasClasses <| CssClasses ([ "command"; "left" ] @ imageContainer (Square Square48)))
