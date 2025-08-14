@@ -118,6 +118,10 @@ type YouTubeModel =
     member this.getPlaylistIndexUri (id: Identifier) =
         this.restApiMetadata.ToUriFromClaim("route-for-video-yt-index", id.StringValue)
 
+    member this.getPlaylistSetUri (indexId: Identifier) (clientId: ClientId) =
+        let suffix = clientId.toIdentifier.StringValue
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist-set", indexId.StringValue, suffix)
+
     member this.getSelectedDocument() =
         this.getVisualState(function YtSetIndexSelectedDocument (dt, id) -> Some (dt, id) | _ -> None)
 

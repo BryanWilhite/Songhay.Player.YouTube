@@ -53,22 +53,25 @@ type ServiceHandlerUtilityTests(testOutputHelper: ITestOutputHelper) =
             File.WriteAllText(path, json)
         }
 
-    [<Theory>]
+    [<SkippableTheory>]
     [<InlineData(YtIndexSonghay, "news")>]
     [<InlineData(YtIndexSonghay, "code")>]
     [<InlineData(YtIndexSonghay, "media-building")>]
     member this.``getPlaylistSetUri test`` (indexIdString: string, clientIdString: string) =
+        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+
         testOutputHelper.WriteLine $"{nameof(indexIdString)}: {indexIdString}"
         testOutputHelper.WriteLine $"{nameof(clientIdString)}: {clientIdString}"
 
         task {
             let indexId = Identifier.fromString(indexIdString)
             let clientId = ClientId.fromString(clientIdString)
-            let uri = (indexId, clientId) ||> getPlaylistSetUri
+            let uri = (indexId, clientId) ||> model.getPlaylistSetUri
+            uri |> should be (ofCase <@ Option.Some @>)
 
-            testOutputHelper.WriteLine $"{nameof(uri)}: {uri.OriginalString}"
+            testOutputHelper.WriteLine $"{nameof(uri)}: {uri.Value.OriginalString}"
 
-            let! responseResult = client |> trySendAsync (get uri)
+            let! responseResult = client |> trySendAsync (get uri.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 
@@ -113,16 +116,20 @@ type ServiceHandlerUtilityTests(testOutputHelper: ITestOutputHelper) =
             File.WriteAllText(path, json)
         }
 
-    [<Theory>]
+    [<SkippableTheory>]
     [<InlineData("songhay/news", "called-yt-set-news")>]
     member this.``getYtSetKey test`` (pathSegments: string, expected: string) =
+        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+
         let pathSegmentsArray = pathSegments.Split('/')
         pathSegmentsArray.Length |> should equal 2
 
         let tuple = ((Identifier.fromString pathSegmentsArray[0]), (ClientId.fromString pathSegmentsArray[1]))
-        let uri = tuple ||> getPlaylistSetUri
+        let uri = tuple ||> model.getPlaylistSetUri
+        uri |> should be (ofCase <@ Option.Some @>)
+
         let seed = nameof YouTubeMessage.CalledYtSet
-        let cacheKey = uri |> getYtSetKey seed
+        let cacheKey = uri.Value |> getYtSetKey seed
         cacheKey |> should equal expected
 
     [<Theory>]

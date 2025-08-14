@@ -26,13 +26,6 @@ module YouTubeScalars =
     let YouTubeApiPlaylistPath = "playlist/uploads/"
 
     /// <summary>
-    /// URI path representing sets of YouTube `uploads`
-    /// curated as `playlists`
-    /// </summary>
-    [<Literal>]
-    let YouTubeApiPlaylistsPath = "playlists/"
-
-    /// <summary>
     /// URI path representing curated `videos`
     /// or YouTube `items` for a gen-web
     /// </summary>

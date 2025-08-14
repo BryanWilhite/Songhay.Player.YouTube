@@ -58,12 +58,12 @@ let update ytMsg model =
         model with ytModel = YouTubeModel.updateModel ytMsg model.ytModel
     }
 
-    let uriYtSet =
+    let uriYtSetOption =
         (
             YtIndexSonghay |> Identifier.Alphanumeric,
             ytModel.ytModel.getSelectedDocumentClientId()
         )
-        ||> getPlaylistSetUri
+        ||> model.ytModel.getPlaylistSetUri
 
     let rec successYtItems (result: Result<string, HttpStatusCode>) =
         let dataGetter = ServiceHandlerUtility.toYtItems
@@ -97,6 +97,9 @@ let update ytMsg model =
         match YtIndexSonghay |> Identifier.Alphanumeric |> model.ytModel.getPlaylistIndexUri with
         | None -> ytModel, Cmd.none
         | Some uriIdx ->
+            match uriYtSetOption with
+            | None -> ytModel, Cmd.none
+            | Some uriYtSet ->
             let cmdBatch = Cmd.batch [
                 Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriIdx) success failure
                 Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriYtSet) successYtSet failure
@@ -105,6 +108,9 @@ let update ytMsg model =
             ytModel, cmdBatch
 
     | YouTubeMessage.CallYtSet _ ->
+        match uriYtSetOption with
+        | None -> ytModel, Cmd.none
+        | Some uriYtSet ->
         let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriYtSet) successYtSet failure
 
         ytModel, cmd
