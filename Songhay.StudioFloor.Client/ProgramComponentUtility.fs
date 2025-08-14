@@ -18,7 +18,7 @@ open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.Publications.Models
 open Songhay.Player.YouTube
 open Songhay.Player.YouTube.Models
-open Songhay.Player.YouTube.YtUriUtility
+open Songhay.Player.YouTube.YouTubeScalars
 
 open Songhay.StudioFloor.Client.Models
 

@@ -17,3 +17,11 @@ module YouTubeScalars =
     /// </summary>
     [<Literal>]
     let YouTubeWatchRootUri = "https://www.youtube.com/watch?v="
+
+    /// <summary> conventional scalar </summary>
+    [<Literal>]
+    let YtIndexSonghay = "songhay"
+
+    /// <summary> conventional scalar </summary>
+    [<Literal>]
+    let YtIndexSonghayTopTen = "youtube-index-songhay-top-ten"

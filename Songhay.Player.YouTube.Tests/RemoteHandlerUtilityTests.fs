@@ -15,7 +15,7 @@ open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.Bolero.RemoteHandlerUtility
-open Songhay.Player.YouTube.YtUriUtility
+open Songhay.Player.YouTube.YouTubeScalars
 open Xunit.Abstractions
 
 type RemoteHandlerUtilityTests(outputHelper: ITestOutputHelper) =

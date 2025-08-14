@@ -17,7 +17,7 @@ open Songhay.Modules.HttpResponseMessageUtility
 open Songhay.Modules.ProgramFileUtility
 
 open Songhay.Player.YouTube.Models
-open Songhay.Player.YouTube.YtUriUtility
+open Songhay.Player.YouTube.YouTubeScalars
 open Songhay.Player.YouTube.Tests.TestUtility
 
 type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
