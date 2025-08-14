@@ -119,8 +119,8 @@ let update ytMsg model =
         ytModel, cmd
 
     | YouTubeMessage.GetYtManifestAndPlaylist key ->
-        let manifestUri = key |> getPresentationManifestUri
-        let playlistUri = key |> getPresentationYtItemsUri
+        let manifestUriOption = key |> model.ytModel.getPresentationManifestUri
+        let playlistUriOption = key |> model.ytModel.getPresentationYtItemsUri
 
         let successManifest (result: Result<string, HttpStatusCode>) =
             result
@@ -144,11 +144,14 @@ let update ytMsg model =
                         jsRuntime |> passErrorToConsole label ex |> StudioFloorMessage.Error
                 )
 
-        let cmdBatch = Cmd.batch [
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, manifestUri) successManifest failure
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, playlistUri) successYtItems failure
-        ]
-        ytModel, cmdBatch
+        if manifestUriOption.IsSome && playlistUriOption.IsSome then
+            let cmdBatch = Cmd.batch [
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, manifestUriOption.Value) successManifest failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, playlistUriOption.Value) successYtItems failure
+            ]
+            ytModel, cmdBatch
+        else
+            ytModel, Cmd.none
 
     | YouTubeMessage.OpenYtSetOverlay ->
         if ytModel.ytModel.ytSetIndex.IsNone && ytModel.ytModel.ytSet.IsNone then

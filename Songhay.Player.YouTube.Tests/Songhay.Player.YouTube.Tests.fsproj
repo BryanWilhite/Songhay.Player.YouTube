@@ -18,6 +18,7 @@
         <Content Include="json\songhay-index.json" />
         <Content Include="json\default_presentation.json" />
         <Compile Include="TestUtility.fs" />
+        <Compile Include="Models\YouTubeModelTests.fs" />
         <Compile Include="DisplayItemModelUtilityTests.fs" />
         <Compile Include="PresentationUtilityTests.fs" />
         <Compile Include="RemoteHandlerUtilityTests.fs" />

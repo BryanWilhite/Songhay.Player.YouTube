@@ -125,6 +125,12 @@ type YouTubeModel =
     member this.getPlaylistUri (id: Identifier) =
         this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist", "uploads", id.StringValue)
 
+    member this.getPresentationManifestUri (presentationKey: string ) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-manifest", presentationKey)
+
+    member this.getPresentationYtItemsUri (presentationKey: string ) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-curated-manifest", presentationKey)
+
     member this.getSelectedDocument() =
         this.getVisualState(function YtSetIndexSelectedDocument (dt, id) -> Some (dt, id) | _ -> None)
 
