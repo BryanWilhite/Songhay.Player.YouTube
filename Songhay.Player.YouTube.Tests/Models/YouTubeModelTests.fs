@@ -4,7 +4,6 @@ open System.Net
 open System.IO
 open System.Net.Http
 
-
 open Xunit
 open Xunit.Abstractions
 open FsUnit.Xunit
@@ -29,8 +28,10 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         task {
             let model = YouTubeModel.initialize(provider)
             let id = Identifier.fromString(idString)
-            let uri = id |> model.getPlaylistIndexUri
-            let! responseResult = client |> trySendAsync (get uri.Value)
+            let uriOption = id |> model.getPlaylistIndexUri
+            uriOption |> should be (ofCase <@ Option.Some @>)
+
+            let! responseResult = client |> trySendAsync (get uriOption.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 
@@ -63,12 +64,12 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         task {
             let indexId = Identifier.fromString(indexIdString)
             let clientId = ClientId.fromString(clientIdString)
-            let uri = (indexId, clientId) ||> model.getPlaylistSetUri
-            uri |> should be (ofCase <@ Option.Some @>)
+            let uriOption = (indexId, clientId) ||> model.getPlaylistSetUri
+            uriOption |> should be (ofCase <@ Option.Some @>)
 
-            testOutputHelper.WriteLine $"{nameof(uri)}: {uri.Value.OriginalString}"
+            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
 
-            let! responseResult = client |> trySendAsync (get uri.Value)
+            let! responseResult = client |> trySendAsync (get uriOption.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 
@@ -95,7 +96,35 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
 
         task {
             let id = Identifier.fromString(idString)
-            let uri = id |> model.getPlaylistUri
+            let uriOption = id |> model.getPlaylistUri
+            uriOption |> should be (ofCase <@ Option.Some @>)
+
+            let! responseResult = client |> trySendAsync (get uriOption.Value)
+            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
+            let response = responseResult |> Result.valueOr raise
+
+            let! jsonResult = response |> tryDownloadToStringAsync
+            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
+            let json =
+                jsonResult
+                |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
+                |> Result.valueOr raise
+
+            let path =
+                $"./json/{idString}.json"
+                |> tryGetCombinedPath projectDirectoryInfo.FullName
+                |> Result.valueOr raiseProgramFileError
+
+            File.WriteAllText(path, json)
+        }
+
+    [<SkippableTheory>]
+    [<InlineData("sha_cage")>]
+    member this.``getPresentationManifestUri test`` (presentationKey: string) =
+        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+
+        task {
+            let uri = presentationKey |> model.getPresentationManifestUri
             uri |> should be (ofCase <@ Option.Some @>)
 
             let! responseResult = client |> trySendAsync (get uri.Value)
@@ -110,7 +139,35 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
                 |> Result.valueOr raise
 
             let path =
-                $"./json/{idString}.json"
+                $"./json/{presentationKey}_presentation.json"
+                |> tryGetCombinedPath projectDirectoryInfo.FullName
+                |> Result.valueOr raiseProgramFileError
+
+            File.WriteAllText(path, json)
+        }
+
+    [<SkippableTheory>]
+    [<InlineData("sha_cage")>]
+    member this.``getPresentationYtItemsUri test`` (presentationKey: string) =
+        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+
+        task {
+            let uri = presentationKey |> model.getPresentationYtItemsUri
+            uri |> should be (ofCase <@ Option.Some @>)
+
+            let! responseResult = client |> trySendAsync (get uri.Value)
+            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
+            let response = responseResult |> Result.valueOr raise
+
+            let! jsonResult = response |> tryDownloadToStringAsync
+            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
+            let json =
+                jsonResult
+                |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
+                |> Result.valueOr raise
+
+            let path =
+                $"./json/{presentationKey}_videos.json"
                 |> tryGetCombinedPath projectDirectoryInfo.FullName
                 |> Result.valueOr raiseProgramFileError
 

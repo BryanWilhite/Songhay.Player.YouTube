@@ -14,14 +14,8 @@ module YtUriUtility =
     [<Literal>]
     let YtIndexSonghayTopTen = "youtube-index-songhay-top-ten"
 
-    let getPresentationManifestUri (presentationKey: string ) =
-        ($"{rxPlayerVideoRoot}{presentationKey}/{presentationKey}_presentation.json", UriKind.Absolute) |> Uri
-
     let getPresentationUri (id: Identifier) =
         Uri($"{YouTubeApiRootUri}{YouTubeApiVideosPath}{id.StringValue}", UriKind.Absolute)
-
-    let getPresentationYtItemsUri (presentationKey: string ) =
-        ($"{rxPlayerVideoRoot}{presentationKey}/youtube-videos.json", UriKind.Absolute) |> Uri
 
     let getYtSetKey seed (uri: Uri) =
         let prefix = seed |> toKabobCase |> Option.defaultValue String.Empty
