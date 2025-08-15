@@ -117,6 +117,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         }
 
     [<SkippableTheory>]
+    [<InlineData("default")>]
     [<InlineData("sha_cage")>]
     member this.``getPresentationManifestUri test`` (presentationKey: string) =
         Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
@@ -145,6 +146,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         }
 
     [<SkippableTheory>]
+    [<InlineData("default")>]
     [<InlineData("sha_cage")>]
     member this.``getPresentationYtItemsUri test`` (presentationKey: string) =
         Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
