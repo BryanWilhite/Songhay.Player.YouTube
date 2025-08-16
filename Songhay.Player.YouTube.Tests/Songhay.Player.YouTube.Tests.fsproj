@@ -8,15 +8,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="json\video-yt-playlist-uploads-songhay-top-ten.json" />
-        <Content Include="json\youtube-index-songhay-top-ten.json" />
         <Content Include="json\60-minutes.json" />
+        <Content Include="json\default_presentation.json" />
         <Content Include="json\songhay-code-playlist.json" />
+        <Content Include="json\songhay-index.json" />
         <Content Include="json\songhay-media-building-playlist.json" />
         <Content Include="json\songhay-news-playlist.json" />
+        <Content Include="json\sha_cage_presentation.json" />
+        <Content Include="json\sha_cage_videos.json" />
         <Content Include="json\video-yt-bowie0-videos.json" />
-        <Content Include="json\songhay-index.json" />
-        <Content Include="json\default_presentation.json" />
+        <Content Include="json\video-yt-playlist-uploads-songhay-top-ten.json" />
+        <Content Include="json\youtube-index-songhay-top-ten.json" />
+        <Compile Include="TestUtility.fs" />
+        <Compile Include="Models\YouTubeModelTests.fs" />
         <Compile Include="DisplayItemModelUtilityTests.fs" />
         <Compile Include="PresentationUtilityTests.fs" />
         <Compile Include="RemoteHandlerUtilityTests.fs" />
@@ -39,6 +43,7 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Remove="FSharp.Core" />
+        <PackageReference Include="Xunit.SkippableFact" Version="1.5.23" />
     </ItemGroup>
 
     <ItemGroup>

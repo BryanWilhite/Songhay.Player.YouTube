@@ -6,9 +6,9 @@ open FsToolkit.ErrorHandling
 open Bolero
 
 open Songhay.Modules.Models
-open Songhay.Modules.Publications.Models
-
 open Songhay.Modules.Bolero.JsRuntimeUtility
+open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Publications.Models
 
 open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.PresentationUtility
@@ -19,6 +19,7 @@ type YouTubeModel =
         error: string option
         presentation: Presentation option
         presentationKey: Identifier option
+        restApiMetadata: RestApiMetadata
         ytItems: YouTubeItem[] option
         ytSet: (DisplayText * YouTubeItem []) [] option
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
@@ -32,6 +33,7 @@ type YouTubeModel =
             error = None
             presentation = None
             presentationKey = None
+            restApiMetadata = "PlayerApi" |> RestApiMetadata.fromConfiguration (Songhay.Modules.Bolero.ServiceProviderUtility.getIConfiguration())
             ytItems = None
             ytSet = None
             ytSetIndex = None
@@ -112,6 +114,22 @@ type YouTubeModel =
         |> List.ofSeq
         |> List.choose getter
         |> List.head
+
+    member this.getPlaylistIndexUri (id: Identifier) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-index", id.StringValue)
+
+    member this.getPlaylistSetUri (indexId: Identifier) (clientId: ClientId) =
+        let suffix = clientId.toIdentifier.StringValue
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist-set", indexId.StringValue, suffix)
+
+    member this.getPlaylistUri (id: Identifier) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist", "uploads", id.StringValue)
+
+    member this.getPresentationManifestUri (presentationKey: string ) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-manifest", presentationKey)
+
+    member this.getPresentationYtItemsUri (presentationKey: string ) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-curated-manifest", presentationKey)
 
     member this.getSelectedDocument() =
         this.getVisualState(function YtSetIndexSelectedDocument (dt, id) -> Some (dt, id) | _ -> None)

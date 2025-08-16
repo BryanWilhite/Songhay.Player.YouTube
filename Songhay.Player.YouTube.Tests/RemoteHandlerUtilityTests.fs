@@ -1,8 +1,6 @@
 namespace Songhay.Player.YouTube.Tests
 
-open System.IO
 open System.Net.Http
-open System.Reflection
 open System.Text.Json
 open Microsoft.Extensions.Logging
 open Xunit
@@ -16,38 +14,27 @@ open NSubstitute
 open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
-open Songhay.Modules.ProgramFileUtility
 open Songhay.Modules.Bolero.RemoteHandlerUtility
-open Songhay.Player.YouTube.YtUriUtility
+open Songhay.Player.YouTube.YouTubeScalars
+open Xunit.Abstractions
 
-module RemoteHandlerUtilityTests =
+type RemoteHandlerUtilityTests(outputHelper: ITestOutputHelper) =
 
-    let projectDirectoryInfo =
-        Assembly.GetExecutingAssembly()
-        |> ProgramAssemblyInfo.getPathFromAssembly "../../../"
-        |> Result.valueOr raiseProgramFileError
-        |> DirectoryInfo
-
-    let client = new HttpClient()
-
-    let writeJsonAsync (fileName: string) (json:string) =
-        let path =
-            $"./json/{fileName}"
-            |> tryGetCombinedPath projectDirectoryInfo.FullName
-            |> Result.valueOr raiseProgramFileError
-        File.WriteAllTextAsync(path, json)
-
-    [<Theory>]
+    [<SkippableTheory>]
     [<InlineData(YtIndexSonghay, "songhay-index.json")>]
-    let ``getPlaylistIndexUri request test (async)`` (indexName: string, jsonFileName: string) =
+    member this.``getPlaylistIndexUri request test (async)`` (indexName: string, jsonFileName: string) =
         async {
-            let uri = indexName |> Identifier.Alphanumeric |> getPlaylistIndexUri
+            Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+
+            let uri = indexName |> Identifier.Alphanumeric |> model.getPlaylistIndexUri
+            outputHelper.WriteLine uri.Value.OriginalString
+
             let mockLogger = Substitute.For<ILogger>() |> Some
             let dataGetter (result: Result<JsonElement, JsonException>) =
                 result |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
                 result |> Option.ofResult
 
-            let! responseResult = client |> trySendAsync (get uri) |> Async.AwaitTask
+            let! responseResult = client |> trySendAsync (get uri.Value) |> Async.AwaitTask
 
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
 

@@ -9,7 +9,7 @@ open Songhay.Modules.Bolero.Visuals.Bulma
 open Songhay.Modules.Bolero.Visuals.Bulma.Component
 
 open Songhay.Player.YouTube.Components
-open Songhay.Player.YouTube.YtUriUtility
+open Songhay.Player.YouTube.YouTubeScalars
 
 open Songhay.StudioFloor.Client
 open Songhay.StudioFloor.Client.Models

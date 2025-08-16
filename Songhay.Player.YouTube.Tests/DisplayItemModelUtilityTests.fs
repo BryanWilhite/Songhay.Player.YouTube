@@ -1,7 +1,5 @@
 namespace Songhay.Player.YouTube.Tests
 
-open System.IO
-open System.Reflection
 open System.Text.Json
 open Xunit
 open FsUnit.Xunit
@@ -9,26 +7,12 @@ open FsUnit.CustomMatchers
 open FsToolkit.ErrorHandling
 
 open Songhay.Modules.Models
-open Songhay.Modules.ProgramFileUtility
 open Songhay.Modules.Publications.Models
 
 open Songhay.Player.YouTube.DisplayItemModelUtility
 open Songhay.Player.YouTube.Models
 
 module DisplayItemModelUtilityTests =
-
-    let projectDirectoryInfo =
-        Assembly.GetExecutingAssembly()
-        |> ProgramAssemblyInfo.getPathFromAssembly "../../../"
-        |> Result.valueOr raiseProgramFileError
-        |> DirectoryInfo
-
-    let getJsonDocument (fileName: string) =
-        let path =
-            $"./json/{fileName}"
-            |> tryGetCombinedPath projectDirectoryInfo.FullName
-            |> Result.valueOr raiseProgramFileError
-        JsonDocument.Parse(File.ReadAllText(path))
 
     [<Theory>]
     [<InlineData("songhay-index.json")>]
