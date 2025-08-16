@@ -29,6 +29,8 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
             let uriOption = id |> model.getPlaylistIndexUri
             uriOption |> should be (ofCase <@ Option.Some @>)
 
+            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
+
             let! responseResult = client |> trySendAsync (get uriOption.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
@@ -97,6 +99,8 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
             let uriOption = id |> model.getPlaylistUri
             uriOption |> should be (ofCase <@ Option.Some @>)
 
+            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
+
             let! responseResult = client |> trySendAsync (get uriOption.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
@@ -123,10 +127,12 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
 
         task {
-            let uri = presentationKey |> model.getPresentationManifestUri
-            uri |> should be (ofCase <@ Option.Some @>)
+            let uriOption = presentationKey |> model.getPresentationManifestUri
+            uriOption |> should be (ofCase <@ Option.Some @>)
 
-            let! responseResult = client |> trySendAsync (get uri.Value)
+            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
+            
+            let! responseResult = client |> trySendAsync (get uriOption.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 
@@ -152,10 +158,12 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
 
         task {
-            let uri = presentationKey |> model.getPresentationYtItemsUri
-            uri |> should be (ofCase <@ Option.Some @>)
+            let uriOption = presentationKey |> model.getPresentationYtItemsUri
+            uriOption |> should be (ofCase <@ Option.Some @>)
 
-            let! responseResult = client |> trySendAsync (get uri.Value)
+            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
+
+            let! responseResult = client |> trySendAsync (get uriOption.Value)
             responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
             let response = responseResult |> Result.valueOr raise
 
