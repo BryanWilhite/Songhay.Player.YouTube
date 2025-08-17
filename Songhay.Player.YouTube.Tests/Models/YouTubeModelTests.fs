@@ -48,6 +48,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
                 |> tryGetCombinedPath projectDirectoryInfo.FullName
                 |> Result.valueOr raiseProgramFileError
 
+            testOutputHelper.WriteLine $"Writing to `{path}`..."
             File.WriteAllText(path, json)
         }
 
@@ -86,6 +87,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
                 |> tryGetCombinedPath projectDirectoryInfo.FullName
                 |> Result.valueOr raiseProgramFileError
 
+            testOutputHelper.WriteLine $"Writing to `{path}`..."
             File.WriteAllText(path, json)
         }
 
@@ -117,6 +119,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
                 |> tryGetCombinedPath projectDirectoryInfo.FullName
                 |> Result.valueOr raiseProgramFileError
 
+            testOutputHelper.WriteLine $"Writing to `{path}`..."
             File.WriteAllText(path, json)
         }
 
@@ -148,6 +151,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
                 |> tryGetCombinedPath projectDirectoryInfo.FullName
                 |> Result.valueOr raiseProgramFileError
 
+            testOutputHelper.WriteLine $"Writing to `{path}`..."
             File.WriteAllText(path, json)
         }
 
@@ -179,5 +183,6 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
                 |> tryGetCombinedPath projectDirectoryInfo.FullName
                 |> Result.valueOr raiseProgramFileError
 
+            testOutputHelper.WriteLine $"Writing to `{path}`..."
             File.WriteAllText(path, json)
         }

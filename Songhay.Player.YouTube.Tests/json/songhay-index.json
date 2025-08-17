@@ -18,7 +18,7 @@
         {
           "ClientId": "ai-and-games",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T10:05:59Z",
+          "ModificationDate": "2025-08-12T12:50:13Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -39,14 +39,14 @@
         {
           "ClientId": "amazon-web-services",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T20:43:44Z",
+          "ModificationDate": "2025-08-15T21:26:35Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "amazon-web-services-webinar-channel",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T20:16:56Z",
+          "ModificationDate": "2025-08-15T20:12:29Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -60,7 +60,7 @@
         {
           "ClientId": "awesome-open-source",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-22T14:30:21Z",
+          "ModificationDate": "2025-08-12T14:45:01Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -74,7 +74,7 @@
         {
           "ClientId": "code-sync",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T07:00:08Z",
+          "ModificationDate": "2025-08-14T07:00:18Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -95,7 +95,7 @@
         {
           "ClientId": "cppcon",
           "FragmentId": 0,
-          "ModificationDate": "2025-05-19T15:00:11Z",
+          "ModificationDate": "2025-08-14T14:01:30Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -109,7 +109,7 @@
         {
           "ClientId": "docker",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-30T15:32:22Z",
+          "ModificationDate": "2025-08-13T14:02:16Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -123,7 +123,7 @@
         {
           "ClientId": "figma",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T13:32:50Z",
+          "ModificationDate": "2025-08-14T16:12:50Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -151,7 +151,7 @@
         {
           "ClientId": "github",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T06:10:23Z",
+          "ModificationDate": "2025-08-16T14:00:07Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -165,7 +165,7 @@
         {
           "ClientId": "google-chrome-developers",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-31T16:00:56Z",
+          "ModificationDate": "2025-08-12T17:30:11Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -186,7 +186,7 @@
         {
           "ClientId": "goto-conferences",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T12:27:28Z",
+          "ModificationDate": "2025-08-15T12:27:09Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -200,7 +200,7 @@
         {
           "ClientId": "jetbrainstv",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T15:02:19Z",
+          "ModificationDate": "2025-08-15T16:01:12Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -228,28 +228,28 @@
         {
           "ClientId": "microsoft-365",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T17:01:03Z",
+          "ModificationDate": "2025-08-14T16:38:54Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "microsoft-azure",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T17:05:36Z",
+          "ModificationDate": "2025-08-11T15:24:08Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "microsoft-developer",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T15:57:22Z",
+          "ModificationDate": "2025-08-15T20:17:18Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "microsoft-reactor",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T00:07:49Z",
+          "ModificationDate": "2025-08-16T00:11:21Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -263,28 +263,28 @@
         {
           "ClientId": "microsoft-visual-studio",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-05T23:45:49Z",
+          "ModificationDate": "2025-08-14T13:31:16Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "mongodb",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T18:16:06Z",
+          "ModificationDate": "2025-08-14T14:00:01Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "mozilla-developer",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-10T05:33:35Z",
+          "ModificationDate": "2025-08-15T16:58:41Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "ndc-conferences",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T12:36:30Z",
+          "ModificationDate": "2025-08-12T13:53:19Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -298,7 +298,7 @@
         {
           "ClientId": "net-foundation",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-06T06:41:52Z",
+          "ModificationDate": "2025-08-13T06:44:10Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -312,7 +312,7 @@
         {
           "ClientId": "open-data-science",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T18:32:01Z",
+          "ModificationDate": "2025-08-15T17:31:01Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -326,7 +326,7 @@
         {
           "ClientId": "owasp-foundation",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T02:32:51Z",
+          "ModificationDate": "2025-08-11T20:30:06Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -368,7 +368,7 @@
         {
           "ClientId": "scaled-agile",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T19:44:32Z",
+          "ModificationDate": "2025-08-12T19:07:09Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -389,7 +389,7 @@
         {
           "ClientId": "scrum-alliance",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T15:03:04Z",
+          "ModificationDate": "2025-08-14T21:53:12Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -424,7 +424,7 @@
         {
           "ClientId": "the-magic-of-sql",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T11:00:31Z",
+          "ModificationDate": "2025-08-11T11:00:24Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -445,7 +445,7 @@
         {
           "ClientId": "wolfram",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T09:22:22Z",
+          "ModificationDate": "2025-08-14T10:10:57Z",
           "NextFragments": [],
           "PrevFragments": []
         }
@@ -461,14 +461,14 @@
         {
           "ClientId": "9to5mac",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T13:00:31Z",
+          "ModificationDate": "2025-08-16T13:00:51Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "amd",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-05T13:00:10Z",
+          "ModificationDate": "2025-08-14T15:05:10Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -489,21 +489,21 @@
         {
           "ClientId": "asus",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T09:05:46Z",
+          "ModificationDate": "2025-08-14T13:00:02Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "autogef-hl",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T09:23:50Z",
+          "ModificationDate": "2025-08-12T11:12:19Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "autotrader",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-03T10:29:27Z",
+          "ModificationDate": "2025-08-11T11:54:45Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -517,7 +517,7 @@
         {
           "ClientId": "byd-global",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-24T09:49:22Z",
+          "ModificationDate": "2025-08-11T10:00:41Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -538,14 +538,14 @@
         {
           "ClientId": "canonusa",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T18:18:52Z",
+          "ModificationDate": "2025-08-14T17:42:45Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "celebrateubuntu",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T19:30:13Z",
+          "ModificationDate": "2025-08-15T10:00:33Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -573,14 +573,14 @@
         {
           "ClientId": "dave-lee",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-23T14:40:16Z",
+          "ModificationDate": "2025-08-15T13:36:37Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "destination-linux",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-06T11:01:18Z",
+          "ModificationDate": "2025-08-11T10:01:13Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -594,7 +594,7 @@
         {
           "ClientId": "driven-car-reviews",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-05T15:15:07Z",
+          "ModificationDate": "2025-08-12T21:00:07Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -608,7 +608,7 @@
         {
           "ClientId": "ehx",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T13:17:07Z",
+          "ModificationDate": "2025-08-15T12:38:18Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -629,21 +629,21 @@
         {
           "ClientId": "firefly-aerospace",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-24T17:28:29Z",
+          "ModificationDate": "2025-08-14T17:59:48Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "ford-motor-company",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T18:01:17Z",
+          "ModificationDate": "2025-08-14T14:24:40Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "formlabs",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T14:39:24Z",
+          "ModificationDate": "2025-08-15T11:53:10Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -657,7 +657,7 @@
         {
           "ClientId": "fullychargedshow",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T16:01:10Z",
+          "ModificationDate": "2025-08-14T16:01:10Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -685,7 +685,7 @@
         {
           "ClientId": "goodereader",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T02:02:28Z",
+          "ModificationDate": "2025-08-16T05:43:06Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -699,7 +699,7 @@
         {
           "ClientId": "hardwarecanucks",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-03T16:10:23Z",
+          "ModificationDate": "2025-08-15T14:58:49Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -720,7 +720,7 @@
         {
           "ClientId": "hobotech",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-01T01:30:06Z",
+          "ModificationDate": "2025-08-15T14:00:06Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -734,21 +734,21 @@
         {
           "ClientId": "hyundaiusa",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T14:59:11Z",
+          "ModificationDate": "2025-08-14T21:22:28Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "ifixit-video",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T15:01:40Z",
+          "ModificationDate": "2025-08-15T18:42:43Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "jehugarcia",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-31T03:17:57Z",
+          "ModificationDate": "2025-08-16T16:00:58Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -769,7 +769,7 @@
         {
           "ClientId": "kitgurutech",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T07:06:27Z",
+          "ModificationDate": "2025-08-14T07:16:04Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -783,28 +783,28 @@
         {
           "ClientId": "the-limiting-factor",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-29T14:58:27Z",
+          "ModificationDate": "2025-08-13T14:48:40Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "logitech",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T15:45:03Z",
+          "ModificationDate": "2025-08-11T07:01:06Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "lucid-motors",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-28T20:30:31Z",
+          "ModificationDate": "2025-08-13T17:58:01Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "magnainternationaltv",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T18:12:03Z",
+          "ModificationDate": "2025-08-13T16:07:19Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -818,7 +818,7 @@
         {
           "ClientId": "minisforum",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T05:46:03Z",
+          "ModificationDate": "2025-08-16T12:01:03Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -839,7 +839,7 @@
         {
           "ClientId": "munro-live",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-05T12:45:03Z",
+          "ModificationDate": "2025-08-14T20:01:25Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -853,42 +853,42 @@
         {
           "ClientId": "nokia-mobile",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T09:01:37Z",
+          "ModificationDate": "2025-08-16T09:00:18Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "novationtv",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T15:01:00Z",
+          "ModificationDate": "2025-08-16T13:30:08Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "optimum-tech",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-05T13:27:14Z",
+          "ModificationDate": "2025-08-14T13:40:55Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "osv",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T08:59:18Z",
+          "ModificationDate": "2025-08-10T16:01:37Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "out-of-spec-reviews",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T16:00:45Z",
+          "ModificationDate": "2025-08-16T14:02:32Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "pcper",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T15:14:51Z",
+          "ModificationDate": "2025-08-15T18:02:08Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -902,7 +902,7 @@
         {
           "ClientId": "playstation",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T21:31:36Z",
+          "ModificationDate": "2025-08-16T17:15:00Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -916,21 +916,21 @@
         {
           "ClientId": "redline-reviews",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T15:01:14Z",
+          "ModificationDate": "2025-08-16T15:21:57Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "rewa-technology",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T12:01:08Z",
+          "ModificationDate": "2025-08-16T12:01:12Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "rivian",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T13:01:08Z",
+          "ModificationDate": "2025-08-15T18:50:48Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -944,14 +944,14 @@
         {
           "ClientId": "shortcircuit",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T19:00:07Z",
+          "ModificationDate": "2025-08-14T17:56:32Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "sling-aircraft",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-15T18:00:19Z",
+          "ModificationDate": "2025-08-15T06:00:07Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -972,14 +972,14 @@
         {
           "ClientId": "sparkfun-electronics",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T00:00:26Z",
+          "ModificationDate": "2025-08-14T21:00:40Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "strange-parts",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-31T15:10:01Z",
+          "ModificationDate": "2025-08-12T15:55:12Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1028,7 +1028,7 @@
         {
           "ClientId": "transport-evolved",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T16:34:29Z",
+          "ModificationDate": "2025-08-16T12:34:08Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1049,28 +1049,28 @@
         {
           "ClientId": "uravgconsumer",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T16:53:53Z",
+          "ModificationDate": "2025-08-14T20:09:12Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "wacom",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-29T19:23:58Z",
+          "ModificationDate": "2025-08-14T17:04:48Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "wundertech",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T22:01:00Z",
+          "ModificationDate": "2025-08-14T22:00:56Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "xbox",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T00:41:37Z",
+          "ModificationDate": "2025-08-15T16:06:20Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1156,7 +1156,7 @@
         {
           "ClientId": "cg-cookie-blender",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T17:53:24Z",
+          "ModificationDate": "2025-08-16T12:23:03Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1177,7 +1177,7 @@
         {
           "ClientId": "chronoscapes",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T15:53:41Z",
+          "ModificationDate": "2025-08-11T13:00:25Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1219,7 +1219,7 @@
         {
           "ClientId": "digitalfoundry",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T15:03:57Z",
+          "ModificationDate": "2025-08-14T16:27:22Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1240,7 +1240,7 @@
         {
           "ClientId": "e-r-g-o-j-o-s-h",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T19:34:25Z",
+          "ModificationDate": "2025-08-15T23:46:48Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1261,7 +1261,7 @@
         {
           "ClientId": "hainbach",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-06T08:01:13Z",
+          "ModificationDate": "2025-08-13T17:08:56Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1289,7 +1289,7 @@
         {
           "ClientId": "izotope-inc",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-05T15:12:28Z",
+          "ModificationDate": "2025-08-15T14:01:03Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1310,7 +1310,7 @@
         {
           "ClientId": "kelbyone",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T14:36:02Z",
+          "ModificationDate": "2025-08-15T11:47:32Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1331,14 +1331,14 @@
         {
           "ClientId": "magix",
           "FragmentId": 0,
-          "ModificationDate": "2025-05-09T16:54:29Z",
+          "ModificationDate": "2025-08-12T09:03:53Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "native-instruments",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T14:00:22Z",
+          "ModificationDate": "2025-08-14T15:16:56Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1359,7 +1359,7 @@
         {
           "ClientId": "office-hours-global",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T15:14:49Z",
+          "ModificationDate": "2025-08-16T03:37:23Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1387,21 +1387,21 @@
         {
           "ClientId": "pierrick-picaut",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-11T13:00:52Z",
+          "ModificationDate": "2025-08-15T07:07:44Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "pixologic-zbrush",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T16:19:15Z",
+          "ModificationDate": "2025-08-16T13:13:22Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "polyfjord",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-16T13:01:21Z",
+          "ModificationDate": "2025-08-13T11:58:29Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1415,49 +1415,49 @@
         {
           "ClientId": "quixel",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-31T12:30:42Z",
+          "ModificationDate": "2025-08-14T08:15:01Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "reallusion",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T12:00:12Z",
+          "ModificationDate": "2025-08-15T10:05:32Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "red-means-recording",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-05T14:41:53Z",
+          "ModificationDate": "2025-08-16T14:52:26Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "sanjay-c",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T13:13:07Z",
+          "ModificationDate": "2025-08-16T12:00:13Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "sarah2ill",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-06T02:55:07Z",
+          "ModificationDate": "2025-08-16T02:13:55Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "school-of-motion",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T15:01:07Z",
+          "ModificationDate": "2025-08-14T14:00:58Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "solomon-jagwe",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T04:36:03Z",
+          "ModificationDate": "2025-08-13T12:32:41Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1471,14 +1471,14 @@
         {
           "ClientId": "southernshotty",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-31T13:30:32Z",
+          "ModificationDate": "2025-08-14T16:00:28Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "the-cgbros",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T16:00:22Z",
+          "ModificationDate": "2025-08-15T18:30:02Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1506,14 +1506,14 @@
         {
           "ClientId": "unity",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T20:54:14Z",
+          "ModificationDate": "2025-08-14T23:05:17Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "unreal-engine",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T16:00:23Z",
+          "ModificationDate": "2025-08-15T19:50:40Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1548,21 +1548,21 @@
         {
           "ClientId": "winbush",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T18:22:35Z",
+          "ModificationDate": "2025-08-16T21:21:59Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "yansculpts",
           "FragmentId": 0,
-          "ModificationDate": "2025-06-02T11:33:37Z",
+          "ModificationDate": "2025-08-11T07:40:42Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "zsolt-s-visual-personal-knowledge-management",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T17:36:31Z",
+          "ModificationDate": "2025-08-16T13:09:47Z",
           "NextFragments": [],
           "PrevFragments": []
         }
@@ -1578,63 +1578,63 @@
         {
           "ClientId": "aviation-international-news",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T12:00:57Z",
+          "ModificationDate": "2025-08-14T19:59:13Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "bloomberg-technology",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T21:06:52Z",
+          "ModificationDate": "2025-08-16T05:00:46Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "cnet",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T12:01:27Z",
+          "ModificationDate": "2025-08-16T12:00:25Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "daily-tech-news-show",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T14:01:55Z",
+          "ModificationDate": "2025-08-16T14:50:05Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "engadget",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T16:06:26Z",
+          "ModificationDate": "2025-08-16T12:01:27Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "geekwire",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T13:22:09Z",
+          "ModificationDate": "2025-08-16T14:45:37Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "level1techs",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T15:00:42Z",
+          "ModificationDate": "2025-08-14T19:48:55Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "macworld",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T22:02:17Z",
+          "ModificationDate": "2025-08-15T22:01:30Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "microsoft",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T16:59:55Z",
+          "ModificationDate": "2025-08-13T15:29:57Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1648,14 +1648,14 @@
         {
           "ClientId": "security-now",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-06T02:45:44Z",
+          "ModificationDate": "2025-08-13T04:07:05Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "security-weekly",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T19:00:19Z",
+          "ModificationDate": "2025-08-16T21:00:24Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1669,7 +1669,7 @@
         {
           "ClientId": "tested",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T14:00:26Z",
+          "ModificationDate": "2025-08-16T14:00:48Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1683,21 +1683,21 @@
         {
           "ClientId": "the-verge",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T14:07:10Z",
+          "ModificationDate": "2025-08-15T15:25:49Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "think-school",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T14:10:57Z",
+          "ModificationDate": "2025-08-14T13:24:52Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "thisweekintech",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T05:49:11Z",
+          "ModificationDate": "2025-08-11T06:20:47Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1711,21 +1711,21 @@
         {
           "ClientId": "twitmacbreak",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-06T01:00:41Z",
+          "ModificationDate": "2025-08-13T01:31:49Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "windows-central",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T07:38:12Z",
+          "ModificationDate": "2025-08-16T07:32:25Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "windows-weekly",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T02:12:02Z",
+          "ModificationDate": "2025-08-14T01:05:56Z",
           "NextFragments": [],
           "PrevFragments": []
         }
@@ -1741,7 +1741,7 @@
         {
           "ClientId": "adrian-s-digital-basement",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-03T16:15:02Z",
+          "ModificationDate": "2025-08-10T16:58:50Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1755,7 +1755,7 @@
         {
           "ClientId": "barnacules-nerdgasm",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-03T00:12:57Z",
+          "ModificationDate": "2025-08-16T18:44:33Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1769,14 +1769,14 @@
         {
           "ClientId": "blades-of-grass-lawn-care-llc",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T13:43:56Z",
+          "ModificationDate": "2025-08-16T16:40:26Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "brad-sams",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T16:33:43Z",
+          "ModificationDate": "2025-08-15T20:21:45Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1790,42 +1790,42 @@
         {
           "ClientId": "the-cherno",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-30T11:30:41Z",
+          "ModificationDate": "2025-08-15T11:01:22Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "codeopinion",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T12:54:17Z",
+          "ModificationDate": "2025-08-13T13:17:29Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "computerhistory",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-28T16:13:31Z",
+          "ModificationDate": "2025-08-15T16:59:39Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "curiousmarc",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-05T14:00:07Z",
+          "ModificationDate": "2025-08-12T22:35:16Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "dan-gookin",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T07:00:48Z",
+          "ModificationDate": "2025-08-11T15:56:59Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "darren-byrd-geek-on-the-flight-deck-llc",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T23:56:43Z",
+          "ModificationDate": "2025-08-14T19:01:40Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1846,14 +1846,14 @@
         {
           "ClientId": "doc-rock",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T08:38:54Z",
+          "ModificationDate": "2025-08-16T07:10:40Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "erik-dubois",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-20T05:46:52Z",
+          "ModificationDate": "2025-08-11T07:13:07Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1888,7 +1888,7 @@
         {
           "ClientId": "jayztwocents",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T22:22:03Z",
+          "ModificationDate": "2025-08-16T15:00:36Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1916,14 +1916,14 @@
         {
           "ClientId": "just-have-a-think",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-03T17:00:09Z",
+          "ModificationDate": "2025-08-10T17:00:02Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "kevin-yank",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T14:18:07Z",
+          "ModificationDate": "2025-08-14T10:14:39Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -1937,42 +1937,42 @@
         {
           "ClientId": "lamarr-wilson",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T18:13:14Z",
+          "ModificationDate": "2025-08-14T20:15:40Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "linustechtips",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T04:29:11Z",
+          "ModificationDate": "2025-08-16T17:06:01Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "marques-brownlee",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T23:44:20Z",
+          "ModificationDate": "2025-08-13T22:52:42Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "mathologer",
           "FragmentId": 0,
-          "ModificationDate": "2025-06-07T14:07:22Z",
+          "ModificationDate": "2025-08-16T14:03:16Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "mrmobile-michael-fisher",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-31T23:30:10Z",
+          "ModificationDate": "2025-08-10T00:30:10Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "nick-chapsas",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T13:00:40Z",
+          "ModificationDate": "2025-08-16T11:00:16Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2000,7 +2000,7 @@
         {
           "ClientId": "profstevekeen",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-03T19:00:06Z",
+          "ModificationDate": "2025-08-10T19:00:06Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2021,7 +2021,7 @@
         {
           "ClientId": "scott-nimrod",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T01:05:29Z",
+          "ModificationDate": "2025-08-16T01:04:20Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2042,28 +2042,28 @@
         {
           "ClientId": "startalk",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T21:30:02Z",
+          "ModificationDate": "2025-08-16T15:01:23Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "steve-mould",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-01T19:00:14Z",
+          "ModificationDate": "2025-08-15T19:00:40Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "tiago-catarino",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T11:00:12Z",
+          "ModificationDate": "2025-08-11T13:33:11Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "techaltar",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-25T13:01:02Z",
+          "ModificationDate": "2025-08-14T13:43:29Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2084,14 +2084,14 @@
         {
           "ClientId": "terry-white",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-31T21:24:29Z",
+          "ModificationDate": "2025-08-15T17:08:17Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "tedx-talks",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T17:01:15Z",
+          "ModificationDate": "2025-08-15T17:00:31Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2119,7 +2119,7 @@
         {
           "ClientId": "unzicker-s-real-physics",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T16:00:17Z",
+          "ModificationDate": "2025-08-10T22:00:11Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2133,7 +2133,7 @@
         {
           "ClientId": "zoran-horvat",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-05T06:27:00Z",
+          "ModificationDate": "2025-08-12T06:27:00Z",
           "NextFragments": [],
           "PrevFragments": []
         }
@@ -2163,7 +2163,7 @@
         {
           "ClientId": "amazon",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-09T13:01:36Z",
+          "ModificationDate": "2025-08-16T13:00:42Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2191,7 +2191,7 @@
         {
           "ClientId": "emmett-ochs-management-department",
           "FragmentId": 0,
-          "ModificationDate": "2025-07-26T02:13:49Z",
+          "ModificationDate": "2025-08-14T23:30:51Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2233,14 +2233,14 @@
         {
           "ClientId": "pimco",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-07T22:14:46Z",
+          "ModificationDate": "2025-08-14T15:55:22Z",
           "NextFragments": [],
           "PrevFragments": []
         },
         {
           "ClientId": "postman",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-08T21:00:25Z",
+          "ModificationDate": "2025-08-15T21:00:18Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2282,7 +2282,7 @@
         {
           "ClientId": "vectra-ai-inc",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-04T21:26:06Z",
+          "ModificationDate": "2025-08-14T21:31:24Z",
           "NextFragments": [],
           "PrevFragments": []
         },
@@ -2296,7 +2296,7 @@
         {
           "ClientId": "universal-studios-hollywood",
           "FragmentId": 0,
-          "ModificationDate": "2025-08-01T16:00:26Z",
+          "ModificationDate": "2025-08-14T16:15:31Z",
           "NextFragments": [],
           "PrevFragments": []
         }

@@ -115,19 +115,46 @@ type YouTubeModel =
         |> List.choose getter
         |> List.head
 
-    member this.getPlaylistIndexUri (id: Identifier) =
-        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-index", id.StringValue)
+    /// <summary>Returns the URI for a b-roll player API endpoint</summary>
+    /// <param name="indexId">fills in the <c>suffix</c> for the endpoint route</param>
+    /// <remarks>
+    /// The route for this endpoint is of the form <c>video/youtube/playlist/index/{suffix}</c>
+    /// </remarks>
+    member this.getPlaylistIndexUri (indexId: Identifier) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-index", indexId.StringValue)
 
+    /// <summary>Returns the URI for a b-roll player API endpoint</summary>
+    /// <param name="indexId">fills in the <c>suffix</c> for the endpoint route</param>
+    /// <param name="clientId">fills in the client <c>id</c> for the endpoint route</param>
+    /// <remarks>
+    /// The route for this endpoint is of the form <c>video/youtube/playlists/{suffix}/{id}</c>
+    /// </remarks>
     member this.getPlaylistSetUri (indexId: Identifier) (clientId: ClientId) =
-        let suffix = clientId.toIdentifier.StringValue
-        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist-set", indexId.StringValue, suffix)
+        let id = clientId.toIdentifier.StringValue
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist-set", indexId.StringValue, id)
 
-    member this.getPlaylistUri (id: Identifier) =
-        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist", "uploads", id.StringValue)
+    /// <summary>Returns the URI for a b-roll player API endpoint</summary>
+    /// <param name="playlistFileName">fills in the <c>blobName</c> for the endpoint route (do not include any file extension as this member defaults to <c>.json</c>)</param>
+    /// <remarks>
+    /// The route for this endpoint is of the form <c>video/youtube/playlist/{subFolder}/{blobName}</c>
+    /// where <c>subFolder</c> is hard-coded to <c>uploads</c>
+    /// </remarks>
+    member this.getPlaylistUri (playlistFileName: Identifier) =
+        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist", "uploads", playlistFileName.StringValue)
 
+    /// <summary>Returns the URI for a b-roll player API endpoint</summary>
+    /// <param name="presentationKey">fills in the <c>presentationKey</c> for the endpoint route</param>
+    /// <remarks>
+    /// The route for this endpoint is of the form <c>video/youtube/{presentationKey}</c>
+    /// </remarks>
     member this.getPresentationManifestUri (presentationKey: string ) =
         this.restApiMetadata.ToUriFromClaim("route-for-video-yt-manifest", presentationKey)
 
+    /// <summary>Returns the URI for a b-roll player API endpoint</summary>
+    /// <param name="presentationKey">fills in the <c>presentationKey</c> for the endpoint route</param>
+    /// <remarks>
+    /// The route for this endpoint is of the form <c>video/youtube/videos/{presentationKey}</c>
+    /// </remarks>
     member this.getPresentationYtItemsUri (presentationKey: string ) =
         this.restApiMetadata.ToUriFromClaim("route-for-video-yt-curated-manifest", presentationKey)
 
