@@ -18,9 +18,10 @@ open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.Publications.Models
 open Songhay.Player.YouTube
 open Songhay.Player.YouTube.Models
-open Songhay.Player.YouTube.YouTubeScalars
 
 open Songhay.StudioFloor.Client.Models
+
+open Songhay.StudioFloor.Client.YouTubeScalars
 
     module Remote =
         let tryDownloadToStringAsync (client: HttpClient, uri: Uri) =
@@ -61,9 +62,9 @@ let update ytMsg model =
     let uriYtSetOption =
         (
             YtIndexSonghay |> Identifier.Alphanumeric,
-            ytModel.ytModel.getSelectedDocumentClientId()
+            ytModel.ytModel.GetSelectedDocumentClientId()
         )
-        ||> model.ytModel.getPlaylistSetUri
+        ||> model.ytModel.GetPlaylistSetUri
 
     let rec successYtItems (result: Result<string, HttpStatusCode>) =
         let dataGetter = ServiceHandlerUtility.toYtItems
@@ -77,11 +78,11 @@ let update ytMsg model =
         let message = YouTubeMessage.CalledYtSet set
         StudioFloorMessage.YouTubeMessage message
 
-    let failure ex = ((jsRuntime |> Some), ex) ||> ytMsg.failureMessage |> StudioFloorMessage.YouTubeMessage
+    let failure ex = ((jsRuntime |> Some), ex) ||> ytMsg.FailureMessage |> StudioFloorMessage.YouTubeMessage
 
     match ytMsg with
     | YouTubeMessage.CallYtItems key ->
-        let uriOption = key |> Identifier.Alphanumeric |> model.ytModel.getPlaylistUri
+        let uriOption = key |> Identifier.Alphanumeric |> model.ytModel.GetPlaylistUri
         match uriOption with
         | None -> ytModel, Cmd.none
         | Some uri ->
@@ -97,7 +98,7 @@ let update ytMsg model =
             let ytItemsSuccessMsg = YouTubeMessage.CalledYtSetIndex index
             StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
 
-        match YtIndexSonghay |> Identifier.Alphanumeric |> model.ytModel.getPlaylistIndexUri with
+        match YtIndexSonghay |> Identifier.Alphanumeric |> model.ytModel.GetPlaylistIndexUri with
         | None -> ytModel, Cmd.none
         | Some uriIdx ->
             match uriYtSetOption with
@@ -119,8 +120,8 @@ let update ytMsg model =
         ytModel, cmd
 
     | YouTubeMessage.GetYtManifestAndPlaylist key ->
-        let manifestUriOption = key |> model.ytModel.getPresentationManifestUri
-        let playlistUriOption = key |> model.ytModel.getPresentationYtItemsUri
+        let manifestUriOption = key |> model.ytModel.GetPresentationManifestUri
+        let playlistUriOption = key |> model.ytModel.GetPresentationYtItemsUri
 
         let successManifest (result: Result<string, HttpStatusCode>) =
             result

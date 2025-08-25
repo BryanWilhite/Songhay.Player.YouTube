@@ -5,4 +5,4 @@ open Bolero
 open Songhay.StudioFloor.Client.Models
 
 module ElmishRoutes =
-    let router = Router.infer NavigateTo (_.page)
+    let router = Router.infer NavigateTo _.page

@@ -16,8 +16,9 @@ open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.HttpResponseMessageUtility
 open Songhay.Modules.ProgramFileUtility
 
-open Songhay.Player.YouTube.YouTubeScalars
 open Songhay.Player.YouTube.Tests.TestUtility
+
+open Songhay.StudioFloor.Client.YouTubeScalars
 
 type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
 
@@ -26,7 +27,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
     member this.``getPlaylistIndexUri test`` (idString: string) =
         task {
             let id = Identifier.fromString(idString)
-            let uriOption = id |> model.getPlaylistIndexUri
+            let uriOption = id |> model.GetPlaylistIndexUri
             uriOption |> should be (ofCase <@ Option.Some @>)
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
@@ -65,7 +66,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         task {
             let indexId = Identifier.fromString(indexIdString)
             let clientId = ClientId.fromString(clientIdString)
-            let uriOption = (indexId, clientId) ||> model.getPlaylistSetUri
+            let uriOption = (indexId, clientId) ||> model.GetPlaylistSetUri
             uriOption |> should be (ofCase <@ Option.Some @>)
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
@@ -98,7 +99,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
 
         task {
             let id = Identifier.fromString(idString)
-            let uriOption = id |> model.getPlaylistUri
+            let uriOption = id |> model.GetPlaylistUri
             uriOption |> should be (ofCase <@ Option.Some @>)
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
@@ -130,7 +131,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
 
         task {
-            let uriOption = presentationKey |> model.getPresentationManifestUri
+            let uriOption = presentationKey |> model.GetPresentationManifestUri
             uriOption |> should be (ofCase <@ Option.Some @>)
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
@@ -162,7 +163,7 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
 
         task {
-            let uriOption = presentationKey |> model.getPresentationYtItemsUri
+            let uriOption = presentationKey |> model.GetPresentationYtItemsUri
             uriOption |> should be (ofCase <@ Option.Some @>)
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"

@@ -4,6 +4,7 @@ open System.Net.Http
 open System.Text.Json
 open Microsoft.Extensions.Logging
 open Xunit
+open Xunit.Abstractions
 
 open FsUnit.Xunit
 open FsUnit.CustomMatchers
@@ -15,8 +16,8 @@ open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.Bolero.RemoteHandlerUtility
-open Songhay.Player.YouTube.YouTubeScalars
-open Xunit.Abstractions
+
+open Songhay.StudioFloor.Client.YouTubeScalars
 
 type RemoteHandlerUtilityTests(outputHelper: ITestOutputHelper) =
 
@@ -26,7 +27,7 @@ type RemoteHandlerUtilityTests(outputHelper: ITestOutputHelper) =
         async {
             Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
 
-            let uri = indexName |> Identifier.Alphanumeric |> model.getPlaylistIndexUri
+            let uri = indexName |> Identifier.Alphanumeric |> model.GetPlaylistIndexUri
             outputHelper.WriteLine uri.Value.OriginalString
 
             let mockLogger = Substitute.For<ILogger>() |> Some

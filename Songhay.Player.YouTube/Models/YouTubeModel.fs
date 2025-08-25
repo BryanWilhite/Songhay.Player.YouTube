@@ -5,9 +5,11 @@ open System
 open FsToolkit.ErrorHandling
 open Bolero
 
+open Songhay.Modules.Bolero
 open Songhay.Modules.Models
 open Songhay.Modules.Bolero.JsRuntimeUtility
 open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Bolero.ServiceProviderUtility
 open Songhay.Modules.Publications.Models
 
 open Songhay.Player.YouTube.Models
@@ -19,7 +21,7 @@ type YouTubeModel =
         error: string option
         presentation: Presentation option
         presentationKey: Identifier option
-        restApiMetadata: RestApiMetadata
+        restApiMetadataOption: RestApiMetadata option
         ytItems: YouTubeItem[] option
         ytSet: (DisplayText * YouTubeItem []) [] option
         ytSetIndex: (ClientId * Name * (DisplayItemModel * ClientId []) []) option
@@ -27,13 +29,16 @@ type YouTubeModel =
     }
 
     static member initialize (serviceProvider: IServiceProvider) =
-        Songhay.Modules.Bolero.ServiceProviderUtility.setBlazorServiceProvider serviceProvider
+        setBlazorServiceProvider serviceProvider
         {
             blazorServices = {| presentationContainerElementRef = None |}
             error = None
             presentation = None
             presentationKey = None
-            restApiMetadata = "PlayerApi" |> RestApiMetadata.fromConfiguration (Songhay.Modules.Bolero.ServiceProviderUtility.getIConfiguration())
+            restApiMetadataOption =
+                "PlayerApi"
+                |> RestApiMetadata.fromConfiguration (getIConfiguration())
+                |> RestApiMetadata.toRestApiMetadataOption (getILogger().LogException)
             ytItems = None
             ytSet = None
             ytSetIndex = None
@@ -78,7 +83,7 @@ type YouTubeModel =
             { model with
                 ytSet = None
                 ytVisualStates = model
-                                     .setSelectedDocument(displayText, id)
+                                     .SetSelectedDocument(displayText, id)
                                      .removeState(YtSetRequestSelection)
             }
         | ChangeVisualState state ->
@@ -92,7 +97,7 @@ type YouTubeModel =
                 model with blazorServices = {| presentationContainerElementRef = elementRef |> Some |}
             }
         | GotYtManifest data ->
-            model.setComputedStyles()
+            model.SetComputedStyles()
             {
                 model with
                     presentation = data |> toPresentationOption
@@ -115,13 +120,34 @@ type YouTubeModel =
         |> List.choose getter
         |> List.head
 
+    /// <summary>
+    /// An <c>option</c> wrapper for <see cref="RestApiMetadata.GetClaim"/>.
+    /// </summary>
+    member this.GetClaim(key: string) =
+        this.restApiMetadataOption
+        |> Option.either _.GetClaim(key) (fun () -> None)
+
+    /// <summary>
+    /// An <c>option</c> wrapper for <see cref="RestApiMetadata.ToUriResultFromClaim"/>.
+    /// </summary>
+    member this.ToUriResultFromClaim(key: string, [<ParamArray>] args: string[]) =
+        this.restApiMetadataOption
+        |> Option.either
+            (
+                fun restApiMetadata ->
+                    restApiMetadata.ToUriResultFromClaim(key, args)
+                    |> Result.teeError (getILogger().LogException)
+            )
+            (fun () -> Result.Error <| exn $"The expected {nameof this.restApiMetadataOption} is not here.")
+
     /// <summary>Returns the URI for a b-roll player API endpoint</summary>
     /// <param name="indexId">fills in the <c>suffix</c> for the endpoint route</param>
     /// <remarks>
     /// The route for this endpoint is of the form <c>video/youtube/playlist/index/{suffix}</c>
     /// </remarks>
-    member this.getPlaylistIndexUri (indexId: Identifier) =
-        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-index", indexId.StringValue)
+    member this.GetPlaylistIndexUri (indexId: Identifier) =
+        this.ToUriResultFromClaim("route-for-video-yt-index", indexId.StringValue)
+        |> Option.ofResult
 
     /// <summary>Returns the URI for a b-roll player API endpoint</summary>
     /// <param name="indexId">fills in the <c>suffix</c> for the endpoint route</param>
@@ -129,9 +155,10 @@ type YouTubeModel =
     /// <remarks>
     /// The route for this endpoint is of the form <c>video/youtube/playlists/{suffix}/{id}</c>
     /// </remarks>
-    member this.getPlaylistSetUri (indexId: Identifier) (clientId: ClientId) =
+    member this.GetPlaylistSetUri (indexId: Identifier) (clientId: ClientId) =
         let id = clientId.toIdentifier.StringValue
-        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist-set", indexId.StringValue, id)
+        this.ToUriResultFromClaim("route-for-video-yt-playlist-set", indexId.StringValue, id)
+        |> Option.ofResult
 
     /// <summary>Returns the URI for a b-roll player API endpoint</summary>
     /// <param name="playlistFileName">fills in the <c>blobName</c> for the endpoint route (do not include any file extension as this member defaults to <c>.json</c>)</param>
@@ -139,37 +166,40 @@ type YouTubeModel =
     /// The route for this endpoint is of the form <c>video/youtube/playlist/{subFolder}/{blobName}</c>
     /// where <c>subFolder</c> is hard-coded to <c>uploads</c>
     /// </remarks>
-    member this.getPlaylistUri (playlistFileName: Identifier) =
-        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-playlist", "uploads", playlistFileName.StringValue)
+    member this.GetPlaylistUri (playlistFileName: Identifier) =
+        this.ToUriResultFromClaim("route-for-video-yt-playlist", "uploads", playlistFileName.StringValue)
+        |> Option.ofResult
 
     /// <summary>Returns the URI for a b-roll player API endpoint</summary>
     /// <param name="presentationKey">fills in the <c>presentationKey</c> for the endpoint route</param>
     /// <remarks>
     /// The route for this endpoint is of the form <c>video/youtube/{presentationKey}</c>
     /// </remarks>
-    member this.getPresentationManifestUri (presentationKey: string ) =
-        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-manifest", presentationKey)
+    member this.GetPresentationManifestUri (presentationKey: string ) =
+        this.ToUriResultFromClaim("route-for-video-yt-manifest", presentationKey)
+        |> Option.ofResult
 
     /// <summary>Returns the URI for a b-roll player API endpoint</summary>
     /// <param name="presentationKey">fills in the <c>presentationKey</c> for the endpoint route</param>
     /// <remarks>
     /// The route for this endpoint is of the form <c>video/youtube/videos/{presentationKey}</c>
     /// </remarks>
-    member this.getPresentationYtItemsUri (presentationKey: string ) =
-        this.restApiMetadata.ToUriFromClaim("route-for-video-yt-curated-manifest", presentationKey)
+    member this.GetPresentationYtItemsUri (presentationKey: string ) =
+        this.ToUriResultFromClaim("route-for-video-yt-curated-manifest", presentationKey)
+        |> Option.ofResult
 
-    member this.getSelectedDocument() =
+    member this.GetSelectedDocument() =
         this.getVisualState(function YtSetIndexSelectedDocument (dt, id) -> Some (dt, id) | _ -> None)
 
-    member this.getSelectedDocumentClientId() = snd (this.getSelectedDocument())
+    member this.GetSelectedDocumentClientId() = snd (this.GetSelectedDocument())
 
-    member this.getSelectedDocumentDisplayText() = fst (this.getSelectedDocument())
+    member this.GetSelectedDocumentDisplayText() = fst (this.GetSelectedDocument())
 
-    member this.selectedDocumentEquals (clientId: ClientId) =
-        clientId = this.getSelectedDocumentClientId()
+    member this.SelectedDocumentEquals (clientId: ClientId) =
+        clientId = this.GetSelectedDocumentClientId()
 
-    member this.setComputedStyles() =
-        let jsRuntime = Songhay.Modules.Bolero.ServiceProviderUtility.getIJSRuntime()
+    member this.SetComputedStyles() =
+        let jsRuntime = getIJSRuntime()
 
         option {
             let! elementRef = this.blazorServices.presentationContainerElementRef
@@ -189,14 +219,14 @@ type YouTubeModel =
                 fun _ ->
                     jsRuntime
                     |> consoleWarnAsync [|
-                        $"{nameof this.setComputedStyles} failed!"
+                        $"{nameof this.SetComputedStyles} failed!"
                         if this.blazorServices.presentationContainerElementRef.IsNone then
                             "The reference to the Presentation container is not here."
                     |] |> ignore
             )
 
-    member this.setSelectedDocument (dt, id) : AppStateSet<YouTubeVisualState> =
-        let current = this.getSelectedDocument()
+    member this.SetSelectedDocument (dt, id) : AppStateSet<YouTubeVisualState> =
+        let current = this.GetSelectedDocument()
         this.ytVisualStates
             .removeState(YtSetIndexSelectedDocument current)
             .addState(YtSetIndexSelectedDocument (dt, id))

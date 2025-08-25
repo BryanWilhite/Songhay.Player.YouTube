@@ -49,9 +49,12 @@ type YtThumbsContainerElmishComponent() =
                 item.snippet.title
 
         a {
-            attr.href (item.tryGetUri model.restApiMetadata |> Result.valueOr raise)
-            attr.target "_blank"
-            attr.title item.snippet.title
+            if model.restApiMetadataOption.IsSome then
+                attr.href (item.TryGetUri model.restApiMetadataOption.Value |> Result.valueOr raise)
+                attr.target "_blank"
+                attr.title item.snippet.title
+            else
+                Attr.Empty()
 
             text caption
         }
@@ -96,16 +99,19 @@ type YtThumbsContainerElmishComponent() =
 
         let toSpan (item: YouTubeItem) =
             let duration =
-                match item.tryGetDuration with
+                match item.TryGetDuration with
                 | Ok ts -> ts.ToString() |> text
                 | _ -> text ":00"
 
             span {
                 a
                     {
-                        attr.href (item.tryGetUri model.restApiMetadata |> Result.valueOr raise).OriginalString
-                        attr.target "_blank"
-                        attr.title item.snippet.title
+                        if model.restApiMetadataOption.IsSome then
+                            attr.href (item.TryGetUri model.restApiMetadataOption.Value |> Result.valueOr raise).OriginalString
+                            attr.target "_blank"
+                            attr.title item.snippet.title
+                        else
+                            Attr.Empty()
 
                         img
                             {
@@ -114,7 +120,7 @@ type YtThumbsContainerElmishComponent() =
                                 attr.height item.snippet.thumbnails.medium.height
                             }
                     }
-                span { [ "published-at"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item.getPublishedAt.Humanize() |> text }
+                span { [ "published-at"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item.GetPublishedAt.Humanize() |> text }
                 span { [ "caption"; elementFontWeight Semibold; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item |> getYtThumbsAnchor model }
                 span { [ "duration"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList ; span { duration } }
             }

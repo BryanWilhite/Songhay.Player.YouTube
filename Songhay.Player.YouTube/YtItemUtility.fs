@@ -26,7 +26,7 @@ module YtItemUtility =
     let YtItemThumbnailsPropertyName = "thumbnails"
 
     let getYtItemsPair (model: YouTubeModel) (item: YouTubeItem) =
-        let prefixOption = model.restApiMetadata.GetClaim "prefix-for-yt-channel-root"
+        let prefixOption = model.GetClaim "prefix-for-yt-channel-root"
         match prefixOption with
         | None -> "", "[Error!, `getYtItemsPair`]"
         | Some prefix ->

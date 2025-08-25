@@ -27,7 +27,7 @@ type YtPresentationElmishComponent() =
             | true ->
                 concat {
                     YtThumbsContainerElmishComponent.EComp
-                        (model.presentation |> Option.map (_.title) |> Option.map (_.Value))
+                        (model.presentation |> Option.map _.title |> Option.map _.Value)
                         { model with ytItems = model.ytItems }
                         dispatch
 

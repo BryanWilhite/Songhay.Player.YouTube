@@ -47,12 +47,12 @@ type YouTubeItem =
         contentDetails: YouTubeContentDetails
     }
 
-    member this.getPublishedAt = this.snippet.publishedAt
+    member this.GetPublishedAt = this.snippet.publishedAt
 
-    member this.tryGetDuration =
+    member this.TryGetDuration =
         this.contentDetails.duration |> Option.either id (fun _ -> "") |> tryParseIso8601Duration
 
-    member this.tryGetUri (restApiMetadata: RestApiMetadata) : Result<Uri, exn> =
+    member this.TryGetUri (restApiMetadata: RestApiMetadata) : Result<Uri, exn> =
         let videoIdResult =
             match this.kind with
             | "youtube#video" -> Ok this.id

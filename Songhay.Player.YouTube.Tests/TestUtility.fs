@@ -11,9 +11,12 @@ open Microsoft.Extensions.DependencyInjection
 
 open FsToolkit.ErrorHandling
 
+open Songhay.Modules.Bolero
 open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Models
 open Songhay.Modules.ProgramFileUtility
+open Songhay.Modules.Bolero.ServiceProviderUtility
+
 open Songhay.Player.YouTube.Models
 
 [<Literal>]
@@ -25,9 +28,10 @@ let client = new HttpClient()
 let configuration = ConfigurationBuilder().AddJsonFile(studioSettingsPath.Value).Build()
 let provider = ServiceCollection().AddSingleton<IConfiguration>(configuration).BuildServiceProvider()
 let model = { YouTubeModel.initialize(provider) with
-                                restApiMetadata =
+                                restApiMetadataOption =
                                     "PlayerYouTube"
-                                    |> RestApiMetadata.fromConfiguration (Songhay.Modules.Bolero.ServiceProviderUtility.getIConfiguration())
+                                    |> RestApiMetadata.fromConfiguration (getIConfiguration())
+                                    |> RestApiMetadata.toRestApiMetadataOption (getILogger().LogException)
                             }
 
 let projectDirectoryInfo =
