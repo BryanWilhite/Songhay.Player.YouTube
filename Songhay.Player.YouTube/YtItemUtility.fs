@@ -10,7 +10,6 @@ open FsToolkit.ErrorHandling.Operator.Result
 open Songhay.Modules.JsonDocumentUtility
 
 open Songhay.Player.YouTube.Models
-open Songhay.Player.YouTube.YouTubeScalars
 
 module YtItemUtility =
 
@@ -26,20 +25,25 @@ module YtItemUtility =
     [<Literal>]
     let YtItemThumbnailsPropertyName = "thumbnails"
 
-    let getYtItemsPair (item: YouTubeItem) =
-        let uri = $"{YouTubeChannelRootUri}{item.snippet.channelId}"
-        let title = item.snippet.channelTitle
-        uri, title
+    let getYtItemsPair (model: YouTubeModel) (item: YouTubeItem) =
+        let prefixOption = model.GetClaim "prefix-for-yt-channel-root"
+        match prefixOption with
+        | None -> "", "[Error!, `getYtItemsPair`]"
+        | Some prefix ->
+            let uri = $"{prefix}{item.snippet.channelId}"
+            let title = item.snippet.channelTitle
+            uri, title
 
     let tryGetYtContentDetails (element: JsonElement) : Result<YouTubeContentDetails, JsonException> =
-        let videoIdResult = element |> tryGetProperty "videoId" |> Result.map (_.GetString())
+        let videoIdResult = element |> tryGetProperty "videoId" |> Result.map _.GetString()
         let videoPublishedAtResult =
             element
             |> tryGetProperty "videoPublishedAt"
-            |> Result.map ( _.GetDateTime() )
-        let durationResult = element |> tryGetProperty "duration" |> Result.map (_.GetString())
-        let dimensionResult = element |> tryGetProperty "dimension" |> Result.map (_.GetString())
-        let definitionResult = element |> tryGetProperty "definition" |> Result.map (_.GetString())
+            |> Result.map _.GetDateTime()
+
+        let durationResult = element |> tryGetProperty "duration" |> Result.map _.GetString()
+        let dimensionResult = element |> tryGetProperty "dimension" |> Result.map _.GetString()
+        let definitionResult = element |> tryGetProperty "definition" |> Result.map _.GetString()
         let captionResult =
             element
             |> tryGetProperty "caption"
@@ -52,7 +56,7 @@ module YtItemUtility =
                         | true, b -> Ok b
                 )
                 Result.Error
-        let licensedContentResult = element |> tryGetProperty "licensedContent" |> Result.map (_.GetBoolean())
+        let licensedContentResult = element |> tryGetProperty "licensedContent" |> Result.map _.GetBoolean()
         let regionRestrictionResult =
             element
             |> tryGetProperty "regionRestriction"
@@ -60,11 +64,11 @@ module YtItemUtility =
             |> Result.eitherMap
                 (
                     fun el ->
-                        let blocked = el.EnumerateArray() |> Array.ofSeq |> Array.map (_.ToString())
+                        let blocked = el.EnumerateArray() |> Array.ofSeq |> Array.map _.ToString()
                         {| blocked = blocked |}
                 )
                 id
-        let projectionResult = element |> tryGetProperty "projection" |> Result.map (_.GetString())
+        let projectionResult = element |> tryGetProperty "projection" |> Result.map _.GetString()
 
         [
             dimensionResult |> Result.map (fun _ -> true)
@@ -92,9 +96,9 @@ module YtItemUtility =
             id
 
     let tryGetYtThumbnail (element: JsonElement) : Result<YouTubeThumbnail, JsonException> =
-        let urlResult = element |> tryGetProperty "url" |> Result.map (_.GetString())
-        let widthResult = element |> tryGetProperty "width" |> Result.map (_.GetInt32())
-        let heightResult = element |> tryGetProperty "height" |> Result.map (_.GetInt32())
+        let urlResult = element |> tryGetProperty "url" |> Result.map _.GetString()
+        let widthResult = element |> tryGetProperty "width" |> Result.map _.GetInt32()
+        let heightResult = element |> tryGetProperty "height" |> Result.map _.GetInt32()
 
         [
             urlResult |> Result.map (fun _ -> true)
@@ -150,29 +154,31 @@ module YtItemUtility =
         let publishedAtResult =
             element
             |> tryGetProperty "publishedAt"
-            |> Result.map ( _.GetDateTime() )
-        let channelIdResult = element |> tryGetProperty "channelId" |> Result.map (_.GetString())
-        let titleResult = element |> tryGetProperty "title" |> Result.map (_.GetString())
-        let descriptionResult = element |> tryGetProperty "description" |> Result.map (_.GetString())
+            |> Result.map _.GetDateTime()
+
+        let channelIdResult = element |> tryGetProperty "channelId" |> Result.map _.GetString()
+        let titleResult = element |> tryGetProperty "title" |> Result.map _.GetString()
+        let descriptionResult = element |> tryGetProperty "description" |> Result.map _.GetString()
         let thumbnailsResult = element |> tryGetYtThumbnails
-        let channelTitleResult = element |> tryGetProperty "channelTitle" |> Result.map (_.GetString())
-        let playlistIdResult = element |> tryGetProperty "playlistId" |> Result.map (_.GetString())
-        let positionResult = element |> tryGetProperty "position" |> Result.map (_.GetInt32())
+        let channelTitleResult = element |> tryGetProperty "channelTitle" |> Result.map _.GetString()
+        let playlistIdResult = element |> tryGetProperty "playlistId" |> Result.map _.GetString()
+        let positionResult = element |> tryGetProperty "position" |> Result.map _.GetInt32()
         let resourceIdResult = element |> tryGetYtResourceId
         let tagsResult =
             element
             |> tryGetProperty "tags"
-            |> Result.map (fun el -> el.EnumerateArray() |> Array.ofSeq |> Array.map (_.ToString()))
+            |> Result.map (fun el -> el.EnumerateArray() |> Array.ofSeq |> Array.map _.ToString())
 
         let localizedResult = element |> tryGetProperty "localized" |> Result.map id
         let localizedDescResult =
             localizedResult
             >>= (tryGetProperty "description")
-            |> Result.map (_.GetString())
+            |> Result.map _.GetString()
+
         let localizedTitleResult =
             localizedResult
             >>= (tryGetProperty "title")
-            |> Result.map (_.GetString())
+            |> Result.map _.GetString()
 
         [
             publishedAtResult |> Result.map (fun _ -> true)
@@ -209,9 +215,9 @@ module YtItemUtility =
             id
 
     let tryGetYtItem (element: JsonElement) : Result<YouTubeItem, JsonException> =
-        let etagResult = element |> tryGetProperty "etag" |> Result.map (_.GetString())
-        let idResult = element |> tryGetProperty "id" |> Result.map (_.GetString())
-        let kindResult = element |> tryGetProperty "kind" |> Result.map (_.GetString())
+        let etagResult = element |> tryGetProperty "etag" |> Result.map _.GetString()
+        let idResult = element |> tryGetProperty "id" |> Result.map _.GetString()
+        let kindResult = element |> tryGetProperty "kind" |> Result.map _.GetString()
         let snippetResult = element |> tryGetProperty YtItemSnippetPropertyName >>= tryGetYtSnippet
         let contentDetailsResult = element |> tryGetProperty YtItemContentDetailsPropertyName >>= tryGetYtContentDetails
 

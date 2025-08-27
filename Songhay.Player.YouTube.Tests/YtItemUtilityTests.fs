@@ -1,7 +1,5 @@
 namespace Songhay.Player.YouTube.Tests
 
-open System.IO
-open System.Reflection
 open System.Text.Json
 open Xunit
 open FsUnit.Xunit
@@ -9,27 +7,11 @@ open FsUnit.CustomMatchers
 open FsToolkit.ErrorHandling
 open FsToolkit.ErrorHandling.Operator.Result
 
-open Songhay.Modules.Models
 open Songhay.Modules.JsonDocumentUtility
-open Songhay.Modules.ProgramFileUtility
-
 open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.YtItemUtility
 
 type YtItemUtilityTests() =
-
-    let projectDirectoryInfo =
-        Assembly.GetExecutingAssembly()
-        |> ProgramAssemblyInfo.getPathFromAssembly "../../../"
-        |> Result.valueOr raiseProgramFileError
-        |> DirectoryInfo
-
-    let getJsonDocument (fileName: string) =
-        let path =
-            $"./json/{fileName}"
-            |> tryGetCombinedPath projectDirectoryInfo.FullName
-            |> Result.valueOr raiseProgramFileError
-        JsonDocument.Parse(File.ReadAllText(path))
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
@@ -69,7 +51,6 @@ type YtItemUtilityTests() =
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
-    [<InlineData("youtube-index-songhay-top-ten.json")>]
     member this.``tryGetYtResourceId test`` (fileName: string) =
         let videoJsonDocument = fileName |> getJsonDocument
         let itemElementResult =

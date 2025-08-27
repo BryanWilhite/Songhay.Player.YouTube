@@ -3,9 +3,8 @@ namespace Songhay.Player.YouTube
 open FsToolkit.ErrorHandling
 
 open Songhay.Modules.Models
+open Songhay.Modules.Bolero.SvgUtility
 open Songhay.Modules.Publications.Models
-
-open Songhay.Player.YouTube.YouTubeScalars
 
 module PresentationUtility =
 

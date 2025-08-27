@@ -25,7 +25,7 @@ type YouTubeMessage =
     | PresentationCreditsClick
     | SelectYtSet
 
-    member this.displayText =
+    member this.DisplayText =
         match this with
         | Error _ -> $"{nameof YouTubeMessage}.{nameof Error}"
         | CallYtItems _ -> $"{nameof YouTubeMessage}.{nameof CallYtItems}"
@@ -44,12 +44,12 @@ type YouTubeMessage =
         | PresentationCreditsClick -> $"{nameof YouTubeMessage}.{nameof PresentationCreditsClick}"
         | SelectYtSet -> $"{nameof YouTubeMessage}.{nameof SelectYtSet}"
 
-    member this.failureMessage (jsRuntime: IJSRuntime option) ex =
+    member this.FailureMessage (jsRuntime: IJSRuntime option) ex =
         let ytFailureMsg = YouTubeMessage.Error ex
 
         if jsRuntime.IsSome then
             jsRuntime.Value |> JsRuntimeUtility.consoleErrorAsync [|
-                $"{this.displayText} failure:", ex
+                $"{this.DisplayText} failure:", ex
             |] |> ignore
 
         ytFailureMsg

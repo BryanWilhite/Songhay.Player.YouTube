@@ -18,9 +18,10 @@ open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.Publications.Models
 open Songhay.Player.YouTube
 open Songhay.Player.YouTube.Models
-open Songhay.Player.YouTube.YtUriUtility
 
 open Songhay.StudioFloor.Client.Models
+
+open Songhay.StudioFloor.Client.YouTubeScalars
 
     module Remote =
         let tryDownloadToStringAsync (client: HttpClient, uri: Uri) =
@@ -43,13 +44,13 @@ let passFailureToConsole (jsRuntime: IJSRuntime option) ex =
         |] |> ignore
     ex
 
-let getCommandForGetReadMe (model: StudioFloorModel) =
+let getCommandForGetReadMe (_: StudioFloorModel) =
     let success (result: Result<string, HttpStatusCode>) =
         let data = result |> Result.valueOr (fun code -> $"The expected README data is not here. [error code: {code}]")
         StudioFloorMessage.GotReadMe data
     let failure ex = ((jsRuntime |> Some), ex) ||> passFailureToConsole |> StudioFloorMessage.Error
     let uri = ("./README.html", UriKind.Relative) |> Uri
-    let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri)  success failure
+    let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri) success failure
 
     cmd
 
@@ -58,12 +59,12 @@ let update ytMsg model =
         model with ytModel = YouTubeModel.updateModel ytMsg model.ytModel
     }
 
-    let uriYtSet =
+    let uriYtSetOption =
         (
             YtIndexSonghay |> Identifier.Alphanumeric,
-            ytModel.ytModel.getSelectedDocumentClientId()
+            ytModel.ytModel.GetSelectedDocumentClientId()
         )
-        ||> getPlaylistSetUri
+        ||> model.ytModel.GetPlaylistSetUri
 
     let rec successYtItems (result: Result<string, HttpStatusCode>) =
         let dataGetter = ServiceHandlerUtility.toYtItems
@@ -77,12 +78,16 @@ let update ytMsg model =
         let message = YouTubeMessage.CalledYtSet set
         StudioFloorMessage.YouTubeMessage message
 
-    let failure ex = ((jsRuntime |> Some), ex) ||> ytMsg.failureMessage |> StudioFloorMessage.YouTubeMessage
+    let failure ex = ((jsRuntime |> Some), ex) ||> ytMsg.FailureMessage |> StudioFloorMessage.YouTubeMessage
 
     match ytMsg with
     | YouTubeMessage.CallYtItems key ->
-        let uri = key |> Identifier.Alphanumeric |> getPlaylistUri
-        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri)  successYtItems failure
+        let uriOption = key |> Identifier.Alphanumeric |> model.ytModel.GetPlaylistUri
+        match uriOption with
+        | None -> ytModel, Cmd.none
+        | Some uri ->
+        let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uri) successYtItems failure
+
         ytModel, cmd
 
     | YouTubeMessage.CallYtIndexAndSetForThumbsSet
@@ -92,20 +97,31 @@ let update ytMsg model =
             let index = (dataGetter, result) ||> toHandlerOutput None
             let ytItemsSuccessMsg = YouTubeMessage.CalledYtSetIndex index
             StudioFloorMessage.YouTubeMessage ytItemsSuccessMsg
-        let uriIdx = YtIndexSonghay |> Identifier.Alphanumeric |> getPlaylistIndexUri
-        let cmdBatch = Cmd.batch [
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriIdx) success failure
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriYtSet) successYtSet failure
-        ]
-        ytModel, cmdBatch
+
+        match YtIndexSonghay |> Identifier.Alphanumeric |> model.ytModel.GetPlaylistIndexUri with
+        | None -> ytModel, Cmd.none
+        | Some uriIdx ->
+            match uriYtSetOption with
+            | None -> ytModel, Cmd.none
+            | Some uriYtSet ->
+            let cmdBatch = Cmd.batch [
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriIdx) success failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriYtSet) successYtSet failure
+            ]
+
+            ytModel, cmdBatch
 
     | YouTubeMessage.CallYtSet _ ->
+        match uriYtSetOption with
+        | None -> ytModel, Cmd.none
+        | Some uriYtSet ->
         let cmd = Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, uriYtSet) successYtSet failure
+
         ytModel, cmd
 
     | YouTubeMessage.GetYtManifestAndPlaylist key ->
-        let manifestUri = key |> getPresentationManifestUri
-        let playlistUri = key |> getPresentationYtItemsUri
+        let manifestUriOption = key |> model.ytModel.GetPresentationManifestUri
+        let playlistUriOption = key |> model.ytModel.GetPresentationYtItemsUri
 
         let successManifest (result: Result<string, HttpStatusCode>) =
             result
@@ -129,11 +145,14 @@ let update ytMsg model =
                         jsRuntime |> passErrorToConsole label ex |> StudioFloorMessage.Error
                 )
 
-        let cmdBatch = Cmd.batch [
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, manifestUri) successManifest failure
-            Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, playlistUri) successYtItems failure
-        ]
-        ytModel, cmdBatch
+        if manifestUriOption.IsSome && playlistUriOption.IsSome then
+            let cmdBatch = Cmd.batch [
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, manifestUriOption.Value) successManifest failure
+                Cmd.OfAsync.either Remote.tryDownloadToStringAsync (httpClient, playlistUriOption.Value) successYtItems failure
+            ]
+            ytModel, cmdBatch
+        else
+            ytModel, Cmd.none
 
     | YouTubeMessage.OpenYtSetOverlay ->
         if ytModel.ytModel.ytSetIndex.IsNone && ytModel.ytModel.ytSet.IsNone then

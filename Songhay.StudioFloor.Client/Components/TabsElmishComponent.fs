@@ -9,10 +9,11 @@ open Songhay.Modules.Bolero.Visuals.Bulma
 open Songhay.Modules.Bolero.Visuals.Bulma.Component
 
 open Songhay.Player.YouTube.Components
-open Songhay.Player.YouTube.YtUriUtility
 
 open Songhay.StudioFloor.Client
 open Songhay.StudioFloor.Client.Models
+
+open Songhay.StudioFloor.Client.YouTubeScalars
 
 type TabsElmishComponent() =
     inherit ElmishComponent<StudioFloorModel, StudioFloorMessage>()

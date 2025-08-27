@@ -40,7 +40,7 @@ type YtThumbsContainerElmishComponent() =
 
     static let click = DomElementEvent.Click
 
-    static let getYtThumbsAnchor (item: YouTubeItem) =
+    static let getYtThumbsAnchor (model: YouTubeModel) (item: YouTubeItem) =
         let limit = 60
         let caption =
             if item.snippet.title.Length > limit then
@@ -49,9 +49,12 @@ type YtThumbsContainerElmishComponent() =
                 item.snippet.title
 
         a {
-            attr.href (item.tryGetUri |> Result.valueOr raise)
-            attr.target "_blank"
-            attr.title item.snippet.title
+            if model.restApiMetadataOption.IsSome then
+                attr.href (item.TryGetUri model.restApiMetadataOption.Value |> Result.valueOr raise)
+                attr.target "_blank"
+                attr.title item.snippet.title
+            else
+                Attr.Empty()
 
             text caption
         }
@@ -66,7 +69,7 @@ type YtThumbsContainerElmishComponent() =
         | _ ->
             cond itemsTitle.IsNone <| function
             | true ->
-                let pair = items.Value |> Array.head |> getYtItemsPair
+                let pair = items.Value |> Array.head |> getYtItemsPair model
                 a { attr.href (fst pair); attr.target "_blank"; text (snd pair) }
             | _ ->
                 a {
@@ -92,20 +95,23 @@ type YtThumbsContainerElmishComponent() =
             initCache[Load] <- true
         }
 
-    static let ytThumbnailsNode (_: IJSRuntime) (blockWrapperRef: HtmlRef) (items: YouTubeItem[] option) =
+    static let ytThumbnailsNode (_: IJSRuntime) (model: YouTubeModel) (blockWrapperRef: HtmlRef) (items: YouTubeItem[] option) =
 
         let toSpan (item: YouTubeItem) =
             let duration =
-                match item.tryGetDuration with
+                match item.TryGetDuration with
                 | Ok ts -> ts.ToString() |> text
                 | _ -> text ":00"
 
             span {
                 a
                     {
-                        attr.href (item.tryGetUri |> Result.valueOr raise).OriginalString
-                        attr.target "_blank"
-                        attr.title item.snippet.title
+                        if model.restApiMetadataOption.IsSome then
+                            attr.href (item.TryGetUri model.restApiMetadataOption.Value |> Result.valueOr raise).OriginalString
+                            attr.target "_blank"
+                            attr.title item.snippet.title
+                        else
+                            Attr.Empty()
 
                         img
                             {
@@ -114,8 +120,8 @@ type YtThumbsContainerElmishComponent() =
                                 attr.height item.snippet.thumbnails.medium.height
                             }
                     }
-                span { [ "published-at"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item.getPublishedAt.Humanize() |> text }
-                span { [ "caption"; elementFontWeight Semibold; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item |> getYtThumbsAnchor }
+                span { [ "published-at"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item.GetPublishedAt.Humanize() |> text }
+                span { [ "caption"; elementFontWeight Semibold; fontSize Size6 ] |> CssClasses.toHtmlClassFromList; item |> getYtThumbsAnchor model }
                 span { [ "duration"; fontSize Size6 ] |> CssClasses.toHtmlClassFromList ; span { duration } }
             }
 
@@ -200,7 +206,7 @@ type YtThumbsContainerElmishComponent() =
                 [ "video"; "thumbs"; "thumbs-container" ] |> CssClasses.toHtmlClassFromList
                 attr.ref thumbsContainerRef
 
-                items |> ytThumbnailsNode jsRuntime blockWrapperRef
+                items |> ytThumbnailsNode jsRuntime model blockWrapperRef
 
                 anchorButtonElement
                     (HasClasses <| CssClasses ([ "command"; "left" ] @ imageContainer (Square Square48)))

@@ -4,13 +4,11 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Humanizer.Core" Version="2.14.1" />
-        <PackageReference Include="Songhay.Modules.Bolero" Version="8.0.3" />
+        <PackageReference Include="Songhay.Modules.Bolero" Version="8.1.0" />
         <PackageReference Include="Songhay.Modules.Publications" Version="8.2.0" />
         <PackageReference Remove="FSharp.Core" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="YouTubeScalars.fs" />
-        <Compile Include="YtUriUtility.fs" />
         <Compile Include="PresentationUtility.fs" />
         <Compile Include="Models\YouTubeCssVariable.fs" />
         <Compile Include="Models\YouTubeResourceId.fs" />

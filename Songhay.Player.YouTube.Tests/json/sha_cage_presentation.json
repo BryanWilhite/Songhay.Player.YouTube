@@ -1,0 +1,127 @@
+{
+  "id": {
+    "Case": "Alphanumeric",
+    "Fields": [
+      "2008-07-28-20-11-04-IDANAYXBIDAOAYXB-1"
+    ]
+  },
+  "title": "3 Breaths\u00A0(YouTube.com)",
+  "cssVariables": [
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-background-color",
+        "#000"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-border-color",
+        "#000"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-playlist-background-color",
+        "#000"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-playlist-color",
+        "#fff"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-prose-background-color",
+        "#000"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-prose-color",
+        "#fff"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-title-background-color",
+        "#767676"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-title-color",
+        "#fff"
+      ]
+    },
+    {
+      "Case": "CssCustomPropertyAndValue",
+      "Fields": [
+        "--rx-player-title-display",
+        "block"
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "Case": "PresentationDescription",
+      "Fields": [
+        "\u003Cdiv\u003EThese three \u003Ca href=\u0022http://shacage.com/\u0022\u003ESh\u00E1 Cage\u003C/a\u003E YouTube.com videos catch this strong voice live. This is an interdisciplinary artist based in Minneapolis, travelling to Africa by way of Mississippi. Andrea Myers of tcdailyplanet.net introduced \u003Ca href=\u0022http://www.tcdailyplanet.net/article/2008/02/13/hip-hop-homeless-benefit-show-rock-triple-rock.html\u0022\u003ESh\u00E1 Cage in February 2008\u003C/a\u003E: \u201CSha Cage is a woman of many talents, currently working in the Twin Cities as an artist, poet, actor and playwright. Her spoken word performances are both riveting and heartfelt, showcasing her talent for internal rhyme schemes, wry humor and strong will.\u201D\u003C/div\u003E\u003Cdiv\u003E\u00A0\u003C/div\u003E"
+      ]
+    },
+    {
+      "Case": "Credits",
+      "Fields": [
+        [
+          {
+            "role": "3 breaths\u201D presented",
+            "name": "Tru Ruts/Speakeasy Records"
+          },
+          {
+            "role": "acapella\u201D and mic check\u201D presented",
+            "name": "ToroMusic.com"
+          }
+        ]
+      ]
+    },
+    {
+      "Case": "CopyRights",
+      "Fields": [
+        [
+          {
+            "year": 2008,
+            "name": "Sh\u00E1 Cage"
+          }
+        ]
+      ]
+    },
+    {
+      "Case": "Playlist",
+      "Fields": [
+        [
+          [
+            "3 breaths",
+            "http://youtube.com/v/XQp1YtXYCWQ"
+          ],
+          [
+            "acapella",
+            "http://youtube.com/v/lrobQZfo3Xw"
+          ],
+          [
+            "mic\u2019 check",
+            "http://youtube.com/v/FW2wz-vjMwQ"
+          ]
+        ]
+      ]
+    }
+  ]
+}

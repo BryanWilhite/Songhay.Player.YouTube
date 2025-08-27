@@ -3,9 +3,8 @@ namespace Songhay.Player.YouTube.Models
 open System
 open FsToolkit.ErrorHandling
 
+open Songhay.Modules.Bolero.Models
 open Songhay.Modules.ProgramTypeUtility
-
-open Songhay.Player.YouTube
 
 /// <summary>
 /// defines YouTube API item
@@ -48,12 +47,12 @@ type YouTubeItem =
         contentDetails: YouTubeContentDetails
     }
 
-    member this.getPublishedAt = this.snippet.publishedAt
+    member this.GetPublishedAt = this.snippet.publishedAt
 
-    member this.tryGetDuration =
+    member this.TryGetDuration =
         this.contentDetails.duration |> Option.either id (fun _ -> "") |> tryParseIso8601Duration
 
-    member this.tryGetUri : Result<Uri, exn> =
+    member this.TryGetUri (restApiMetadata: RestApiMetadata) : Result<Uri, exn> =
         let videoIdResult =
             match this.kind with
             | "youtube#video" -> Ok this.id
@@ -62,4 +61,8 @@ type YouTubeItem =
                 | Some id -> Ok id.videoId
                 | _ -> Error (exn "The expected Snippet Resource ID is not here.")
 
-        videoIdResult |> Result.map (fun videoId -> $"{YouTubeScalars.YouTubeWatchRootUri}{videoId}" |> Uri)
+        let prefixOption = restApiMetadata.GetClaim "prefix-for-yt-watch-root"
+        if prefixOption.IsNone then
+            Error <| exn "The expected URI prefix is not here."
+        else
+            videoIdResult |> Result.map (fun videoId -> $"{prefixOption.Value}{videoId}" |> Uri)

@@ -1,5 +1,6 @@
 namespace Songhay.StudioFloor.Client.Components
 
+open System
 open Elmish
 open Bolero
 
@@ -22,24 +23,23 @@ type StudioFloorProgramComponent() =
             let m = { model with readMeData = (data |> Some) }
             m, Cmd.none
         | NavigateTo page ->
+            let provider = Songhay.Modules.Bolero.ServiceProviderUtility.getBlazorService<IServiceProvider>()
+            let nextYtModel = YouTubeModel.initialize(provider)
             let m =
                   {
                     model with
                         page = page
                         ytModel =
-                                    {
-                                        blazorServices = model.ytModel.blazorServices
-                                        error = model.ytModel.error
-                                        presentation = None
-                                        presentationKey = model.ytModel.presentationKey
-                                        ytItems = None
-                                        ytSet = model.ytModel.ytSet
-                                        ytSetIndex = model.ytModel.ytSetIndex
-                                        ytVisualStates =
-                                            model.ytModel.ytVisualStates
-                                                .addState(YtSetOverlayIsUntouched)
-                                                .removeState(YtSetOverlayIsVisible)
-                                    } 
+                            { nextYtModel with
+                                blazorServices = model.ytModel.blazorServices
+                                error = model.ytModel.error
+                                presentationKey = model.ytModel.presentationKey
+                                ytSet = model.ytModel.ytSet
+                                ytSetIndex = model.ytModel.ytSetIndex
+                                ytVisualStates = model.ytModel.ytVisualStates
+                                                    .addState(YtSetOverlayIsUntouched)
+                                                    .removeState(YtSetOverlayIsVisible)
+                            }
                   }
             match page with
             | YtPresentationPage key ->

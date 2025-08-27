@@ -31,7 +31,7 @@ type YtThumbsSetElmishComponent() =
                 forEach documents <| fun (display, _) ->
                     if display.displayText.IsSome then
                         let clientId = ClientId.fromIdentifier display.id
-                        let itemIsActive = model.selectedDocumentEquals clientId
+                        let itemIsActive = model.SelectedDocumentEquals clientId
                         let itemCallback = (fun _ -> CallYtSet (display.displayText.Value, clientId) |> dispatch)
                         let itemDisplayText =
                             (display.displayText |> Option.defaultWith (fun _ -> DisplayText "[missing]")).Value
@@ -90,7 +90,7 @@ type YtThumbsSetElmishComponent() =
                         div { levelItem |> CssClasses.toHtmlClass ; (dispatch, model) ||> bulmaDropdown }
                         div {
                             [ levelItem; fontSize Size2 ] |> CssClasses.toHtmlClassFromList
-                            text (model.getSelectedDocumentDisplayText()).Value
+                            text (model.GetSelectedDocumentDisplayText()).Value
                         }
                     }
                     cond isOverlayMode <| function
