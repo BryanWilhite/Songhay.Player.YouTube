@@ -111,6 +111,7 @@ $key: 8-thumbs;
             white-space: nowrap;
 
             & > div {
+                height: 100%;
                 position: absolute;
                 z-index: 1;
 
@@ -124,6 +125,17 @@ $key: 8-thumbs;
                     margin-right: $thumbnail-margin-right;
                     height: $thumbnail-height;
                     width: $thumbnail-width;
+
+                    & > a[target="_blank"] {
+                        display: inherit;
+                        height: inherit;
+                        width: inherit;
+
+                        & > img {
+                            height: inherit;
+                            width: inherit;
+                        }
+                    }
 
                     & .caption {
                         display: block;
