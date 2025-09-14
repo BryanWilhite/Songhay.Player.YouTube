@@ -90,14 +90,20 @@ $key: 8-thumbs;
         &.header {
             margin: 0 auto;
 
-            & > .level-left > .level-item > a {
-                &:link,
-                &:visited {
-                    color: $var-thumbs-header-link-color;
-                    text-decoration: $var-thumbs-header-link-text-decoration;
+            & > div.level-left {
+                & > span.level-item > a {
+                    &:link,
+                    &:visited {
+                        color: $var-thumbs-header-link-color;
+                        text-decoration: $var-thumbs-header-link-text-decoration;
+                    }
+                    &:hover {
+                        color: $var-thumbs-header-link-hover-color;
+                    }
                 }
-                &:hover {
-                    color: $var-thumbs-header-link-hover-color;
+
+                & > span.level-item.image { /** required YouTube Logo color **/
+                    color: #f00;
                 }
             }
         }
