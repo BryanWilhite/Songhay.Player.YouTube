@@ -2,12 +2,9 @@ namespace Songhay.Player.YouTube.Tests.Models
 
 open System.Net
 open System.IO
-open System.Net.Http
 
 open Xunit
 open Xunit.Abstractions
-open FsUnit.Xunit
-open FsUnit.CustomMatchers
 open FsToolkit.ErrorHandling
 
 open Songhay.Modules.Models
@@ -28,16 +25,16 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         task {
             let id = Identifier.fromString(idString)
             let uriOption = id |> model.GetPlaylistIndexUri
-            uriOption |> should be (ofCase <@ Option.Some @>)
+            uriOption.IsSome |> Assert.True
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
 
             let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult.IsOk |> Assert.True
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
+            jsonResult.IsOk |> Assert.True
 
             let json =
                 jsonResult
@@ -67,16 +64,16 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
             let indexId = Identifier.fromString(indexIdString)
             let clientId = ClientId.fromString(clientIdString)
             let uriOption = (indexId, clientId) ||> model.GetPlaylistSetUri
-            uriOption |> should be (ofCase <@ Option.Some @>)
+            uriOption.IsSome |> Assert.True
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
 
             let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult.IsOk |> Assert.True
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
+            jsonResult.IsOk |> Assert.True
 
             let json =
                 jsonResult
@@ -100,16 +97,16 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
         task {
             let id = Identifier.fromString(idString)
             let uriOption = id |> model.GetPlaylistUri
-            uriOption |> should be (ofCase <@ Option.Some @>)
+            uriOption.IsSome |> Assert.True
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
 
             let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult.IsOk |> Assert.True
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
+            jsonResult.IsOk |> Assert.True
             let json =
                 jsonResult
                 |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
@@ -132,16 +129,16 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
 
         task {
             let uriOption = presentationKey |> model.GetPresentationManifestUri
-            uriOption |> should be (ofCase <@ Option.Some @>)
+            uriOption.IsSome |> Assert.True
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
             
             let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult.IsOk |> Assert.True
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
+            jsonResult.IsOk |> Assert.True
             let json =
                 jsonResult
                 |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
@@ -164,16 +161,16 @@ type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
 
         task {
             let uriOption = presentationKey |> model.GetPresentationYtItemsUri
-            uriOption |> should be (ofCase <@ Option.Some @>)
+            uriOption.IsSome |> Assert.True
 
             testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
 
             let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult.IsOk |> Assert.True
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult |> should be (ofCase <@ Result<string,HttpStatusCode>.Ok @>)
+            jsonResult.IsOk |> Assert.True
             let json =
                 jsonResult
                 |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )

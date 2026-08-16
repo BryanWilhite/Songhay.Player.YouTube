@@ -3,15 +3,9 @@ namespace Songhay.Player.YouTube.Tests
 open Microsoft.Extensions.Logging
 
 open NSubstitute
-
 open Xunit
-open FsUnit.Xunit
-open FsUnit.CustomMatchers
 
-open Songhay.Modules.Models
 open Songhay.Modules.Bolero.JsonDocumentUtility
-
-open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.ServiceHandlerUtility
 
 type ServiceHandlerUtilityTests() =
@@ -24,7 +18,7 @@ type ServiceHandlerUtilityTests() =
         let mockLogger = Substitute.For<ILogger>() |> Some
 
         let actual = (mockLogger, jsonResult) ||> tryGetJsonElement |> toYtItems
-        actual |> should be (ofCase <@ Option<YouTubeItem[]>.Some @>)
+        actual.IsSome |> Assert.True
 
     [<Theory>]
     [<InlineData("songhay-code-playlist.json")>]
@@ -34,4 +28,4 @@ type ServiceHandlerUtilityTests() =
         let mockLogger = Substitute.For<ILogger>() |> Some
 
         let actual = (mockLogger, jsonResult) ||> tryGetJsonElement |> toYtSet
-        actual |> should be (ofCase <@ Option<(DisplayText * YouTubeItem array)[]>.Some @>)
+        actual.IsSome |> Assert.True

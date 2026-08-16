@@ -4,7 +4,7 @@
   "name": "b-roll (YouTube)",
   "endpointPrefix": "api/player/v1",
   "latency": 250,
-  "port": 3002,
+  "port": 3001,
   "hostname": "",
   "folders": [],
   "routes": [

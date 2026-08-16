@@ -1,14 +1,10 @@
 namespace Songhay.Player.YouTube.Tests
 
-open System.Text.Json
 open Xunit
-open FsUnit.Xunit
-open FsUnit.CustomMatchers
 open FsToolkit.ErrorHandling
 open FsToolkit.ErrorHandling.Operator.Result
 
 open Songhay.Modules.JsonDocumentUtility
-open Songhay.Player.YouTube.Models
 open Songhay.Player.YouTube.YtItemUtility
 
 type YtItemUtilityTests() =
@@ -23,7 +19,7 @@ type YtItemUtilityTests() =
             | true, _ -> true
             | _ -> false
 
-        actual |> should be True
+        actual |> Assert.True
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
@@ -35,19 +31,19 @@ type YtItemUtilityTests() =
             |> tryGetProperty YtItemsPropertyName
             |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
-        itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        itemElementResult.IsOk |> Assert.True
 
         let contentDetailsElementResult =
             itemElementResult |> Result.bind (tryGetProperty YtItemContentDetailsPropertyName)
 
-        contentDetailsElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        contentDetailsElementResult.IsOk |> Assert.True
 
         let actualResult =
             contentDetailsElementResult
             |> Result.valueOr raise
             |> tryGetYtContentDetails
 
-        actualResult |> should be (ofCase <@ Result<YouTubeContentDetails, JsonException>.Ok @>)
+        actualResult.IsOk |> Assert.True
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
@@ -58,18 +54,18 @@ type YtItemUtilityTests() =
             |> tryGetProperty YtItemsPropertyName
             |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
-        itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        itemElementResult.IsOk |> Assert.True
 
         let snippetElementResult =
             itemElementResult >>= (tryGetProperty YtItemSnippetPropertyName)
-        snippetElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        snippetElementResult.IsOk |> Assert.True
 
         let actualResult =
             snippetElementResult
             |> Result.valueOr raise
             |> tryGetYtResourceId
 
-        actualResult |> should be (ofCase <@ Result<YouTubeResourceId, JsonException>.Ok @>)
+        actualResult.IsOk |> Assert.True
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
@@ -81,18 +77,18 @@ type YtItemUtilityTests() =
             |> tryGetProperty YtItemsPropertyName
             |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
-        itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        itemElementResult.IsOk |> Assert.True
 
         let snippetElementResult =
             itemElementResult |> Result.bind (tryGetProperty YtItemSnippetPropertyName)
-        snippetElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        snippetElementResult.IsOk |> Assert.True
 
         let actualResult =
             snippetElementResult
             |> Result.valueOr raise
             |> tryGetYtThumbnails
 
-        actualResult |> should be (ofCase <@ Result<YouTubeThumbnails, JsonException>.Ok @>)
+        actualResult.IsOk |> Assert.True
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
@@ -104,18 +100,18 @@ type YtItemUtilityTests() =
             |> tryGetProperty YtItemsPropertyName
             |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
-        itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        itemElementResult.IsOk |> Assert.True
 
         let snippetElementResult =
             itemElementResult >>= (tryGetProperty YtItemSnippetPropertyName)
-        snippetElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        snippetElementResult.IsOk |> Assert.True
 
         let actualResult =
             snippetElementResult
             |> Result.valueOr raise
             |> tryGetYtSnippet
 
-        actualResult |> should be (ofCase <@ Result<YouTubeSnippet, JsonException>.Ok @>)
+        actualResult.IsOk |> Assert.True
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
@@ -127,14 +123,14 @@ type YtItemUtilityTests() =
             |> tryGetProperty YtItemsPropertyName
             |> Result.eitherMap ( fun el -> (el.EnumerateArray() |> List.ofSeq |> List.head) ) id
 
-        itemElementResult |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+        itemElementResult.IsOk |> Assert.True
 
         let actualResult =
             itemElementResult
             |> Result.valueOr raise
             |> tryGetYtItem
 
-        actualResult |> should be (ofCase <@ Result<YouTubeItem, JsonException>.Ok @>)
+        actualResult.IsOk |> Assert.True
 
     [<Theory>]
     [<InlineData("60-minutes.json")>]
@@ -146,4 +142,4 @@ type YtItemUtilityTests() =
             videoJsonDocument.RootElement
             |> fromInput
 
-        actualResult |> should be (ofCase <@ Result<YouTubeItem list, JsonException>.Ok @>)
+        actualResult.IsOk |> Assert.True

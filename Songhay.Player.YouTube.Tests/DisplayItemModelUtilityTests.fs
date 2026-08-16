@@ -1,16 +1,9 @@
 namespace Songhay.Player.YouTube.Tests
 
-open System.Text.Json
 open Xunit
-open FsUnit.Xunit
-open FsUnit.CustomMatchers
 open FsToolkit.ErrorHandling
 
-open Songhay.Modules.Models
-open Songhay.Modules.Publications.Models
-
 open Songhay.Player.YouTube.DisplayItemModelUtility
-open Songhay.Player.YouTube.Models
 
 module DisplayItemModelUtilityTests =
 
@@ -23,8 +16,8 @@ module DisplayItemModelUtilityTests =
             videoJsonDocument.RootElement
             |> Index.fromInput
 
-        actualResult
-        |> should be (ofCase <@ Result<ClientId * Name * (DisplayItemModel * ClientId []) [],JsonException>.Ok @>)
+        actualResult.IsOk
+        |> Assert.True
 
     [<Theory>]
     [<InlineData("songhay-news-playlist.json")>]
@@ -35,8 +28,8 @@ module DisplayItemModelUtilityTests =
             videoJsonDocument.RootElement
             |> ThumbsSet.fromInput
 
-        actualResult
-        |> should be (ofCase <@ Result<(DisplayText * YouTubeItem []) list,JsonException>.Ok @>)
+        actualResult.IsOk
+        |> Assert.True
 
         let actual = actualResult |> Result.valueOr raise
-        actual |> should not' (be Empty)
+        actual |> Assert.NotEmpty

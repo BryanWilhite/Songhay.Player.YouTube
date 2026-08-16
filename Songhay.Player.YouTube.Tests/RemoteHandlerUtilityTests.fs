@@ -1,13 +1,10 @@
 namespace Songhay.Player.YouTube.Tests
 
-open System.Net.Http
 open System.Text.Json
 open Microsoft.Extensions.Logging
 open Xunit
 open Xunit.Abstractions
 
-open FsUnit.Xunit
-open FsUnit.CustomMatchers
 open FsToolkit.ErrorHandling
 
 open NSubstitute
@@ -32,15 +29,15 @@ type RemoteHandlerUtilityTests(outputHelper: ITestOutputHelper) =
 
             let mockLogger = Substitute.For<ILogger>() |> Some
             let dataGetter (result: Result<JsonElement, JsonException>) =
-                result |> should be (ofCase <@ Result<JsonElement, JsonException>.Ok @>)
+                result.IsOk |> Assert.True
                 result |> Option.ofResult
 
             let! responseResult = client |> trySendAsync (get uri.Value) |> Async.AwaitTask
 
-            responseResult |> should be (ofCase <@ Result<HttpResponseMessage,exn>.Ok @>)
+            responseResult.IsOk |> Assert.True
 
             let! handlerResult = responseResult |> toHandlerOutputAsync mockLogger dataGetter |> Async.AwaitTask
-            handlerResult |> should be (ofCase <@ Option<JsonElement>.Some @>)
+            handlerResult.IsSome |> Assert.True
 
             (jsonFileName, handlerResult.Value.ToString()) ||> writeJsonAsync |> Async.AwaitTask |> ignore
         }

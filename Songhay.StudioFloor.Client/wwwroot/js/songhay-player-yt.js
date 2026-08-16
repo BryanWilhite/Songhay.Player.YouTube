@@ -40,7 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  BoleroUtility: () => (/* reexport */ BoleroUtility)
+  BlazorInteropUtility: () => (/* reexport */ BlazorInteropUtility)
 });
 
 ;// CONCATENATED MODULE: ./node_modules/songhay/core/models/window-animation.js
@@ -745,12 +745,22 @@ class DomUtility {
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./src/bolero-utility.ts
+;// CONCATENATED MODULE: ./src/blazor-interop-utility.ts
 
-class BoleroUtility {
+class BlazorInteropUtility {
+    static getComputedStylePropertyValue(element, propertyName) {
+        return CssUtility.getComputedStylePropertyValue(element, propertyName);
+    }
+    static getComputedStylePropertyValueById(elementId, propertyName) {
+        return CssUtility.getComputedStylePropertyValueById(elementId, propertyName);
+    }
+    static getComputedStylePropertyValueByQuery(query, propertyName) {
+        return CssUtility.getComputedStylePropertyValueByQuery(query, propertyName);
+    }
+    static setComputedStylePropertyValue(element, propertyName, propertyValue) {
+        CssUtility.setComputedStylePropertyValue(element, propertyName, propertyValue);
+    }
 }
-BoleroUtility.css = CssUtility;
-BoleroUtility.dom = DomUtility;
 
 ;// CONCATENATED MODULE: ./src/_index.ts
 

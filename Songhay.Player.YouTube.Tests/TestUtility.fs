@@ -11,8 +11,7 @@ open Microsoft.Extensions.DependencyInjection
 
 open FsToolkit.ErrorHandling
 
-open Songhay.Modules.Bolero
-open Songhay.Modules.Bolero.Models
+open Songhay.Modules
 open Songhay.Modules.Models
 open Songhay.Modules.ProgramFileUtility
 open Songhay.Modules.Bolero.ServiceProviderUtility
