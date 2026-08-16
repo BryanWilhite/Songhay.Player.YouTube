@@ -22,7 +22,7 @@
     <Content Include="src\scss\you-tube-presentation.scss" />
     <Content Include="src\scss\index.scss" />
     <Folder Include="src\js\" />
-    <TypeScriptCompile Include="src\bolero-utility.ts" />
+    <TypeScriptCompile Include="src\blazor-interop-utility.ts" />
     <TypeScriptCompile Include="src\_index.ts" />
     <Content Include="webpack.config.js" />
   </ItemGroup>

@@ -3,7 +3,7 @@ namespace Songhay.Player.YouTube.Models
 open System
 open FsToolkit.ErrorHandling
 
-open Songhay.Modules.Bolero.Models
+open Songhay.Modules.Models
 open Songhay.Modules.ProgramTypeUtility
 
 /// <summary>

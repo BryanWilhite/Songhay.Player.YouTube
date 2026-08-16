@@ -7,6 +7,7 @@ open FsToolkit.ErrorHandling.Operator.Result
 
 open Microsoft.Extensions.Logging
 
+open Songhay.Modules
 open Songhay.Modules.Bolero
 open Songhay.Player.YouTube
 open Songhay.Player.YouTube.DisplayItemModelUtility

@@ -5,10 +5,9 @@ open System
 open FsToolkit.ErrorHandling
 open Bolero
 
-open Songhay.Modules.Bolero
+open Songhay.Modules
 open Songhay.Modules.Models
 open Songhay.Modules.Bolero.JsRuntimeUtility
-open Songhay.Modules.Bolero.Models
 open Songhay.Modules.Bolero.ServiceProviderUtility
 open Songhay.Modules.Publications.Models
 
