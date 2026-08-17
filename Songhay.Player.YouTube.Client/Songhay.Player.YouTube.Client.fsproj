@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Models\ClientPage.fs" />
+    <Compile Include="Models\ClientMessage.fs" />
+    <Compile Include="Models\ClientModel.fs" />
+    <Compile Include="ElmishRoutes.fs" />
+    <Compile Include="ProgramComponentUtility.fs" />
+    <Compile Include="Components\ClientProgramComponent.fs" />
+    <Compile Include="Startup.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Bolero" Version="0.*" />
+    <PackageReference Include="Bolero.Build" Version="0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Songhay.Player.YouTube\Songhay.Player.YouTube.fsproj" />
+  </ItemGroup>
+</Project>
