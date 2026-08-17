@@ -166,7 +166,7 @@ type YouTubeModel =
     /// where <c>subFolder</c> is hard-coded to <c>uploads</c>
     /// </remarks>
     member this.GetPlaylistUri (playlistFileName: Identifier) =
-        this.ToUriResultFromClaim("route-for-video-yt-playlist", "uploads", playlistFileName.StringValue)
+        this.ToUriResultFromClaim("route-for-video-yt-playlist", playlistFileName.StringValue)
         |> Option.ofResult
 
     /// <summary>Returns the URI for a b-roll player API endpoint</summary>
@@ -175,7 +175,7 @@ type YouTubeModel =
     /// The route for this endpoint is of the form <c>video/youtube/{presentationKey}</c>
     /// </remarks>
     member this.GetPresentationManifestUri (presentationKey: string ) =
-        this.ToUriResultFromClaim("route-for-video-yt-manifest", presentationKey)
+        this.ToUriResultFromClaim("route-for-video-yt-curated-manifest", presentationKey)
         |> Option.ofResult
 
     /// <summary>Returns the URI for a b-roll player API endpoint</summary>
@@ -184,7 +184,7 @@ type YouTubeModel =
     /// The route for this endpoint is of the form <c>video/youtube/videos/{presentationKey}</c>
     /// </remarks>
     member this.GetPresentationYtItemsUri (presentationKey: string ) =
-        this.ToUriResultFromClaim("route-for-video-yt-curated-manifest", presentationKey)
+        this.ToUriResultFromClaim("route-for-video-yt-curated-uploads", presentationKey)
         |> Option.ofResult
 
     member this.GetSelectedDocument() =

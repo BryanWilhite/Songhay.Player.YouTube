@@ -3,11 +3,15 @@ module Songhay.Player.YouTube.Tests.TestUtility
 
 open System
 open System.IO
+open System.Linq
 open System.Net.Http
 open System.Reflection
 open System.Text.Json
+
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.Logging
+open Microsoft.Extensions.Logging.Abstractions
 
 open FsToolkit.ErrorHandling
 
@@ -18,12 +22,39 @@ open Songhay.Modules.Bolero.ServiceProviderUtility
 
 open Songhay.Player.YouTube.Models
 
+let nullLogger = NullLogger.Instance :> ILogger
+
+let httpClient = new HttpClient()
+
+let projectDirectoryInfo =
+    Assembly.GetExecutingAssembly()
+    |> ProgramAssemblyInfo.getPathFromAssembly "../../../"
+    |> Result.valueOr raiseProgramFileError
+    |> DirectoryInfo
+
+let appSettingsPath = projectDirectoryInfo
+                          .Parent.GetDirectories()
+                          .First(_.Name.EndsWith(".Client"))
+                          .GetDirectories()
+                          .First(_.Name.Equals("wwwroot"))
+                          .GetFiles()
+                          .First(_.Name.Equals("appsettings.json"))
+                          .FullName
+
+let studioFloorConfiguration = ConfigurationBuilder().AddJsonFile(appSettingsPath).Build()
+let studioFloorProvider = ServiceCollection().AddSingleton<IConfiguration>(studioFloorConfiguration).BuildServiceProvider()
+let studioFloorModel = { YouTubeModel.initialize(studioFloorProvider) with
+                                restApiMetadataOption =
+                                    "PlayerApi"
+                                    |> RestApiMetadata.fromConfiguration (getIConfiguration())
+                                    |> RestApiMetadata.toRestApiMetadataOption (getILogger().LogException)
+                            }
+
 [<Literal>]
 let studioSettingsPathMessage = "The expected Studio settings path is not here."
 
 let studioSettingsPath = Environment.GetEnvironmentVariable("SONGHAY_APP_SETTINGS_PATH") |> Option.ofNull
 
-let client = new HttpClient()
 let configuration = ConfigurationBuilder().AddJsonFile(studioSettingsPath.Value).Build()
 let provider = ServiceCollection().AddSingleton<IConfiguration>(configuration).BuildServiceProvider()
 let model = { YouTubeModel.initialize(provider) with
@@ -32,12 +63,6 @@ let model = { YouTubeModel.initialize(provider) with
                                     |> RestApiMetadata.fromConfiguration (getIConfiguration())
                                     |> RestApiMetadata.toRestApiMetadataOption (getILogger().LogException)
                             }
-
-let projectDirectoryInfo =
-    Assembly.GetExecutingAssembly()
-    |> ProgramAssemblyInfo.getPathFromAssembly "../../../"
-    |> Result.valueOr raiseProgramFileError
-    |> DirectoryInfo
 
 let getJson (fileName: string) =
     let path =

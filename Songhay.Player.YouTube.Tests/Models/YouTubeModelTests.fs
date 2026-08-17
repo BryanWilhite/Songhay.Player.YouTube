@@ -1,8 +1,7 @@
 namespace Songhay.Player.YouTube.Tests.Models
 
+open System
 open System.Net
-open System.IO
-
 open Xunit
 open Xunit.Abstractions
 open FsToolkit.ErrorHandling
@@ -11,176 +10,119 @@ open Songhay.Modules.Models
 open Songhay.Modules.HttpClientUtility
 open Songhay.Modules.HttpRequestMessageUtility
 open Songhay.Modules.HttpResponseMessageUtility
-open Songhay.Modules.ProgramFileUtility
-
 open Songhay.Player.YouTube.Tests.TestUtility
 
 open Songhay.StudioFloor.Client.YouTubeScalars
 
 type YouTubeModelTests(testOutputHelper: ITestOutputHelper) =
 
-    [<Theory>]
-    [<InlineData(YtIndexSonghay)>]
-    member this.``getPlaylistIndexUri test`` (idString: string) =
+    static let downloadJsonAsync(uriOption: Uri option) (testOutputHelper: ITestOutputHelper) =
         task {
-            let id = Identifier.fromString(idString)
-            let uriOption = id |> model.GetPlaylistIndexUri
-            uriOption.IsSome |> Assert.True
-
-            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
-
-            let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult.IsOk |> Assert.True
+            let! responseResult = httpClient |> trySendAsync (get uriOption.Value)
+            responseResult
+            |> Result.teeError(fun err -> testOutputHelper.WriteLine $"{nameof err}: {err.Message}")
+            |> _.IsOk |> Assert.True
             let response = responseResult |> Result.valueOr raise
 
             let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult.IsOk |> Assert.True
+            jsonResult
+            |> Result.teeError(fun status -> testOutputHelper.WriteLine $"{nameof status}: {status}")
+            |> _.IsOk |> Assert.True
 
             let json =
                 jsonResult
                 |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
                 |> Result.valueOr raise
 
-            let path =
-                $"./json/{idString}-index.json"
-                |> tryGetCombinedPath projectDirectoryInfo.FullName
-                |> Result.valueOr raiseProgramFileError
-
-            testOutputHelper.WriteLine $"Writing to `{path}`..."
-            File.WriteAllText(path, json)
+            return json
         }
 
-    [<SkippableTheory>]
+    [<Theory>]
+    [<InlineData(YtIndexSonghay)>]
+    member this.``GetPlaylistIndexUri test`` (idString: string) =
+        task {
+            //arrange, act, assert:
+            let id = Identifier.fromString(idString)
+            let uriOption = id |> studioFloorModel.GetPlaylistIndexUri
+            uriOption
+            |> Option.teeSome(fun uri -> testOutputHelper.WriteLine $"{nameof uri}: {uri}")
+            |> _.IsSome |> Assert.True
+
+            //archive:
+            let! json = testOutputHelper |> downloadJsonAsync uriOption
+            do! json |> writeJsonAsync $"{idString}-index.json"
+        }
+
+    [<Theory>]
     [<InlineData(YtIndexSonghay, "news")>]
     [<InlineData(YtIndexSonghay, "code")>]
     [<InlineData(YtIndexSonghay, "media-building")>]
-    member this.``getPlaylistSetUri test`` (indexIdString: string, clientIdString: string) =
-        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+    member this.``GetPlaylistSetUri test`` (indexIdString: string, clientIdString: string) =
 
         testOutputHelper.WriteLine $"{nameof(indexIdString)}: {indexIdString}"
         testOutputHelper.WriteLine $"{nameof(clientIdString)}: {clientIdString}"
 
         task {
+            //arrange, act, assert:
             let indexId = Identifier.fromString(indexIdString)
             let clientId = ClientId.fromString(clientIdString)
-            let uriOption = (indexId, clientId) ||> model.GetPlaylistSetUri
-            uriOption.IsSome |> Assert.True
+            let uriOption = (indexId, clientId) ||> studioFloorModel.GetPlaylistSetUri
+            uriOption
+            |> Option.teeSome(fun uri -> testOutputHelper.WriteLine $"{nameof uri}: {uri}")
+            |> _.IsSome |> Assert.True
 
-            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
-
-            let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult.IsOk |> Assert.True
-            let response = responseResult |> Result.valueOr raise
-
-            let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult.IsOk |> Assert.True
-
-            let json =
-                jsonResult
-                |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
-                |> Result.valueOr raise
-
-            let path =
-                $"./json/{indexIdString}-{clientIdString}-playlist.json"
-                |> tryGetCombinedPath projectDirectoryInfo.FullName
-                |> Result.valueOr raiseProgramFileError
-
-            testOutputHelper.WriteLine $"Writing to `{path}`..."
-            File.WriteAllText(path, json)
+            //archive:
+            let! json = testOutputHelper |> downloadJsonAsync uriOption
+            do! json |> writeJsonAsync $"{indexIdString}-{clientIdString}-playlist.json"
         }
 
-    [<SkippableTheory>]
+    [<Theory>]
     [<InlineData(YtIndexSonghayTopTen)>]
-    member this.``getPlaylistUri test`` (idString: string) =
-        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+    member this.``GetPlaylistUri test`` (idString: string) =
 
         task {
+            //arrange, act, assert:
             let id = Identifier.fromString(idString)
-            let uriOption = id |> model.GetPlaylistUri
-            uriOption.IsSome |> Assert.True
+            let uriOption = id |> studioFloorModel.GetPlaylistUri
+            uriOption
+            |> Option.teeSome(fun uri -> testOutputHelper.WriteLine $"{nameof uri}: {uri}")
+            |> _.IsSome |> Assert.True
 
-            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
-
-            let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult.IsOk |> Assert.True
-            let response = responseResult |> Result.valueOr raise
-
-            let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult.IsOk |> Assert.True
-            let json =
-                jsonResult
-                |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
-                |> Result.valueOr raise
-
-            let path =
-                $"./json/{idString}.json"
-                |> tryGetCombinedPath projectDirectoryInfo.FullName
-                |> Result.valueOr raiseProgramFileError
-
-            testOutputHelper.WriteLine $"Writing to `{path}`..."
-            File.WriteAllText(path, json)
+            //archive:
+            let! json = testOutputHelper |> downloadJsonAsync uriOption
+            do! json |> writeJsonAsync $"{idString}.json"
         }
 
-    [<SkippableTheory>]
+    [<Theory>]
     [<InlineData("default")>]
     [<InlineData("sha_cage")>]
-    member this.``getPresentationManifestUri test`` (presentationKey: string) =
-        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+    member this.``GetPresentationManifestUri test`` (presentationKey: string) =
 
         task {
-            let uriOption = presentationKey |> model.GetPresentationManifestUri
-            uriOption.IsSome |> Assert.True
+            //arrange, act, assert:
+            let uriOption = presentationKey |> studioFloorModel.GetPresentationManifestUri
+            uriOption
+            |> Option.teeSome(fun uri -> testOutputHelper.WriteLine $"{nameof uri}: {uri}")
+            |> _.IsSome |> Assert.True
 
-            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
-            
-            let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult.IsOk |> Assert.True
-            let response = responseResult |> Result.valueOr raise
-
-            let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult.IsOk |> Assert.True
-            let json =
-                jsonResult
-                |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
-                |> Result.valueOr raise
-
-            let path =
-                $"./json/{presentationKey}_presentation.json"
-                |> tryGetCombinedPath projectDirectoryInfo.FullName
-                |> Result.valueOr raiseProgramFileError
-
-            testOutputHelper.WriteLine $"Writing to `{path}`..."
-            File.WriteAllText(path, json)
+            //archive:
+            let! json = testOutputHelper |> downloadJsonAsync uriOption
+            do! json |> writeJsonAsync $"{presentationKey}_presentation.json"
         }
 
-    [<SkippableTheory>]
+    [<Theory>]
     [<InlineData("default")>]
     [<InlineData("sha_cage")>]
-    member this.``getPresentationYtItemsUri test`` (presentationKey: string) =
-        Skip.If(studioSettingsPath.IsNone, studioSettingsPathMessage)
+    member this.``GetPresentationYtItemsUri test`` (presentationKey: string) =
 
         task {
-            let uriOption = presentationKey |> model.GetPresentationYtItemsUri
-            uriOption.IsSome |> Assert.True
+            //arrange, act, assert:
+            let uriOption = presentationKey |> studioFloorModel.GetPresentationYtItemsUri
+            uriOption
+            |> Option.teeSome(fun uri -> testOutputHelper.WriteLine $"{nameof uri}: {uri}")
+            |> _.IsSome |> Assert.True
 
-            testOutputHelper.WriteLine $"{nameof(uriOption)}: {uriOption.Value.OriginalString}"
-
-            let! responseResult = client |> trySendAsync (get uriOption.Value)
-            responseResult.IsOk |> Assert.True
-            let response = responseResult |> Result.valueOr raise
-
-            let! jsonResult = response |> tryDownloadToStringAsync
-            jsonResult.IsOk |> Assert.True
-            let json =
-                jsonResult
-                |> Result.mapError ( fun code -> exn $"{nameof HttpStatusCode}: {code.ToString()}" )
-                |> Result.valueOr raise
-
-            let path =
-                $"./json/{presentationKey}_videos.json"
-                |> tryGetCombinedPath projectDirectoryInfo.FullName
-                |> Result.valueOr raiseProgramFileError
-
-            testOutputHelper.WriteLine $"Writing to `{path}`..."
-            File.WriteAllText(path, json)
+            //archive:
+            let! json = testOutputHelper |> downloadJsonAsync uriOption
+            do! json |> writeJsonAsync $"{presentationKey}_videos.json.json"
         }
