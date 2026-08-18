@@ -2,16 +2,31 @@ var rx;
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
+/******/ 	const __webpack_require__ = {};
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
+/******/ 		// define getter/value functions for harmony exports
 /******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 			if(Array.isArray(definition)) {
+/******/ 				var i = 0;
+/******/ 				while(i < definition.length) {
+/******/ 					var key = definition[i++];
+/******/ 					var binding = definition[i++];
+/******/ 					if(!__webpack_require__.o(exports, key)) {
+/******/ 						if(binding === 0) {
+/******/ 							Object.defineProperty(exports, key, { enumerable: true, value: definition[i++] });
+/******/ 						} else {
+/******/ 							Object.defineProperty(exports, key, { enumerable: true, get: binding });
+/******/ 						}
+/******/ 					} else if(binding === 0) { i++; }
+/******/ 				}
+/******/ 			} else {
+/******/ 				for(var key in definition) {
+/******/ 					if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 						Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 					}
 /******/ 				}
 /******/ 			}
 /******/ 		};
@@ -26,7 +41,7 @@ var rx;
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
 /******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			if(Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
@@ -34,16 +49,16 @@ var rx;
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
+let __webpack_exports__ = {};
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  BoleroUtility: () => (/* reexport */ BoleroUtility)
+  BlazorInteropUtility: () => (/* reexport */ BlazorInteropUtility)
 });
 
-;// ../../node_modules/songhay/core/models/window-animation.js
+;// ./node_modules/songhay/core/models/window-animation.js
 /**
  * Defines a wrapper
  * around {@link https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame |`window.requestAnimationFrame`}
@@ -235,7 +250,7 @@ class WindowAnimation {
  */
 WindowAnimation.registry = new Map();
 //# sourceMappingURL=window-animation.js.map
-;// ../../node_modules/songhay/core/models/css-red-green-blue.js
+;// ./node_modules/songhay/core/models/css-red-green-blue.js
 /**
  * defines CSS RGB
  *
@@ -252,7 +267,7 @@ class CssRedGreenBlue {
     }
 }
 //# sourceMappingURL=css-red-green-blue.js.map
-;// ../../node_modules/songhay/core/utilities/css.utility.js
+;// ./node_modules/songhay/core/utilities/css.utility.js
 
 /**
  * routines for inline CSS
@@ -392,7 +407,7 @@ class CssUtility {
     }
 }
 //# sourceMappingURL=css.utility.js.map
-;// ../../node_modules/songhay/core/utilities/dom.utility.js
+;// ./node_modules/songhay/core/utilities/dom.utility.js
 /**
  * static members for DOM manipulation
  *
@@ -546,7 +561,7 @@ class DomUtility {
     }
 }
 //# sourceMappingURL=dom.utility.js.map
-;// ../../node_modules/songhay/core/index.js
+;// ./node_modules/songhay/core/index.js
 
 
 
@@ -562,36 +577,27 @@ class DomUtility {
 
 
 //# sourceMappingURL=index.js.map
-;// ./src/ts/bulma-utility.ts
-class BulmaUtility {
-    static initializeBulma() {
-        const burger = document.querySelector('.navbar-burger');
-        if (!burger) {
-            console.error('SonghayDashboardUtility:', { burger });
-            return;
-        }
-        const target = burger['dataset']['target'];
-        const nav = document.querySelector(`#${target}`);
-        const isActiveCssClass = 'is-active';
-        burger === null || burger === void 0 ? void 0 : burger.addEventListener('click', () => {
-            burger.classList.toggle(isActiveCssClass);
-            nav === null || nav === void 0 ? void 0 : nav.classList.toggle(isActiveCssClass);
-        });
+;// ./src/blazor-interop-utility.ts
+
+class BlazorInteropUtility {
+    static getComputedStylePropertyValue(element, propertyName) {
+        return CssUtility.getComputedStylePropertyValue(element, propertyName);
+    }
+    static getComputedStylePropertyValueById(elementId, propertyName) {
+        return CssUtility.getComputedStylePropertyValueById(elementId, propertyName);
+    }
+    static getComputedStylePropertyValueByQuery(query, propertyName) {
+        return CssUtility.getComputedStylePropertyValueByQuery(query, propertyName);
+    }
+    static setComputedStylePropertyValue(element, propertyName, propertyValue) {
+        CssUtility.setComputedStylePropertyValue(element, propertyName, propertyValue);
     }
 }
 
-;// ./src/ts/bolero-utility.ts
-
-class BoleroUtility {
-}
-BoleroUtility.css = CssUtility;
-BoleroUtility.dom = DomUtility;
-
-;// ./src/ts/_index.ts
-
+;// ./src/_index.ts
 
 DomUtility.runWhenWindowContentLoaded(() => {
-    BulmaUtility.initializeBulma();
+    console.info('the `DotNet` “namespace” should not be undefined:', { DotNet });
 });
 
 

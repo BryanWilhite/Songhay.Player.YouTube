@@ -1,21 +1,17 @@
-import { dirname, resolve as _resolve } from 'path';
-import { fileURLToPath } from 'url';
+const path = require('path');
 
-import TerserJSPlugin from 'terser-webpack-plugin';
-import pkg from 'webpack';
-const { ProgressPlugin } = pkg;
+const webpack = require('webpack');
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const TerserJSPlugin = require('terser-webpack-plugin');
 
 const sharedConfig = {
     entry: {
         scripts: [
-            './src/ts/_index.ts',
+            './src/_index.ts',
         ]
     },
     plugins: [
-        new ProgressPlugin(),
+        new webpack.ProgressPlugin(),
     ],
     module: {
         rules: [
@@ -46,7 +42,7 @@ const defaultConfig = {
     name: 'default-config',
     output: {
         filename: 'songhay-player-yt.js',
-        path: _resolve(__dirname, 'wwwroot', 'js'),
+        path: path.resolve(__dirname, 'wwwroot', 'js'),
         ...outputLibraryConfig
     },
     optimization: {
@@ -58,7 +54,7 @@ const optimizationConfig = {
     name: 'optimization-config',
     output: {
         filename: 'songhay-player-yt.min.js',
-        path: _resolve(__dirname, 'wwwroot', 'js'),
+        path: path.resolve(__dirname, 'wwwroot', 'js'),
         ...outputLibraryConfig
     },
     optimization: {
@@ -66,7 +62,7 @@ const optimizationConfig = {
     },
 };
 
-export default [
+module.exports = [
     {...sharedConfig,...defaultConfig},
     {...sharedConfig,...optimizationConfig},
 ];

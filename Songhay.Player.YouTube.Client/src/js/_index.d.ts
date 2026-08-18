@@ -1,1 +1,1 @@
-export { BoleroUtility } from './bolero-utility';
+export { BlazorInteropUtility } from './blazor-interop-utility';

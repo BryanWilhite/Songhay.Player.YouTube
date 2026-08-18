@@ -1,0 +1,223 @@
+section.player {
+    --rx-player-background-color: #ccff00;
+    --rx-player-border-color: #006633;
+    --rx-player-background-opacity: 90%;
+    --rx-player-credits-x: 350px;
+    --rx-player-credits-y: 350px;
+    --rx-player-credits-width: 360px;
+    --rx-player-credits-height: 240px;
+    --rx-player-credits-button-x: 761px;
+    --rx-player-credits-button-y: 540px;
+    --rx-player-player-x: 500px;
+    --rx-player-player-y: 320px;
+    --rx-player-playlist-background-color: #eaeaea;
+    --rx-player-playlist-color: #000;
+    --rx-player-playlist-x: 500px;
+    --rx-player-playlist-y: 100px;
+    --rx-player-playlist-width: 180px;
+    --rx-player-playlist-height: 160px;
+    --rx-player-playlist-opacity: 60%;
+    --rx-player-prose-background-color: #eaeaea;
+    --rx-player-prose-color: #000;
+    --rx-player-prose-x: 10px;
+    --rx-player-prose-y: 100px;
+    --rx-player-prose-width: 450px;
+    --rx-player-prose-height: 320px;
+    --rx-player-prose-opacity: 60%;
+    --rx-player-title-background-color: #6c6c6c;
+    --rx-player-title-color: #fff;
+    --rx-player-title-x: 0px;
+    --rx-player-title-y: 0px;
+    --rx-player-title-width: 640px;
+    --rx-player-title-height: 36px;
+    --rx-player-title-opacity: 60%;
+    --rx-player-title-margin-bottom: 0px;
+    --rx-player-title-margin-top: 16px;
+
+    &.progressive-audio {
+        position: relative;
+
+        width: var(--rx-player-width);
+        height: var(--rx-player-height);
+        margin: 0 auto;
+
+        background-color: var(--rx-player-background-color);
+        background-image: var(--rx-player-background-image);
+        opacity: var(--rx-player-background-opacity);
+
+        border-color: var(--rx-player-border-color);
+        border-style: solid;
+        border-width: 2px;
+
+        & > .loading {
+            text-align: center;
+        }
+
+        & a:link,
+        & a:visited {
+            color: inherit !important;
+            text-decoration: underline;
+        }
+
+        & a:hover {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+
+        & .btn-link,
+        & .btn-link:hover {
+            color: inherit !important;
+        }
+
+        & > .title {
+            position: absolute;
+
+            top: var(--rx-player-title-y);
+            left: var(--rx-player-title-x);
+            width: var(--rx-player-title-width);
+            height: var(--rx-player-title-height);
+            z-index: 2;
+
+            margin-top: var(--rx-player-title-margin-top);
+            margin-bottom: var(--rx-player-title-margin-bottom);
+
+            background-color: var(--rx-player-title-background-color);
+            color: var(--rx-player-title-color);
+            opacity: var(--rx-player-title-opacity);
+        }
+
+        & > .prose {
+            position: absolute;
+
+            top: var(--rx-player-prose-y);
+            left: var(--rx-player-prose-x);
+            width: var(--rx-player-prose-width);
+            height: var(--rx-player-prose-height);
+            overflow-y: auto;
+
+            background-color: var(--rx-player-prose-background-color);
+            color: var(--rx-player-prose-color);
+            opacity: var(--rx-player-prose-opacity);
+            padding: 1em;
+        }
+
+        & .track-list {
+            position: absolute;
+
+            top: var(--rx-player-playlist-y);
+            left: var(--rx-player-playlist-x);
+            width: var(--rx-player-playlist-width);
+            height: var(--rx-player-playlist-height);
+            overflow-y: auto;
+
+            background-color: var(--rx-player-playlist-background-color);
+            color: var(--rx-player-playlist-color);
+            opacity: var(--rx-player-playlist-opacity);
+
+            & .b-roll.playing {
+                border: solid 2px #fff;
+            }
+
+            list-style-type: none;
+
+            & > li {
+                margin: 0;
+
+                & > span {
+                    color: var(--rx-player-title-color);
+                }
+
+                &.is-active > span {
+                    color: #000 !important;
+                }
+
+                & > a:link,
+                & > a:visited {
+                    color: var(--rx-player-playlist-color) !important;
+                    text-decoration: none;
+                }
+
+                & > a:hover {
+                    background-color: #fff !important;
+                    color: #000 !important;
+                }
+            }
+        }
+        
+        & .controls {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 6px;
+            position: absolute;
+
+            left: var(--rx-player-player-x);
+            top: var(--rx-player-player-y);
+            width: 224px; /* width of legacy player */
+
+            & > button {
+                background: #000;
+                border-radius: 48px;
+                border: 0 none;
+                color: antiquewhite;
+                cursor: pointer;
+                width:48px;
+                height: 48px; /* height of legacy player */
+                padding: 0;
+            }
+
+            & > input {
+                width: 90px;
+            }
+
+            & > span {
+                color: var(--rx-player-title-color);
+            }
+        }
+
+        & > button.credits {
+            position: absolute;
+
+            left: calc(var(--rx-player-credits-button-x) - 40px);
+            top: calc(var(--rx-player-credits-button-y) - 20px);
+
+            &:hover {
+                opacity: 1.0;
+            }
+
+            opacity: 0.77;
+
+            & > span {
+                background: var(--rx-player-credits-button-background-image) no-repeat top left;
+                background-size: contain;
+                cursor: pointer;
+                display: inline-block;
+                height: 52px;
+                width: 40px;
+                margin-left: 4px;
+                margin-top: 4px;
+            }
+        }
+        & > .modal {
+            & > button.modal-close {
+                margin-top: 71px;
+            }
+        }
+    }
+}
+
+footer {
+    a {
+
+        &:link,
+        &:visited {
+            color: var(--bulma-primary);
+            border-radius: 0.5rem;
+            display: inline-block;
+            padding: 0 0.5rem;
+            text-decoration-line: none;
+        }
+
+        &:hover {
+            color: var(--bulma-primary-light);
+        }
+    }
+}

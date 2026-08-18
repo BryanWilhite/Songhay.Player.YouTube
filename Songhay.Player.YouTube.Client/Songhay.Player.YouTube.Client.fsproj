@@ -15,9 +15,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Bolero" Version="0.*" />
-    <PackageReference Include="Bolero.Build" Version="0.*" />
+    <PackageReference Include="Bolero.Build" Version="0.24.39" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.11" />
+    <PackageReference Remove="FSharp.Core" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Songhay.Player.YouTube\Songhay.Player.YouTube.fsproj" />

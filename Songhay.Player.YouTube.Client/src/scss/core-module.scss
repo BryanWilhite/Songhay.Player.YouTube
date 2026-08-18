@@ -1,0 +1,2 @@
+//by default, Bulma line height should be 24px (when 1rem = 16px):
+$bulmaLineHeight: calc(var(--bulma-body-font-size) * var(--bulma-body-line-height));
