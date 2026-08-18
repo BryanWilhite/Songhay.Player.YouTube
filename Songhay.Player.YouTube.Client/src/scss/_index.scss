@@ -1,10 +1,11 @@
 @charset 'utf-8';
 
 @use './colors' as *;
+@use './core-module' as *;
 
 @use 'bulma/sass/utilities' as * with (
     $link: $akyinkyin-light-tint,
-    $family-secondary: 'Orbitron'
+    $family-secondary: 'Inter Tight'
 );
 
 @forward 'bulma/sass/base';
@@ -42,7 +43,7 @@
 @forward 'you-tube-presentation';
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
-@import url('https://fonts.googleapis.com/css?family=Orbitron:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Inter+Tight:200,400,700');
 
 html, body {
     min-height: 100%;
@@ -70,4 +71,18 @@ html, body {
         list-style-type: square;
         margin-left: 1.5rem;
     }
+}
+
+main {
+    //`nav` height was manually measured to be 70.3333 pixels.
+    //the top padding is the closest multiple of line height greater than `nav` height:
+    padding-top: calc(($bulmaLineHeight) * 3);
+}
+
+.modal > .modal-content-block {
+    margin-top: calc(($bulmaLineHeight) * 3);
+}
+
+.navbar-burger {
+    --bulma-navbar-burger-color: #{$akyinkyin-light-tint};
 }

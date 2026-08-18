@@ -41,15 +41,6 @@ type ClientProgramComponent() =
             |}
         ]
 
-    let appLinks =
-        [
-            (
-                DisplayText "kinté syndication",
-                Uri "http://kintespace.com/rss.xml",
-                SonghaySvgKeys.MDI_RSS_24PX.ToAlphanumeric
-            )
-        ]
-
     let svgVersionNode (data: {| id: Identifier; title: DisplayText; version: string |}) =
         let classes = CssClasses [
             levelItem
@@ -81,10 +72,6 @@ type ClientProgramComponent() =
                 cssClassesSvgVersionNodes.ToHtmlClassAttribute
                 forEach appVersions <| svgVersionNode
             }
-        let appLinksNode =
-            bulmaLevel
-                (HasClasses <| CssClasses [ isMobileModifier ])
-                (forEach appLinks <| appAnchor)
         bulmaContainer
             ContainerWidthFluid
             (HasClasses <| CssClasses [ p (T, L4) ])
@@ -107,7 +94,7 @@ type ClientProgramComponent() =
                     (concat {
                         bulmaColumn
                             (HasClasses <| CssClasses [ HSize4.CssClass ])
-                            appLinksNode
+                            (empty())
                     })
                 })
 
