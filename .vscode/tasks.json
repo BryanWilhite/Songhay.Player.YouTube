@@ -2,6 +2,19 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "bash: publish_client_to_publication",
+            "command": "bash",
+            "args": [
+                "./shell/publish_client_to_publication.sh"
+            ],
+            "isBackground": false,
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
             "label": "dotnet build [Solution]",
             "command": "dotnet",
             "type": "shell",
