@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+Songhay.Player.YouTube.Client/wwwroot/*
+!Songhay.Player.YouTube.Client/wwwroot/.gitkeep
+
 # User-specific files
 *.rsuser
 *.suo
